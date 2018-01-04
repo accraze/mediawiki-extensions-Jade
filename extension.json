@@ -1,0 +1,40 @@
+{
+	"name": "JADE",
+	"descriptionmsg": "jade-desc",
+	"version": "0.0.1",
+	"license-name": "GPL-3.0+",
+	"author": [
+		"Adam Roses Wight"
+	],
+	"url": "https://www.mediawiki.org/wiki/Extension:JADE",
+	"requires": {
+		"MediaWiki": ">= 1.31.0"
+	},
+	"namespaces": [
+		{
+			"id": 810,
+			"constant": "NS_JADE",
+			"name": "Jade",
+			"subpages": true,
+			"content": true,
+			"defaultcontentmodel": "jade_judgment"
+		},
+		{
+			"id": 811,
+			"constant": "NS_JADE_TALK",
+			"name": "Jade_talk"
+		}
+	],
+	"AutoloadNamespaces": {
+		"JADE\\": "includes/"
+	},
+	"ContentHandlers": {
+		"jade_judgment": "JADE\\ContentHandlers\\JudgmentContentHandler"
+	},
+	"MessagesDirs": {
+		"JADE": [
+			"i18n"
+		]
+	},
+	"manifest_version": 2
+}
