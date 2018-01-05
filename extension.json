@@ -3,6 +3,7 @@
 	"descriptionmsg": "jade-desc",
 	"version": "0.0.1",
 	"license-name": "GPL-3.0+",
+	"type": "other",
 	"author": [
 		"Adam Roses Wight"
 	],
@@ -15,9 +16,7 @@
 			"id": 810,
 			"constant": "NS_JADE",
 			"name": "Jade",
-			"subpages": true,
-			"content": true,
-			"defaultcontentmodel": "jade_judgment"
+			"defaultcontentmodel": "JadeJudgment"
 		},
 		{
 			"id": 811,
@@ -29,7 +28,7 @@
 		"JADE\\": "includes/"
 	},
 	"ContentHandlers": {
-		"jade_judgment": "JADE\\ContentHandlers\\JudgmentContentHandler"
+		"JadeJudgment": "JADE\\ContentHandlers\\JudgmentContentHandler"
 	},
 	"MessagesDirs": {
 		"JADE": [

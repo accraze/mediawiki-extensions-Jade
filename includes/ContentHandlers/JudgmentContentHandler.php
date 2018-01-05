@@ -3,10 +3,11 @@
 namespace JADE\ContentHandlers;
 
 use Content;
-use ContentHandler;
+use JsonContentHandler;
+use Title;
 
-class JudgmentContentHandler extends ContentHandler {
-	public function __construct( $modelId = 'jade_judgment' ) {
+class JudgmentContentHandler extends JsonContentHandler {
+	public function __construct( $modelId = 'JadeJudgment' ) {
 		parent::__construct( $modelId, [ CONTENT_FORMAT_JSON ] );
 	}
 
@@ -14,14 +15,15 @@ class JudgmentContentHandler extends ContentHandler {
 		return JudgmentContent::class;
 	}
 
+	/*
 	public function getActionOverrides() {
 		return [
 			'edit' => JudgmentEditAction::class,
 		];
 	}
+	*/
 
-	public function supportsDirectEditing() {}
-	public function serializeContent( Content $content, $format = null ) {}
-	public function unserializeContent( $blob, $format = null ) {}
-	public function makeEmptyContent() {}
+	public function canBeUsedOn( Title $title ) {
+		return $title->inNamespace( NS_JADE );
+	}
 }
