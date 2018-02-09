@@ -35,5 +35,24 @@
 			"i18n"
 		]
 	},
+	"ServiceWiringFiles": [
+		"includes/ServiceWiring.php"
+	],
+	"config": {
+		"JadeAllowedScoringSchemas": {
+			"value": {
+				"diff": {
+					"damaging": "damaging/v1.json",
+					"goodfaith": "goodfaith/v1.json"
+				},
+				"revision": {
+					"wp10": "wp10/v1.json"
+				},
+				"page": {
+					"drafttopic": "drafttopic/v1.json"
+				}
+			}
+		}
+	},
 	"manifest_version": 2
 }

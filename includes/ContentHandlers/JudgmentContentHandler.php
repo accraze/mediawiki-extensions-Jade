@@ -2,11 +2,11 @@
 
 namespace JADE\ContentHandlers;
 
-use Content;
 use JsonContentHandler;
 use Title;
 
 class JudgmentContentHandler extends JsonContentHandler {
+
 	public function __construct( $modelId = 'JadeJudgment' ) {
 		parent::__construct( $modelId, [ CONTENT_FORMAT_JSON ] );
 	}
@@ -15,15 +15,8 @@ class JudgmentContentHandler extends JsonContentHandler {
 		return JudgmentContent::class;
 	}
 
-	/*
-	public function getActionOverrides() {
-		return [
-			'edit' => JudgmentEditAction::class,
-		];
-	}
-	*/
-
 	public function canBeUsedOn( Title $title ) {
 		return $title->inNamespace( NS_JADE );
 	}
+
 }

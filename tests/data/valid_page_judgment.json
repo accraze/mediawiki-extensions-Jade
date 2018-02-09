@@ -1,0 +1,20 @@
+{
+    "entity": {
+        "type": "page",
+        "page_id": 123
+    },
+    "scores": [
+        {
+            "schema": {
+                "spec": "https://raw.githubusercontent.com/adamwight/mw-ext-JADE/master/jsonschema/scoring/drafttopic/v1.json",
+                "name": "drafttopic"
+            },
+            "data": {
+                "drafttopic": [
+                    "Medicine",
+                    "Biography"
+                ]
+            }
+        }
+    ]
+}

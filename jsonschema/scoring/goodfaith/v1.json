@@ -1,0 +1,12 @@
+{
+    "title": "jade/scoring/goodfaith",
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+        "goodfaith": {
+            "description": "True if this revision was made in good faith.",
+            "type": "boolean"
+        }
+    },
+    "required": ["goodfaith"]
+}

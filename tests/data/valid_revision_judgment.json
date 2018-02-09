@@ -1,0 +1,17 @@
+{
+    "entity": {
+        "type": "revision",
+        "rev_id": 123
+    },
+    "scores": [
+        {
+            "schema": {
+                "spec": "https://raw.githubusercontent.com/adamwight/mw-ext-JADE/master/jsonschema/scoring/wp10/v1.json",
+                "name": "wp10"
+            },
+            "data": {
+                "wp10": "C"
+            }
+        }
+    ]
+}
