@@ -1,0 +1,98 @@
+{
+    "title": "jade/judgment",
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+        "entity": {
+            "type": "object",
+            "oneOf": [
+                { "$ref": "#/definitions/revision" },
+                { "$ref": "#/definitions/diff" },
+                { "$ref": "#/definitions/page" }
+            ]
+        },
+        "scores": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "schema": {
+                        "type": "object",
+                        "properties": {
+                            "spec": {
+                                "description": "URI pointing to the JSON schema for this score's data",
+                                "type": "string",
+                                "format": "uri"
+                            },
+                            "name": {
+                                "description": "Short name of this schema.",
+                                "type": "string"
+                            }
+                        },
+                        "required": ["spec", "name"],
+                        "additionalProperties": false
+                    },
+                    "data": {
+                        "description": "Free-form data, will be validated according to the scoring schema."
+                    }
+                },
+                "required": ["schema", "data"],
+                "additionalProperties": false
+            }
+        }
+    },
+    "required": ["entity", "scores"],
+    "definitions": {
+        "diff": {
+            "type": "object",
+            "properties": {
+                "type": {
+                    "description": "Type of wiki entity being judged.",
+                    "type": "string",
+                    "enum": ["diff"]
+                },
+                "rev_id": {
+                    "description": "Database primary key of revision differential change being judged.",
+                    "type": "integer",
+                    "minimum": 1
+                }
+            },
+            "required": ["type", "rev_id"],
+            "additionalProperties": false
+        },
+        "page": {
+            "type": "object",
+            "properties": {
+                "type": {
+                    "description": "Type of wiki entity being judged.",
+                    "type": "string",
+                    "enum": ["page"]
+                },
+                "page_id": {
+                    "description": "Database primary key of page being judged.",
+                    "type": "integer",
+                    "minimum": 1
+                }
+            },
+            "required": ["type", "page_id"],
+            "additionalProperties": false
+        },
+        "revision": {
+            "type": "object",
+            "properties": {
+                "type": {
+                    "description": "Type of wiki entity being judged.",
+                    "type": "string",
+                    "enum": ["revision"]
+                },
+                "rev_id": {
+                    "description": "Database primary key of snapshot revision being judged.",
+                    "type": "integer",
+                    "minimum": 1
+                }
+            },
+            "required": ["type", "rev_id"],
+            "additionalProperties": false
+        }
+    }
+}
