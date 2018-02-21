@@ -15,6 +15,8 @@ use TitleValue;
  * @group medium
  *
  * TODO: Rewrite to use API calls.
+ *
+ * @covers JADE\ContentHandlers\JudgmentContent
  */
 class TestJudgmentActions extends ApiTestCase {
 	const REV_JUDGMENT_V1 = '../data/valid_revision_judgment.json';
@@ -34,6 +36,10 @@ class TestJudgmentActions extends ApiTestCase {
 		$this->tablesUsed[] = 'page';
 	}
 
+	/**
+	 * @covers JADE\ContentHandlers\JudgmentContent::prepareSave
+	 * @covers JADE\ContentHandlers\JudgmentContent::isValid
+	 */
 	public function testCreateRevisionJudgment() {
 		// Create target page.
 		$article = $this->makeEdit(
@@ -48,6 +54,10 @@ class TestJudgmentActions extends ApiTestCase {
 			NS_JADE, "Revision/{$rev_id}", $judgmentText, 'summary says' );
 	}
 
+	/**
+	 * @covers JADE\ContentHandlers\JudgmentContent::prepareSave
+	 * @covers JADE\ContentHandlers\JudgmentContent::isValid
+	 */
 	public function testUpdateRevisionJudgment() {
 		// Create target page.
 		$article = $this->makeEdit(
@@ -115,6 +125,9 @@ class TestJudgmentActions extends ApiTestCase {
 		$this->assertEquals( $out['status'], 'Success' );
 	}
 
+	/**
+	 * @covers JADE\JudgmentValidator::validatePageTitle
+	 */
 	public function testCreateJudgment_badTitleRevId() {
 		// Create target page.
 		$article = $this->makeEdit(
@@ -130,6 +143,9 @@ class TestJudgmentActions extends ApiTestCase {
 			NS_JADE, "Revision/{$bad_rev_id}", $judgmentText, 'summary says', false );
 	}
 
+	/**
+	 * @covers JADE\JudgmentValidator::validatePageTitle
+	 */
 	public function testCreateJudgment_badTitlePageId() {
 		// Create target page.
 		$article = $this->makeEdit(
@@ -145,6 +161,9 @@ class TestJudgmentActions extends ApiTestCase {
 			NS_JADE, "Page/{$bad_page_id}", $judgmentText, 'summary says', false );
 	}
 
+	/**
+	 * @covers JADE\JudgmentValidator::validatePageTitle
+	 */
 	public function testCreateJudgment_badTitleType() {
 		// Create target page.
 		$article = $this->makeEdit(
@@ -159,6 +178,9 @@ class TestJudgmentActions extends ApiTestCase {
 			NS_JADE, "Page/{$rev_id}", $judgmentText, 'summary says', false );
 	}
 
+	/**
+	 * @covers JADE\JudgmentValidator::validatePageTitle
+	 */
 	public function testCreateJudgment_badTitleFormat() {
 		// Create target page.
 		$article = $this->makeEdit(

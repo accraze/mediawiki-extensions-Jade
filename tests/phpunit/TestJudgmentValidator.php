@@ -16,9 +16,9 @@ const DATA_DIR = '../data';
  * @group JADE
  * @group Database
  *
- * @covers JADE\ContentHandlers\JudgmentContent
+ * @covers JADE\JudgmentValidator
  */
-class TestJudgmentContent extends MediaWikiTestCase {
+class TestJudgmentValidator extends MediaWikiTestCase {
 
 	public function provideImmediatelyInvalidContent() {
 		yield [ "invalid_judgment_duplicate_schema.json" ];
@@ -40,6 +40,10 @@ class TestJudgmentContent extends MediaWikiTestCase {
 	 *
 	 * @param string $path Path to test fixture, relative to the test data
 	 * directory.
+	 *
+	 * @covers JADE\JudgmentValidator::validateJudgmentContent
+	 * @covers JADE\JudgmentValidator::validateBasicSchema
+	 * @covers JADE\JudgmentValidator::validateScoreSchemas
 	 */
 	public function testImmediatelyInvalidContent( $path ) {
 		$text = file_get_contents( __DIR__ . '/' . DATA_DIR . '/' . $path );
@@ -52,6 +56,8 @@ class TestJudgmentContent extends MediaWikiTestCase {
 	 *
 	 * @param string $path Path to test fixture, relative to the test data
 	 * directory.
+	 *
+	 * @covers JADE\JudgmentValidator::validateEntity
 	 */
 	public function testInvalidEntity( $path ) {
 		$text = file_get_contents( __DIR__ . '/' . DATA_DIR . '/' . $path );
@@ -67,6 +73,8 @@ class TestJudgmentContent extends MediaWikiTestCase {
 	 *
 	 * @param string $path Path to test fixture, relative to the test data
 	 * directory.
+	 *
+	 * @covers JADE\JudgmentValidator::validateEntity
 	 */
 	public function testValidEntity( $path ) {
 		$text = file_get_contents( __DIR__ . '/' . DATA_DIR . '/' . $path );
