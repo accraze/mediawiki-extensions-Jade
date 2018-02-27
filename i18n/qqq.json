@@ -1,7 +1,4 @@
 {
-	"@metadata": {
-		"authors": [
-		]
-	},
+	"@metadata": [],
 	"jade-desc": "{{desc|name=JADE|url=https://www.mediawiki.org/wiki/Extension:JADE}}"
 }
