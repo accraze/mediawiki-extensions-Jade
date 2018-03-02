@@ -2,7 +2,7 @@
 	"name": "JADE",
 	"descriptionmsg": "jade-desc",
 	"version": "0.0.1",
-	"license-name": "GPL-3.0+",
+	"license-name": "GPL-3.0-or-later",
 	"type": "other",
 	"author": [
 		"Adam Roses Wight"

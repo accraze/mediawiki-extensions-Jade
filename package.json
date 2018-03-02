@@ -3,7 +3,7 @@
     "type": "git",
     "url": "https://phabricator.wikimedia.org/diffusion/EJAD/"
   },
-  "license": "GPL-3.0",
+  "license": "GPL-3.0-or-later",
   "scripts": {
     "test": "grunt test"
   },
