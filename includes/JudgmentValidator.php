@@ -12,6 +12,21 @@ class JudgmentValidator {
 	const JUDGMENT_SCHEMA = '/../jsonschema/judgment/v1.json';
 	const SCORING_SCHEMA_ROOT = '/../jsonschema/scoring';
 
+	/**
+	 * @var \Config
+	 */
+	private $config;
+
+	/**
+	 * @var \Psr\Log\LoggerInterface
+	 */
+	private $logger;
+
+	/**
+	 * @var \MediaWiki\Storage\RevisionStore
+	 */
+	private $revisionStore;
+
 	public function __construct( $config, $logger, $revisionStore ) {
 		$this->config = $config;
 		$this->logger = $logger;
@@ -53,7 +68,7 @@ class JudgmentValidator {
 	/**
 	 * Ensure that the general judgment schema is followed.
 	 *
-	 * @throws JsonSchema\Exception\ValidationException
+	 * @throws ValidationException
 	 *
 	 * @param object $data Data structure to validate.
 	 */
@@ -65,7 +80,7 @@ class JudgmentValidator {
 	 * Ensure that the score schemas are allowed, unique, and that the score
 	 * data follows the scoring schema.
 	 *
-	 * @throws JsonSchema\Exception\ValidationException
+	 * @throws ValidationException
 	 * @throws InvalidArgumentException
 	 *
 	 * @param object $data Data structure to validate.
@@ -158,7 +173,7 @@ class JudgmentValidator {
 	 * @param string $title Title that must match judgment.
 	 * @param object $judgment Judgment data to validate against.
 	 *
-	 * @throws \InvalidArgumentException
+	 * @throws InvalidArgumentException
 	 */
 	protected function validateTitle( $title, $judgment ) {
 		$title_parts = explode( '/', $title );
@@ -193,7 +208,7 @@ class JudgmentValidator {
 	 * Helper for comparing data against a JSON schema.  See
 	 * http://json-schema.org
 	 *
-	 * @throws JsonSchema\Exception\ValidationException
+	 * @throws ValidationException
 	 *
 	 * @param object $data Data structure to validate.
 	 * @param string $schemaPath Relative path to the schema we should use to
