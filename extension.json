@@ -54,5 +54,8 @@
 			}
 		}
 	},
+	"ExtensionMessagesFiles": {
+		"JADENamespaces": "JADE.namespaces.php"
+	},
 	"manifest_version": 2
 }

@@ -4,9 +4,10 @@ namespace JADE\Tests;
 use ContentHandler;
 use FormatJson;
 use MediaWikiTestCase;
-use WikiPage;
+use Revision;
 use Title;
 use TitleValue;
+use WikiPage;
 
 use JADE\ContentHandlers\JudgmentContent;
 
@@ -19,6 +20,16 @@ const DATA_DIR = '../data';
  * @covers JADE\JudgmentValidator
  */
 class TestJudgmentValidator extends MediaWikiTestCase {
+
+	/**
+	 * @var WikiPage|null
+	 */
+	private $page = null;
+
+	/**
+	 * @var Revision
+	 */
+	private $revision;
 
 	public function provideImmediatelyInvalidContent() {
 		yield [ "invalid_judgment_duplicate_schema.json" ];
