@@ -8,7 +8,7 @@ use Title;
 class JudgmentContentHandler extends JsonContentHandler {
 
 	public function __construct( $modelId = 'JadeJudgment' ) {
-		parent::__construct( $modelId, [ CONTENT_FORMAT_JSON ] );
+		parent::__construct( $modelId );
 	}
 
 	protected function getContentClass() {

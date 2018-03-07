@@ -51,7 +51,11 @@ class TestJudgmentActions extends ApiTestCase {
 		$judgmentText = file_get_contents( __DIR__ . '/' . self::REV_JUDGMENT_V1 );
 		$judgmentText = $this->mutateEntity( $judgmentText, $page_id, $rev_id );
 		$judgment = $this->makeEdit(
-			NS_JADE, "Revision/{$rev_id}", $judgmentText, 'summary says' );
+			NS_JADE,
+			"Revision/{$rev_id}",
+			$judgmentText,
+			'summary says'
+		);
 	}
 
 	/**
@@ -69,13 +73,21 @@ class TestJudgmentActions extends ApiTestCase {
 		$judgmentText = file_get_contents( __DIR__ . '/' . self::REV_JUDGMENT_V1 );
 		$judgmentText = $this->mutateEntity( $judgmentText, $page_id, $rev_id );
 		$judgment = $this->makeEdit(
-			NS_JADE, "Revision/{$rev_id}", $judgmentText, 'summary says' );
+			NS_JADE,
+			"Revision/{$rev_id}",
+			$judgmentText,
+			'summary says'
+		);
 
 		// Update the judgment.
 		$judgment2Text = file_get_contents( __DIR__ . '/' . self::REV_JUDGMENT_V2 );
 		$judgment2Text = $this->mutateEntity( $judgment2Text, $page_id, $rev_id );
 		$judgment2 = $this->makeEdit(
-			NS_JADE, "Revision/{$rev_id}", $judgment2Text, 'summary says' );
+			NS_JADE,
+			"Revision/{$rev_id}",
+			$judgment2Text,
+			'summary says'
+		);
 	}
 
 	public function testSuppressUnsuppressRevisionJudgment() {
@@ -89,13 +101,21 @@ class TestJudgmentActions extends ApiTestCase {
 		$judgmentText = file_get_contents( __DIR__ . '/' . self::REV_JUDGMENT_V1 );
 		$judgmentText = $this->mutateEntity( $judgmentText, $page_id, $rev_id );
 		$judgment = $this->makeEdit(
-			NS_JADE, "Revision/{$rev_id}", $judgmentText, 'summary says' );
+			NS_JADE,
+			"Revision/{$rev_id}",
+			$judgmentText,
+			'summary says'
+		);
 
 		// Update the judgment.
 		$judgment2Text = file_get_contents( __DIR__ . '/' . self::REV_JUDGMENT_V2 );
 		$judgment2Text = $this->mutateEntity( $judgment2Text, $page_id, $rev_id );
 		$judgment2 = $this->makeEdit(
-			NS_JADE, "Revision/{$rev_id}", $judgment2Text, 'summary says' );
+			NS_JADE,
+			"Revision/{$rev_id}",
+			$judgment2Text,
+			'summary says'
+		);
 
 		// Suppress the first edit.
 		$sysop = $this->getTestSysop()->getUser();
@@ -131,7 +151,11 @@ class TestJudgmentActions extends ApiTestCase {
 	public function testCreateJudgment_badTitleRevId() {
 		// Create target page.
 		$article = $this->makeEdit(
-			0, 'TestJudgmentActionsPage', 'abcdef', 'some summary' );
+			0,
+			'TestJudgmentActionsPage',
+			'abcdef',
+			'some summary'
+		);
 		$page_id = $article['page']->getId();
 		$rev_id = $article['revision']->getId();
 
@@ -140,7 +164,12 @@ class TestJudgmentActions extends ApiTestCase {
 		$judgmentText = $this->mutateEntity( $judgmentText, $page_id, $rev_id );
 		$bad_rev_id = $rev_id + 1;
 		$judgment = $this->makeEdit(
-			NS_JADE, "Revision/{$bad_rev_id}", $judgmentText, 'summary says', false );
+			NS_JADE,
+			"Revision/{$bad_rev_id}",
+			$judgmentText,
+			'summary says',
+			false
+		);
 	}
 
 	/**
@@ -158,7 +187,12 @@ class TestJudgmentActions extends ApiTestCase {
 		$judgmentText = $this->mutateEntity( $judgmentText, $page_id, $rev_id );
 		$bad_page_id = $page_id + 1;
 		$judgment = $this->makeEdit(
-			NS_JADE, "Page/{$bad_page_id}", $judgmentText, 'summary says', false );
+			NS_JADE,
+			"Page/{$bad_page_id}",
+			$judgmentText,
+			'summary says',
+			false
+		);
 	}
 
 	/**
@@ -175,7 +209,12 @@ class TestJudgmentActions extends ApiTestCase {
 		$judgmentText = file_get_contents( __DIR__ . '/' . self::REV_JUDGMENT_V1 );
 		$judgmentText = $this->mutateEntity( $judgmentText, $page_id, $rev_id );
 		$judgment = $this->makeEdit(
-			NS_JADE, "Page/{$rev_id}", $judgmentText, 'summary says', false );
+			NS_JADE,
+			"Page/{$rev_id}",
+			$judgmentText,
+			'summary says',
+			false
+		);
 	}
 
 	/**
@@ -192,7 +231,12 @@ class TestJudgmentActions extends ApiTestCase {
 		$judgmentText = file_get_contents( __DIR__ . '/' . self::REV_JUDGMENT_V1 );
 		$judgmentText = $this->mutateEntity( $judgmentText, $page_id, $rev_id );
 		$judgment = $this->makeEdit(
-			NS_JADE, "Page/{$rev_id}/Wrongunder", $judgmentText, 'summary says', false );
+			NS_JADE,
+			"Page/{$rev_id}/Wrongunder",
+			$judgmentText,
+			'summary says',
+			false
+		);
 	}
 
 	protected function makeEdit( $namespace, $title, $content, $summary, $expectedStatus = true ) {

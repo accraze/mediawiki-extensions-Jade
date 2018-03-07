@@ -2,10 +2,13 @@
 
 namespace JADE;
 
+use Config;
 use InvalidArgumentException;
 use JsonSchema\Constraints\Constraint;
 use JsonSchema\Exception\ValidationException;
 use JsonSchema\Validator;
+use MediaWiki\Storage\RevisionStore;
+use Psr\Log\LoggerInterface;
 use WikiPage;
 
 class JudgmentValidator {
@@ -13,17 +16,17 @@ class JudgmentValidator {
 	const SCORING_SCHEMA_ROOT = '/../jsonschema/scoring';
 
 	/**
-	 * @var \Config
+	 * @var Config
 	 */
 	private $config;
 
 	/**
-	 * @var \Psr\Log\LoggerInterface
+	 * @var LoggerInterface
 	 */
 	private $logger;
 
 	/**
-	 * @var \MediaWiki\Storage\RevisionStore
+	 * @var RevisionStore
 	 */
 	private $revisionStore;
 
@@ -186,7 +189,8 @@ class JudgmentValidator {
 
 		if ( ucfirst( $judgment_entity_type ) !== $type ) {
 			throw new InvalidArgumentException(
-				"Judgment type doesn't match title" );
+				"Judgment type doesn't match title"
+			);
 		}
 
 		if ( $judgment_entity_type === 'diff'
@@ -194,12 +198,14 @@ class JudgmentValidator {
 		) {
 			if ( (string)$judgment->entity->rev_id !== $id ) {
 				throw new InvalidArgumentException(
-					"Judgment rev_id doesn't match title" );
+					"Judgment rev_id doesn't match title"
+				);
 			}
 		} else {
 			if ( (string)$judgment->entity->page_id !== $id ) {
 				throw new InvalidArgumentException(
-					"Judgment page_id doesn't match title" );
+					"Judgment page_id doesn't match title"
+				);
 			}
 		}
 	}
