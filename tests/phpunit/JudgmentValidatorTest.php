@@ -19,7 +19,7 @@ const DATA_DIR = '../data';
  *
  * @covers JADE\JudgmentValidator
  */
-class TestJudgmentValidator extends MediaWikiTestCase {
+class JudgmentValidatorTest extends MediaWikiTestCase {
 
 	/**
 	 * @var WikiPage|null
