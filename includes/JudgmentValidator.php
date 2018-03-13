@@ -179,6 +179,8 @@ class JudgmentValidator {
 	 * @throws InvalidArgumentException
 	 */
 	protected function validateTitle( $title, $judgment ) {
+		global $wgContLang;
+
 		$title_parts = explode( '/', $title );
 		if ( count( $title_parts ) !== 2 ) {
 			throw new InvalidArgumentException( "Wrong title format" );
@@ -187,7 +189,7 @@ class JudgmentValidator {
 
 		$judgment_entity_type = $judgment->entity->type;
 
-		if ( ucfirst( $judgment_entity_type ) !== $type ) {
+		if ( $wgContLang->ucfirst( $judgment_entity_type ) !== $type ) {
 			throw new InvalidArgumentException(
 				"Judgment type doesn't match title"
 			);
