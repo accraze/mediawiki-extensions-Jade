@@ -18,7 +18,7 @@ use TitleValue;
  *
  * @covers JADE\ContentHandlers\JudgmentContent
  */
-class TestJudgmentActions extends ApiTestCase {
+class JudgmentActionsTest extends ApiTestCase {
 	const REV_JUDGMENT_V1 = '../data/valid_revision_judgment.json';
 	const REV_JUDGMENT_V2 = '../data/valid_revision_judgment_v2.json';
 	const PAGE_JUDGMENT = '../data/valid_page_judgment.json';

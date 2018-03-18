@@ -8,8 +8,9 @@ const ROOT_DIR = '../..';
 
 /**
  * @group JADE
+ * @coversNothing
  */
-class TestSchemaValidation extends TestCase {
+class SchemaValidationTest extends TestCase {
 
 	public function provideSchemas() {
 		yield [ "jsonschema/judgment/v1.json" ];
