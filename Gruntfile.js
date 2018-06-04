@@ -11,7 +11,6 @@ module.exports = function ( grunt ) {
 			all: [
 				'**/*.json',
 				'!node_modules/**',
-				'!tests/data/invalid_judgment_bad_json.json',
 				'!vendor/**'
 			]
 		}
