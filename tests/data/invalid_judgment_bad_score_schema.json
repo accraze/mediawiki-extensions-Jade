@@ -3,15 +3,11 @@
         "type": "diff",
         "rev_id": 123
     },
-    "scores": [
-        {
-            "schema": {
-                "spec": "https://raw.githubusercontent.com/adamwight/mw-ext-JADE/master/jsonschema/scoring/foo/v1.json",
-                "name": "foo"
-            },
-            "data": {
-                "foo": true
+    "schemas": {
+        "foo": [
+            {
+                "data": true
             }
-        }
-    ]
+        ]
+    }
 }

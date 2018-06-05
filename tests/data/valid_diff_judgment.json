@@ -3,24 +3,16 @@
         "type": "diff",
         "rev_id": 123
     },
-    "scores": [
-        {
-            "schema": {
-                "spec": "https://raw.githubusercontent.com/adamwight/mw-ext-JADE/master/jsonschema/scoring/damaging/v1.json",
-                "name": "damaging"
-            },
-            "data": {
-                "damaging": true
+    "schemas": {
+        "damaging": [
+            {
+                "data": true
             }
-        },
-        {
-            "schema": {
-                "spec": "https://raw.githubusercontent.com/adamwight/mw-ext-JADE/master/jsonschema/scoring/goodfaith/v1.json",
-                "name": "goodfaith"
-            },
-            "data": {
-                "goodfaith": false
+        ],
+        "goodfaith": [
+            {
+                "data": false
             }
-        }
-    ]
+        ]
+    }
 }

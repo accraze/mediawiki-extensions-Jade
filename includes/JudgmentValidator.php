@@ -93,28 +93,12 @@ class JudgmentValidator {
 		$allowedScoringSchemas = $this->config->get( 'JadeAllowedScoringSchemas' );
 		$entityAllowedSchemas = $allowedScoringSchemas[$entityType];
 
-		$bySchema = [];
-		foreach ( $data->scores as $score ) {
-			$schemaName = $score->schema->name;
-
+		foreach ( $data->schemas as $schemaName => $judgments ) {
 			// Schema must be allowed.
 			if ( !array_key_exists( $schemaName, $entityAllowedSchemas ) ) {
 				throw new InvalidArgumentException(
 					"Scoring schema not allowed: {$schemaName}" );
 			}
-
-			// Only one score allowed per schema.
-			if ( isset( $bySchema[$schemaName] ) ) {
-				throw new InvalidArgumentException(
-					"Redundant scoring schema: ${schemaName}" );
-			}
-			$bySchema[$schemaName] = true;
-
-			// Validate score data against its schema.  Note that we ignore the
-			// $score["schema"]["spec"].
-			$schemaPath = __DIR__ . self::SCORING_SCHEMA_ROOT
-				. '/' . $entityAllowedSchemas[$schemaName];
-			$this->validateAgainstSchema( $score->data, $schemaPath );
 		}
 	}
 

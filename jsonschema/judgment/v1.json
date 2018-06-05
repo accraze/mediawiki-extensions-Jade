@@ -1,98 +1,223 @@
 {
     "title": "jade/judgment",
     "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "https://phabricator.wikimedia.org/diffusion/EJAD/browse/master/jsonschema/judgment/v1.json?view=raw",
     "type": "object",
     "properties": {
         "entity": {
             "type": "object",
             "oneOf": [
-                { "$ref": "#/definitions/revision" },
-                { "$ref": "#/definitions/diff" },
-                { "$ref": "#/definitions/page" }
+                { "$ref": "#/definitions/entity/revision" },
+                { "$ref": "#/definitions/entity/diff" },
+                { "$ref": "#/definitions/entity/page" }
             ]
         },
-        "scores": {
-            "type": "array",
-            "items": {
-                "type": "object",
-                "properties": {
-                    "schema": {
-                        "type": "object",
-                        "properties": {
-                            "spec": {
-                                "description": "URI pointing to the JSON schema for this score's data",
-                                "type": "string",
-                                "format": "uri"
-                            },
-                            "name": {
-                                "description": "Short name of this schema.",
-                                "type": "string"
-                            }
-                        },
-                        "required": ["spec", "name"],
-                        "additionalProperties": false
-                    },
-                    "data": {
-                        "description": "Free-form data, will be validated according to the scoring schema."
+        "schemas": {
+            "type": "object",
+            "properties": {
+                "damaging": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/judgment/damaging"
                     }
                 },
-                "required": ["schema", "data"],
-                "additionalProperties": false
-            }
+                "drafttopic": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/judgment/drafttopic"
+                    }
+                },
+                "goodfaith": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/judgment/goodfaith"
+                    }
+                },
+                "itemquality": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/judgment/itemquality"
+                    }
+                },
+                "wp10": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/judgment/wp10"
+                    }
+                }
+            },
+            "additionalProperties": false
         }
     },
-    "required": ["entity", "scores"],
+    "required": ["entity", "schemas"],
     "definitions": {
-        "diff": {
+        "endorsement": {
             "type": "object",
             "properties": {
-                "type": {
-                    "description": "Type of wiki entity being judged.",
-                    "type": "string",
-                    "enum": ["diff"]
+                "username": {
+                    "type": "string"
                 },
-                "rev_id": {
-                    "description": "Database primary key of revision differential change being judged.",
+                "guid": {
                     "type": "integer",
-                    "minimum": 1
+                    "minimum": 0
+                },
+                "comment": {
+                    "type": "string"
+                },
+                "origin": {
+                    "type": "string"
                 }
             },
-            "required": ["type", "rev_id"],
+            "required": [
+                "username",
+                "guid"
+            ],
             "additionalProperties": false
         },
-        "page": {
-            "type": "object",
-            "properties": {
-                "type": {
-                    "description": "Type of wiki entity being judged.",
-                    "type": "string",
-                    "enum": ["page"]
+        "judgment": {
+            "common": {
+                "type": "object",
+                "properties": {
+                    "data": {},
+                    "endorsements": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/definitions/endorsement"
+                        }
+                    },
+                    "preferred": {
+                        "type": "boolean",
+                        "default": false,
+                        "description": "True when this judgment best represents a consensus opinion."
+                    }
                 },
-                "page_id": {
-                    "description": "Database primary key of page being judged.",
-                    "type": "integer",
-                    "minimum": 1
-                }
+                "required": [
+                    "data"
+                ],
+                "additionalProperties": false
             },
-            "required": ["type", "page_id"],
-            "additionalProperties": false
+            "damaging": {
+                "allOf": [
+                    { "$ref": "#/definitions/judgment/common" },
+                    {
+                        "type": "object",
+                        "properties": {
+                            "data": "boolean"
+                        }
+                    }
+                ]
+            },
+            "goodfaith": {
+                "allOf": [
+                    { "$ref": "#/definitions/judgment/common" },
+                    {
+                        "type": "object",
+                        "properties": {
+                            "data": "boolean"
+                        }
+                    }
+                ]
+            },
+            "drafttopic": {
+                "allOf": [
+                    { "$ref": "#/definitions/judgment/common" },
+                    {
+                        "type": "object",
+                        "properties": {
+                            "data": {
+                                "description": "List of topics.",
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                ]
+            },
+            "itemquality": {
+                "allOf": [
+                    { "$ref": "#/definitions/judgment/common" },
+                    {
+                        "type": "object",
+                        "properties": {
+                            "data": {
+                                "description": "Item quality grade, see https://www.wikidata.org/wiki/Wikidata:Item_quality",
+                                "type": "string",
+                                "enum": ["A", "B", "C", "D", "E"]
+                            }
+                        }
+                    }
+                ]
+            },
+            "wp10": {
+                "allOf": [
+                    { "$ref": "#/definitions/judgment/common" },
+                    {
+                        "type": "object",
+                        "properties": {
+                            "data": {
+                                "description": "Article quality",
+                                "type": "string",
+                                "enum": ["FA", "GA", "B", "C", "Start", "Stub"]
+                            }
+                        }
+                    }
+                ]
+            }
         },
-        "revision": {
-            "type": "object",
-            "properties": {
-                "type": {
-                    "description": "Type of wiki entity being judged.",
-                    "type": "string",
-                    "enum": ["revision"]
+        "entity": {
+            "diff": {
+                "type": "object",
+                "properties": {
+                    "type": {
+                        "description": "Type of wiki entity being judged.",
+                        "type": "string",
+                        "enum": ["diff"]
+                    },
+                    "rev_id": {
+                        "description": "Database primary key of revision differential change being judged.",
+                        "type": "integer",
+                        "minimum": 1
+                    }
                 },
-                "rev_id": {
-                    "description": "Database primary key of snapshot revision being judged.",
-                    "type": "integer",
-                    "minimum": 1
-                }
+                "required": ["type", "rev_id"],
+                "additionalProperties": false
             },
-            "required": ["type", "rev_id"],
-            "additionalProperties": false
+            "page": {
+                "type": "object",
+                "properties": {
+                    "type": {
+                        "description": "Type of wiki entity being judged.",
+                        "type": "string",
+                        "enum": ["page"]
+                    },
+                    "page_id": {
+                        "description": "Database primary key of page being judged.",
+                        "type": "integer",
+                        "minimum": 1
+                    }
+                },
+                "required": ["type", "page_id"],
+                "additionalProperties": false
+            },
+            "revision": {
+                "type": "object",
+                "properties": {
+                    "type": {
+                        "description": "Type of wiki entity being judged.",
+                        "type": "string",
+                        "enum": ["revision"]
+                    },
+                    "rev_id": {
+                        "description": "Database primary key of snapshot revision being judged.",
+                        "type": "integer",
+                        "minimum": 1
+                    }
+                },
+                "required": ["type", "rev_id"],
+                "additionalProperties": false
+            }
         }
     }
 }

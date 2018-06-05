@@ -32,8 +32,8 @@ class JudgmentValidatorTest extends MediaWikiTestCase {
 	private $revision;
 
 	public function provideImmediatelyInvalidContent() {
-		yield [ "invalid_judgment_duplicate_schema.json" ];
 		yield [ "invalid_judgment_bad_score_schema.json" ];
+		yield [ "invalid_judgment_disallowed_score_schema.json" ];
 		yield [ "invalid_judgment_missing_required.json" ];
 		yield [ "invalid_judgment_bad_type.json" ];
 		yield [ "invalid_judgment_bad_json.notjson" ];

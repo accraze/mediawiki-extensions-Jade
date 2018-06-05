@@ -14,11 +14,6 @@ class SchemaValidationTest extends TestCase {
 
 	public function provideSchemas() {
 		yield [ "jsonschema/judgment/v1.json" ];
-		yield [ "jsonschema/scoring/damaging/v1.json" ];
-		yield [ "jsonschema/scoring/drafttopic/v1.json" ];
-		yield [ "jsonschema/scoring/goodfaith/v1.json" ];
-		yield [ "jsonschema/scoring/itemquality/v1.json" ];
-		yield [ "jsonschema/scoring/wp10/v1.json" ];
 	}
 
 	/**

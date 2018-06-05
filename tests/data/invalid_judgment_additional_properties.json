@@ -4,13 +4,11 @@
         "rev_id": 123,
         "nothing": "extra"
     },
-    "scores": {
-        "schema": {
-            "spec": "https://raw.githubusercontent.com/adamwight/mw-ext-JADE/master/jsonschema/scoring/damaging/v1.json",
-            "name": "damaging"
-        },
-        "data": {
-            "damaging": true
-        }
+    "schemas": {
+        "damaging": [
+            {
+                "data": true
+            }
+        ]
     }
 }

@@ -4,9 +4,9 @@
         "rev_id": 123
     },
     "schemas": {
-        "damaging": [
+        "wp10": [
             {
-                "data": true
+                "data": "FA"
             }
         ]
     }
