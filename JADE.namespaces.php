@@ -11,5 +11,6 @@ $namespaceNames = [];
 
 /** English */
 $namespaceNames['en'] = [
-	NS_JADE => 'JADE',
+	NS_JADE => 'Jade',
+	NS_JADE_TALK => 'Jade_talk',
 ];
