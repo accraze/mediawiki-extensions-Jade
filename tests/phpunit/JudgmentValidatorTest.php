@@ -38,6 +38,7 @@ class JudgmentValidatorTest extends MediaWikiTestCase {
 		yield [ 'invalid_judgment_bad_type.json' ];
 		yield [ 'invalid_judgment_bad_json.notjson' ];
 		yield [ 'invalid_judgment_additional_properties.json' ];
+		yield [ 'invalid_judgment_two_preferred.json' ];
 	}
 
 	public function provideValidJudgments() {
@@ -55,6 +56,7 @@ class JudgmentValidatorTest extends MediaWikiTestCase {
 	 * @covers JADE\JudgmentValidator::validateJudgmentContent
 	 * @covers JADE\JudgmentValidator::validateBasicSchema
 	 * @covers JADE\JudgmentValidator::validateScoreSchemas
+	 * @covers JADE\JudgmentValidator::validatePreferred
 	 */
 	public function testImmediatelyInvalidContent( $path ) {
 		$text = file_get_contents( __DIR__ . '/' . DATA_DIR . '/' . $path );

@@ -45,15 +45,10 @@ class JudgmentValidator {
 	 */
 	public function validateJudgmentContent( $data ) {
 		try {
-			// Validate against the judgment schema.
 			$this->validateBasicSchema( $data );
-
-			// Validate that scoring schema are allowed and unique.  Enforce
-			// them on the score data.
 			$this->validateScoreSchemas( $data );
-
-			// Make sure we're targeting a valid entity.
 			$this->validateEntity( $data );
+			$this->validatePreferred( $data );
 
 			return true;
 		} catch ( ValidationException $ex ) {
@@ -80,8 +75,7 @@ class JudgmentValidator {
 	}
 
 	/**
-	 * Ensure that the score schemas are allowed, unique, and that the score
-	 * data follows the scoring schema.
+	 * Ensure that the score schemas are allowed by configuration.
 	 *
 	 * @throws ValidationException
 	 * @throws InvalidArgumentException
@@ -103,7 +97,34 @@ class JudgmentValidator {
 	}
 
 	/**
-	 * Ensure that we're judging an existent entity.
+	 * Check that at most one judgment per schema has "preferred: true".
+	 *
+	 * @throws InvalidArgumentException
+	 *
+	 * @param object $data Data structure to validate.
+	 */
+	protected function validatePreferred( $data ) {
+		foreach ( $data->schemas as $schema => $judgments ) {
+			$preferredCount = array_reduce(
+				$judgments,
+				function ( $carry, $judgment ) {
+					$isPreferred = property_exists( $judgment, 'preferred' ) &&
+						$judgment->preferred;
+
+					return ( $carry + (int)$isPreferred );
+				},
+				0
+			);
+
+			if ( $preferredCount > 1 ) {
+				throw new InvalidArgumentException(
+					"Too many preferred judgments in {$schema}" );
+			}
+		}
+	}
+
+	/**
+	 * Ensure that we're judging a real entity.
 	 *
 	 * @throws InvalidArgumentException
 	 *
