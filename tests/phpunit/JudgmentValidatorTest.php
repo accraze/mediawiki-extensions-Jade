@@ -32,18 +32,18 @@ class JudgmentValidatorTest extends MediaWikiTestCase {
 	private $revision;
 
 	public function provideImmediatelyInvalidContent() {
-		yield [ "invalid_judgment_bad_score_schema.json" ];
-		yield [ "invalid_judgment_disallowed_score_schema.json" ];
-		yield [ "invalid_judgment_missing_required.json" ];
-		yield [ "invalid_judgment_bad_type.json" ];
-		yield [ "invalid_judgment_bad_json.notjson" ];
-		yield [ "invalid_judgment_additional_properties.json" ];
+		yield [ 'invalid_judgment_bad_score_schema.json' ];
+		yield [ 'invalid_judgment_disallowed_score_schema.json' ];
+		yield [ 'invalid_judgment_missing_required.json' ];
+		yield [ 'invalid_judgment_bad_type.json' ];
+		yield [ 'invalid_judgment_bad_json.notjson' ];
+		yield [ 'invalid_judgment_additional_properties.json' ];
 	}
 
 	public function provideValidJudgments() {
-		yield [ "valid_page_judgment.json" ];
-		yield [ "valid_diff_judgment.json" ];
-		yield [ "valid_revision_judgment.json" ];
+		yield [ 'valid_page_judgment.json' ];
+		yield [ 'valid_diff_judgment.json' ];
+		yield [ 'valid_revision_judgment.json' ];
 	}
 
 	/**
@@ -104,7 +104,7 @@ class JudgmentValidatorTest extends MediaWikiTestCase {
 
 		$editTarget = new TitleValue( 0, 'JadeJudgmentContentTestPage' );
 		$title = Title::newFromLinkTarget( $editTarget );
-		$summary = "Test edit";
+		$summary = 'Test edit';
 		$this->page = WikiPage::factory( $title );
 		$user = $this->getTestUser()->getUser();
 		$status = $this->page->doEditContent(
@@ -117,7 +117,7 @@ class JudgmentValidatorTest extends MediaWikiTestCase {
 
 		$this->assertTrue( $status->isGood() );
 
-		$this->revision = $status->value["revision"];
+		$this->revision = $status->value['revision'];
 		$this->assertNotNull( $this->revision );
 	}
 
