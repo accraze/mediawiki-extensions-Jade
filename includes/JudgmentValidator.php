@@ -95,7 +95,7 @@ class JudgmentValidator {
 
 		foreach ( $data->schemas as $schemaName => $judgments ) {
 			// Schema must be allowed.
-			if ( !array_key_exists( $schemaName, $entityAllowedSchemas ) ) {
+			if ( !in_array( $schemaName, $entityAllowedSchemas ) ) {
 				throw new InvalidArgumentException(
 					"Scoring schema not allowed: {$schemaName}" );
 			}
