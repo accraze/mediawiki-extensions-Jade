@@ -6,7 +6,8 @@
     "schemas": {
         "damaging": [
             {
-                "data": true
+                "data": true,
+                "notes": "feeble justification"
             }
         ],
         "goodfaith": [

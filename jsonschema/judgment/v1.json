@@ -51,39 +51,13 @@
     },
     "required": ["entity", "schemas"],
     "definitions": {
-        "endorsement": {
-            "type": "object",
-            "properties": {
-                "username": {
-                    "type": "string"
-                },
-                "guid": {
-                    "type": "integer",
-                    "minimum": 0
-                },
-                "comment": {
-                    "type": "string"
-                },
-                "origin": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "username",
-                "guid"
-            ],
-            "additionalProperties": false
-        },
         "judgment": {
             "common": {
                 "type": "object",
                 "properties": {
                     "data": {},
-                    "endorsements": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/definitions/endorsement"
-                        }
+                    "notes": {
+                        "type": "string"
                     },
                     "preferred": {
                         "type": "boolean",
