@@ -4,14 +4,6 @@
     "id": "https://phabricator.wikimedia.org/diffusion/EJAD/browse/master/jsonschema/judgment/v1.json?view=raw",
     "type": "object",
     "properties": {
-        "entity": {
-            "type": "object",
-            "oneOf": [
-                { "$ref": "#/definitions/entity/revision" },
-                { "$ref": "#/definitions/entity/diff" },
-                { "$ref": "#/definitions/entity/page" }
-            ]
-        },
         "schemas": {
             "type": "object",
             "properties": {
@@ -49,7 +41,8 @@
             "additionalProperties": false
         }
     },
-    "required": ["entity", "schemas"],
+    "additionalProperties": false,
+    "required": ["schemas"],
     "definitions": {
         "judgment": {
             "common": {
@@ -138,59 +131,6 @@
                         }
                     }
                 ]
-            }
-        },
-        "entity": {
-            "diff": {
-                "type": "object",
-                "properties": {
-                    "type": {
-                        "description": "Type of wiki entity being judged.",
-                        "type": "string",
-                        "enum": ["diff"]
-                    },
-                    "rev_id": {
-                        "description": "Database primary key of revision differential change being judged.",
-                        "type": "integer",
-                        "minimum": 1
-                    }
-                },
-                "required": ["type", "rev_id"],
-                "additionalProperties": false
-            },
-            "page": {
-                "type": "object",
-                "properties": {
-                    "type": {
-                        "description": "Type of wiki entity being judged.",
-                        "type": "string",
-                        "enum": ["page"]
-                    },
-                    "page_id": {
-                        "description": "Database primary key of page being judged.",
-                        "type": "integer",
-                        "minimum": 1
-                    }
-                },
-                "required": ["type", "page_id"],
-                "additionalProperties": false
-            },
-            "revision": {
-                "type": "object",
-                "properties": {
-                    "type": {
-                        "description": "Type of wiki entity being judged.",
-                        "type": "string",
-                        "enum": ["revision"]
-                    },
-                    "rev_id": {
-                        "description": "Database primary key of snapshot revision being judged.",
-                        "type": "integer",
-                        "minimum": 1
-                    }
-                },
-                "required": ["type", "rev_id"],
-                "additionalProperties": false
             }
         }
     }

@@ -2,7 +2,6 @@
 namespace JADE\Tests;
 
 use ContentHandler;
-use FormatJson;
 use MediaWikiTestCase;
 use Revision;
 use Title;
@@ -31,52 +30,40 @@ class JudgmentValidatorTest extends MediaWikiTestCase {
 	 */
 	private $revision;
 
-	public function provideImmediatelyInvalidContent() {
-		yield [ 'invalid_judgment_bad_score_schema.json' ];
-		yield [ 'invalid_judgment_disallowed_score_schema.json' ];
+	public function provideInvalidSchemaContent() {
 		yield [ 'invalid_judgment_missing_required.json' ];
-		yield [ 'invalid_judgment_bad_type.json' ];
 		yield [ 'invalid_judgment_bad_json.notjson' ];
 		yield [ 'invalid_judgment_bad_score_data.json' ];
+		yield [ 'invalid_judgment_bad_score_schema.json' ];
 		yield [ 'invalid_judgment_additional_properties.json' ];
+		yield [ 'invalid_judgment_additional_properties2.json' ];
+		yield [ 'invalid_judgment_additional_properties3.json' ];
 		yield [ 'invalid_judgment_two_preferred.json' ];
 	}
 
+	// Will be invalid only when we know the page title.
+	public function provideInvalidWithType() {
+		yield [ 'invalid_judgment_disallowed_score_schema.json', 'diff' ];
+	}
+
 	public function provideValidJudgments() {
-		yield [ 'valid_page_judgment.json' ];
-		yield [ 'valid_diff_judgment.json' ];
-		yield [ 'valid_revision_judgment.json' ];
+		yield [ 'valid_diff_judgment.json', 'diff' ];
+		yield [ 'valid_page_judgment.json', 'page' ];
+		yield [ 'valid_revision_judgment.json', 'revision' ];
 	}
 
 	/**
-	 * @dataProvider provideImmediatelyInvalidContent
+	 * @dataProvider provideInvalidSchemaContent
 	 *
 	 * @param string $path Path to test fixture, relative to the test data
 	 * directory.
 	 *
-	 * @covers JADE\JudgmentValidator::validateJudgmentContent
 	 * @covers JADE\JudgmentValidator::validateBasicSchema
-	 * @covers JADE\JudgmentValidator::validateScoreSchemas
+	 * @covers JADE\JudgmentValidator::validateJudgmentContent
 	 * @covers JADE\JudgmentValidator::validatePreferred
 	 */
-	public function testImmediatelyInvalidContent( $path ) {
+	public function testInvalidSchemaContent( $path ) {
 		$text = file_get_contents( __DIR__ . '/' . DATA_DIR . '/' . $path );
-		$obj = new JudgmentContent( $text );
-		$this->assertEquals( false, $obj->isValid() );
-	}
-
-	/**
-	 * @dataProvider provideValidJudgments
-	 *
-	 * @param string $path Path to test fixture, relative to the test data
-	 * directory.
-	 *
-	 * @covers JADE\JudgmentValidator::validateEntity
-	 */
-	public function testInvalidEntity( $path ) {
-		$text = file_get_contents( __DIR__ . '/' . DATA_DIR . '/' . $path );
-
-		$text = $this->mutateEntity( $text, false );
 
 		$obj = new JudgmentContent( $text );
 		$this->assertEquals( false, $obj->isValid() );
@@ -88,30 +75,98 @@ class JudgmentValidatorTest extends MediaWikiTestCase {
 	 * @param string $path Path to test fixture, relative to the test data
 	 * directory.
 	 *
-	 * @covers JADE\JudgmentValidator::validateEntity
+	 * @covers JADE\JudgmentValidator::validateBasicSchema
+	 * @covers JADE\JudgmentValidator::validateJudgmentContent
+	 * @covers JADE\JudgmentValidator::validatePreferred
 	 */
-	public function testValidEntity( $path ) {
+	public function testValidateJudgmentContent( $path ) {
 		$text = file_get_contents( __DIR__ . '/' . DATA_DIR . '/' . $path );
-
-		$text = $this->mutateEntity( $text, true );
 
 		$obj = new JudgmentContent( $text );
 		$this->assertEquals( true, $obj->isValid() );
 	}
 
-	protected function makeEdit() {
-		static $counter = 0;
+	/**
+	 * @dataProvider provideValidJudgments
+	 *
+	 * @covers JADE\JudgmentValidator::validateEntity
+	 * @covers JADE\JudgmentValidator::validateEntitySchema
+	 * @covers JADE\JudgmentValidator::validatePageTitle
+	 * @covers JADE\JudgmentValidator::validateTitle
+	 */
+	public function testValidatePageTitle_valid( $path, $type ) {
+		list( $page, $revision ) = $this->createEntity();
+		$ucType = ucfirst( $type );
+		$title = "{$ucType}/{$revision->getId()}";
+		$text = file_get_contents( __DIR__ . '/' . DATA_DIR . '/' . $path );
 
+		$success = $this->saveJudgment( $title, $text );
+		$this->assertTrue( $success );
+	}
+
+	/**
+	 * @dataProvider provideInvalidWithType
+	 *
+	 * @param string $path Path to test fixture, relative to the test data
+	 * directory.
+	 * @param string $type Entity type (ignored here)
+	 *
+	 * @covers JADE\JudgmentValidator::validateEntity
+	 * @covers JADE\JudgmentValidator::validateEntitySchema
+	 * @covers JADE\JudgmentValidator::validatePageTitle
+	 * @covers JADE\JudgmentValidator::validateTitle
+	 */
+	public function testValidatePageTitle_invalidWithType( $path, $type ) {
+		list( $page, $revision ) = $this->createEntity();
+		$ucType = ucfirst( $type );
+		if ( $type === 'page' ) {
+			$title = "{$ucType}/{$page->getId()}";
+		} else {
+			$title = "{$ucType}/{$revision->getId()}";
+		}
+		$text = file_get_contents( __DIR__ . '/' . DATA_DIR . '/' . $path );
+
+		$success = $this->saveJudgment( $title, $text );
+		$this->assertFalse( $success );
+	}
+
+	/**
+	 * @covers JADE\JudgmentValidator::validatePageTitle
+	 * @covers JADE\JudgmentValidator::validateTitle
+	 */
+	public function testValidatePageTitle_invalidLong() {
+		list( $page, $revision ) = $this->createEntity();
+		$title = "Revision/{$revision->getId()}/foo";
+		$text = file_get_contents( __DIR__ . '/' . DATA_DIR . '/valid_revision_judgment.json' );
+
+		$success = $this->saveJudgment( $title, $text );
+		$this->assertFalse( $success );
+	}
+
+	/**
+	 * @covers JADE\JudgmentValidator::validatePageTitle
+	 * @covers JADE\JudgmentValidator::validateTitle
+	 */
+	public function testValidatePageTitle_invalidShort() {
+		$title = 'Revision/';
+		$text = file_get_contents( __DIR__ . '/' . DATA_DIR . '/valid_diff_judgment.json' );
+
+		$success = $this->saveJudgment( $title, $text );
+		$this->assertFalse( $success );
+	}
+
+	protected function createEntity() {
 		$this->tablesUsed[] = 'recentchanges';
 		$this->tablesUsed[] = 'page';
+		$this->tablesUsed[] = 'revision';
 
 		$editTarget = new TitleValue( 0, 'JadeJudgmentContentTestPage' );
 		$title = Title::newFromLinkTarget( $editTarget );
 		$summary = 'Test edit';
-		$this->page = WikiPage::factory( $title );
+		$page = WikiPage::factory( $title );
 		$user = $this->getTestUser()->getUser();
-		$status = $this->page->doEditContent(
-			ContentHandler::makeContent( __CLASS__ . $counter++, $title ),
+		$status = $page->doEditContent(
+			ContentHandler::makeContent( __CLASS__, $title ),
 			$summary,
 			0,
 			false,
@@ -120,33 +175,34 @@ class JudgmentValidatorTest extends MediaWikiTestCase {
 
 		$this->assertTrue( $status->isGood() );
 
-		$this->revision = $status->value['revision'];
-		$this->assertNotNull( $this->revision );
+		$revision = $status->value['revision'];
+		$this->assertNotNull( $revision );
+
+		return [ $page, $revision ];
 	}
 
-	public function mutateEntity( $text, $makeValid ) {
-		$this->makeEdit();
+	/**
+	 * @returns bool True if successful.
+	 */
+	protected function saveJudgment( $titleStr, $text ) {
+		$this->tablesUsed[] = 'recentchanges';
+		$this->tablesUsed[] = 'page';
+		$this->tablesUsed[] = 'revision';
 
-		$status = FormatJson::parse( $text );
-		$parsed = $status->value;
+		$editTarget = new TitleValue( NS_JADE, $titleStr );
+		$title = Title::newFromLinkTarget( $editTarget );
+		$summary = 'Test edit';
+		$page = WikiPage::factory( $title );
+		$user = $this->getTestUser()->getUser();
+		$status = $page->doEditContent(
+			ContentHandler::makeContent( $text, $title ),
+			$summary,
+			0,
+			false,
+			$user
+		);
 
-		if ( $parsed->entity->type === 'diff'
-			|| $parsed->entity->type === 'revision'
-		) {
-			if ( $makeValid ) {
-				$parsed->entity->rev_id = $this->revision->getId();
-			} else {
-				$parsed->entity->rev_id = $this->revision->getId() + 1;
-			}
-		} else {
-			if ( $makeValid ) {
-				$parsed->entity->page_id = $this->page->getId();
-			} else {
-				$parsed->entity->page_id = $this->page->getId() + 1;
-			}
-		}
-
-		return FormatJson::encode( $parsed );
+		return $status->isGood();
 	}
 
 }

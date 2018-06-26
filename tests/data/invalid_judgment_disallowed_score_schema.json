@@ -1,8 +1,4 @@
 {
-    "entity": {
-        "type": "diff",
-        "rev_id": 123
-    },
     "schemas": {
         "wp10": [
             {

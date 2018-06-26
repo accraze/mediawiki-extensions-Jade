@@ -1,8 +1,4 @@
 {
-    "entity": {
-        "type": "page",
-        "page_id": 123
-    },
     "schemas": {
         "drafttopic": [
             {

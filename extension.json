@@ -45,11 +45,11 @@
 					"damaging",
 					"goodfaith"
 				],
-				"revision": [
-					"wp10"
-				],
 				"page": [
 					"drafttopic"
+				],
+				"revision": [
+					"wp10"
 				]
 			}
 		}
