@@ -1,6 +1,16 @@
 {
 	"@metadata": {
-		"authors": []
+		"authors": [
+			"Adamw"
+		]
 	},
-	"jade-desc": "Judgment and dialog engine"
+	"jade-desc": "Judgment and dialog engine",
+	"damaging": "Damaging",
+	"notdamaging": "Not damaging",
+	"goodfaith": "Good faith",
+	"badfaith": "Bad faith",
+	"new-judgment": "New judgment",
+	"add-judgment": "Add judgment",
+	"notes-placeholder": "Notes about the judgment",
+	"delete": "Delete"
 }
