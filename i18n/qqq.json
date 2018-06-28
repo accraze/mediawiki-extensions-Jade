@@ -5,12 +5,12 @@
 		]
 	},
 	"jade-desc": "{{desc|name=JADE|url=https://www.mediawiki.org/wiki/Extension:JADE}}",
-	"damaging": "Label for a damaging edit",
-	"notdamaging": "Label for an edit which is not damaging",
-	"goodfaith": "Label for a good faith edit",
-	"badfaith": "Label for a bad faith edit",
-	"new-judgment": "Label for the new judgment form",
-	"add-judgment": "Label for the judgment submit button",
-	"notes-placeholder": "Placeholder for the judgment notes field",
-	"delete": "Label for the judgment delete button"
+	"jade-damaging": "Label for a damaging edit",
+	"jade-notdamaging": "Label for an edit which is not damaging",
+	"jade-goodfaith": "Label for a good faith edit",
+	"jade-badfaith": "Label for a bad faith edit",
+	"jade-new-judgment": "Label for the new judgment form",
+	"jade-add-judgment": "Label for the judgment submit button",
+	"jade-notes-placeholder": "Placeholder for the judgment notes field",
+	"jade-delete": "Label for the judgment delete button"
 }

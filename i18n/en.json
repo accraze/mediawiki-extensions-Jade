@@ -5,12 +5,12 @@
 		]
 	},
 	"jade-desc": "Judgment and dialog engine",
-	"damaging": "Damaging",
-	"notdamaging": "Not damaging",
-	"goodfaith": "Good faith",
-	"badfaith": "Bad faith",
-	"new-judgment": "New judgment",
-	"add-judgment": "Add judgment",
-	"notes-placeholder": "Notes about the judgment",
-	"delete": "Delete"
+	"jade-damaging": "Damaging",
+	"jade-notdamaging": "Not damaging",
+	"jade-goodfaith": "Good faith",
+	"jade-badfaith": "Bad faith",
+	"jade-new-judgment": "New judgment",
+	"jade-add-judgment": "Add judgment",
+	"jade-notes-placeholder": "Notes about the judgment",
+	"jade-delete": "Delete"
 }
