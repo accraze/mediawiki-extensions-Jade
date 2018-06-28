@@ -14,3 +14,9 @@ $namespaceNames['en'] = [
 	NS_JADE => 'Jade',
 	NS_JADE_TALK => 'Jade_talk',
 ];
+
+/** Spanish */
+$namespaceNames['es'] = [
+	NS_JADE => 'Jade',
+	NS_JADE_TALK => 'Jade_discusión',
+];
