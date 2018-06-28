@@ -1,0 +1,9 @@
+{
+    "schemas": {
+        "damaging": [
+            {
+                "data": [ "grey" ]
+            }
+        ]
+    }
+}
