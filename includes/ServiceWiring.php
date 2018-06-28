@@ -10,8 +10,8 @@ return [
 
 	'JADEAppendCreator' => function ( MediaWikiServices $services ) {
 		return new JudgmentAppendCreator(
-			$services->getService( 'JADEJudgmentFormatter' ),
-			$services->getService( 'JADEEntityJudgmentSetStorage' )
+			JADEServices::getJudgmentFormatter(),
+			JADEServices::getEntityJudgmentSetStorage()
 		);
 	},
 
