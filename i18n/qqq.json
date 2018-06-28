@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Adamw"
+			"Adamw",
+			"Robby"
 		]
 	},
 	"jade-desc": "{{desc|name=JADE|url=https://www.mediawiki.org/wiki/Extension:JADE}}",
@@ -12,5 +13,5 @@
 	"jade-new-judgment": "Label for the new judgment form",
 	"jade-add-judgment": "Label for the judgment submit button",
 	"jade-notes-placeholder": "Placeholder for the judgment notes field",
-	"jade-delete": "Label for the judgment delete button"
+	"jade-delete": "Label for the judgment delete button\n{{Identical|Delete}}"
 }

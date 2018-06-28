@@ -4,5 +4,13 @@
 			"Metalhead64"
 		]
 	},
-	"jade-desc": "Beurteilungs- und Dialogengine"
+	"jade-desc": "Beurteilungs- und Dialogengine",
+	"jade-damaging": "Schädlich",
+	"jade-notdamaging": "Nicht schädlich",
+	"jade-goodfaith": "Gute Absicht",
+	"jade-badfaith": "Schlechte Absicht",
+	"jade-new-judgment": "Neue Beurteilung",
+	"jade-add-judgment": "Beurteilung hinzufügen",
+	"jade-notes-placeholder": "Anmerkungen zur Beurteilung",
+	"jade-delete": "Löschen"
 }

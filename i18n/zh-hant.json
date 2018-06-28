@@ -4,5 +4,13 @@
 			"Kly"
 		]
 	},
-	"jade-desc": "判斷與對話引擎（Judgment and dialog engine、JADE）"
+	"jade-desc": "判斷與對話引擎（Judgment and dialog engine、JADE）",
+	"jade-damaging": "毀謗",
+	"jade-notdamaging": "非毀謗",
+	"jade-goodfaith": "善意",
+	"jade-badfaith": "惡意",
+	"jade-new-judgment": "新的判斷",
+	"jade-add-judgment": "添加判斷",
+	"jade-notes-placeholder": "有關判斷的註釋",
+	"jade-delete": "刪除"
 }

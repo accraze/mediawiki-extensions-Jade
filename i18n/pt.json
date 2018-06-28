@@ -1,8 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
-			"Hamilton Abreu"
+			"Hamilton Abreu",
+			"Vitorvicentevalente"
 		]
 	},
-	"jade-desc": "Motor de avaliação e diálogo JADE"
+	"jade-desc": "Motor de avaliação e diálogo JADE",
+	"jade-damaging": "Prejudicial",
+	"jade-notdamaging": "Não prejudicial",
+	"jade-goodfaith": "Boa-fé",
+	"jade-badfaith": "Má-fé"
 }

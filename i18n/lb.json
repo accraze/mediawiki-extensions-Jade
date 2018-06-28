@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Robby"
+		]
+	},
+	"jade-goodfaith": "Gutt Absicht",
+	"jade-badfaith": "Schlecht Absicht",
+	"jade-delete": "Läschen"
+}
