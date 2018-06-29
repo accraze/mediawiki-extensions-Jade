@@ -4,5 +4,13 @@
 			"Gomoko"
 		]
 	},
-	"jade-desc": "Moteur de verdict et de dialogue"
+	"jade-desc": "Moteur de verdict et de dialogue",
+	"jade-damaging": "Nuisible",
+	"jade-notdamaging": "Non nuisible",
+	"jade-goodfaith": "Bonne foi",
+	"jade-badfaith": "Mauvaise foi",
+	"jade-new-judgment": "Nouveau jugement",
+	"jade-add-judgment": "Ajouter un jugement",
+	"jade-notes-placeholder": "Notes sur le jugement",
+	"jade-delete": "Supprimer"
 }

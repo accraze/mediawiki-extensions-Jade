@@ -4,5 +4,13 @@
 			"Bjankuloski06"
 		]
 	},
-	"jade-desc": "Погон за просудување и дијалог"
+	"jade-desc": "Погон за просудување и дијалог",
+	"jade-damaging": "Штетно",
+	"jade-notdamaging": "Нештетно",
+	"jade-goodfaith": "Добронамерно",
+	"jade-badfaith": "Недобронамерно",
+	"jade-new-judgment": "Нов суд",
+	"jade-add-judgment": "Додај суд",
+	"jade-notes-placeholder": "Напомени за судот",
+	"jade-delete": "Избриши"
 }

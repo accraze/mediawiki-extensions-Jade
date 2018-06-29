@@ -1,8 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"ديفيد"
+			"ديفيد",
+			"محمد أحمد عبد الفتاح"
 		]
 	},
-	"jade-desc": "Judgment ومحرك الحوار"
+	"jade-desc": "Judgment ومحرك الحوار",
+	"jade-goodfaith": "نية حسنة",
+	"jade-badfaith": "نية سيئة"
 }
