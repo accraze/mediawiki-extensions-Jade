@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Liuxinyu970226"
+			"Liuxinyu970226",
+			"Endermoon"
 		]
 	},
-	"jade-desc": "判断和会话引擎"
+	"jade-desc": "判断和会话引擎",
+	"jade-delete": "删除"
 }

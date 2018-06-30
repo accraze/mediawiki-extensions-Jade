@@ -4,5 +4,12 @@
 			"WikiPhoenix"
 		]
 	},
-	"jade-desc": "Bedömnings- och dialogmotor"
+	"jade-desc": "Bedömnings- och dialogmotor",
+	"jade-damaging": "Skadlig",
+	"jade-notdamaging": "Inte skadlig",
+	"jade-goodfaith": "God avsikt",
+	"jade-badfaith": "Ond avsikt",
+	"jade-new-judgment": "Ny bedömning",
+	"jade-add-judgment": "Lägg till bedömning",
+	"jade-delete": "Radera"
 }

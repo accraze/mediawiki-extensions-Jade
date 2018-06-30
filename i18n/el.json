@@ -5,6 +5,9 @@
 		]
 	},
 	"jade-damaging": "Επιζήμια",
+	"jade-notdamaging": "Μη ζημιοφόρο",
+	"jade-goodfaith": "Καλής πίστης",
+	"jade-badfaith": "Κακής πίστης",
 	"jade-new-judgment": "Νέα κρίση",
 	"jade-add-judgment": "Προσθήκη κρίσης",
 	"jade-delete": "Διαγραφή"

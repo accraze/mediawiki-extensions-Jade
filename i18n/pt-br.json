@@ -4,5 +4,13 @@
 			"Eduardo Addad de Oliveira"
 		]
 	},
-	"jade-desc": "Motor de avaliação e diálogo JADE"
+	"jade-desc": "Motor de avaliação e diálogo JADE",
+	"jade-damaging": "Prejudicial",
+	"jade-notdamaging": "Não prejudicial",
+	"jade-goodfaith": "Boa-fé",
+	"jade-badfaith": "Má-fé",
+	"jade-new-judgment": "Nova avaliação",
+	"jade-add-judgment": "Adicionar avaliação",
+	"jade-notes-placeholder": "Notas sobre a avaliação",
+	"jade-delete": "Deletar"
 }

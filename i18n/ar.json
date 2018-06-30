@@ -6,6 +6,12 @@
 		]
 	},
 	"jade-desc": "Judgment ومحرك الحوار",
+	"jade-damaging": "مدمر",
+	"jade-notdamaging": "غير مدمر",
 	"jade-goodfaith": "نية حسنة",
-	"jade-badfaith": "نية سيئة"
+	"jade-badfaith": "نية سيئة",
+	"jade-new-judgment": "حكم جديد",
+	"jade-add-judgment": "إضافة الحكم",
+	"jade-notes-placeholder": "ملاحظات حول الحكم",
+	"jade-delete": "حذف"
 }

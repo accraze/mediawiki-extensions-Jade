@@ -9,5 +9,9 @@
 	"jade-damaging": "Prejudicial",
 	"jade-notdamaging": "Não prejudicial",
 	"jade-goodfaith": "Boa-fé",
-	"jade-badfaith": "Má-fé"
+	"jade-badfaith": "Má-fé",
+	"jade-new-judgment": "Nova avaliação",
+	"jade-add-judgment": "Adicionar avaliação",
+	"jade-notes-placeholder": "Notas acerca da avaliação",
+	"jade-delete": "Eliminar"
 }
