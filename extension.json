@@ -15,13 +15,13 @@
 		{
 			"id": 810,
 			"constant": "NS_JADE",
-			"name": "Jade",
+			"name": "Judgment",
 			"defaultcontentmodel": "JadeJudgment"
 		},
 		{
 			"id": 811,
 			"constant": "NS_JADE_TALK",
-			"name": "Jade_talk"
+			"name": "Judgment_talk"
 		}
 	],
 	"AutoloadNamespaces": {
