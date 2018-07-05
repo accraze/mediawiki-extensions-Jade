@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Vlad5250"
+		]
+	},
+	"jade-damaging": "Вредоносная",
+	"jade-notdamaging": "Безвредная",
+	"jade-delete": "Удалить"
+}
