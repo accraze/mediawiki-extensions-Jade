@@ -6,5 +6,12 @@
 		]
 	},
 	"jade-desc": "判断和会话引擎",
+	"jade-damaging": "有害",
+	"jade-notdamaging": "无害",
+	"jade-goodfaith": "善意",
+	"jade-badfaith": "恶意",
+	"jade-new-judgment": "新判断",
+	"jade-add-judgment": "添加判断",
+	"jade-notes-placeholder": "有关判断的说明",
 	"jade-delete": "删除"
 }

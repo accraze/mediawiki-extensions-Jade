@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Nike"
+		]
+	},
+	"jade-damaging": "Haitallinen",
+	"jade-notdamaging": "Ei haitallinen",
+	"jade-goodfaith": "Hyväntahtoinen",
+	"jade-badfaith": "Pahantahtoinen",
+	"jade-delete": "Poista"
+}
