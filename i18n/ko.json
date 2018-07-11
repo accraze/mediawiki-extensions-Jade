@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Ykhwong"
+			"Ykhwong",
+			"Znkim"
 		]
 	},
+	"jade-damaging": "해를 끼칩니다",
 	"jade-goodfaith": "선의",
 	"jade-badfaith": "악의",
 	"jade-delete": "삭제"
