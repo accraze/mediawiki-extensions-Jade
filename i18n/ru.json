@@ -6,5 +6,7 @@
 	},
 	"jade-damaging": "Вредоносная",
 	"jade-notdamaging": "Безвредная",
+	"jade-goodfaith": "Добронамеренная",
+	"jade-badfaith": "Злонамеренная",
 	"jade-delete": "Удалить"
 }
