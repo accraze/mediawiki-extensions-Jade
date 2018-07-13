@@ -1,8 +1,4 @@
 {
-    "entity": {
-        "type": "revision",
-        "rev_id": 123
-    },
     "schemas": {
         "wp10": [
             {

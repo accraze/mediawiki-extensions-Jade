@@ -14,6 +14,7 @@ use WikiPage;
 class JudgmentValidator {
 	const JUDGMENT_SCHEMA = '/../jsonschema/judgment/v1.json';
 	const SCORING_SCHEMA_ROOT = '/../jsonschema/scoring';
+	protected static $entityTitles = [ 'Diff', 'Page', 'Revision' ];
 
 	/**
 	 * @var Config
@@ -46,8 +47,6 @@ class JudgmentValidator {
 	public function validateJudgmentContent( $data ) {
 		try {
 			$this->validateBasicSchema( $data );
-			$this->validateScoreSchemas( $data );
-			$this->validateEntity( $data );
 			$this->validatePreferred( $data );
 
 			return true;
@@ -80,10 +79,10 @@ class JudgmentValidator {
 	 * @throws ValidationException
 	 * @throws InvalidArgumentException
 	 *
+	 * @param string $entityType
 	 * @param object $data Data structure to validate.
 	 */
-	protected function validateScoreSchemas( $data ) {
-		$entityType = $data->entity->type;
+	protected function validateEntitySchema( $entityType, $data ) {
 		$allowedScoringSchemas = $this->config->get( 'JadeAllowedScoringSchemas' );
 		$entityAllowedSchemas = $allowedScoringSchemas[$entityType];
 
@@ -128,29 +127,28 @@ class JudgmentValidator {
 	 *
 	 * @throws InvalidArgumentException
 	 *
-	 * @param object $data Data structure to validate.
+	 * @param string $type Entity type
+	 * @param int $id Entity ID
 	 */
-	protected function validateEntity( $data ) {
-		$entity = $data->entity;
-
-		if ( $entity->type === 'diff' || $entity->type === 'revision' ) {
+	protected function validateEntity( $type, $id ) {
+		if ( $type === 'diff' || $type === 'revision' ) {
 			// Find Revision.
-			$revision = $this->revisionStore->getRevisionById( $entity->rev_id );
+			$revision = $this->revisionStore->getRevisionById( $id );
 			if ( $revision === null ) {
 				throw new InvalidArgumentException(
-					"Cannot find page by ID: {$entity->rev_id}" );
+					"Cannot find page by ID: {$id}" );
 			}
-		} elseif ( $entity->type === 'page' ) {
+		} elseif ( $type === 'page' ) {
 			// Find Page.
-			$page = WikiPage::newFromID( $entity->page_id );
+			$page = WikiPage::newFromID( $id );
 			if ( $page === null ) {
 				throw new InvalidArgumentException(
-					"Cannot find page by ID: {$entity->page_id}" );
+					"Cannot find page by ID: {$id}" );
 			}
 		} else {
 			// This is unreachable, but blow up just in case.
 			throw new InvalidArgumentException(
-				"Unknown entity type {$entity->type}" );
+				"Unknown entity type {$type}" );
 		}
 	}
 
@@ -163,11 +161,17 @@ class JudgmentValidator {
 	 * @return bool True if the page is valid.
 	 */
 	public function validatePageTitle( WikiPage $page, $judgment ) {
+		global $wgContLang;
+
 		try {
-			$this->validateTitle(
-				$page->getTitle()->getDBkey(),
-				$judgment
-			);
+			$title = $page->getTitle();
+			$titleText = $title->getDBkey();
+			$this->validateTitle( $titleText );
+
+			list( $type, $id ) = $this->parseTitleParts( $titleText );
+			$type = $wgContLang->lc( $type );
+			$this->validateEntity( $type, $id );
+			$this->validateEntitySchema( $type, $judgment );
 
 			return true;
 		} catch ( InvalidArgumentException $ex ) {
@@ -179,42 +183,24 @@ class JudgmentValidator {
 
 	/**
 	 * @param string $title Title that must match judgment.
-	 * @param object $judgment Judgment data to validate against.
 	 *
 	 * @throws InvalidArgumentException
 	 */
-	protected function validateTitle( $title, $judgment ) {
-		global $wgContLang;
+	protected function validateTitle( $title ) {
+		$titleParts = $this->parseTitleParts( $title );
 
-		$title_parts = explode( '/', $title );
-		if ( count( $title_parts ) !== 2 ) {
+		if ( count( $titleParts ) !== 2 ) {
 			throw new InvalidArgumentException( "Wrong title format" );
 		}
-		list( $type, $id ) = $title_parts;
-
-		$judgment_entity_type = $judgment->entity->type;
-
-		if ( $wgContLang->ucfirst( $judgment_entity_type ) !== $type ) {
-			throw new InvalidArgumentException(
-				"Judgment type doesn't match title"
-			);
+		list( $type, $id ) = $titleParts;
+		if ( !in_array( $type, self::$entityTitles ) ) {
+			throw new InvalidArgumentException( "Bad entity type: {$type}" );
 		}
+	}
 
-		if ( $judgment_entity_type === 'diff'
-			|| $judgment_entity_type === 'revision'
-		) {
-			if ( (string)$judgment->entity->rev_id !== $id ) {
-				throw new InvalidArgumentException(
-					"Judgment rev_id doesn't match title"
-				);
-			}
-		} else {
-			if ( (string)$judgment->entity->page_id !== $id ) {
-				throw new InvalidArgumentException(
-					"Judgment page_id doesn't match title"
-				);
-			}
-		}
+	protected function parseTitleParts( $title ) {
+		$titleParts = explode( '/', $title );
+		return $titleParts;
 	}
 
 	/**

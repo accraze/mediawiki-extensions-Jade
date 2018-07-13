@@ -1,8 +1,10 @@
+{
     "schemas": {
         "damaging": [
             {
                 "data": true
             }
         ]
-    }
+    },
+    "spam": "foo"
 }

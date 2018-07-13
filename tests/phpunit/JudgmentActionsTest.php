@@ -3,7 +3,6 @@ namespace JADE\Tests;
 
 use ApiTestCase;
 use ContentHandler;
-use FormatJson;
 use WikiPage;
 use Title;
 use TitleValue;
@@ -49,7 +48,6 @@ class JudgmentActionsTest extends ApiTestCase {
 
 		// Create revision judgment.
 		$judgmentText = file_get_contents( __DIR__ . '/' . self::REV_JUDGMENT_V1 );
-		$judgmentText = $this->mutateEntity( $judgmentText, $page_id, $rev_id );
 		$judgment = $this->makeEdit(
 			NS_JADE,
 			"Revision/{$rev_id}",
@@ -71,7 +69,6 @@ class JudgmentActionsTest extends ApiTestCase {
 
 		// Create initial revision judgment.
 		$judgmentText = file_get_contents( __DIR__ . '/' . self::REV_JUDGMENT_V1 );
-		$judgmentText = $this->mutateEntity( $judgmentText, $page_id, $rev_id );
 		$judgment = $this->makeEdit(
 			NS_JADE,
 			"Revision/{$rev_id}",
@@ -81,7 +78,6 @@ class JudgmentActionsTest extends ApiTestCase {
 
 		// Update the judgment.
 		$judgment2Text = file_get_contents( __DIR__ . '/' . self::REV_JUDGMENT_V2 );
-		$judgment2Text = $this->mutateEntity( $judgment2Text, $page_id, $rev_id );
 		$judgment2 = $this->makeEdit(
 			NS_JADE,
 			"Revision/{$rev_id}",
@@ -99,7 +95,6 @@ class JudgmentActionsTest extends ApiTestCase {
 
 		// Create initial revision judgment.
 		$judgmentText = file_get_contents( __DIR__ . '/' . self::REV_JUDGMENT_V1 );
-		$judgmentText = $this->mutateEntity( $judgmentText, $page_id, $rev_id );
 		$judgment = $this->makeEdit(
 			NS_JADE,
 			"Revision/{$rev_id}",
@@ -109,7 +104,6 @@ class JudgmentActionsTest extends ApiTestCase {
 
 		// Update the judgment.
 		$judgment2Text = file_get_contents( __DIR__ . '/' . self::REV_JUDGMENT_V2 );
-		$judgment2Text = $this->mutateEntity( $judgment2Text, $page_id, $rev_id );
 		$judgment2 = $this->makeEdit(
 			NS_JADE,
 			"Revision/{$rev_id}",
@@ -161,7 +155,6 @@ class JudgmentActionsTest extends ApiTestCase {
 
 		// Create revision judgment.
 		$judgmentText = file_get_contents( __DIR__ . '/' . self::REV_JUDGMENT_V1 );
-		$judgmentText = $this->mutateEntity( $judgmentText, $page_id, $rev_id );
 		$bad_rev_id = $rev_id + 1;
 		$judgment = $this->makeEdit(
 			NS_JADE,
@@ -184,7 +177,6 @@ class JudgmentActionsTest extends ApiTestCase {
 
 		// Create revision judgment.
 		$judgmentText = file_get_contents( __DIR__ . '/' . self::PAGE_JUDGMENT );
-		$judgmentText = $this->mutateEntity( $judgmentText, $page_id, $rev_id );
 		$bad_page_id = $page_id + 1;
 		$judgment = $this->makeEdit(
 			NS_JADE,
@@ -207,7 +199,6 @@ class JudgmentActionsTest extends ApiTestCase {
 
 		// Create revision judgment.
 		$judgmentText = file_get_contents( __DIR__ . '/' . self::REV_JUDGMENT_V1 );
-		$judgmentText = $this->mutateEntity( $judgmentText, $page_id, $rev_id );
 		$judgment = $this->makeEdit(
 			NS_JADE,
 			"Page/{$rev_id}",
@@ -229,7 +220,6 @@ class JudgmentActionsTest extends ApiTestCase {
 
 		// Create revision judgment.
 		$judgmentText = file_get_contents( __DIR__ . '/' . self::REV_JUDGMENT_V1 );
-		$judgmentText = $this->mutateEntity( $judgmentText, $page_id, $rev_id );
 		$judgment = $this->makeEdit(
 			NS_JADE,
 			"Page/{$rev_id}/Wrongunder",
@@ -265,21 +255,6 @@ class JudgmentActionsTest extends ApiTestCase {
 			"page" => $page,
 			"revision" => $revision,
 		];
-	}
-
-	public function mutateEntity( $text, $page_id, $rev_id ) {
-		$status = FormatJson::parse( $text );
-		$parsed = $status->value;
-
-		if ( $parsed->entity->type === 'diff'
-			|| $parsed->entity->type === 'revision'
-		) {
-			$parsed->entity->rev_id = $rev_id;
-		} else {
-			$parsed->entity->page_id = $page_id;
-		}
-
-		return FormatJson::encode( $parsed );
 	}
 
 }
