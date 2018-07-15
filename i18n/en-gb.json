@@ -1,8 +1,9 @@
 {
 	"@metadata": {
 		"authors": [
-			"Pasianssi"
+			"Pasianssi",
+			"Sau226"
 		]
 	},
-	"jade-delete": "Poista"
+	"jade-delete": "Delete"
 }
