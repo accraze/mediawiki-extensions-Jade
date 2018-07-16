@@ -1,8 +1,17 @@
 {
 	"@metadata": {
 		"authors": [
-			"Fitoschido"
+			"Fitoschido",
+			"MarcoAurelio"
 		]
 	},
-	"jade-desc": "Motor de valoración y diálogo"
+	"jade-desc": "Motor de valoración y diálogo",
+	"jade-damaging": "Dañina",
+	"jade-notdamaging": "Productiva",
+	"jade-goodfaith": "Buena fe",
+	"jade-badfaith": "Mala fe",
+	"jade-new-judgment": "Nueva valoración",
+	"jade-add-judgment": "Añadir valoración",
+	"jade-notes-placeholder": "Notas acerca de la valoración",
+	"jade-delete": "Borrar"
 }
