@@ -1,11 +1,8 @@
 <?php
 namespace JADE\Tests;
 
-use ContentHandler;
 use MediaWikiTestCase;
 use Revision;
-use Title;
-use TitleValue;
 use WikiPage;
 
 use JADE\ContentHandlers\JudgmentContent;
@@ -29,6 +26,16 @@ class JudgmentValidatorTest extends MediaWikiTestCase {
 	 * @var Revision
 	 */
 	private $revision;
+
+	public function setUp() {
+		parent::setUp();
+
+		$this->tablesUsed[] = 'page';
+		$this->tablesUsed[] = 'recentchanges';
+		$this->tablesUsed[] = 'revision';
+
+		$this->user = $this->getTestUser()->getUser();
+	}
 
 	public function provideInvalidSchemaContent() {
 		yield [ 'invalid_judgment_missing_required.json' ];
@@ -95,12 +102,12 @@ class JudgmentValidatorTest extends MediaWikiTestCase {
 	 * @covers JADE\JudgmentValidator::validatePageTitle
 	 */
 	public function testValidatePageTitle_valid( $path, $type ) {
-		list( $page, $revision ) = $this->createEntity();
+		list( $page, $revision ) = TestStorageHelper::createEntity( $this->user );
 		$ucType = ucfirst( $type );
 		$title = "{$ucType}/{$revision->getId()}";
 		$text = file_get_contents( __DIR__ . '/' . DATA_DIR . '/' . $path );
 
-		$success = $this->saveJudgment( $title, $text );
+		$success = TestStorageHelper::saveJudgment( $title, $text, $this->user );
 		$this->assertTrue( $success );
 	}
 
@@ -117,7 +124,7 @@ class JudgmentValidatorTest extends MediaWikiTestCase {
 	 * @covers JADE\JudgmentValidator::parseAndValidateTitle
 	 */
 	public function testValidatePageTitle_invalidWithType( $path, $type ) {
-		list( $page, $revision ) = $this->createEntity();
+		list( $page, $revision ) = TestStorageHelper::createEntity( $this->user );
 		$ucType = ucfirst( $type );
 		if ( $type === 'page' ) {
 			$title = "{$ucType}/{$page->getId()}";
@@ -126,7 +133,7 @@ class JudgmentValidatorTest extends MediaWikiTestCase {
 		}
 		$text = file_get_contents( __DIR__ . '/' . DATA_DIR . '/' . $path );
 
-		$success = $this->saveJudgment( $title, $text );
+		$success = TestStorageHelper::saveJudgment( $title, $text, $this->user );
 		$this->assertFalse( $success );
 	}
 
@@ -135,11 +142,11 @@ class JudgmentValidatorTest extends MediaWikiTestCase {
 	 * @covers JADE\JudgmentValidator::validatePageTitle
 	 */
 	public function testValidatePageTitle_invalidLong() {
-		list( $page, $revision ) = $this->createEntity();
+		list( $page, $revision ) = TestStorageHelper::createEntity( $this->user );
 		$title = "Revision/{$revision->getId()}/foo";
 		$text = file_get_contents( __DIR__ . '/' . DATA_DIR . '/valid_revision_judgment.json' );
 
-		$success = $this->saveJudgment( $title, $text );
+		$success = TestStorageHelper::saveJudgment( $title, $text, $this->user );
 		$this->assertFalse( $success );
 	}
 
@@ -151,58 +158,8 @@ class JudgmentValidatorTest extends MediaWikiTestCase {
 		$title = 'Revision/';
 		$text = file_get_contents( __DIR__ . '/' . DATA_DIR . '/valid_diff_judgment.json' );
 
-		$success = $this->saveJudgment( $title, $text );
+		$success = TestStorageHelper::saveJudgment( $title, $text, $this->user );
 		$this->assertFalse( $success );
-	}
-
-	protected function createEntity() {
-		$this->tablesUsed[] = 'recentchanges';
-		$this->tablesUsed[] = 'page';
-		$this->tablesUsed[] = 'revision';
-
-		$editTarget = new TitleValue( 0, 'JadeJudgmentContentTestPage' );
-		$title = Title::newFromLinkTarget( $editTarget );
-		$summary = 'Test edit';
-		$page = WikiPage::factory( $title );
-		$user = $this->getTestUser()->getUser();
-		$status = $page->doEditContent(
-			ContentHandler::makeContent( __CLASS__, $title ),
-			$summary,
-			0,
-			false,
-			$user
-		);
-
-		$this->assertTrue( $status->isGood() );
-
-		$revision = $status->value['revision'];
-		$this->assertNotNull( $revision );
-
-		return [ $page, $revision ];
-	}
-
-	/**
-	 * @returns bool True if successful.
-	 */
-	protected function saveJudgment( $titleStr, $text ) {
-		$this->tablesUsed[] = 'recentchanges';
-		$this->tablesUsed[] = 'page';
-		$this->tablesUsed[] = 'revision';
-
-		$editTarget = new TitleValue( NS_JADE, $titleStr );
-		$title = Title::newFromLinkTarget( $editTarget );
-		$summary = 'Test edit';
-		$page = WikiPage::factory( $title );
-		$user = $this->getTestUser()->getUser();
-		$status = $page->doEditContent(
-			ContentHandler::makeContent( $text, $title ),
-			$summary,
-			0,
-			false,
-			$user
-		);
-
-		return $status->isGood();
 	}
 
 }

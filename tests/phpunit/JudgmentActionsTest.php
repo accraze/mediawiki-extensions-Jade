@@ -2,10 +2,6 @@
 namespace JADE\Tests;
 
 use ApiTestCase;
-use ContentHandler;
-use WikiPage;
-use Title;
-use TitleValue;
 
 /**
  * @group JADE
@@ -41,14 +37,14 @@ class JudgmentActionsTest extends ApiTestCase {
 	 */
 	public function testCreateRevisionJudgment() {
 		// Create target page.
-		$article = $this->makeEdit(
+		$article = TestStorageHelper::makeEdit(
 			0, 'TestJudgmentActionsPage', 'abcdef', 'some summary' );
 		$page_id = $article['page']->getId();
 		$rev_id = $article['revision']->getId();
 
 		// Create revision judgment.
 		$judgmentText = file_get_contents( __DIR__ . '/' . self::REV_JUDGMENT_V1 );
-		$judgment = $this->makeEdit(
+		$judgment = TestStorageHelper::makeEdit(
 			NS_JADE,
 			"Revision/{$rev_id}",
 			$judgmentText,
@@ -62,14 +58,14 @@ class JudgmentActionsTest extends ApiTestCase {
 	 */
 	public function testUpdateRevisionJudgment() {
 		// Create target page.
-		$article = $this->makeEdit(
+		$article = TestStorageHelper::makeEdit(
 			0, 'TestJudgmentActionsPage', 'abcdef', 'some summary' );
 		$page_id = $article['page']->getId();
 		$rev_id = $article['revision']->getId();
 
 		// Create initial revision judgment.
 		$judgmentText = file_get_contents( __DIR__ . '/' . self::REV_JUDGMENT_V1 );
-		$judgment = $this->makeEdit(
+		$judgment = TestStorageHelper::makeEdit(
 			NS_JADE,
 			"Revision/{$rev_id}",
 			$judgmentText,
@@ -78,7 +74,7 @@ class JudgmentActionsTest extends ApiTestCase {
 
 		// Update the judgment.
 		$judgment2Text = file_get_contents( __DIR__ . '/' . self::REV_JUDGMENT_V2 );
-		$judgment2 = $this->makeEdit(
+		$judgment2 = TestStorageHelper::makeEdit(
 			NS_JADE,
 			"Revision/{$rev_id}",
 			$judgment2Text,
@@ -88,14 +84,14 @@ class JudgmentActionsTest extends ApiTestCase {
 
 	public function testSuppressUnsuppressRevisionJudgment() {
 		// Create target page.
-		$article = $this->makeEdit(
+		$article = TestStorageHelper::makeEdit(
 			0, 'TestJudgmentActionsPage', 'abcdef', 'some summary' );
 		$page_id = $article['page']->getId();
 		$rev_id = $article['revision']->getId();
 
 		// Create initial revision judgment.
 		$judgmentText = file_get_contents( __DIR__ . '/' . self::REV_JUDGMENT_V1 );
-		$judgment = $this->makeEdit(
+		$judgment = TestStorageHelper::makeEdit(
 			NS_JADE,
 			"Revision/{$rev_id}",
 			$judgmentText,
@@ -104,7 +100,7 @@ class JudgmentActionsTest extends ApiTestCase {
 
 		// Update the judgment.
 		$judgment2Text = file_get_contents( __DIR__ . '/' . self::REV_JUDGMENT_V2 );
-		$judgment2 = $this->makeEdit(
+		$judgment2 = TestStorageHelper::makeEdit(
 			NS_JADE,
 			"Revision/{$rev_id}",
 			$judgment2Text,
@@ -144,7 +140,7 @@ class JudgmentActionsTest extends ApiTestCase {
 	 */
 	public function testCreateJudgment_badTitleRevId() {
 		// Create target page.
-		$article = $this->makeEdit(
+		$article = TestStorageHelper::makeEdit(
 			0,
 			'TestJudgmentActionsPage',
 			'abcdef',
@@ -156,7 +152,7 @@ class JudgmentActionsTest extends ApiTestCase {
 		// Create revision judgment.
 		$judgmentText = file_get_contents( __DIR__ . '/' . self::REV_JUDGMENT_V1 );
 		$bad_rev_id = $rev_id + 1;
-		$judgment = $this->makeEdit(
+		$judgment = TestStorageHelper::makeEdit(
 			NS_JADE,
 			"Revision/{$bad_rev_id}",
 			$judgmentText,
@@ -170,7 +166,7 @@ class JudgmentActionsTest extends ApiTestCase {
 	 */
 	public function testCreateJudgment_badTitlePageId() {
 		// Create target page.
-		$article = $this->makeEdit(
+		$article = TestStorageHelper::makeEdit(
 			0, 'TestJudgmentActionsPage', 'abcdef', 'some summary' );
 		$page_id = $article['page']->getId();
 		$rev_id = $article['revision']->getId();
@@ -178,7 +174,7 @@ class JudgmentActionsTest extends ApiTestCase {
 		// Create revision judgment.
 		$judgmentText = file_get_contents( __DIR__ . '/' . self::PAGE_JUDGMENT );
 		$bad_page_id = $page_id + 1;
-		$judgment = $this->makeEdit(
+		$judgment = TestStorageHelper::makeEdit(
 			NS_JADE,
 			"Page/{$bad_page_id}",
 			$judgmentText,
@@ -192,14 +188,14 @@ class JudgmentActionsTest extends ApiTestCase {
 	 */
 	public function testCreateJudgment_badTitleType() {
 		// Create target page.
-		$article = $this->makeEdit(
+		$article = TestStorageHelper::makeEdit(
 			0, 'TestJudgmentActionsPage', 'abcdef', 'some summary' );
 		$page_id = $article['page']->getId();
 		$rev_id = $article['revision']->getId();
 
 		// Create revision judgment.
 		$judgmentText = file_get_contents( __DIR__ . '/' . self::REV_JUDGMENT_V1 );
-		$judgment = $this->makeEdit(
+		$judgment = TestStorageHelper::makeEdit(
 			NS_JADE,
 			"Page/{$rev_id}",
 			$judgmentText,
@@ -213,48 +209,20 @@ class JudgmentActionsTest extends ApiTestCase {
 	 */
 	public function testCreateJudgment_badTitleFormat() {
 		// Create target page.
-		$article = $this->makeEdit(
+		$article = TestStorageHelper::makeEdit(
 			0, 'TestJudgmentActionsPage', 'abcdef', 'some summary' );
 		$page_id = $article['page']->getId();
 		$rev_id = $article['revision']->getId();
 
 		// Create revision judgment.
 		$judgmentText = file_get_contents( __DIR__ . '/' . self::REV_JUDGMENT_V1 );
-		$judgment = $this->makeEdit(
+		$judgment = TestStorageHelper::makeEdit(
 			NS_JADE,
 			"Page/{$rev_id}/Wrongunder",
 			$judgmentText,
 			'summary says',
 			false
 		);
-	}
-
-	protected function makeEdit( $namespace, $title, $content, $summary, $expectedStatus = true ) {
-		$editTarget = new TitleValue( $namespace, $title );
-		$title = Title::newFromLinkTarget( $editTarget );
-		$page = WikiPage::factory( $title );
-		$user = $this->getTestUser()->getUser();
-		$status = $page->doEditContent(
-			ContentHandler::makeContent( $content, $title ),
-			$summary,
-			0,
-			false,
-			$user
-		);
-
-		$this->assertEquals( $expectedStatus, $status->isGood() );
-		if ( $expectedStatus === false ) {
-			// Nothing more to do.
-			return;
-		}
-
-		$revision = $status->value["revision"];
-		$this->assertNotNull( $revision );
-
-		return [
-			"page" => $page,
-			"revision" => $revision,
-		];
 	}
 
 }
