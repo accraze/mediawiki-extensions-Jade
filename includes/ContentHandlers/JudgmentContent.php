@@ -26,9 +26,9 @@ class JudgmentContent extends JsonContent {
 	 * @param int $flags Bitfield for use with EDIT_XXX constants, see
 	 * WikiPage::doEditContent()
 	 * @param int $parentRevId The ID of the current revision
-	 * @param User $user
+	 * @param User $user User taking action, for permissions checks.
 	 *
-	 * @return Status A status object, which isGood() if we should continue
+	 * @return Status A status object, which isOK() if we can continue
 	 * with the save.
 	 *
 	 * @see Content::prepareSave

@@ -89,10 +89,10 @@ class JudgmentValidatorTest extends MediaWikiTestCase {
 	/**
 	 * @dataProvider provideValidJudgments
 	 *
+	 * @covers JADE\JudgmentValidator::parseAndValidateTitle
 	 * @covers JADE\JudgmentValidator::validateEntity
 	 * @covers JADE\JudgmentValidator::validateEntitySchema
 	 * @covers JADE\JudgmentValidator::validatePageTitle
-	 * @covers JADE\JudgmentValidator::validateTitle
 	 */
 	public function testValidatePageTitle_valid( $path, $type ) {
 		list( $page, $revision ) = $this->createEntity();
@@ -114,7 +114,7 @@ class JudgmentValidatorTest extends MediaWikiTestCase {
 	 * @covers JADE\JudgmentValidator::validateEntity
 	 * @covers JADE\JudgmentValidator::validateEntitySchema
 	 * @covers JADE\JudgmentValidator::validatePageTitle
-	 * @covers JADE\JudgmentValidator::validateTitle
+	 * @covers JADE\JudgmentValidator::parseAndValidateTitle
 	 */
 	public function testValidatePageTitle_invalidWithType( $path, $type ) {
 		list( $page, $revision ) = $this->createEntity();
@@ -131,8 +131,8 @@ class JudgmentValidatorTest extends MediaWikiTestCase {
 	}
 
 	/**
+	 * @covers JADE\JudgmentValidator::parseAndValidateTitle
 	 * @covers JADE\JudgmentValidator::validatePageTitle
-	 * @covers JADE\JudgmentValidator::validateTitle
 	 */
 	public function testValidatePageTitle_invalidLong() {
 		list( $page, $revision ) = $this->createEntity();
@@ -144,8 +144,8 @@ class JudgmentValidatorTest extends MediaWikiTestCase {
 	}
 
 	/**
+	 * @covers JADE\JudgmentValidator::parseAndValidateTitle
 	 * @covers JADE\JudgmentValidator::validatePageTitle
-	 * @covers JADE\JudgmentValidator::validateTitle
 	 */
 	public function testValidatePageTitle_invalidShort() {
 		$title = 'Revision/';

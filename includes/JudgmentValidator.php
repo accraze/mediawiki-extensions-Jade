@@ -14,7 +14,6 @@ use WikiPage;
 class JudgmentValidator {
 	const JUDGMENT_SCHEMA = '/../jsonschema/judgment/v1.json';
 	const SCORING_SCHEMA_ROOT = '/../jsonschema/scoring';
-	protected static $entityTitles = [ 'Diff', 'Page', 'Revision' ];
 
 	/**
 	 * @var Config
@@ -79,7 +78,7 @@ class JudgmentValidator {
 	 * @throws ValidationException
 	 * @throws InvalidArgumentException
 	 *
-	 * @param string $entityType
+	 * @param string $entityType Machine name for entity type.
 	 * @param object $data Data structure to validate.
 	 */
 	protected function validateEntitySchema( $entityType, $data ) {
@@ -161,15 +160,12 @@ class JudgmentValidator {
 	 * @return bool True if the page is valid.
 	 */
 	public function validatePageTitle( WikiPage $page, $judgment ) {
-		global $wgContLang;
-
 		try {
 			$title = $page->getTitle();
 			$titleText = $title->getDBkey();
-			$this->validateTitle( $titleText );
 
-			list( $type, $id ) = $this->parseTitleParts( $titleText );
-			$type = $wgContLang->lc( $type );
+			list( $type, $id ) = $this->parseAndValidateTitle( $titleText );
+
 			$this->validateEntity( $type, $id );
 			$this->validateEntitySchema( $type, $judgment );
 
@@ -184,23 +180,26 @@ class JudgmentValidator {
 	/**
 	 * @param string $title Title that must match judgment.
 	 *
+	 * @return array [ machine name for entity type, entity id ]
+	 *
 	 * @throws InvalidArgumentException
 	 */
-	protected function validateTitle( $title ) {
-		$titleParts = $this->parseTitleParts( $title );
+	protected function parseAndValidateTitle( $title ) {
+		global $wgJadeEntityTypeNames;
+
+		$titleParts = explode( '/', $title );
 
 		if ( count( $titleParts ) !== 2 ) {
 			throw new InvalidArgumentException( "Wrong title format" );
 		}
 		list( $type, $id ) = $titleParts;
-		if ( !in_array( $type, self::$entityTitles ) ) {
+
+		$normalizedType = array_search( $type, $wgJadeEntityTypeNames, true );
+		if ( $normalizedType === false ) {
 			throw new InvalidArgumentException( "Bad entity type: {$type}" );
 		}
-	}
 
-	protected function parseTitleParts( $title ) {
-		$titleParts = explode( '/', $title );
-		return $titleParts;
+		return [ $normalizedType, $id ];
 	}
 
 	/**

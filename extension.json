@@ -52,6 +52,13 @@
 					"wp10"
 				]
 			}
+		},
+		"JadeEntityTypeNames": {
+			"value": {
+				"diff": "Diff",
+				"page": "Page",
+				"revision": "Revision"
+			}
 		}
 	},
 	"ExtensionMessagesFiles": {
