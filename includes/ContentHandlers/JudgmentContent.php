@@ -2,8 +2,8 @@
 
 namespace JADE\ContentHandlers;
 
+use JADE\JADEServices;
 use JsonContent;
-use MediaWiki\MediaWikiServices;
 use Status;
 use User;
 use WikiPage;
@@ -37,9 +37,7 @@ class JudgmentContent extends JsonContent {
 		$status = parent::prepareSave( $page, $flags, $parentRevId, $user );
 
 		if ( $status->isOK() ) {
-			$validator = MediaWikiServices::getInstance()->getService(
-				'JADEJudgmentValidator'
-			);
+			$validator = JADEServices::getJudgmentValidator();
 			$data = $this->getData()->getValue();
 			if ( !$validator->validatePageTitle( $page, $data ) ) {
 				return Status::newFatal( 'invalid-content-data' );
@@ -67,9 +65,7 @@ class JudgmentContent extends JsonContent {
 		}
 
 		$data = $this->getData()->getValue();
-		$validator = MediaWikiServices::getInstance()->getService(
-			'JADEJudgmentValidator'
-		);
+		$validator = JADEServices::getJudgmentValidator();
 		return $validator->validateJudgmentContent( $data );
 	}
 

@@ -9,9 +9,8 @@ use MWException;
  *
  * Example:
  *
- *     $creator = MediaWikiServices::getInstance()->getService(
- *         'JADEAppendCreator'
- *     );
+ *     use JADE\JADEServices;
+ *     $creator = JADEServices::getAppendCreator();
  *     if ( $creator ) {
  *         $creator->createJudgment(
  *             'diff',
