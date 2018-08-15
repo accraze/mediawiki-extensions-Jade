@@ -4,6 +4,8 @@
 			"Nikosgranturismogt"
 		]
 	},
+	"apihelp-createjudgment-summary": "Δημιουργία νέας κρίσης",
+	"apihelp-createjudgment-param-summary": "Προαιρετική σύνοψη επεξεργασίας.",
 	"jade-damaging": "Επιζήμια",
 	"jade-notdamaging": "Μη ζημιοφόρο",
 	"jade-goodfaith": "Καλής πίστης",

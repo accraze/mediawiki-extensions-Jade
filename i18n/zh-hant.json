@@ -4,6 +4,17 @@
 			"Kly"
 		]
 	},
+	"apihelp-createjudgment-summary": "建立新判斷",
+	"apihelp-createjudgment-param-entitytype": "目標 wiki 項目類型，可以是「變動（diff）」、「修訂（revision）」、或「頁面（page）」。",
+	"apihelp-createjudgment-param-data": "原始記分資料。資料以「true」與「false」來解讀為布林值。",
+	"apihelp-createjudgment-param-notes": "解釋判斷的可選文字。",
+	"apihelp-createjudgment-param-summary": "可選編輯摘要。",
+	"apihelp-createjudgment-param-tags": "套用到判斷的可選更改標籤。",
+	"apihelp+jade-createjudgment-example": "建立反應出變動 #3 為帶有毀謗的判斷。",
+	"apihelp-query+getjudgments-param-entitytype": "目標 wiki 項目類型，可以是「變動（diff）」、「修訂（revision）」、或「頁面（page）」。",
+	"apihelp-query+getjudgments-summary": "取得 wiki 項目的任何可用判斷。",
+	"apihelp-query+jade-getjudgments-list-example": "列出變動 #3 的判斷頁面。",
+	"apihelp-query+jade-getjudgments-generator-example": "取得變動 #3 的判斷內容。",
 	"jade-desc": "判斷與對話引擎（Judgment and dialog engine、JADE）",
 	"jade-damaging": "毀謗",
 	"jade-notdamaging": "非毀謗",

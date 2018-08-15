@@ -5,6 +5,7 @@
 			"Znkim"
 		]
 	},
+	"apihelp-createjudgment-param-summary": "선택적 편집 요약입니다.",
 	"jade-damaging": "해를 끼칩니다",
 	"jade-notdamaging": "해를 끼치지 않습니다",
 	"jade-goodfaith": "선의",

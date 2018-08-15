@@ -5,6 +5,8 @@
 			"Guycn2"
 		]
 	},
+	"apihelp-createjudgment-summary": "יצירת שיפוט חדש",
+	"apihelp-createjudgment-param-entitytype": "סוג ישות הוויקי של היעד, יכול להיות \"diff\"‏, \"revision\" או \"page\".",
 	"jade-desc": "מנוע שיפוט ושיחה (JADE)",
 	"jade-damaging": "מזיקה",
 	"jade-notdamaging": "לא מזיקה",
