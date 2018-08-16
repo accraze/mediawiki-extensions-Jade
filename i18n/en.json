@@ -14,7 +14,7 @@
 	"apihelp-createjudgment-param-tags": "Optional change tags to apply to the judgment.",
 	"apihelp+jade-createjudgment-example": "Create a judgment saying that diff #3 is damaging.",
 	"apihelp-query+getjudgments-param-entitytype": "Target wiki entity type, can be a \"diff\", \"revision\", or \"page\".",
-	"apihelp-query+getjudgments-param-entityid": "Revision ID for diff and devision targets, page ID for dage target type.",
+	"apihelp-query+getjudgments-param-entityid": "Revision ID for diff and revision targets, page ID for date target type.",
 	"apihelp-query+getjudgments-summary": "Get any available judgments for a wiki entity.",
 	"apihelp-query+jade-getjudgments-list-example": "List judgment page for diff #3.",
 	"apihelp-query+jade-getjudgments-generator-example": "Get judgment content for diff #3.",
