@@ -6,6 +6,7 @@
 	},
 	"apihelp-createjudgment-summary": "Δημιουργία νέας κρίσης",
 	"apihelp-createjudgment-param-summary": "Προαιρετική σύνοψη επεξεργασίας.",
+	"apihelp-createjudgment-param-tags": "Προαιρετικές ετικέτες αλλαγές για την εφαρμογή της σκέψης.",
 	"jade-damaging": "Επιζήμια",
 	"jade-notdamaging": "Μη ζημιοφόρο",
 	"jade-goodfaith": "Καλής πίστης",

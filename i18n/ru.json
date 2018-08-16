@@ -4,6 +4,7 @@
 			"Vlad5250"
 		]
 	},
+	"apihelp-createjudgment-param-summary": "необязательное описание правки",
 	"jade-damaging": "Вредоносная",
 	"jade-notdamaging": "Безвредная",
 	"jade-goodfaith": "Добронамеренная",
