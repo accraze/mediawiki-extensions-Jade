@@ -6,7 +6,7 @@
 	},
 	"apihelp-createjudgment-summary": "Create a new judgment",
 	"apihelp-createjudgment-param-entitytype": "Target wiki entity type, can be a \"diff\", \"revision\", or \"page\".",
-	"apihelp-createjudgment-param-entityid": "Revision ID for diff and devision targets, page ID for dage target type.",
+	"apihelp-createjudgment-param-entityid": "Revision ID for diff and revision targets, page ID for date target type.",
 	"apihelp-createjudgment-param-schema": "Scoring schema used by this judgment, either \"damaging\", \"goodfaith\", \"wp10\", or \"drafttopic\".",
 	"apihelp-createjudgment-param-data": "Raw scoring data.  data=\"true\" and \"false\" are interpreted as booleans.",
 	"apihelp-createjudgment-param-notes": "Optional text explaining the judgment.",
