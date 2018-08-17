@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Adamw",
-			"Robby"
+			"Robby",
+			"Umherirrender"
 		]
 	},
 	"apihelp-createjudgment-summary": "{{doc-apihelp-summary|createjudgment}}",
@@ -14,11 +15,11 @@
 	"apihelp-createjudgment-param-summary": "{{doc-apihelp-param|createjudgment|summary}}",
 	"apihelp-createjudgment-param-tags": "{{doc-apihelp-param|createjudgment|tags}}",
 	"apihelp+jade-createjudgment-example": "Description of simple createjudgment API example",
-	"apihelp-query+getjudgments-param-entitytype": "{{doc-apihelp-param|createjudgment|entitytype}}",
-	"apihelp-query+getjudgments-param-entityid": "{{doc-apihelp-param|createjudgment|entityid}}",
-	"apihelp-query+getjudgments-summary": "{{doc-apihelp-summary|getjudgments}}",
-	"apihelp-query+jade-getjudgments-list-example": "Description of getjudgments list API example",
-	"apihelp-query+jade-getjudgments-generator-example": "Description of getjudgments generator API example",
+	"apihelp-query+getjudgments-param-entitytype": "{{doc-apihelp-param|query+getjudgments|entitytype}}",
+	"apihelp-query+getjudgments-param-entityid": "{{doc-apihelp-param|query+getjudgments|entityid}}",
+	"apihelp-query+getjudgments-summary": "{{doc-apihelp-summary|query+getjudgments}}",
+	"apihelp-query+jade-getjudgments-list-example": "Description of getjudgments list API example\n{{doc-apihelp-example|query+getjudgments}}",
+	"apihelp-query+jade-getjudgments-generator-example": "Description of getjudgments generator API example\n{{doc-apihelp-example|query+getjudgments}}",
 	"jade-desc": "{{desc|name=JADE|url=https://www.mediawiki.org/wiki/Extension:JADE}}",
 	"jade-damaging": "Label for a damaging edit",
 	"jade-notdamaging": "Label for an edit which is not damaging",
