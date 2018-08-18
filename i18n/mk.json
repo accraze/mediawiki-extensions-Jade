@@ -4,6 +4,8 @@
 			"Bjankuloski06"
 		]
 	},
+	"apihelp-createjudgment-summary": "Создај нов суд",
+	"apihelp-createjudgment-param-entitytype": "Целна вид викиединица, може да биде „diff“, „revision“ или „page“.",
 	"jade-desc": "Погон за просудување и дијалог",
 	"jade-damaging": "Штетно",
 	"jade-notdamaging": "Нештетно",
