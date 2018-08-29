@@ -29,6 +29,7 @@
 	},
 	"AutoloadNamespaces": {
 		"JADE\\": "includes/",
+		"JADE\\Maintenance\\": "maintenance/",
 		"JADE\\Tests\\": "tests/phpunit/"
 	},
 	"ContentHandlers": {
