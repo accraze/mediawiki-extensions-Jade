@@ -85,11 +85,13 @@ class JudgmentValidator {
 		$allowedScoringSchemas = $this->config->get( 'JadeAllowedScoringSchemas' );
 		$entityAllowedSchemas = $allowedScoringSchemas[$entityType];
 
-		foreach ( $data->schemas as $schemaName => $judgments ) {
-			// Schema must be allowed.
-			if ( !in_array( $schemaName, $entityAllowedSchemas ) ) {
-				throw new InvalidArgumentException(
-					"Scoring schema not allowed: {$schemaName}" );
+		foreach ( $data->judgments as $judgment ) {
+			foreach ( $judgment->schema as $schemaName => $value ) {
+				// Schema must be allowed.
+				if ( !in_array( $schemaName, $entityAllowedSchemas ) ) {
+					throw new InvalidArgumentException(
+						"Scoring schema not allowed: {$schemaName}" );
+				}
 			}
 		}
 	}
@@ -102,21 +104,22 @@ class JudgmentValidator {
 	 * @param object $data Data structure to validate.
 	 */
 	protected function validatePreferred( $data ) {
-		foreach ( $data->schemas as $schema => $judgments ) {
-			$preferredCount = array_reduce(
-				$judgments,
-				function ( $carry, $judgment ) {
-					$isPreferred = property_exists( $judgment, 'preferred' ) &&
-						$judgment->preferred;
+		$hasPreferred = [];
 
-					return ( $carry + (int)$isPreferred );
-				},
-				0
-			);
+		foreach ( $data->judgments as $judgment ) {
+			if ( !property_exists( $judgment, 'preferred' ) || !$judgment->preferred ) {
+				// TODO: Add business logic to enforce exactly one preferred
+				// judgment.  This currently allows for zero preferred.
+				continue;
+			}
 
-			if ( $preferredCount > 1 ) {
-				throw new InvalidArgumentException(
-					"Too many preferred judgments in {$schema}" );
+			foreach ( $judgment->schema as $schemaName => $value ) {
+				if ( in_array( $schemaName, $hasPreferred ) ) {
+					throw new InvalidArgumentException(
+						"Too many preferred judgments in {$schemaName}" );
+				}
+
+				$hasPreferred[] = $schemaName;
 			}
 		}
 	}

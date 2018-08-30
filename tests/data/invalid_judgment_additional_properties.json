@@ -1,10 +1,10 @@
 {
-    "schemas": {
-        "nothing": "extra",
-        "damaging": [
-            {
-                "data": true
-            }
-        ]
-    }
+    "judgments": [
+        {
+            "schema": {
+                "damaging": true
+            },
+            "nothing": "extra"
+        }
+    ]
 }

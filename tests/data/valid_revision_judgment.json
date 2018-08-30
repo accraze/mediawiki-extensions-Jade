@@ -1,10 +1,10 @@
 {
-    "schemas": {
-        "wp10": [
-            {
-                "data": "C",
-                "preferred": true
-            }
-        ]
-    }
+    "judgments": [
+        {
+            "schema": {
+                "articlequality": "C"
+            },
+            "preferred": true
+        }
+    ]
 }

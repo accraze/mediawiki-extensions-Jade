@@ -1,9 +1,7 @@
 {
-    "schemas": {
-        "damaging": [
-            {
-                "notes": "no data"
-            }
-        ]
-    }
+    "judgments": [
+        {
+            "notes": "no data"
+        }
+    ]
 }

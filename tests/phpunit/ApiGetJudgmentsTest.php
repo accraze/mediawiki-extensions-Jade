@@ -41,11 +41,11 @@ class ApiGetJudgmentsTest extends ApiTestCase {
 	public function testGetJudgments_success() {
 		list( $page, $revision ) = TestStorageHelper::createEntity();
 		$existingJudgment = [
-			'schemas' => [
-				'damaging' => [ [
-					'data' => false,
-				] ],
-			],
+			'judgments' => [ [
+				'schema' => [
+					'damaging' => false,
+				],
+			] ],
 		];
 		$success = TestStorageHelper::saveJudgment(
 			"Diff/{$revision->getId()}",
@@ -68,11 +68,11 @@ class ApiGetJudgmentsTest extends ApiTestCase {
 	public function testGetJudgments_generator() {
 		list( $page, $revision ) = TestStorageHelper::createEntity();
 		$existingJudgment = [
-			'schemas' => [
-				'damaging' => [ [
-					'data' => false,
-				] ],
-			],
+			'judgments' => [ [
+				'schema' => [
+					'damaging' => false,
+				],
+			] ],
 		];
 		$success = TestStorageHelper::saveJudgment(
 			"Diff/{$revision->getId()}",

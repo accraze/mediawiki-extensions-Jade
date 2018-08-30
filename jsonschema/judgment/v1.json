@@ -1,114 +1,78 @@
 {
-    "title": "jade/judgment",
+    "title": "jade/judgment-set",
     "$schema": "http://json-schema.org/draft-04/schema#",
     "id": "https://phabricator.wikimedia.org/diffusion/EJAD/browse/master/jsonschema/judgment/v1.json?view=raw",
     "type": "object",
     "properties": {
-        "schemas": {
-            "type": "object",
-            "properties": {
-                "damaging": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/judgment/damaging"
-                    }
-                },
-                "goodfaith": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/judgment/goodfaith"
-                    }
-                },
-                "itemquality": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/judgment/itemquality"
-                    }
-                },
-                "wp10": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/judgment/wp10"
-                    }
-                }
-            },
-            "additionalProperties": false
+        "judgments": {
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/judgment"
+            }
         }
     },
     "additionalProperties": false,
-    "required": ["schemas"],
     "definitions": {
-        "judgment": {
-            "common": {
-                "type": "object",
-                "properties": {
-                    "data": {},
-                    "notes": {
-                        "type": "string"
-                    },
-                    "preferred": {
-                        "type": "boolean",
-                        "default": false,
-                        "description": "True when this judgment best represents a consensus opinion."
-                    }
+        "endorsement": {
+            "type": "object",
+            "properties": {
+                "comment": {
+                    "type": "string",
+                    "description": "Wikitext explaining why the user is endorsing"
+                },
+                "user": {
+                    "type": "string",
+                    "description": "Global user ID or an IP address"
+                },
+                "origin": {
+                    "type": "string",
+                    "description": "Plain text identifying the tool and workflow used to make this endorsement"
                 },
                 "required": [
-                    "data"
-                ],
-                "additionalProperties": false
-            },
-            "damaging": {
-                "allOf": [
-                    { "$ref": "#/definitions/judgment/common" },
-                    {
-                        "type": "object",
-                        "properties": {
-                            "data": { "type": "boolean" }
-                        }
-                    }
+                    "user"
                 ]
             },
-            "goodfaith": {
-                "allOf": [
-                    { "$ref": "#/definitions/judgment/common" },
-                    {
-                        "type": "object",
-                        "properties": {
-                            "data": { "type": "boolean" }
+            "minProperties": 1,
+            "additionalProperties": false
+        },
+        "judgment": {
+            "type": "object",
+            "properties": {
+                "schema": {
+                    "type": "object",
+                    "properties": {
+                        "articlequality": {
+                            "type": "string"
+                        },
+                        "damaging": {
+                            "type": "boolean"
+                        },
+                        "goodfaith": {
+                            "type": "boolean"
                         }
+                    },
+                    "additionalProperties": false
+                },
+                "notes": {
+                    "type": "string",
+                    "description": "Wikitext comments or justification of this judgment."
+                },
+                "preferred": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "True when this judgment best represents a consensus opinion."
+                },
+                "endorsements": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/endorsement"
                     }
-                ]
+                }
             },
-            "itemquality": {
-                "allOf": [
-                    { "$ref": "#/definitions/judgment/common" },
-                    {
-                        "type": "object",
-                        "properties": {
-                            "data": {
-                                "description": "Item quality grade, see https://www.wikidata.org/wiki/Wikidata:Item_quality",
-                                "type": "string",
-                                "enum": ["A", "B", "C", "D", "E"]
-                            }
-                        }
-                    }
-                ]
-            },
-            "wp10": {
-                "allOf": [
-                    { "$ref": "#/definitions/judgment/common" },
-                    {
-                        "type": "object",
-                        "properties": {
-                            "data": {
-                                "description": "Article quality",
-                                "type": "string",
-                                "enum": ["FA", "GA", "B", "C", "Start", "Stub"]
-                            }
-                        }
-                    }
-                ]
-            }
+            "required": [
+                "schema"
+            ],
+            "additionalProperties": false
         }
     }
 }

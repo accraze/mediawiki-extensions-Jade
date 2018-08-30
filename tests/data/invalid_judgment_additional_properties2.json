@@ -1,10 +1,10 @@
 {
-    "schemas": {
-        "damaging": [
-            {
-                "data": true
+    "judgments": [
+        {
+            "schema": {
+                "damaging": true
             }
-        ]
-    },
+        }
+    ],
     "spam": "foo"
 }

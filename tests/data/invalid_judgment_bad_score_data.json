@@ -1,9 +1,9 @@
 {
-    "schemas": {
-        "damaging": [
-            {
-                "data": [ "grey" ]
+    "judgments": [
+        {
+            "schema": {
+                "damaging": "grey"
             }
-        ]
-    }
+        }
+    ]
 }

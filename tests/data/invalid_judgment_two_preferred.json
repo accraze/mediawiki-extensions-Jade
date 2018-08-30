@@ -1,14 +1,16 @@
 {
-    "schemas": {
-        "wp10": [
-            {
-                "data": "C",
-                "preferred": true
+    "judgments": [
+        {
+            "schema": {
+                "articlequality": "C"
             },
-            {
-                "data": "B",
-                "preferred": true
-            }
-        ]
-    }
+            "preferred": true
+        },
+        {
+            "schema": {
+                "articlequality": "B"
+            },
+            "preferred": true
+        }
+    ]
 }

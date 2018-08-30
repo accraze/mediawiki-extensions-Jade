@@ -1,9 +1,9 @@
 {
-    "schemas": {
-        "wp10": [
-            {
-                "data": "B"
+    "judgments": [
+        {
+            "schema": {
+                "articlequality": "B"
             }
-        ]
-    }
+        }
+    ]
 }
