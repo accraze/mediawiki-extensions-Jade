@@ -35,7 +35,7 @@ class ApiCreateJudgment extends ApiBase {
 
 		$creator = JADEServices::getAppendCreator();
 		try {
-			$result = $creator->createJudgment(
+			$creator->createJudgment(
 				$params['entitytype'],
 				$params['entityid'],
 				$params['schema'],

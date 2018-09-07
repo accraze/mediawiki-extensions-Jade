@@ -2,7 +2,8 @@
 
 namespace JADE;
 
-use FormatJSON;
+use ChangeTags;
+use FormatJson;
 use MWException;
 use WikiPage;
 
@@ -48,7 +49,7 @@ class PageEntityJudgmentSetStorage implements EntityJudgmentSetStorage {
 		}
 
 		// Serialize to a new judgment ContentHandler.
-		$judgmentText = FormatJSON::encode( $judgmentSet, true, 0 );
+		$judgmentText = FormatJson::encode( $judgmentSet, true, 0 );
 		$content = new JudgmentContent( $judgmentText );
 
 		// TODO: Migrate to use the PageUpdater API once it matures.
@@ -81,7 +82,7 @@ class PageEntityJudgmentSetStorage implements EntityJudgmentSetStorage {
 		$currentContent = $page->getContent();
 		// Return content as an associative array.
 		if ( $currentContent !== null ) {
-			$currentJudgment = FormatJSON::decode( $currentContent->getNativeData(), true );
+			$currentJudgment = FormatJson::decode( $currentContent->getNativeData(), true );
 		} else {
 			$currentJudgment = [];
 		}
