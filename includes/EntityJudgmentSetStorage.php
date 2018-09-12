@@ -2,6 +2,8 @@
 
 namespace JADE;
 
+use MWException;
+
 interface EntityJudgmentSetStorage {
 
 	/**

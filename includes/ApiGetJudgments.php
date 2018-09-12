@@ -17,6 +17,7 @@
 namespace JADE;
 
 use ApiBase;
+use ApiPageSet;
 use ApiQueryGeneratorBase;
 
 /**

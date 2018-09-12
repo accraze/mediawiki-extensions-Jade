@@ -25,13 +25,12 @@ class PageFormatter {
 		if ( $notes !== null && $notes !== '' ) {
 			$newItem['notes'] = $notes;
 		}
-		$judgment = [
+
+		return [
 			'schemas' => [
 				$schema => [ $newItem ],
 			],
 		];
-
-		return $judgment;
 	}
 
 	/**
