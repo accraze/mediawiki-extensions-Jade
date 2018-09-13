@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Ladsgroup"
+		]
+	},
+	"jade-damaging": "آسیب‌زننده",
+	"jade-notdamaging": "آسیب‌زننده نیست",
+	"jade-goodfaith": "حسن‌نیت",
+	"jade-badfaith": "سونیت",
+	"jade-delete": "حذف"
+}
