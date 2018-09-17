@@ -50,7 +50,7 @@ class TestStorageHelper {
 	 * @return [ WikiPage, array ] Page and decoded content.
 	 */
 	public static function loadJudgment( $titleStr ) {
-		$target = new TitleValue( NS_JADE, $titleStr );
+		$target = new TitleValue( NS_JUDGMENT, $titleStr );
 		$title = Title::newFromLinkTarget( $target );
 		$page = WikiPage::factory( $title );
 		$content = $page->getContent();
@@ -73,7 +73,7 @@ class TestStorageHelper {
 		if ( is_array( $text ) ) {
 			$text = FormatJSON::encode( $text );
 		}
-		$editTarget = new TitleValue( NS_JADE, $titleStr );
+		$editTarget = new TitleValue( NS_JUDGMENT, $titleStr );
 		$title = Title::newFromLinkTarget( $editTarget );
 		$summary = 'Test edit';
 		$page = WikiPage::factory( $title );

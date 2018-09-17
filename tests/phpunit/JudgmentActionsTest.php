@@ -45,7 +45,7 @@ class JudgmentActionsTest extends ApiTestCase {
 		// Create revision judgment.
 		$judgmentText = file_get_contents( __DIR__ . '/' . self::REV_JUDGMENT_V1 );
 		$judgment = TestStorageHelper::makeEdit(
-			NS_JADE,
+			NS_JUDGMENT,
 			"Revision/{$rev_id}",
 			$judgmentText,
 			'summary says'
@@ -66,7 +66,7 @@ class JudgmentActionsTest extends ApiTestCase {
 		// Create initial revision judgment.
 		$judgmentText = file_get_contents( __DIR__ . '/' . self::REV_JUDGMENT_V1 );
 		$judgment = TestStorageHelper::makeEdit(
-			NS_JADE,
+			NS_JUDGMENT,
 			"Revision/{$rev_id}",
 			$judgmentText,
 			'summary says'
@@ -75,7 +75,7 @@ class JudgmentActionsTest extends ApiTestCase {
 		// Update the judgment.
 		$judgment2Text = file_get_contents( __DIR__ . '/' . self::REV_JUDGMENT_V2 );
 		$judgment2 = TestStorageHelper::makeEdit(
-			NS_JADE,
+			NS_JUDGMENT,
 			"Revision/{$rev_id}",
 			$judgment2Text,
 			'summary says'
@@ -92,7 +92,7 @@ class JudgmentActionsTest extends ApiTestCase {
 		// Create initial revision judgment.
 		$judgmentText = file_get_contents( __DIR__ . '/' . self::REV_JUDGMENT_V1 );
 		$judgment = TestStorageHelper::makeEdit(
-			NS_JADE,
+			NS_JUDGMENT,
 			"Revision/{$rev_id}",
 			$judgmentText,
 			'summary says'
@@ -101,7 +101,7 @@ class JudgmentActionsTest extends ApiTestCase {
 		// Update the judgment.
 		$judgment2Text = file_get_contents( __DIR__ . '/' . self::REV_JUDGMENT_V2 );
 		$judgment2 = TestStorageHelper::makeEdit(
-			NS_JADE,
+			NS_JUDGMENT,
 			"Revision/{$rev_id}",
 			$judgment2Text,
 			'summary says'
@@ -153,7 +153,7 @@ class JudgmentActionsTest extends ApiTestCase {
 		$judgmentText = file_get_contents( __DIR__ . '/' . self::REV_JUDGMENT_V1 );
 		$bad_rev_id = $rev_id + 1;
 		$judgment = TestStorageHelper::makeEdit(
-			NS_JADE,
+			NS_JUDGMENT,
 			"Revision/{$bad_rev_id}",
 			$judgmentText,
 			'summary says',
@@ -175,7 +175,7 @@ class JudgmentActionsTest extends ApiTestCase {
 		$judgmentText = file_get_contents( __DIR__ . '/' . self::PAGE_JUDGMENT );
 		$bad_page_id = $page_id + 1;
 		$judgment = TestStorageHelper::makeEdit(
-			NS_JADE,
+			NS_JUDGMENT,
 			"Page/{$bad_page_id}",
 			$judgmentText,
 			'summary says',
@@ -196,7 +196,7 @@ class JudgmentActionsTest extends ApiTestCase {
 		// Create revision judgment.
 		$judgmentText = file_get_contents( __DIR__ . '/' . self::REV_JUDGMENT_V1 );
 		$judgment = TestStorageHelper::makeEdit(
-			NS_JADE,
+			NS_JUDGMENT,
 			"Page/{$rev_id}",
 			$judgmentText,
 			'summary says',
@@ -217,7 +217,7 @@ class JudgmentActionsTest extends ApiTestCase {
 		// Create revision judgment.
 		$judgmentText = file_get_contents( __DIR__ . '/' . self::REV_JUDGMENT_V1 );
 		$judgment = TestStorageHelper::makeEdit(
-			NS_JADE,
+			NS_JUDGMENT,
 			"Page/{$rev_id}/Wrongunder",
 			$judgmentText,
 			'summary says',

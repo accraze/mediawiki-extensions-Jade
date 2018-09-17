@@ -25,7 +25,7 @@ class TitleHelper {
 		$localTitle = $wgJadeEntityTypeNames[$entityType];
 
 		return Title::makeTitle(
-			NS_JADE,
+			NS_JUDGMENT,
 			"{$localTitle}/{$entityId}"
 		);
 	}
