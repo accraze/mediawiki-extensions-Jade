@@ -15,10 +15,14 @@
  */
 namespace JADE\Tests;
 
+use Block;
+use CentralIdLookup;
 use FormatJson;
 use JADE\JADEServices;
+use LocalIdLookup;
 use MediaWikiTestCase;
 use StatusValue;
+use User;
 
 /**
  * @group Database
@@ -38,9 +42,19 @@ class JudgmentValidatorTest extends MediaWikiTestCase {
 	public function setUp() {
 		parent::setUp();
 
-		$this->tablesUsed[] = 'page';
+		$this->tablesUsed = [
+			'ipblocks',
+			'page',
+		];
 
 		$this->user = $this->getTestUser()->getUser();
+
+		// Disable CentralAuth provider for CentralIdLookup.
+		$this->setMwGlobals( [
+			'wgCentralIdLookupProviders' => [
+				'local' => [ 'class' => LocalIdLookup::class ],
+			],
+		] );
 	}
 
 	public function provideInvalidSchemaContent() {
@@ -54,6 +68,8 @@ class JudgmentValidatorTest extends MediaWikiTestCase {
 		yield [ 'invalid_judgment_none_preferred.json', 'jade-none-preferred' ];
 		yield [ 'invalid_judgment_two_preferred.json', 'jade-too-many-preferred' ];
 		yield [ 'invalid_judgment_bad_contentquality_data.json', 'jade-bad-contentquality-value' ];
+		yield [ 'invalid_judgment_bad_user_ip.json', 'jade-user-ip-invalid' ];
+		yield [ 'invalid_judgment_bad_user_ip2.json', 'jade-user-ip-invalid' ];
 	}
 
 	// These cases have scoring schemas which aren't allowed for the page title.
@@ -73,6 +89,7 @@ class JudgmentValidatorTest extends MediaWikiTestCase {
 	 * directory.
 	 *
 	 * @covers JADE\JudgmentValidator::validateBasicSchema
+	 * @covers JADE\JudgmentValidator::validateEndorsementUsers
 	 * @covers JADE\JudgmentValidator::validateJudgmentContent
 	 * @covers JADE\JudgmentValidator::validatePreferred
 	 */
@@ -81,7 +98,7 @@ class JudgmentValidatorTest extends MediaWikiTestCase {
 
 		$this->assertFalse( $status->isOK() );
 		$errors = $status->getErrors();
-		$this->assertEquals( 1, count( $errors ) );
+		$this->assertCount( 1, $errors );
 		$this->assertEquals( $expectedError, $errors[0]['message'] );
 	}
 
@@ -104,6 +121,7 @@ class JudgmentValidatorTest extends MediaWikiTestCase {
 	 * directory.
 	 *
 	 * @covers JADE\JudgmentValidator::validateBasicSchema
+	 * @covers JADE\JudgmentValidator::validateEndorsementUsers
 	 * @covers JADE\JudgmentValidator::validateJudgmentContent
 	 * @covers JADE\JudgmentValidator::validatePreferred
 	 */
@@ -156,7 +174,7 @@ class JudgmentValidatorTest extends MediaWikiTestCase {
 		$status = TestStorageHelper::saveJudgment( $title, $text, $this->user );
 		$this->assertFalse( $status->isOK() );
 		$errors = $status->getErrors();
-		$this->assertEquals( 1, count( $errors ) );
+		$this->assertCount( 1, $errors );
 		$this->assertEquals( 'jade-illegal-schema', $errors[0]['message'] );
 	}
 
@@ -172,7 +190,7 @@ class JudgmentValidatorTest extends MediaWikiTestCase {
 		$status = TestStorageHelper::saveJudgment( $title, $text, $this->user );
 		$this->assertFalse( $status->isOK() );
 		$errors = $status->getErrors();
-		$this->assertEquals( 1, count( $errors ) );
+		$this->assertCount( 1, $errors );
 		$this->assertEquals( 'jade-bad-title-format', $errors[0]['message'] );
 	}
 
@@ -186,7 +204,7 @@ class JudgmentValidatorTest extends MediaWikiTestCase {
 		$status = TestStorageHelper::saveJudgment( $title, $text, $this->user );
 		$this->assertFalse( $status->isOK() );
 		$errors = $status->getErrors();
-		$this->assertEquals( 1, count( $errors ) );
+		$this->assertCount( 1, $errors );
 		$this->assertEquals( 'jade-bad-title-format', $errors[0]['message'] );
 	}
 
@@ -201,8 +219,203 @@ class JudgmentValidatorTest extends MediaWikiTestCase {
 		$status = TestStorageHelper::saveJudgment( $title, $text, $this->user );
 		$this->assertFalse( $status->isOK() );
 		$errors = $status->getErrors();
-		$this->assertEquals( 1, count( $errors ) );
+		$this->assertCount( 1, $errors );
 		$this->assertEquals( 'jade-bad-revision-id', $errors[0]['message'] );
+	}
+
+	/**
+	 * @covers JADE\JudgmentValidator::validateEndorsementUsers
+	 */
+	public function testValidateEndorsementUsers_goodId() {
+		list( $page, $revision ) = TestStorageHelper::createEntity( $this->user );
+		$title = "Diff/{$revision->getId()}";
+		$text = json_encode( [
+			'judgments' => [ [
+				'schema' => [
+					'damaging' => false,
+					'goodfaith' => true,
+				],
+				'preferred' => true,
+				'endorsements' => [ [
+					'user' => [
+						'id' => $this->user->getId(),
+					],
+				] ],
+			] ]
+		] );
+
+		$status = TestStorageHelper::saveJudgment( $title, $text, $this->user );
+		$this->assertTrue( $status->isOK() );
+	}
+
+	/**
+	 * @covers JADE\JudgmentValidator::validateEndorsementUsers
+	 */
+	public function testValidateEndorsementUsers_badId() {
+		$userId = mt_rand();
+		// But never create the user...
+
+		list( $page, $revision ) = TestStorageHelper::createEntity( $this->user );
+		$title = "Diff/{$revision->getId()}";
+		$text = json_encode( [
+			'judgments' => [ [
+				'schema' => [
+					'damaging' => false,
+					'goodfaith' => true,
+				],
+				'preferred' => true,
+				'endorsements' => [ [
+					'user' => [
+						'id' => $userId,
+					],
+				] ],
+			] ]
+		] );
+
+		$status = TestStorageHelper::saveJudgment( $title, $text, $this->user );
+		$this->assertFalse( $status->isOK() );
+		$errors = $status->getErrors();
+		$this->assertCount( 1, $errors );
+		$this->assertEquals( 'jade-user-local-id-invalid', $errors[0]['message'] );
+	}
+
+	/**
+	 * @covers JADE\JudgmentValidator::validateEndorsementUsers
+	 */
+	public function testValidateEndorsementUsers_goodCid() {
+		$centralUserId = CentralIdLookup::factory()->centralIdFromLocalUser( $this->user );
+
+		list( $page, $revision ) = TestStorageHelper::createEntity( $this->user );
+		$title = "Diff/{$revision->getId()}";
+		$text = json_encode( [
+			'judgments' => [ [
+				'schema' => [
+					'damaging' => false,
+					'goodfaith' => true,
+				],
+				'preferred' => true,
+				'endorsements' => [ [
+					'user' => [
+						'id' => $this->user->getId(),
+						'cid' => $centralUserId,
+					],
+				] ],
+			] ]
+		] );
+
+		$status = TestStorageHelper::saveJudgment( $title, $text, $this->user );
+		$this->assertTrue( $status->isOK() );
+	}
+
+	/**
+	 * Should be able to use suppressed users since we're only showing the ID.
+	 *
+	 * @covers JADE\JudgmentValidator::validateEndorsementUsers
+	 */
+	public function testValidateEndorsementUsers_suppressedCid() {
+		$centralUserId = CentralIdLookup::factory()->centralIdFromLocalUser( $this->user );
+
+		// Suppress username.
+		$block = new Block( [
+			'address' => $this->user->getName(),
+			'by' => $this->getTestSysop()->getUser()->getId(),
+			'hideName' => true,
+		] );
+		$block->insert();
+
+		list( $page, $revision ) = TestStorageHelper::createEntity( $this->user );
+		$title = "Diff/{$revision->getId()}";
+		$text = json_encode( [
+			'judgments' => [ [
+				'schema' => [
+					'damaging' => false,
+					'goodfaith' => true,
+				],
+				'preferred' => true,
+				'endorsements' => [ [
+					'user' => [
+						'id' => $this->user->getId(),
+						'cid' => $centralUserId,
+					],
+				] ],
+			] ]
+		] );
+
+		$status = TestStorageHelper::saveJudgment( $title, $text, $this->user );
+		$this->assertTrue( $status->isOK() );
+	}
+
+	/**
+	 * @covers JADE\JudgmentValidator::validateEndorsementUsers
+	 */
+	public function testValidateEndorsementUsers_badCid() {
+		// Provide a valid local user ID to be sure we're testing the cid.
+		$localUserId = $this->user->getId();
+
+		// Make sure the central user ID is wrong.
+		$centralUserId = mt_rand();
+
+		list( $page, $revision ) = TestStorageHelper::createEntity( $this->user );
+		$title = "Diff/{$revision->getId()}";
+		$text = json_encode( [
+			'judgments' => [ [
+				'schema' => [
+					'damaging' => false,
+					'goodfaith' => true,
+				],
+				'preferred' => true,
+				'endorsements' => [ [
+					'user' => [
+						'id' => $localUserId,
+						'cid' => $centralUserId,
+					],
+				] ],
+			] ]
+		] );
+
+		$status = TestStorageHelper::saveJudgment( $title, $text, $this->user );
+		$this->assertFalse( $status->isOK() );
+		$errors = $status->getErrors();
+		$this->assertCount( 1, $errors );
+		$this->assertEquals( 'jade-user-central-id-invalid', $errors[0]['message'] );
+	}
+
+	/**
+	 * Local and Global IDs are different users.
+	 *
+	 * @covers JADE\JudgmentValidator::validateEndorsementUsers
+	 */
+	public function testValidateEndorsementUsers_idMismatch() {
+		// Valid local user ID.
+		$localUserId = $this->user->getId();
+
+		// Different central user's ID.
+		$user2 = $this->getTestSysop()->getUser();
+		$centralUserId = CentralIdLookup::factory()->centralIdFromLocalUser( $user2 );
+
+		list( $page, $revision ) = TestStorageHelper::createEntity( $this->user );
+		$title = "Diff/{$revision->getId()}";
+		$text = json_encode( [
+			'judgments' => [ [
+				'schema' => [
+					'damaging' => false,
+					'goodfaith' => true,
+				],
+				'preferred' => true,
+				'endorsements' => [ [
+					'user' => [
+						'id' => $localUserId,
+						'cid' => $centralUserId,
+					],
+				] ],
+			] ]
+		] );
+
+		$status = TestStorageHelper::saveJudgment( $title, $text, $this->user );
+		$this->assertFalse( $status->isOK() );
+		$errors = $status->getErrors();
+		$this->assertCount( 1, $errors );
+		$this->assertEquals( 'jade-user-id-mismatch', $errors[0]['message'] );
 	}
 
 }

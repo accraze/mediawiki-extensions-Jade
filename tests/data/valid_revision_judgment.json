@@ -16,7 +16,14 @@
 			"schema": {
 				"contentquality": "GA"
 			},
-			"preferred": false
+			"preferred": false,
+			"endorsements": [
+				{
+					"user": {
+						"ip": "::1"
+					}
+				}
+			]
 		}
 	]
 }

@@ -20,7 +20,9 @@
 
 namespace JADE;
 
+use CentralIdLookup;
 use Config;
+use IP;
 use JsonSchema\Constraints\Constraint;
 use JsonSchema\Exception\ValidationException;
 use JsonSchema\Validator;
@@ -29,6 +31,7 @@ use Psr\Log\LoggerInterface;
 use RequestContext;
 use Status;
 use StatusValue;
+use User;
 use WikiPage;
 
 class JudgmentValidator {
@@ -69,6 +72,11 @@ class JudgmentValidator {
 	 */
 	public function validateJudgmentContent( $data ) {
 		$status = $this->validateBasicSchema( $data );
+		if ( !$status->isOK() ) {
+			return $status;
+		}
+
+		$status = $this->validateEndorsementUsers( $data );
 		if ( !$status->isOK() ) {
 			return $status;
 		}
@@ -164,6 +172,53 @@ class JudgmentValidator {
 						->commaList( $wgJadeArticleQualityScale );
 
 					return Status::newFatal( 'jade-bad-contentquality-value', $value, $scale );
+				}
+			}
+		}
+		return Status::newGood();
+	}
+
+	protected function validateEndorsementUsers( $data ) {
+		foreach ( $data->judgments as $judgment ) {
+			if ( !property_exists( $judgment, 'endorsements' ) ) {
+				// No endorsements, pass.
+				continue;
+			}
+
+			foreach ( $judgment->endorsements as $endorsement ) {
+				if ( property_exists( $endorsement->user, 'ip' ) ) {
+					// Check that the IP address is a real thing.
+					if ( !IP::isValid( $endorsement->user->ip ) ) {
+						return Status::newFatal( 'jade-user-ip-invalid', $endorsement->user->ip );
+					}
+				}
+
+				if ( property_exists( $endorsement->user, 'id' ) ) {
+					// Lookup by local user ID.
+					// TODO: Can be optimized by querying all users at once.
+					$localUsername = User::whoIs( intval( $endorsement->user->id ) );
+					if ( $localUsername === false ) {
+						// No such user.
+						return Status::newFatal( 'jade-user-local-id-invalid', $endorsement->user->id );
+					}
+				}
+
+				if ( property_exists( $endorsement->user, 'cid' ) ) {
+					// Lookup by central user ID.
+					$localUser = CentralIdLookup::factory()->localUserFromCentralId(
+						intval( $endorsement->user->cid ),
+						CentralIdLookup::AUDIENCE_RAW );
+					if ( $localUser === null ) {
+						// No such user.
+						return Status::newFatal( 'jade-user-central-id-invalid', $endorsement->user->cid );
+					}
+
+					// Check that the central and local users match.
+					if ( $localUser->getId() !== intval( $endorsement->user->id ) ) {
+						// IDs don't match.
+						return Status::newFatal(
+							'jade-user-id-mismatch', $endorsement->user->id, $endorsement->user->cid );
+					}
 				}
 			}
 		}

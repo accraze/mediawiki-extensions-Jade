@@ -21,8 +21,8 @@
 					"description": "Wikitext explaining why the user is endorsing"
 				},
 				"user": {
-					"type": "string",
-					"description": "Global user ID or an IP address"
+					"$ref": "#/definitions/user",
+					"description": "Endorsement author"
 				},
 				"origin": {
 					"type": "string",
@@ -101,6 +101,12 @@
 					"properties": {
 						"id": {
 							"type": "integer",
+							"description": "Local wiki ID for contributor.",
+							"minimum": 0
+						},
+						"cid": {
+							"type": "integer",
+							"description": "Central ID for contributor.",
 							"minimum": 0
 						}
 					},
@@ -111,7 +117,8 @@
 					"type": "object",
 					"properties": {
 						"ip": {
-							"type": "string"
+							"type": "string",
+							"description": "IP address (v4 or v6) for contributor."
 						}
 					},
 					"additionalProperties": false,

@@ -9,7 +9,7 @@
 			"endorsements": [
 				{
 					"user": {
-						"ip": "127.0.0.1"
+						"ip": "Abcdef"
 					},
 					"comment": "Sounds thorough to me.",
 					"origin": "test: ad-hoc tool"
