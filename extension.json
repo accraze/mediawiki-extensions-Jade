@@ -24,9 +24,6 @@
 			"name": "Judgment_talk"
 		}
 	],
-	"APIModules": {
-		"createjudgment": "JADE\\ApiCreateJudgment"
-	},
 	"APIListModules": {
 		"getjudgments": "JADE\\ApiGetJudgments"
 	},

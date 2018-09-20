@@ -6,11 +6,6 @@ use MediaWiki\MediaWikiServices;
 
 class JADEServices {
 
-	/** @return JudgmentAppendCreator */
-	public static function getAppendCreator() {
-		return MediaWikiServices::getInstance()->getService( 'JADEAppendCreator' );
-	}
-
 	/** @return PageFormatter */
 	public static function getJudgmentFormatter() {
 		return MediaWikiServices::getInstance()->getService( 'JADEJudgmentFormatter' );

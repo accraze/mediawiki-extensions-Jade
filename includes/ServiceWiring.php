@@ -8,13 +8,6 @@ use RequestContext;
 
 return [
 
-	'JADEAppendCreator' => function ( MediaWikiServices $services ) {
-		return new JudgmentAppendCreator(
-			JADEServices::getJudgmentFormatter(),
-			JADEServices::getEntityJudgmentSetStorage()
-		);
-	},
-
 	'JADEJudgmentFormatter' => function ( MediaWikiServices $services ) {
 		return new PageFormatter();
 	},
