@@ -85,12 +85,13 @@ class ApiGetJudgmentsTest extends ApiTestCase {
 			'ggjentityid' => $revision->getId(),
 			'prop' => 'revisions',
 			'rvprop' => 'content',
+			'rvslots' => '*',
 		] );
 		$this->assertNotEmpty( $result[0]['query']['pages'] );
 		$page = array_shift( $result[0]['query']['pages'] );
 		$this->assertNotEmpty( $page['revisions'] );
 		$revision = array_shift( $page['revisions'] );
-		$judgment = FormatJSON::decode( $revision['content'], true );
+		$judgment = FormatJSON::decode( $revision['slots']['main']['content'], true );
 		$this->assertSame( $existingJudgment, $judgment );
 	}
 

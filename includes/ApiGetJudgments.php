@@ -90,7 +90,7 @@ class ApiGetJudgments extends ApiQueryGeneratorBase {
 			'action=query&list=getjudgments&gjentitytype=diff&gjentityid=3'
 				=> 'apihelp-query+jade-getjudgments-list-example',
 			'action=query&generator=getjudgments&ggjentitytype=diff&ggjentityid=3&' .
-			'prop=revisions&rvprop=content'
+			'prop=revisions&rvprop=content&rvslots=*'
 				=> 'apihelp-query+jade-getjudgments-generator-example'
 		];
 	}
