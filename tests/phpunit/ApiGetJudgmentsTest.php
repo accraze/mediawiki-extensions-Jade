@@ -47,10 +47,11 @@ class ApiGetJudgmentsTest extends ApiTestCase {
 				] ],
 			],
 		];
-		TestStorageHelper::saveJudgment(
+		$success = TestStorageHelper::saveJudgment(
 			"Diff/{$revision->getId()}",
 			$existingJudgment
 		);
+		$this->assertTrue( $success );
 
 		$result = $this->doApiRequest( [
 			'action' => 'query',
@@ -73,10 +74,11 @@ class ApiGetJudgmentsTest extends ApiTestCase {
 				] ],
 			],
 		];
-		TestStorageHelper::saveJudgment(
+		$success = TestStorageHelper::saveJudgment(
 			"Diff/{$revision->getId()}",
 			$existingJudgment
 		);
+		$this->assertTrue( $success );
 
 		$result = $this->doApiRequest( [
 			'action' => 'query',

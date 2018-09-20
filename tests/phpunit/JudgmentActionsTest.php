@@ -49,6 +49,8 @@ class JudgmentActionsTest extends ApiTestCase {
 			$judgmentText,
 			'summary says'
 		);
+		$this->assertNotNull( $judgment['page'] );
+		$this->assertNotNull( $judgment['revision'] );
 	}
 
 	/**
@@ -70,6 +72,8 @@ class JudgmentActionsTest extends ApiTestCase {
 			$judgmentText,
 			'summary says'
 		);
+		$this->assertNotNull( $judgment['page'] );
+		$this->assertNotNull( $judgment['revision'] );
 
 		// Update the judgment.
 		$judgment2Text = file_get_contents( __DIR__ . '/' . self::REV_JUDGMENT_V2 );
@@ -79,6 +83,8 @@ class JudgmentActionsTest extends ApiTestCase {
 			$judgment2Text,
 			'summary says'
 		);
+		$this->assertNotNull( $judgment2['page'] );
+		$this->assertNotNull( $judgment2['revision'] );
 	}
 
 	public function testSuppressUnsuppressRevisionJudgment() {
@@ -158,6 +164,8 @@ class JudgmentActionsTest extends ApiTestCase {
 			'summary says',
 			false
 		);
+		$this->assertNull( $judgment['page'] );
+		$this->assertNull( $judgment['revision'] );
 	}
 
 	/**
@@ -179,6 +187,8 @@ class JudgmentActionsTest extends ApiTestCase {
 			'summary says',
 			false
 		);
+		$this->assertNull( $judgment['page'] );
+		$this->assertNull( $judgment['revision'] );
 	}
 
 	/**
@@ -200,6 +210,8 @@ class JudgmentActionsTest extends ApiTestCase {
 			'summary says',
 			false
 		);
+		$this->assertNull( $judgment['page'] );
+		$this->assertNull( $judgment['revision'] );
 	}
 
 }

@@ -1,6 +1,7 @@
 <?php
 namespace JADE\Tests;
 
+use AssertionError;
 use ContentHandler;
 use FormatJSON;
 use PHPUnit\Framework\Assert;
