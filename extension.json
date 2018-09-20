@@ -51,9 +51,6 @@
 					"damaging",
 					"goodfaith"
 				],
-				"page": [
-					"drafttopic"
-				],
 				"revision": [
 					"wp10"
 				]
@@ -62,7 +59,6 @@
 		"JadeEntityTypeNames": {
 			"value": {
 				"diff": "Diff",
-				"page": "Page",
 				"revision": "Revision"
 			}
 		}

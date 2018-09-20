@@ -16,7 +16,6 @@ use ApiTestCase;
 class JudgmentActionsTest extends ApiTestCase {
 	const REV_JUDGMENT_V1 = '../data/valid_revision_judgment.json';
 	const REV_JUDGMENT_V2 = '../data/valid_revision_judgment_v2.json';
-	const PAGE_JUDGMENT = '../data/valid_page_judgment.json';
 
 	public function setUp() {
 		// Needs to be before setup since this gets cached
@@ -155,28 +154,6 @@ class JudgmentActionsTest extends ApiTestCase {
 		$judgment = TestStorageHelper::makeEdit(
 			NS_JUDGMENT,
 			"Revision/{$bad_rev_id}",
-			$judgmentText,
-			'summary says',
-			false
-		);
-	}
-
-	/**
-	 * @covers JADE\JudgmentValidator::validatePageTitle
-	 */
-	public function testCreateJudgment_badTitlePageId() {
-		// Create target page.
-		$article = TestStorageHelper::makeEdit(
-			0, 'TestJudgmentActionsPage', 'abcdef', 'some summary' );
-		$page_id = $article['page']->getId();
-		$rev_id = $article['revision']->getId();
-
-		// Create revision judgment.
-		$judgmentText = file_get_contents( __DIR__ . '/' . self::PAGE_JUDGMENT );
-		$bad_page_id = $page_id + 1;
-		$judgment = TestStorageHelper::makeEdit(
-			NS_JUDGMENT,
-			"Page/{$bad_page_id}",
 			$judgmentText,
 			'summary says',
 			false

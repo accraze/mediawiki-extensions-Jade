@@ -55,7 +55,6 @@ class JudgmentValidatorTest extends MediaWikiTestCase {
 
 	public function provideValidJudgments() {
 		yield [ 'valid_diff_judgment.json', 'diff' ];
-		yield [ 'valid_page_judgment.json', 'page' ];
 		yield [ 'valid_revision_judgment.json', 'revision' ];
 	}
 

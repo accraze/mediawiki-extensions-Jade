@@ -13,12 +13,6 @@
                         "$ref": "#/definitions/judgment/damaging"
                     }
                 },
-                "drafttopic": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/judgment/drafttopic"
-                    }
-                },
                 "goodfaith": {
                     "type": "array",
                     "items": {
@@ -81,23 +75,6 @@
                         "type": "object",
                         "properties": {
                             "data": { "type": "boolean" }
-                        }
-                    }
-                ]
-            },
-            "drafttopic": {
-                "allOf": [
-                    { "$ref": "#/definitions/judgment/common" },
-                    {
-                        "type": "object",
-                        "properties": {
-                            "data": {
-                                "description": "List of topics.",
-                                "type": "array",
-                                "items": {
-                                    "type": "string"
-                                }
-                            }
                         }
                     }
                 ]
