@@ -59,7 +59,7 @@ class ApiGetJudgmentsTest extends ApiTestCase {
 			'gjentityid' => $revision->getId(),
 		] );
 		$this->assertSame(
-			[ [ 'ns' => NS_JADE, 'title' => "Judgment:Diff/{$revision->getId()}" ] ],
+			[ [ 'ns' => NS_JUDGMENT, 'title' => "Judgment:Diff/{$revision->getId()}" ] ],
 			$result[0]['query']['getjudgments']
 		);
 	}

@@ -177,7 +177,7 @@ class ApiCreateJudgmentTest extends ApiTestCase {
 		$this->setMwGlobals( [
 			// Parodoxical, nonexistent permission prevents editing.
 			'wgNamespaceProtection' => [
-				NS_JADE => 'everyone'
+				NS_JUDGMENT => 'everyone'
 			]
 		] );
 		RequestContext::resetMain();
@@ -218,7 +218,7 @@ class ApiCreateJudgmentTest extends ApiTestCase {
 	}
 
 	public function loadJadePage( $titleText ) {
-		$title = Title::makeTitle( NS_JADE, $titleText );
+		$title = Title::makeTitle( NS_JUDGMENT, $titleText );
 		$page = WikiPage::factory( $title );
 		$content = $page->getContent();
 		if ( $content === null ) {

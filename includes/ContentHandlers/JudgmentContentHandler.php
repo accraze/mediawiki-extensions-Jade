@@ -16,7 +16,7 @@ class JudgmentContentHandler extends JsonContentHandler {
 	}
 
 	public function canBeUsedOn( Title $title ) {
-		return $title->inNamespace( NS_JADE );
+		return $title->inNamespace( NS_JUDGMENT );
 	}
 
 }

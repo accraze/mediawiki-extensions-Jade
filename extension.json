@@ -14,13 +14,13 @@
 	"namespaces": [
 		{
 			"id": 810,
-			"constant": "NS_JADE",
+			"constant": "NS_JUDGMENT",
 			"name": "Judgment",
 			"defaultcontentmodel": "JadeJudgment"
 		},
 		{
 			"id": 811,
-			"constant": "NS_JADE_TALK",
+			"constant": "NS_JUDGMENT_TALK",
 			"name": "Judgment_talk"
 		}
 	],
