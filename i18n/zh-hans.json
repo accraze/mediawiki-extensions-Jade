@@ -2,9 +2,12 @@
 	"@metadata": {
 		"authors": [
 			"Liuxinyu970226",
-			"Endermoon"
+			"Endermoon",
+			"夢蝶葬花"
 		]
 	},
+	"apihelp-createjudgment-param-summary": "可选的编辑摘要。",
+	"apihelp-createjudgment-param-tags": "可选的更改标记以应用于判断。",
 	"jade-desc": "判断和会话引擎",
 	"jade-damaging": "有害",
 	"jade-notdamaging": "无害",
