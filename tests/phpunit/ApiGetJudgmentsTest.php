@@ -45,6 +45,7 @@ class ApiGetJudgmentsTest extends ApiTestCase {
 				'schema' => [
 					'damaging' => false,
 				],
+				'preferred' => true,
 			] ],
 		];
 		$success = TestStorageHelper::saveJudgment(
@@ -72,6 +73,7 @@ class ApiGetJudgmentsTest extends ApiTestCase {
 				'schema' => [
 					'damaging' => false,
 				],
+				'preferred' => true,
 			] ],
 		];
 		$success = TestStorageHelper::saveJudgment(

@@ -97,30 +97,22 @@ class JudgmentValidator {
 	}
 
 	/**
-	 * Check that at most one judgment per schema has "preferred: true".
+	 * Check that exactly one judgment is preferred.
 	 *
 	 * @throws InvalidArgumentException
 	 *
 	 * @param object $data Data structure to validate.
 	 */
 	protected function validatePreferred( $data ) {
-		$hasPreferred = [];
-
+		$preferredCount = 0;
 		foreach ( $data->judgments as $judgment ) {
-			if ( !property_exists( $judgment, 'preferred' ) || !$judgment->preferred ) {
-				// TODO: Add business logic to enforce exactly one preferred
-				// judgment.  This currently allows for zero preferred.
-				continue;
+			if ( $judgment->preferred ?? false ) {
+				$preferredCount++;
 			}
-
-			foreach ( $judgment->schema as $schemaName => $value ) {
-				if ( in_array( $schemaName, $hasPreferred ) ) {
-					throw new InvalidArgumentException(
-						"Too many preferred judgments in {$schemaName}" );
-				}
-
-				$hasPreferred[] = $schemaName;
-			}
+		}
+		if ( $preferredCount !== 1 ) {
+			throw new InvalidArgumentException(
+				"There must be exactly one preferred judgment." );
 		}
 	}
 

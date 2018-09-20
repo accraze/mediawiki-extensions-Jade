@@ -3,7 +3,8 @@
         {
             "schema": {
                 "articlequality": "FA"
-            }
+            },
+            "preferred": true
         }
     ]
 }

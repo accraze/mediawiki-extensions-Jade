@@ -71,6 +71,7 @@
                 }
             },
             "required": [
+                "preferred",
                 "schema"
             ],
             "additionalProperties": false

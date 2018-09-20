@@ -2,13 +2,14 @@
     "judgments": [
         {
             "schema": {
-                "articlequality": "C"
+                "goodfaith": true,
+                "damaging": true
             },
             "preferred": true
         },
         {
             "schema": {
-                "articlequality": "B"
+                "damaging": true
             },
             "preferred": true
         }

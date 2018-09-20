@@ -4,6 +4,7 @@
             "schema": {
                 "damaging": true
             },
+            "preferred": true,
             "nothing": "extra"
         }
     ]

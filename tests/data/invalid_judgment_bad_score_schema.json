@@ -3,7 +3,8 @@
         {
             "schema": {
                 "foo": true
-            }
+            },
+            "preferred": true
         }
     ]
 }

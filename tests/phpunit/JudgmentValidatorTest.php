@@ -45,6 +45,7 @@ class JudgmentValidatorTest extends MediaWikiTestCase {
 		yield [ 'invalid_judgment_additional_properties.json' ];
 		yield [ 'invalid_judgment_additional_properties2.json' ];
 		yield [ 'invalid_judgment_additional_properties3.json' ];
+		yield [ 'invalid_judgment_none_preferred.json' ];
 		yield [ 'invalid_judgment_two_preferred.json' ];
 	}
 

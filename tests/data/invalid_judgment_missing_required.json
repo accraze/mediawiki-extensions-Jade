@@ -1,7 +1,8 @@
 {
     "judgments": [
         {
-            "notes": "no data"
+            "notes": "no data",
+            "preferred": true
         }
     ]
 }

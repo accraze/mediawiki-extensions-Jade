@@ -12,7 +12,8 @@
                     "comment": "Sounds thorough to me.",
                     "origin": "test: ad-hoc tool"
                 }
-            ]
+            ],
+            "preferred": true
         }
     ]
 }

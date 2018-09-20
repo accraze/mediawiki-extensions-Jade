@@ -3,7 +3,8 @@
         {
             "schema": {
                 "damaging": "grey"
-            }
+            },
+            "preferred": true
         }
     ]
 }
