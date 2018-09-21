@@ -1,17 +1,20 @@
 <?php
 namespace JADE\Tests;
 
+use FormatJson;
+use JADE\JADEServices;
 use MediaWikiTestCase;
 use Revision;
+use StatusValue;
 use WikiPage;
-
-use JADE\ContentHandlers\JudgmentContent;
 
 const DATA_DIR = '../data';
 
 /**
  * @group JADE
  * @group Database
+ *
+ * TODO: assert that we're getting the specific, expected error.
  *
  * @covers JADE\JudgmentValidator
  */
@@ -38,18 +41,18 @@ class JudgmentValidatorTest extends MediaWikiTestCase {
 	}
 
 	public function provideInvalidSchemaContent() {
-		yield [ 'invalid_judgment_missing_required.json' ];
-		yield [ 'invalid_judgment_bad_json.notjson' ];
-		yield [ 'invalid_judgment_bad_score_data.json' ];
-		yield [ 'invalid_judgment_bad_score_schema.json' ];
-		yield [ 'invalid_judgment_additional_properties.json' ];
-		yield [ 'invalid_judgment_additional_properties2.json' ];
-		yield [ 'invalid_judgment_additional_properties3.json' ];
-		yield [ 'invalid_judgment_none_preferred.json' ];
-		yield [ 'invalid_judgment_two_preferred.json' ];
+		yield [ 'invalid_judgment_missing_required.json', 'jade-bad-content' ];
+		yield [ 'invalid_judgment_bad_json.notjson', 'jade-bad-content' ];
+		yield [ 'invalid_judgment_bad_score_data.json', 'jade-bad-content' ];
+		yield [ 'invalid_judgment_bad_score_schema.json', 'jade-bad-content' ];
+		yield [ 'invalid_judgment_additional_properties.json', 'jade-bad-content' ];
+		yield [ 'invalid_judgment_additional_properties2.json', 'jade-bad-content' ];
+		yield [ 'invalid_judgment_additional_properties3.json', 'jade-bad-content' ];
+		yield [ 'invalid_judgment_none_preferred.json', 'jade-none-preferred' ];
+		yield [ 'invalid_judgment_two_preferred.json', 'jade-too-many-preferred' ];
 	}
 
-	// Will be invalid only when we know the page title.
+	// These cases have scoring schemas which aren't allowed for the page title.
 	public function provideInvalidWithType() {
 		yield [ 'invalid_judgment_disallowed_score_schema.json', 'diff' ];
 	}
@@ -69,11 +72,25 @@ class JudgmentValidatorTest extends MediaWikiTestCase {
 	 * @covers JADE\JudgmentValidator::validateJudgmentContent
 	 * @covers JADE\JudgmentValidator::validatePreferred
 	 */
-	public function testInvalidSchemaContent( $path ) {
+	public function testInvalidSchemaContent( $path, $expectedError ) {
+		$status = $this->runValidation( $path );
+
+		$this->assertFalse( $status->isOK() );
+		$errors = $status->getErrors();
+		$this->assertEquals( 1, count( $errors ) );
+		$this->assertEquals( $expectedError, $errors[0]['message'] );
+	}
+
+	/**
+	 * @param string $path JSON file with judgment page content to validate.
+	 * @return StatusValue validation success or errors.
+	 */
+	protected function runValidation( $path ) {
 		$text = file_get_contents( __DIR__ . '/' . DATA_DIR . '/' . $path );
 
-		$obj = new JudgmentContent( $text );
-		$this->assertEquals( false, $obj->isValid() );
+		$validator = JADEServices::getJudgmentValidator();
+		$data = FormatJson::decode( $text );
+		return $validator->validateJudgmentContent( $data );
 	}
 
 	/**
@@ -87,10 +104,8 @@ class JudgmentValidatorTest extends MediaWikiTestCase {
 	 * @covers JADE\JudgmentValidator::validatePreferred
 	 */
 	public function testValidateJudgmentContent( $path ) {
-		$text = file_get_contents( __DIR__ . '/' . DATA_DIR . '/' . $path );
-
-		$obj = new JudgmentContent( $text );
-		$this->assertEquals( true, $obj->isValid() );
+		$status = $this->runValidation( $path );
+		$this->assertTrue( $status->isOK() );
 	}
 
 	/**
@@ -107,8 +122,8 @@ class JudgmentValidatorTest extends MediaWikiTestCase {
 		$title = "{$ucType}/{$revision->getId()}";
 		$text = file_get_contents( __DIR__ . '/' . DATA_DIR . '/' . $path );
 
-		$success = TestStorageHelper::saveJudgment( $title, $text, $this->user );
-		$this->assertTrue( $success );
+		$status = TestStorageHelper::saveJudgment( $title, $text, $this->user );
+		$this->assertTrue( $status->isOK() );
 	}
 
 	/**
@@ -116,7 +131,7 @@ class JudgmentValidatorTest extends MediaWikiTestCase {
 	 *
 	 * @param string $path Path to test fixture, relative to the test data
 	 * directory.
-	 * @param string $type Entity type (ignored here)
+	 * @param string $type Entity type
 	 *
 	 * @covers JADE\JudgmentValidator::validateEntity
 	 * @covers JADE\JudgmentValidator::validateEntitySchema
@@ -136,8 +151,11 @@ class JudgmentValidatorTest extends MediaWikiTestCase {
 		}
 		$text = file_get_contents( __DIR__ . '/' . DATA_DIR . '/' . $path );
 
-		$success = TestStorageHelper::saveJudgment( $title, $text, $this->user );
-		$this->assertFalse( $success );
+		$status = TestStorageHelper::saveJudgment( $title, $text, $this->user );
+		$this->assertFalse( $status->isOK() );
+		$errors = $status->getErrors();
+		$this->assertEquals( 1, count( $errors ) );
+		$this->assertEquals( 'jade-illegal-schema', $errors[0]['message'] );
 	}
 
 	/**
@@ -149,8 +167,11 @@ class JudgmentValidatorTest extends MediaWikiTestCase {
 		$title = "Revision/{$revision->getId()}/foo";
 		$text = file_get_contents( __DIR__ . '/' . DATA_DIR . '/valid_revision_judgment.json' );
 
-		$success = TestStorageHelper::saveJudgment( $title, $text, $this->user );
-		$this->assertFalse( $success );
+		$status = TestStorageHelper::saveJudgment( $title, $text, $this->user );
+		$this->assertFalse( $status->isOK() );
+		$errors = $status->getErrors();
+		$this->assertEquals( 1, count( $errors ) );
+		$this->assertEquals( 'jade-bad-title-format', $errors[0]['message'] );
 	}
 
 	/**
@@ -158,11 +179,29 @@ class JudgmentValidatorTest extends MediaWikiTestCase {
 	 * @covers JADE\JudgmentValidator::validatePageTitle
 	 */
 	public function testValidatePageTitle_invalidShort() {
-		$title = 'Revision/';
+		$title = 'Revision';
 		$text = file_get_contents( __DIR__ . '/' . DATA_DIR . '/valid_diff_judgment.json' );
 
-		$success = TestStorageHelper::saveJudgment( $title, $text, $this->user );
-		$this->assertFalse( $success );
+		$status = TestStorageHelper::saveJudgment( $title, $text, $this->user );
+		$this->assertFalse( $status->isOK() );
+		$errors = $status->getErrors();
+		$this->assertEquals( 1, count( $errors ) );
+		$this->assertEquals( 'jade-bad-title-format', $errors[0]['message'] );
+	}
+
+	/**
+	 * @covers JADE\JudgmentValidator::validatePageTitle
+	 */
+	public function testValidatePageTitle_invalidRevision() {
+		// A revision that will "never" exist.  We don't create an entity for this test.
+		$title = 'Revision/999999999';
+		$text = file_get_contents( __DIR__ . '/' . DATA_DIR . '/valid_diff_judgment.json' );
+
+		$status = TestStorageHelper::saveJudgment( $title, $text, $this->user );
+		$this->assertFalse( $status->isOK() );
+		$errors = $status->getErrors();
+		$this->assertEquals( 1, count( $errors ) );
+		$this->assertEquals( 'jade-bad-revision-id', $errors[0]['message'] );
 	}
 
 }

@@ -2,8 +2,6 @@
 
 namespace JADE;
 
-use MWException;
-
 interface EntityJudgmentSetStorage {
 
 	/**
@@ -19,7 +17,7 @@ interface EntityJudgmentSetStorage {
 	 * @param string $summary Edit summary.
 	 * @param array $tags Optional list of change tags to set on the revision being created.
 	 *
-	 * @throws MWException
+	 * @return StatusValue isOK if stored successfully.
 	 */
 	public function storeJudgmentSet( $entityType, $entityId, $judgmentSet, $summary, $tags );
 
@@ -27,9 +25,8 @@ interface EntityJudgmentSetStorage {
 	 * @param string $entityType Name of wiki entity type, in lowercase.
 	 * @param int $entityId Page ID or Revision ID of the entity.
 	 *
-	 * FIXME: gross side-effect.return signature
-	 * @return array [ WikiPage $page, array $judgmentSet ]
-	 * $judgmentSet contains All judgments for this entity.
+	 * @return StatusValue with array value containing all judgments for this
+	 *         entity.
 	 */
 	public function loadJudgmentSet( $entityType, $entityId );
 

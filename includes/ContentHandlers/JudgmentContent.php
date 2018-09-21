@@ -34,17 +34,18 @@ class JudgmentContent extends JsonContent {
 	 * @see Content::prepareSave
 	 */
 	public function prepareSave( WikiPage $page, $flags, $parentRevId, User $user ) {
-		$status = parent::prepareSave( $page, $flags, $parentRevId, $user );
+		// Note that we don't call the parent because isValid() is redundant
+		// here.  This may change if additional tests or side-effects are added to
+		// AbstractContent::prepareSave in the future.
 
-		if ( $status->isOK() ) {
-			$validator = JADEServices::getJudgmentValidator();
-			$data = $this->getData()->getValue();
-			if ( !$validator->validatePageTitle( $page, $data ) ) {
-				return Status::newFatal( 'invalid-content-data' );
-			}
+		$data = $this->getData()->getValue();
+		$status = $this->validateContent( $data );
+		if ( !$status->isOK() ) {
+			return $status;
 		}
 
-		return $status;
+		$validator = JADEServices::getJudgmentValidator();
+		return $validator->validatePageTitle( $page, $data );
 	}
 
 	/**
@@ -55,13 +56,23 @@ class JudgmentContent extends JsonContent {
 	 * @see Content::isValid
 	 */
 	public function isValid() {
+		$status = $this->validateContent();
+		return $status->isOK();
+	}
+
+	/**
+	 * Use instead of isValid() when you care about the specific validation errors.
+	 *
+	 * @return StatusValue isOK if valid.
+	 */
+	public function validateContent() {
 		if ( !parent::isValid() ) {
-			return false;
+			return Status::newfatal( 'jade-bad-content-generic' );
 		}
 
 		// Special case to allow for empty content when first creating a page.
 		if ( $this->isEmpty() ) {
-			return true;
+			return Status::newGood();
 		}
 
 		$data = $this->getData()->getValue();

@@ -4,7 +4,6 @@ namespace JADE;
 
 use ChangeTags;
 use FormatJson;
-use MWException;
 use WikiPage;
 
 use JADE\ContentHandlers\JudgmentContent;
@@ -22,29 +21,33 @@ class PageEntityJudgmentSetStorage implements EntityJudgmentSetStorage {
 	 * @param string $summary Edit summary.
 	 * @param array $tags Optional list of change tags to set on the revision being created.
 	 *
-	 * @throws MWException The edit could not be made.
+	 * @return StatusValue isOK if the edit was successful.
 	 */
 	public function storeJudgmentSet( $entityType, $entityId, $judgmentSet, $summary, $tags ) {
 		global $wgUser;
 
-		$title = TitleHelper::buildJadeTitle( $entityType, $entityId );
+		$status = TitleHelper::buildJadeTitle( $entityType, $entityId );
+		if ( !$status->isOK() ) {
+			return $status;
+		}
+		$title = $status->value;
 		$page = WikiPage::factory( $title );
 
 		// TODO: Why aren't these permissions checks already handled by
 		// doEditContent?
 		if ( !$page->exists() ) {
 			if ( !$page->getTitle()->userCan( 'create', $wgUser ) ) {
-				throw new MWException( 'You cannot create this page.' );
+				return Status::newFatal( 'jade-cannot-create-page' );
 			}
 		}
 		// `edit` contains checks not present in `create`, do those as well.
 		if ( !$page->getTitle()->userCan( 'edit', $wgUser ) ) {
-			throw new MWException( 'You cannot edit this page.' );
+			return Status::newFatal( 'jade-cannot-edit-page' );
 		}
 		if ( count( $tags ) > 0 ) {
 			$status = ChangeTags::canAddTagsAccompanyingChange( $tags, $wgUser );
 			if ( !$status->isOK() ) {
-				throw new MWException( 'User cannot add requested tags: ' . $status->getHTML() );
+				return $status;
 			}
 		}
 
@@ -53,7 +56,7 @@ class PageEntityJudgmentSetStorage implements EntityJudgmentSetStorage {
 		$content = new JudgmentContent( $judgmentText );
 
 		// TODO: Migrate to use the PageUpdater API once it matures.
-		$status = $page->doEditContent(
+		return $page->doEditContent(
 			$content,
 			$summary,
 			0,
@@ -62,21 +65,21 @@ class PageEntityJudgmentSetStorage implements EntityJudgmentSetStorage {
 			null,
 			$tags
 		);
-		if ( !$status->isOK() ) {
-			throw new MWException( 'Failed to store judgment: ' . $status->getMessage() );
-		}
 	}
 
 	/**
 	 * @param string $entityType Name of wiki entity type, in lowercase.
 	 * @param int $entityId Page ID or Revision ID of the entity.
 	 *
-	 * FIXME: gross side-effect.return signature
-	 * @return array [ WikiPage $page, array $judgmentSet ]
-	 * $judgmentSet contains All judgments for this entity.
+	 * @return StatusValue with array value containing all judgments for this
+	 *         entity.
 	 */
 	public function loadJudgmentSet( $entityType, $entityId ) {
-		$title = TitleHelper::buildJadeTitle( $entityType, $entityId );
+		$status = TitleHelper::buildJadeTitle( $entityType, $entityId );
+		if ( !$status->isOK() ) {
+			return $status;
+		}
+		$title = $status->value;
 		$page = WikiPage::factory( $title );
 
 		$currentContent = $page->getContent();
@@ -86,7 +89,7 @@ class PageEntityJudgmentSetStorage implements EntityJudgmentSetStorage {
 		} else {
 			$currentJudgment = [];
 		}
-		return [ $page, $currentJudgment ];
+		return Status::newGood( $currentJudgment );
 	}
 
 }

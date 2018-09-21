@@ -26,5 +26,16 @@
 	"jade-new-judgment": "New judgment",
 	"jade-add-judgment": "Add judgment",
 	"jade-notes-placeholder": "Notes about the judgment",
-	"jade-delete": "Delete"
+	"jade-delete": "Delete",
+	"jade-bad-title-format": "Invalid title format",
+	"jade-bad-entity-type": "Invalid entity type ''$1''",
+	"jade-bad-revision-id": "Cannot find revision by ID: ''$1''",
+	"jade-bad-content-generic": "Syntax errors in JSON content.",
+	"jade-bad-content": "Judgment doesn't conform to schema: $1",
+	"jade-too-many-preferred": "Multiple judgments preferred, but there can be only one.",
+	"jade-none-preferred": "No judgments are preferred, but there must be a chosen one.",
+	"jade-illegal-schema": "Schema ''$1'' not allowed for this entity type.",
+	"jade-bad-articlequality-value": "Bad value ''$1'' for articlequality schema, possible values are: $2",
+	"jade-cannot-create-page": "You cannot create this page.",
+	"jade-cannot-edit-page": "You cannot edit this page."
 }

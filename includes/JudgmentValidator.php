@@ -3,12 +3,13 @@
 namespace JADE;
 
 use Config;
-use InvalidArgumentException;
 use JsonSchema\Constraints\Constraint;
 use JsonSchema\Exception\ValidationException;
 use JsonSchema\Validator;
 use MediaWiki\Storage\RevisionStore;
 use Psr\Log\LoggerInterface;
+use Status;
+use StatusValue;
 use WikiPage;
 
 class JudgmentValidator {
@@ -41,45 +42,34 @@ class JudgmentValidator {
 	 *
 	 * @param object $data Data structure to validate.
 	 *
-	 * @return bool True if the content is valid.
+	 * @return StatusValue isOK if the content is valid.
 	 */
 	public function validateJudgmentContent( $data ) {
-		try {
-			$this->validateBasicSchema( $data );
-			$this->validatePreferred( $data );
-
-			return true;
-		} catch ( ValidationException $ex ) {
-			$this->logger->info(
-				"Judgment doesn't conform to schema: {$ex->getMessage()}" );
-
-			return false;
-		} catch ( InvalidArgumentException $ex ) {
-			$this->logger->info( "Invalid judgment: {$ex->getMessage()}" );
-
-			return false;
+		$status = $this->validateBasicSchema( $data );
+		if ( !$status->isOK() ) {
+			return $status;
 		}
+		return $this->validatePreferred( $data );
 	}
 
 	/**
 	 * Ensure that the general judgment schema is followed.
 	 *
-	 * @throws ValidationException
-	 *
 	 * @param object $data Data structure to validate.
+	 *
+	 * @return StatusValue isOK?
 	 */
 	protected function validateBasicSchema( $data ) {
-		$this->validateAgainstSchema( $data, __DIR__ . self::JUDGMENT_SCHEMA );
+		return $this->validateAgainstSchema( $data, __DIR__ . self::JUDGMENT_SCHEMA );
 	}
 
 	/**
 	 * Ensure that the score schemas are allowed by configuration.
 	 *
-	 * @throws ValidationException
-	 * @throws InvalidArgumentException
-	 *
 	 * @param string $entityType Machine name for entity type.
 	 * @param object $data Data structure to validate.
+	 *
+	 * @return StatusValue isOK if valid.
 	 */
 	protected function validateEntitySchema( $entityType, $data ) {
 		$allowedScoringSchemas = $this->config->get( 'JadeAllowedScoringSchemas' );
@@ -89,19 +79,19 @@ class JudgmentValidator {
 			foreach ( $judgment->schema as $schemaName => $value ) {
 				// Schema must be allowed.
 				if ( !in_array( $schemaName, $entityAllowedSchemas ) ) {
-					throw new InvalidArgumentException(
-						"Scoring schema not allowed: {$schemaName}" );
+					return Status::newFatal( 'jade-illegal-schema', $schemaName );
 				}
 			}
 		}
+		return Status::newGood();
 	}
 
 	/**
 	 * Check that exactly one judgment is preferred.
 	 *
-	 * @throws InvalidArgumentException
-	 *
 	 * @param object $data Data structure to validate.
+	 *
+	 * @return StatusValue isOK if valid.
 	 */
 	protected function validatePreferred( $data ) {
 		$preferredCount = 0;
@@ -110,67 +100,72 @@ class JudgmentValidator {
 				$preferredCount++;
 			}
 		}
-		if ( $preferredCount !== 1 ) {
-			throw new InvalidArgumentException(
-				"There must be exactly one preferred judgment." );
+		if ( $preferredCount < 1 ) {
+			return Status::newFatal( 'jade-none-preferred' );
 		}
+		if ( $preferredCount > 1 ) {
+			return Status::newFatal( 'jade-too-many-preferred' );
+		}
+
+		return Status::newGood();
 	}
 
 	/**
 	 * Ensure that we're judging a real entity.
 	 *
-	 * @throws InvalidArgumentException
-	 *
 	 * @param string $type Entity type
 	 * @param int $id Entity ID
+	 *
+	 * @return StatusValue results of validation.
 	 */
 	protected function validateEntity( $type, $id ) {
-		if ( $type === 'diff' || $type === 'revision' ) {
-			// Find Revision.
-			$revision = $this->revisionStore->getRevisionById( $id );
-			if ( $revision === null ) {
-				throw new InvalidArgumentException(
-					"Cannot find page by ID: {$id}" );
-			}
-		} else {
-			// This is unreachable, but blow up just in case.
-			throw new InvalidArgumentException(
-				"Unknown entity type {$type}" );
+		switch ( $type ) {
+			case 'diff':
+			case 'revision':
+				// Find Revision.
+				$revision = $this->revisionStore->getRevisionById( $id );
+				if ( $revision === null ) {
+					return Status::newFatal( 'jade-bad-revision-id', $id );
+				}
+				break;
+			default:
+				// This is unreachable, but blow up just in case.
+				return Status::newFatal( 'jade-bad-entity-type', $type );
 		}
+		return Status::newGood();
 	}
 
 	/**
-	 * Ensure that the page title is consistent with the judgment content.
+	 * Ensure that the page title is allowed, the entity exists, and that
+	 * judgment schemas match the entity type.
 	 *
 	 * @param WikiPage $page Page in which we're trying to store this judgment.
 	 * @param object $judgment Judgment data to validate against.
 	 *
-	 * @return bool True if the page is valid.
+	 * @return StatusValue isOK if the page is valid, or fatal and the error message if invalid.
 	 */
 	public function validatePageTitle( WikiPage $page, $judgment ) {
-		try {
-			$title = $page->getTitle();
-			$titleText = $title->getDBkey();
+		$title = $page->getTitle();
+		$titleText = $title->getDBkey();
 
-			list( $type, $id ) = $this->parseAndValidateTitle( $titleText );
-
-			$this->validateEntity( $type, $id );
-			$this->validateEntitySchema( $type, $judgment );
-
-			return true;
-		} catch ( InvalidArgumentException $ex ) {
-			$this->logger->info( "Invalid judgment page title: {$ex->getMessage()}" );
-
-			return false;
+		$status = $this->parseAndValidateTitle( $titleText );
+		if ( !$status->isOK() ) {
+			return $status;
 		}
+		$type = $status->value['entityType'];
+		$id = $status->value['entityId'];
+
+		$status = $this->validateEntity( $type, $id );
+		if ( !$status->isOK() ) {
+			return $status;
+		}
+		return $this->validateEntitySchema( $type, $judgment );
 	}
 
 	/**
 	 * @param string $title Title that must match judgment.
 	 *
-	 * @return array [ machine name for entity type, entity id ]
-	 *
-	 * @throws InvalidArgumentException
+	 * @return StatusValue $out->value is an array with keys `entityType` and `entityId`.
 	 */
 	protected function parseAndValidateTitle( $title ) {
 		global $wgJadeEntityTypeNames;
@@ -178,37 +173,47 @@ class JudgmentValidator {
 		$titleParts = explode( '/', $title );
 
 		if ( count( $titleParts ) !== 2 ) {
-			throw new InvalidArgumentException( "Wrong title format" );
+			return Status::newFatal( 'jade-bad-title-format' );
 		}
 		list( $type, $id ) = $titleParts;
 
 		$normalizedType = array_search( $type, $wgJadeEntityTypeNames, true );
 		if ( $normalizedType === false ) {
-			throw new InvalidArgumentException( "Bad entity type: {$type}" );
+			return Status::newFatal( 'jade-bad-entity-type', $type );
 		}
 
-		return [ $normalizedType, $id ];
+		return Status::newGood( [
+			'entityType' => $normalizedType,
+			'entityId' => $id,
+		] );
 	}
 
 	/**
 	 * Helper for comparing data against a JSON schema.  See
 	 * http://json-schema.org
 	 *
-	 * @throws ValidationException
-	 *
 	 * @param object $data Data structure to validate.
 	 * @param string $schemaPath Relative path to the schema we should use to
 	 * validate.
+	 *
+	 * @return StatusValue isOK if valid.
 	 */
 	protected function validateAgainstSchema( $data, $schemaPath ) {
 		$schemaDoc = (object)[ '$ref' => 'file://' . realpath( $schemaPath ) ];
 
 		$validator = new Validator;
-		$validator->validate(
-			$data,
-			$schemaDoc,
-			Constraint::CHECK_MODE_EXCEPTIONS
-		);
+		try {
+			$validator->validate(
+				$data,
+				$schemaDoc,
+				Constraint::CHECK_MODE_EXCEPTIONS
+			);
+			return Status::newGood();
+		} catch ( ValidationException $ex ) {
+			// FIXME: English-only errors from justinrainbow!  Look into
+			// EventLogging JSON validation for error i18n.
+			return Status::newFatal( 'jade-bad-content', $ex->getMessage() );
+		}
 	}
 
 }

@@ -1,18 +1,20 @@
 <?php
 namespace JADE;
 
-use MWException;
+use Status;
+use StatusValue;
 use Title;
 
 class TitleHelper {
 
 	/**
+	 * Build Title object for the judgment page on an entity.
+	 *
 	 * @param string $entityType Machine name of entity type.
 	 * @param int $entityId Entity ID.
 	 *
-	 * @return Title Where to find a judgment about the given entity.
-	 *
-	 * @throws MWException
+	 * @return StatusValue value set to a Title where the judgment about the
+	 *         given entity can be stored.
 	 */
 	public static function buildJadeTitle( $entityType, $entityId ) {
 		global $wgJadeEntityTypeNames;
@@ -20,14 +22,15 @@ class TitleHelper {
 		$entityType = strtolower( $entityType );
 		// Get localized title component.
 		if ( !array_key_exists( $entityType, $wgJadeEntityTypeNames ) ) {
-			throw new MWException( "Invalid entity type: {$entityType}" );
+			return Status::newFatal( 'jade-bad-entity-type', $entityType );
 		}
 		$localTitle = $wgJadeEntityTypeNames[$entityType];
 
-		return Title::makeTitle(
+		$title = Title::makeTitle(
 			NS_JUDGMENT,
 			"{$localTitle}/{$entityId}"
 		);
+		return Status::newGood( $title );
 	}
 
 }

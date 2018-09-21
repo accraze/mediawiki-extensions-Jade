@@ -78,15 +78,13 @@ class TestStorageHelper {
 		$title = Title::newFromLinkTarget( $editTarget );
 		$summary = 'Test edit';
 		$page = WikiPage::factory( $title );
-		$status = $page->doEditContent(
+		return $page->doEditContent(
 			ContentHandler::makeContent( $text, $title ),
 			$summary,
 			0,
 			false,
 			$user
 		);
-
-		return $status->isGood();
 	}
 
 	/**
