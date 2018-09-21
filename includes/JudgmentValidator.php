@@ -26,6 +26,7 @@ use JsonSchema\Exception\ValidationException;
 use JsonSchema\Validator;
 use MediaWiki\Storage\RevisionStore;
 use Psr\Log\LoggerInterface;
+use RequestContext;
 use Status;
 use StatusValue;
 use WikiPage;
@@ -71,6 +72,12 @@ class JudgmentValidator {
 		if ( !$status->isOK() ) {
 			return $status;
 		}
+
+		$status = $this->validateArticleQualityScale( $data );
+		if ( !$status->isOK() ) {
+			return $status;
+		}
+
 		return $this->validatePreferred( $data );
 	}
 
@@ -131,6 +138,40 @@ class JudgmentValidator {
 
 		return Status::newGood();
 	}
+
+	/**
+	 * Special handling for the articlequality scale, as legal values come from
+	 * configuration and vary per wiki.
+	 *
+	 * @param object $data Data structure to validate.
+	 *
+	 * @return StatusValue isOK if valid.
+	 */
+	protected function validateArticleQualityScale( $data ) {
+		global $wgJadeArticleQualityScale;
+
+		foreach ( $data->judgments as $judgment ) {
+			foreach ( $judgment->schema as $schemaName => $value ) {
+				// Only validate the articlequality scale.
+				if ( $schemaName !== 'articlequality' ) {
+					continue;
+				}
+
+				// Does this value appear in the locally-configured scale?
+				if ( !in_array( $value, $wgJadeArticleQualityScale, true ) ) {
+					// Give the whole scale as a courtesy.
+					$scale = RequestContext::getMain()->getLanguage()
+						->commaList( $wgJadeArticleQualityScale );
+
+					return Status::newFatal( 'jade-bad-articlequality-value', $value, $scale );
+				}
+			}
+		}
+		return Status::newGood();
+	}
+
+	/**
+	 * Check that each schema resolves to exactly one preferred value.
 
 	/**
 	 * Ensure that we're judging a real entity.

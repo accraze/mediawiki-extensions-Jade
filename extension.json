@@ -61,6 +61,16 @@
 				"diff": "Diff",
 				"revision": "Revision"
 			}
+		},
+		"JadeArticleQualityScale": {
+			"value": [
+				"FA",
+				"GA",
+				"B",
+				"C",
+				"Start",
+				"Stub"
+			]
 		}
 	},
 	"ExtensionMessagesFiles": {

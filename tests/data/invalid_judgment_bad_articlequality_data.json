@@ -1,0 +1,10 @@
+{
+    "judgments": [
+        {
+            "schema": {
+                "articlequality": "grey"
+            },
+            "preferred": true
+        }
+    ]
+}
