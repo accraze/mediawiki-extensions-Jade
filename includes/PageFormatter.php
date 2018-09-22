@@ -73,7 +73,7 @@ class PageFormatter {
 	 *
 	 * @return array Merged page including both inputs.
 	 */
-	public function unionPage( $left, $right ) {
+	public function unionPage( array $left, array $right ) {
 		// Happens to have the behavior we want: array items are concatenated.
 		return array_merge_recursive( $left, $right );
 	}

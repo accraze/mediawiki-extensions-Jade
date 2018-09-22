@@ -49,7 +49,11 @@ class JudgmentValidator {
 	 */
 	private $revisionStore;
 
-	public function __construct( $config, $logger, $revisionStore ) {
+	public function __construct(
+		Config $config,
+		LoggerInterface $logger,
+		RevisionStore $revisionStore
+	) {
 		$this->config = $config;
 		$this->logger = $logger;
 		$this->revisionStore = $revisionStore;
