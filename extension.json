@@ -34,7 +34,7 @@
 		"JADE\\Tests\\TestStorageHelper": "tests/phpunit/TestStorageHelper.php"
 	},
 	"ContentHandlers": {
-		"JadeJudgment": "JADE\\ContentHandlers\\JudgmentContentHandler"
+		"JadeJudgment": "JADE\\Content\\JudgmentContentHandler"
 	},
 	"MessagesDirs": {
 		"JADE": [

@@ -14,7 +14,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-namespace JADE\ContentHandlers;
+namespace JADE\Content;
 
 use JsonContentHandler;
 use Title;

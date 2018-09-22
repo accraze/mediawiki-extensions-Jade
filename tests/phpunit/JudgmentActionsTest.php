@@ -25,7 +25,7 @@ use ApiTestCase;
  *
  * TODO: Rewrite to use API calls.
  *
- * @covers JADE\ContentHandlers\JudgmentContent
+ * @covers JADE\Content\JudgmentContent
  */
 class JudgmentActionsTest extends ApiTestCase {
 	const REV_JUDGMENT_V1 = '../data/valid_revision_judgment.json';
@@ -45,8 +45,8 @@ class JudgmentActionsTest extends ApiTestCase {
 	}
 
 	/**
-	 * @covers JADE\ContentHandlers\JudgmentContent::prepareSave
-	 * @covers JADE\ContentHandlers\JudgmentContent::isValid
+	 * @covers JADE\Content\JudgmentContent::prepareSave
+	 * @covers JADE\Content\JudgmentContent::isValid
 	 */
 	public function testCreateRevisionJudgment() {
 		// Create target page.
@@ -68,8 +68,8 @@ class JudgmentActionsTest extends ApiTestCase {
 	}
 
 	/**
-	 * @covers JADE\ContentHandlers\JudgmentContent::prepareSave
-	 * @covers JADE\ContentHandlers\JudgmentContent::isValid
+	 * @covers JADE\Content\JudgmentContent::prepareSave
+	 * @covers JADE\Content\JudgmentContent::isValid
 	 */
 	public function testUpdateRevisionJudgment() {
 		// Create target page.

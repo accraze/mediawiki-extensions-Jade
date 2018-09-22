@@ -24,7 +24,7 @@ use ChangeTags;
 use FormatJson;
 use WikiPage;
 
-use JADE\ContentHandlers\JudgmentContent;
+use JADE\Content\JudgmentContent;
 
 /**
  * Backend to store judgments as wiki pages under a new namespace.

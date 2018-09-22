@@ -18,7 +18,7 @@
  * @file
  */
 
-namespace JADE\ContentHandlers;
+namespace JADE\Content;
 
 use JADE\JADEServices;
 use JsonContent;
