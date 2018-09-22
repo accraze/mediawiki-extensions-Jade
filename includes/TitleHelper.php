@@ -29,16 +29,15 @@ class TitleHelper {
 	/**
 	 * Build Title object for the judgment page on an entity.
 	 *
-	 * @param string $entityType Machine name of entity type.
-	 * @param int $entityId Entity ID.
+	 * @param JudgmentTarget $target Wiki entity to build a judgment page title for.
 	 *
 	 * @return StatusValue value set to a Title where the judgment about the
 	 *         given entity can be stored.
 	 */
-	public static function buildJadeTitle( $entityType, $entityId ) {
+	public static function buildJadeTitle( JudgmentTarget $target ) {
 		global $wgJadeEntityTypeNames;
 
-		$entityType = strtolower( $entityType );
+		$entityType = strtolower( $target->entityType );
 		// Get localized title component.
 		if ( !array_key_exists( $entityType, $wgJadeEntityTypeNames ) ) {
 			return Status::newFatal( 'jade-bad-entity-type', $entityType );
@@ -47,9 +46,41 @@ class TitleHelper {
 
 		$title = Title::makeTitle(
 			NS_JUDGMENT,
-			"{$localTitle}/{$entityId}"
+			"{$localTitle}/{$target->entityId}"
 		);
 		return Status::newGood( $title );
+	}
+
+	/**
+	 * Parse Judgment Title object to get target wiki entity information.
+	 *
+	 * @param Title $title Judgment page title.
+	 *
+	 * @return StatusValue with JudgmentTarget value.
+	 */
+	public static function parseTitle( Title $title ) {
+		global $wgJadeEntityTypeNames;
+
+		$namespace = $title->getNamespace();
+		if ( $namespace !== NS_JUDGMENT ) {
+			// This is not a judgment, fail.
+			return Status::newFatal( 'jade-bad-title-namespace' );
+		}
+		$titleParts = explode( '/', $title->getDBkey() );
+		if ( count( $titleParts ) !== 2 ) {
+			return Status::newFatal( 'jade-bad-title-format' );
+		}
+		$entityType = array_search( $titleParts[0], $wgJadeEntityTypeNames, true );
+		if ( !$entityType ) {
+			return Status::newFatal( 'jade-bad-entity-type', $titleParts[0] );
+		}
+		$entityId = intval( $titleParts[1] );
+		if ( $entityId === 0 ) {
+			return Status::newFatal( 'jade-bad-entity-id-format', $titleParts[1] );
+		}
+
+		$target = JudgmentTarget::newGeneric( $entityType, $entityId );
+		return Status::newGood( $target );
 	}
 
 }

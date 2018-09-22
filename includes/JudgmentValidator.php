@@ -206,46 +206,18 @@ class JudgmentValidator {
 	 */
 	public function validatePageTitle( WikiPage $page, $judgment ) {
 		$title = $page->getTitle();
-		$titleText = $title->getDBkey();
 
-		$status = $this->parseAndValidateTitle( $titleText );
+		$status = TitleHelper::parseTitle( $title );
 		if ( !$status->isOK() ) {
 			return $status;
 		}
-		$type = $status->value['entityType'];
-		$id = $status->value['entityId'];
+		$target = $status->value;
 
-		$status = $this->validateEntity( $type, $id );
+		$status = $this->validateEntity( $target->entityType, $target->entityId );
 		if ( !$status->isOK() ) {
 			return $status;
 		}
-		return $this->validateEntitySchema( $type, $judgment );
-	}
-
-	/**
-	 * @param string $title Title that must match judgment.
-	 *
-	 * @return StatusValue $out->value is an array with keys `entityType` and `entityId`.
-	 */
-	protected function parseAndValidateTitle( $title ) {
-		global $wgJadeEntityTypeNames;
-
-		$titleParts = explode( '/', $title );
-
-		if ( count( $titleParts ) !== 2 ) {
-			return Status::newFatal( 'jade-bad-title-format' );
-		}
-		list( $type, $id ) = $titleParts;
-
-		$normalizedType = array_search( $type, $wgJadeEntityTypeNames, true );
-		if ( $normalizedType === false ) {
-			return Status::newFatal( 'jade-bad-entity-type', $type );
-		}
-
-		return Status::newGood( [
-			'entityType' => $normalizedType,
-			'entityId' => $id,
-		] );
+		return $this->validateEntitySchema( $target->entityType, $judgment );
 	}
 
 	/**

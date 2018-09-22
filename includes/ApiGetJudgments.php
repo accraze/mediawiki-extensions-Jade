@@ -46,7 +46,8 @@ class ApiGetJudgments extends ApiQueryGeneratorBase {
 		$params = $this->extractRequestParams();
 		$titles = [];
 
-		$status = TitleHelper::buildJadeTitle( $params['entitytype'], $params['entityid'] );
+		$target = JudgmentTarget::newGeneric( $params['entitytype'], $params['entityid'] );
+		$status = TitleHelper::buildJadeTitle( $target );
 		if ( !$status->isOK() ) {
 			$this->dieStatus( $status );
 		}

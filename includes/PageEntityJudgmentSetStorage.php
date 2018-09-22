@@ -32,8 +32,7 @@ use JADE\Content\JudgmentContent;
 class PageEntityJudgmentSetStorage implements EntityJudgmentSetStorage {
 
 	/**
-	 * @param string $entityType Name of wiki entity type, in lowercase.
-	 * @param int $entityId Page ID or Revision ID of the entity being judged.
+	 * @param JudgmentTarget $target identity of target wiki entity.
 	 * @param array $judgmentSet All judgments on this entity, as nested
 	 * associative arrays, normalized for storage.
 	 * @param string $summary Edit summary.
@@ -41,10 +40,15 @@ class PageEntityJudgmentSetStorage implements EntityJudgmentSetStorage {
 	 *
 	 * @return StatusValue isOK if the edit was successful.
 	 */
-	public function storeJudgmentSet( $entityType, $entityId, $judgmentSet, $summary, $tags ) {
+	public function storeJudgmentSet(
+		JudgmentTarget $target,
+		array $judgmentSet,
+		$summary,
+		array $tags
+	) {
 		global $wgUser;
 
-		$status = TitleHelper::buildJadeTitle( $entityType, $entityId );
+		$status = TitleHelper::buildJadeTitle( $target );
 		if ( !$status->isOK() ) {
 			return $status;
 		}
@@ -86,14 +90,13 @@ class PageEntityJudgmentSetStorage implements EntityJudgmentSetStorage {
 	}
 
 	/**
-	 * @param string $entityType Name of wiki entity type, in lowercase.
-	 * @param int $entityId Page ID or Revision ID of the entity.
+	 * @param JudgmentTarget $target identity of target wiki entity.
 	 *
 	 * @return StatusValue with array value containing all judgments for this
 	 *         entity.
 	 */
-	public function loadJudgmentSet( $entityType, $entityId ) {
-		$status = TitleHelper::buildJadeTitle( $entityType, $entityId );
+	public function loadJudgmentSet( JudgmentTarget $target ) {
+		$status = TitleHelper::buildJadeTitle( $target );
 		if ( !$status->isOK() ) {
 			return $status;
 		}

@@ -28,8 +28,7 @@ interface EntityJudgmentSetStorage {
 	 * Overwrites the page without merging.
 	 *
 	 * TODO: editRevId for conflict detection?
-	 * @param string $entityType Name of wiki entity type, in lowercase.
-	 * @param int $entityId Page ID or Revision ID of the entity.
+	 * @param JudgmentTarget $target identity of target wiki entity.
 	 * @param array $judgmentSet All judgments on this entity, as nested
 	 * associative arrays, normalized for storage.
 	 * @param string $summary Edit summary.
@@ -37,15 +36,18 @@ interface EntityJudgmentSetStorage {
 	 *
 	 * @return StatusValue isOK if stored successfully.
 	 */
-	public function storeJudgmentSet( $entityType, $entityId, $judgmentSet, $summary, $tags );
+	public function storeJudgmentSet(
+		JudgmentTarget $target,
+		array $judgmentSet,
+		$summary,
+		array $tags );
 
 	/**
-	 * @param string $entityType Name of wiki entity type, in lowercase.
-	 * @param int $entityId Page ID or Revision ID of the entity.
+	 * @param JudgmentTarget $target identity of target wiki entity.
 	 *
 	 * @return StatusValue with array value containing all judgments for this
 	 *         entity.
 	 */
-	public function loadJudgmentSet( $entityType, $entityId );
+	public function loadJudgmentSet( JudgmentTarget $target );
 
 }
