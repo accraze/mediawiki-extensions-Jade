@@ -27,12 +27,12 @@
                 "origin": {
                     "type": "string",
                     "description": "Plain text identifying the tool and workflow used to make this endorsement"
-                },
-                "required": [
-                    "user"
-                ]
+                }
             },
-            "minProperties": 1,
+            "required": [
+                "user"
+            ],
+            "minItems": 1,
             "additionalProperties": false
         },
         "judgment": {
@@ -51,6 +51,7 @@
                             "type": "boolean"
                         }
                     },
+                    "minProperties": 1,
                     "additionalProperties": false
                 },
                 "notes": {
