@@ -126,10 +126,13 @@ class JudgmentValidatorTest extends MediaWikiTestCase {
 	public function testValidatePageTitle_invalidWithType( $path, $type ) {
 		list( $page, $revision ) = TestStorageHelper::createEntity( $this->user );
 		$ucType = ucfirst( $type );
-		if ( $type === 'page' ) {
-			$title = "{$ucType}/{$page->getId()}";
-		} else {
-			$title = "{$ucType}/{$revision->getId()}";
+		switch ( $type ) {
+			case 'diff':
+			case 'revision':
+				$title = "{$ucType}/{$revision->getId()}";
+				break;
+			default:
+				$this->fail( "Not handling bad entity type {$type}" );
 		}
 		$text = file_get_contents( __DIR__ . '/' . DATA_DIR . '/' . $path );
 

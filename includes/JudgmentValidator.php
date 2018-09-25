@@ -132,13 +132,6 @@ class JudgmentValidator {
 				throw new InvalidArgumentException(
 					"Cannot find page by ID: {$id}" );
 			}
-		} elseif ( $type === 'page' ) {
-			// Find Page.
-			$page = WikiPage::newFromID( $id );
-			if ( $page === null ) {
-				throw new InvalidArgumentException(
-					"Cannot find page by ID: {$id}" );
-			}
 		} else {
 			// This is unreachable, but blow up just in case.
 			throw new InvalidArgumentException(
