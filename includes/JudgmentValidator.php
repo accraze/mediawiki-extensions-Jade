@@ -159,7 +159,7 @@ class JudgmentValidator {
 
 				// Does this value appear in the locally-configured scale?
 				if ( !in_array( $value, $wgJadeArticleQualityScale, true ) ) {
-					// Give the whole scale as a courtesy.
+					// Return an error.  Include the valid scale as a courtesy.
 					$scale = RequestContext::getMain()->getLanguage()
 						->commaList( $wgJadeArticleQualityScale );
 
@@ -169,9 +169,6 @@ class JudgmentValidator {
 		}
 		return Status::newGood();
 	}
-
-	/**
-	 * Check that each schema resolves to exactly one preferred value.
 
 	/**
 	 * Ensure that we're judging a real entity.
