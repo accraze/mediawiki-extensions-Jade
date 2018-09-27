@@ -72,9 +72,11 @@ class ApiGetJudgments extends ApiQueryGeneratorBase {
 	}
 
 	public function getAllowedParams() {
+		global $wgJadeEntityTypeNames;
+
 		return [
 			'entitytype' => [
-				ApiBase::PARAM_TYPE => 'string',
+				ApiBase::PARAM_TYPE => array_keys( $wgJadeEntityTypeNames ),
 				ApiBase::PARAM_REQUIRED => true,
 			],
 			'entityid' => [
