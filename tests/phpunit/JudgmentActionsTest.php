@@ -18,9 +18,9 @@ namespace JADE\Tests;
 use ApiTestCase;
 
 /**
- * @group JADE
  * @group API
  * @group Database
+ * @group JADE
  * @group medium
  *
  * TODO: Rewrite to use API calls.
@@ -40,7 +40,6 @@ class JudgmentActionsTest extends ApiTestCase {
 
 		parent::setUp();
 
-		$this->tablesUsed[] = 'recentchanges';
 		$this->tablesUsed[] = 'page';
 	}
 
@@ -51,7 +50,7 @@ class JudgmentActionsTest extends ApiTestCase {
 	public function testCreateRevisionJudgment() {
 		// Create target page.
 		$article = TestStorageHelper::makeEdit(
-			0, 'TestJudgmentActionsPage', 'abcdef', 'some summary' );
+			0, 'TestJudgmentActionsPage' . strval( mt_rand() ), 'abcdef', 'some summary' );
 		$page_id = $article['page']->getId();
 		$rev_id = $article['revision']->getId();
 
@@ -74,7 +73,7 @@ class JudgmentActionsTest extends ApiTestCase {
 	public function testUpdateRevisionJudgment() {
 		// Create target page.
 		$article = TestStorageHelper::makeEdit(
-			0, 'TestJudgmentActionsPage', 'abcdef', 'some summary' );
+			0, 'TestJudgmentActionsPage' . strval( mt_rand() ), 'abcdef', 'some summary' );
 		$page_id = $article['page']->getId();
 		$rev_id = $article['revision']->getId();
 
@@ -104,7 +103,7 @@ class JudgmentActionsTest extends ApiTestCase {
 	public function testSuppressUnsuppressRevisionJudgment() {
 		// Create target page.
 		$article = TestStorageHelper::makeEdit(
-			0, 'TestJudgmentActionsPage', 'abcdef', 'some summary' );
+			0, 'TestJudgmentActionsPage' . strval( mt_rand() ), 'abcdef', 'some summary' );
 		$page_id = $article['page']->getId();
 		$rev_id = $article['revision']->getId();
 
@@ -161,7 +160,7 @@ class JudgmentActionsTest extends ApiTestCase {
 		// Create target page.
 		$article = TestStorageHelper::makeEdit(
 			0,
-			'TestJudgmentActionsPage',
+			'TestJudgmentActionsPage' . strval( mt_rand() ),
 			'abcdef',
 			'some summary'
 		);
@@ -188,7 +187,7 @@ class JudgmentActionsTest extends ApiTestCase {
 	public function testCreateJudgment_badTitleType() {
 		// Create target page.
 		$article = TestStorageHelper::makeEdit(
-			0, 'TestJudgmentActionsPage', 'abcdef', 'some summary' );
+			0, 'TestJudgmentActionsPage' . strval( mt_rand() ), 'abcdef', 'some summary' );
 		$page_id = $article['page']->getId();
 		$rev_id = $article['revision']->getId();
 
@@ -211,7 +210,7 @@ class JudgmentActionsTest extends ApiTestCase {
 	public function testCreateJudgment_badTitleFormat() {
 		// Create target page.
 		$article = TestStorageHelper::makeEdit(
-			0, 'TestJudgmentActionsPage', 'abcdef', 'some summary' );
+			0, 'TestJudgmentActionsPage' . strval( mt_rand() ), 'abcdef', 'some summary' );
 		$page_id = $article['page']->getId();
 		$rev_id = $article['revision']->getId();
 

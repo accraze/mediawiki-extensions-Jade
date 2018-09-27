@@ -18,15 +18,14 @@ namespace JADE\Tests;
 use FormatJson;
 use JADE\JADEServices;
 use MediaWikiTestCase;
-use Revision;
 use StatusValue;
-use WikiPage;
 
 const DATA_DIR = '../data';
 
 /**
- * @group JADE
  * @group Database
+ * @group JADE
+ * @group medium
  *
  * TODO: assert that we're getting the specific, expected error.
  *
@@ -34,22 +33,13 @@ const DATA_DIR = '../data';
  */
 class JudgmentValidatorTest extends MediaWikiTestCase {
 
-	/**
-	 * @var WikiPage|null
-	 */
-	private $page = null;
-
-	/**
-	 * @var Revision
-	 */
-	private $revision;
+	/** @var User */
+	private $user;
 
 	public function setUp() {
 		parent::setUp();
 
 		$this->tablesUsed[] = 'page';
-		$this->tablesUsed[] = 'recentchanges';
-		$this->tablesUsed[] = 'revision';
 
 		$this->user = $this->getTestUser()->getUser();
 	}
