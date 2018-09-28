@@ -19,6 +19,7 @@ $namespaceNames['en'] = [
 // "judgment" and "judgement" are alternative spellings, so allow either.
 $namespaceAliases['en'] = [
 	'Judgement' => NS_JUDGMENT,
+	'Judgement_talk' => NS_JUDGMENT_TALK,
 ];
 
 /** Spanish */
