@@ -140,7 +140,7 @@ class JudgmentValidator {
 	}
 
 	/**
-	 * Special handling for the articlequality scale, as legal values come from
+	 * Special handling for the contentquality scale, as legal values come from
 	 * configuration and vary per wiki.
 	 *
 	 * @param object $data Data structure to validate.
@@ -152,8 +152,8 @@ class JudgmentValidator {
 
 		foreach ( $data->judgments as $judgment ) {
 			foreach ( $judgment->schema as $schemaName => $value ) {
-				// Only validate the articlequality scale.
-				if ( $schemaName !== 'articlequality' ) {
+				// Only validate the contentquality scale.
+				if ( $schemaName !== 'contentquality' ) {
 					continue;
 				}
 
@@ -163,7 +163,7 @@ class JudgmentValidator {
 					$scale = RequestContext::getMain()->getLanguage()
 						->commaList( $wgJadeArticleQualityScale );
 
-					return Status::newFatal( 'jade-bad-articlequality-value', $value, $scale );
+					return Status::newFatal( 'jade-bad-contentquality-value', $value, $scale );
 				}
 			}
 		}

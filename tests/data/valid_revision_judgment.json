@@ -2,19 +2,19 @@
     "judgments": [
         {
             "schema": {
-                "articlequality": "C"
+                "contentquality": "C"
             },
             "preferred": true
         },
         {
             "schema": {
-                "articlequality": "B"
+                "contentquality": "B"
             },
             "preferred": false
         },
         {
             "schema": {
-                "articlequality": "GA"
+                "contentquality": "GA"
             },
             "preferred": false
         }
