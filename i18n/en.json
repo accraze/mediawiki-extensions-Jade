@@ -37,7 +37,7 @@
 	"jade-too-many-preferred": "Multiple judgments preferred, but there can be only one.",
 	"jade-none-preferred": "No judgments are preferred, but there must be a chosen one.",
 	"jade-illegal-schema": "Schema ''$1'' not allowed for this entity type.",
-	"jade-bad-articlequality-value": "Bad value ''$1'' for articlequality schema, possible values are: $2",
+	"jade-bad-contentquality-value": "Bad value ''$1'' for contentquality schema, possible values are: $2",
 	"jade-cannot-create-page": "You cannot create this page.",
 	"jade-cannot-edit-page": "You cannot edit this page."
 }

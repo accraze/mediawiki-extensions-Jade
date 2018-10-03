@@ -64,7 +64,7 @@ class JudgmentValidatorTest extends MediaWikiTestCase {
 		yield [ 'invalid_judgment_additional_properties3.json', 'jade-bad-content' ];
 		yield [ 'invalid_judgment_none_preferred.json', 'jade-none-preferred' ];
 		yield [ 'invalid_judgment_two_preferred.json', 'jade-too-many-preferred' ];
-		yield [ 'invalid_judgment_bad_articlequality_data.json', 'jade-bad-articlequality-value' ];
+		yield [ 'invalid_judgment_bad_contentquality_data.json', 'jade-bad-contentquality-value' ];
 	}
 
 	// These cases have scoring schemas which aren't allowed for the page title.

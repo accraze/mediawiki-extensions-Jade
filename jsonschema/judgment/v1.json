@@ -41,7 +41,7 @@
                 "schema": {
                     "type": "object",
                     "properties": {
-                        "articlequality": {
+                        "contentquality": {
                             "type": "string"
                         },
                         "damaging": {

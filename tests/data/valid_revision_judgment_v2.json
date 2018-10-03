@@ -2,7 +2,7 @@
     "judgments": [
         {
             "schema": {
-                "articlequality": "B"
+                "contentquality": "B"
             },
             "preferred": true
         }
