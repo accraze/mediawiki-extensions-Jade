@@ -15,7 +15,6 @@
  */
 namespace JADE\Tests;
 
-use AssertionError;
 use ContentHandler;
 use FormatJSON;
 use PHPUnit\Framework\Assert;
@@ -127,18 +126,16 @@ class TestStorageHelper {
 			$wgUser
 		);
 
-		if ( $expectedStatus !== $status->isGood() ) {
-			throw new AssertionError( 'Wrong edit return status' );
-		}
+		Assert::assertEquals( $expectedStatus, $status->isGood(),
+			'Wrong edit return status' );
+
 		if ( $expectedStatus === false ) {
 			// Nothing more to do.
 			return;
 		}
 
 		$revision = $status->value["revision"];
-		if ( $revision === null ) {
-			throw new AssertionError( 'No revision after edit' );
-		}
+		Assert::assertNotNull( $revision, 'No revision after edit' );
 
 		return [
 			"page" => $page,
