@@ -36,6 +36,9 @@
 	"ContentHandlers": {
 		"JadeJudgment": "JADE\\Content\\JudgmentContentHandler"
 	},
+	"Hooks": {
+		"MovePageIsValidMove": "JADE\\Hooks\\MoveHooks::onMovePageIsValidMove"
+	},
 	"MessagesDirs": {
 		"JADE": [
 			"i18n"

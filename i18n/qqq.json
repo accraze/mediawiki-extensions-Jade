@@ -41,5 +41,6 @@
 	"jade-illegal-schema": "Error message when attempting to use a schema that isn't configured for this entity type.  See $wgJadeAllowedScoringSchemas for your wiki. Parameters:\n* $1 - schema name",
 	"jade-bad-contentquality-value": "Error message when an contentquality value isn't in the configured $wgJadeArticleQualityScale array. Parameters:\n* $1 - attempted value\n* $2 - Comma-separated list of possible values from configuration.",
 	"jade-cannot-create-page": "Error message when the user isn't allowed to create a judgment page.",
-	"jade-cannot-edit-page": "Error message when the user isn't allowed to edit a judgment page."
+	"jade-cannot-edit-page": "Error message when the user isn't allowed to edit a judgment page.",
+	"jade-invalid-move-any": "Error message when moving judgment pages, when no moves are allowed."
 }
