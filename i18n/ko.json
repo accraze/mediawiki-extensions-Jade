@@ -12,5 +12,10 @@
 	"jade-notdamaging": "해를 끼치지 않습니다",
 	"jade-goodfaith": "선의",
 	"jade-badfaith": "악의",
-	"jade-delete": "삭제"
+	"jade-delete": "삭제",
+	"jade-bad-title-format": "유효하지 않은 제목 형식",
+	"jade-bad-revision-id": "ID로 판을 찾을 수 없습니다: \"$1\"",
+	"jade-bad-content-generic": "JSON 내용에 문법 오류가 있습니다.",
+	"jade-cannot-create-page": "이 문서를 만들 수 없습니다.",
+	"jade-cannot-edit-page": "이 문서를 편집할 수 없습니다."
 }

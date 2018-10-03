@@ -4,5 +4,12 @@
 			"BadDog"
 		]
 	},
-	"apihelp-createjudgment-param-summary": "Опционални резиме измене."
+	"apihelp-createjudgment-param-summary": "Опционални резиме измене.",
+	"jade-bad-title-format": "Неважећи формат наслова",
+	"jade-bad-entity-type": "Неважећи тип ентитета: „$1”",
+	"jade-bad-revision-id": "Није могуће пронаћи измену по ID-у: „$1”",
+	"jade-bad-content-generic": "Синтаксне грешаке у садржају JSON-а.",
+	"jade-illegal-schema": "Шема „$1” није дозвољена за овај тип ентитета.",
+	"jade-cannot-create-page": "Не можете да направите ову страницу.",
+	"jade-cannot-edit-page": "Не можете да уређујете ову страницу."
 }

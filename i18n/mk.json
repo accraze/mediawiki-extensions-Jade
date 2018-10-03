@@ -26,5 +26,16 @@
 	"jade-new-judgment": "Нов суд",
 	"jade-add-judgment": "Додај суд",
 	"jade-notes-placeholder": "Напомени за судот",
-	"jade-delete": "Избриши"
+	"jade-delete": "Избриши",
+	"jade-bad-title-format": "Неважечки формат на насловот",
+	"jade-bad-entity-type": "Неважечки вид на единица ''$1''",
+	"jade-bad-revision-id": "Не можам да најдам преработка со назнаката ''$1''",
+	"jade-bad-content-generic": "Синтаксни грешки во JSON-содржини.",
+	"jade-bad-content": "Просудувањето не одговара на шемата: $1",
+	"jade-too-many-preferred": "Се препочитаат повеќе просудувања, но може има само едно.",
+	"jade-none-preferred": "Не се препочитаат просудувања, но мора да се избере едно.",
+	"jade-illegal-schema": "Шемата ''$1'' не е дозволена за овој вид единица.",
+	"jade-bad-articlequality-value": "Шемата за квалитет на статијата ја има неисправната вредност ''$1''. Можни вредности се $2",
+	"jade-cannot-create-page": "Не можете да ја создадете страницава.",
+	"jade-cannot-edit-page": "Не можете да ја уредувате страницава."
 }

@@ -26,5 +26,16 @@
 	"jade-new-judgment": "新的判斷",
 	"jade-add-judgment": "添加判斷",
 	"jade-notes-placeholder": "有關判斷的註釋",
-	"jade-delete": "刪除"
+	"jade-delete": "刪除",
+	"jade-bad-title-format": "無效的標題格式",
+	"jade-bad-entity-type": "無效項目類型''$1''",
+	"jade-bad-revision-id": "找不到 ID 為：''$1'' 的修訂",
+	"jade-bad-content-generic": "JSON 內容裡語法錯誤。",
+	"jade-bad-content": "判斷不符合架構：$1",
+	"jade-too-many-preferred": "多個判斷裡僅能採用一個作為優先。",
+	"jade-none-preferred": "必須選擇一個優先判斷。",
+	"jade-illegal-schema": "架構''$1''在此項目類型不被允許。",
+	"jade-bad-articlequality-value": "條目品質架構的錯誤值''$1''，可能的值應為：$2",
+	"jade-cannot-create-page": "您不能建立此頁面。",
+	"jade-cannot-edit-page": "您不能編輯此頁面。"
 }

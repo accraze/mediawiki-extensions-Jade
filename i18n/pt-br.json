@@ -26,5 +26,16 @@
 	"jade-new-judgment": "Nova avaliação",
 	"jade-add-judgment": "Adicionar avaliação",
 	"jade-notes-placeholder": "Notas sobre a avaliação",
-	"jade-delete": "Deletar"
+	"jade-delete": "Deletar",
+	"jade-bad-title-format": "Formato de título inválido",
+	"jade-bad-entity-type": "Tipo de entidade inválido ''$1''",
+	"jade-bad-revision-id": "Não é possível encontrar revisão por ID: ''$1''",
+	"jade-bad-content-generic": "Erros de sintaxe no conteúdo JSON.",
+	"jade-bad-content": "O julgamento não está em conformidade com o esquema: $1",
+	"jade-too-many-preferred": "Julgamentos múltiplos preferidos, mas só pode haver um.",
+	"jade-none-preferred": "Nenhum julgamento é preferido, mas deve haver um escolhido.",
+	"jade-illegal-schema": "Esquema ''$1'' não permitido para este tipo de entidade.",
+	"jade-bad-articlequality-value": "Valor inválido ''$1'' para o esquema de qualidade de artigo, os valores possíveis são: $2",
+	"jade-cannot-create-page": "Você não pode criar esta página.",
+	"jade-cannot-edit-page": "Você não pode editar esta página."
 }

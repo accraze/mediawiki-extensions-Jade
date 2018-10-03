@@ -7,5 +7,10 @@
 	"jade-notdamaging": "Non dannosa",
 	"jade-goodfaith": "Buona fede",
 	"jade-badfaith": "Mala fede",
-	"jade-delete": "Cancella"
+	"jade-delete": "Cancella",
+	"jade-bad-title-format": "Formato titolo non valido",
+	"jade-bad-entity-type": "Tipo di entità non valido ''$1''",
+	"jade-bad-content-generic": "Errori di sintassi nel contenuto JSON.",
+	"jade-cannot-create-page": "Non puoi creare questa pagina.",
+	"jade-cannot-edit-page": "Non puoi modificare questa pagina."
 }

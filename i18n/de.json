@@ -26,5 +26,16 @@
 	"jade-new-judgment": "Neue Beurteilung",
 	"jade-add-judgment": "Beurteilung hinzufügen",
 	"jade-notes-placeholder": "Anmerkungen zur Beurteilung",
-	"jade-delete": "Löschen"
+	"jade-delete": "Löschen",
+	"jade-bad-title-format": "Ungültiges Titelformat",
+	"jade-bad-entity-type": "Ungültiger Objekttyp ''$1''",
+	"jade-bad-revision-id": "Die Version nach Kennung konnte nicht gefunden werden: ''$1''",
+	"jade-bad-content-generic": "Syntaxfehler im JSON-Inhalt.",
+	"jade-bad-content": "Die Beurteilung ist nicht mit dem Schema konform: $1",
+	"jade-too-many-preferred": "Es werden mehrere Beurteilungen bevorzugt, es kann jedoch nur eine geben.",
+	"jade-none-preferred": "Es werden keine Beurteilungen bevorzugt, es muss jedoch eine ausgewählt werden.",
+	"jade-illegal-schema": "Das Schema ''$1'' ist für diesen Objekttyp nicht erlaubt.",
+	"jade-bad-articlequality-value": "Ungültiger Wert ''$1'' für das Schema articlequality, die möglichen Werte sind: $2",
+	"jade-cannot-create-page": "Du kannst diese Seite nicht erstellen.",
+	"jade-cannot-edit-page": "Du kannst diese Seite nicht bearbeiten."
 }

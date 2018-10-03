@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Gomoko",
-			"Wladek92"
+			"Wladek92",
+			"Zarisi"
 		]
 	},
 	"apihelp-createjudgment-summary": "Créer un nouveau jugement",
@@ -27,5 +28,16 @@
 	"jade-new-judgment": "Nouveau jugement",
 	"jade-add-judgment": "Ajouter un jugement",
 	"jade-notes-placeholder": "Notes sur le jugement",
-	"jade-delete": "Supprimer"
+	"jade-delete": "Supprimer",
+	"jade-bad-title-format": "Format de titre invalide",
+	"jade-bad-entity-type": "Type invalide d'entité « $1 »",
+	"jade-bad-revision-id": "Version non trouvée avec l'ID: « $1 »",
+	"jade-bad-content-generic": "Erreurs de syntaxe dans le contenu JSON.",
+	"jade-bad-content": "L'appréciation n'est pas conforme au schéma: $1",
+	"jade-too-many-preferred": "Préférence aux appréciations multiples, mais une seule est autorisée.",
+	"jade-none-preferred": "Pas de préférence d'avis, mais il en faut un.",
+	"jade-illegal-schema": "Schéma « $1 » non autorisé pour ce type d'entité.",
+	"jade-bad-articlequality-value": "Mauvaise valeur « $1 » pour le schéma articlequality, les valeurs possibles sont : $2",
+	"jade-cannot-create-page": "Vous ne pouvez pas créer cette page.",
+	"jade-cannot-edit-page": "Vous ne pouvez pas modifier cette page."
 }

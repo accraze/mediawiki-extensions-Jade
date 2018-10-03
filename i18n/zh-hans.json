@@ -3,9 +3,12 @@
 		"authors": [
 			"Liuxinyu970226",
 			"Endermoon",
-			"夢蝶葬花"
+			"夢蝶葬花",
+			"A Chinese Wikipedian",
+			"Phenolla"
 		]
 	},
+	"apihelp-createjudgment-summary": "创建新活动",
 	"apihelp-createjudgment-param-summary": "可选的编辑摘要。",
 	"apihelp-createjudgment-param-tags": "可选的更改标记以应用于判断。",
 	"jade-desc": "判断和会话引擎",
@@ -16,5 +19,14 @@
 	"jade-new-judgment": "新判断",
 	"jade-add-judgment": "添加判断",
 	"jade-notes-placeholder": "有关判断的说明",
-	"jade-delete": "删除"
+	"jade-delete": "删除",
+	"jade-bad-title-format": "无效标题格式",
+	"jade-bad-entity-type": "无效实体类型“$1”",
+	"jade-bad-revision-id": "找不到ID为“$1”的修订版本",
+	"jade-bad-content-generic": "JSON内容中有语法错误。",
+	"jade-none-preferred": "没有优先选项，但必须选择一个。",
+	"jade-illegal-schema": "模式“$1”不允许用于此实体类型。",
+	"jade-bad-articlequality-value": "用于文章质量模式的值“$1”有误，可用值有：$2",
+	"jade-cannot-create-page": "您不可以创建此页面。",
+	"jade-cannot-edit-page": "您不能编辑此页面。"
 }

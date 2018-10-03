@@ -6,5 +6,6 @@
 	},
 	"jade-damaging": "Skadelig",
 	"jade-notdamaging": "Ikke skadelig",
-	"jade-delete": "Slet"
+	"jade-delete": "Slet",
+	"jade-cannot-edit-page": "Du kan ikke redigere denne side."
 }
