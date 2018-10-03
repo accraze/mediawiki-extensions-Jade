@@ -38,7 +38,7 @@ class TestStorageHelper {
 			$user = $wgUser;
 		}
 
-		$editTarget = new TitleValue( 0, 'JadeJudgmentContentTestPage' );
+		$editTarget = new TitleValue( 0, 'JadeJudgmentContentTestPage' . strval( mt_rand() ) );
 		$title = Title::newFromLinkTarget( $editTarget );
 		$summary = 'Test edit';
 		$page = WikiPage::factory( $title );

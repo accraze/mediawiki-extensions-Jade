@@ -33,11 +33,7 @@ class ApiGetJudgmentsTest extends ApiTestCase {
 	public function setUp() {
 		parent::setUp();
 
-		$this->tablesUsed = [
-			'page',
-			'recentchanges',
-			'revision',
-		];
+		$this->tablesUsed[] = 'page';
 	}
 
 	public function testGetJudgments_empty() {
