@@ -127,7 +127,7 @@ class TestStorageHelper {
 		);
 
 		Assert::assertEquals( $expectedStatus, $status->isGood(),
-			'Wrong edit return status' );
+			'Wrong edit return status: ' . $status );
 
 		if ( $expectedStatus === false ) {
 			// Nothing more to do.
