@@ -7,6 +7,7 @@
 	"apihelp-createjudgment-param-summary": "Опционални резиме измене.",
 	"jade-bad-title-format": "Неважећи формат наслова",
 	"jade-bad-entity-type": "Неважећи тип ентитета: „$1”",
+	"jade-bad-entity-id-format": "Неважећи формат ID ентитета „$1”",
 	"jade-bad-revision-id": "Није могуће пронаћи измену по ID-у: „$1”",
 	"jade-bad-content-generic": "Синтаксне грешаке у садржају JSON-а.",
 	"jade-illegal-schema": "Шема „$1” није дозвољена за овај тип ентитета.",

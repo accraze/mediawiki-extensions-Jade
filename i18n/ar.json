@@ -29,14 +29,17 @@
 	"jade-notes-placeholder": "ملاحظات حول الحكم",
 	"jade-delete": "حذف",
 	"jade-bad-title-format": "تنسيق تاريخ غير صالح.",
+	"jade-bad-title-namespace": "نطاق غير صالح للحصول على عنوان حكم.",
 	"jade-bad-entity-type": "نوع كيان غير صالح ''$1''",
+	"jade-bad-entity-id-format": "تنسيق معرف كيان غير صالح ''$1''",
 	"jade-bad-revision-id": "لا يمكن العثور على مراجعة بالمعرف: ''$1''",
 	"jade-bad-content-generic": "أخطاء في بناء الجملة في محتوى JSON.",
 	"jade-bad-content": "لا يتوافق الحكم مع المخطط: $1",
 	"jade-too-many-preferred": "أحكام متعددة مفضلة، ولكن يمكن أن يكون هناك واحد فقط.",
 	"jade-none-preferred": "لا توجد أحكام مفضلة، ولكن يجب أن يكون هناك اختيار واحد.",
 	"jade-illegal-schema": "المخطط ''$1'' غير مسموح به لهذا النوع من الكيان.",
-	"jade-bad-articlequality-value": "قيمة غير صالحة ''$1'' لمخطط جودة المقالة; القيم الممكنة هي: $2",
+	"jade-bad-contentquality-value": "قيمة غير صالحة ''$1'' لمخطط جودة المحتوى; القيم الممكنة هي: $2",
 	"jade-cannot-create-page": "لا يمكنك إنشاء هذه الصفحة.",
-	"jade-cannot-edit-page": "لا يمكنك تحرير هذه الصفحة."
+	"jade-cannot-edit-page": "لا يمكنك تحرير هذه الصفحة.",
+	"jade-invalid-move-any": "نقل صفحات الحكم غير مسموح به."
 }

@@ -26,7 +26,7 @@
 	"jade-bad-content-generic": "JSON内容中有语法错误。",
 	"jade-none-preferred": "没有优先选项，但必须选择一个。",
 	"jade-illegal-schema": "模式“$1”不允许用于此实体类型。",
-	"jade-bad-articlequality-value": "用于文章质量模式的值“$1”有误，可用值有：$2",
+	"jade-bad-contentquality-value": "用于文章质量模式的值“$1”有误，可用值有：$2",
 	"jade-cannot-create-page": "您不可以创建此页面。",
 	"jade-cannot-edit-page": "您不能编辑此页面。"
 }

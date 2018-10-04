@@ -35,7 +35,7 @@
 	"jade-too-many-preferred": "Julgamentos múltiplos preferidos, mas só pode haver um.",
 	"jade-none-preferred": "Nenhum julgamento é preferido, mas deve haver um escolhido.",
 	"jade-illegal-schema": "Esquema ''$1'' não permitido para este tipo de entidade.",
-	"jade-bad-articlequality-value": "Valor inválido ''$1'' para o esquema de qualidade de artigo, os valores possíveis são: $2",
+	"jade-bad-contentquality-value": "Valor inválido ''$1'' para o esquema de qualidade de artigo, os valores possíveis são: $2",
 	"jade-cannot-create-page": "Você não pode criar esta página.",
 	"jade-cannot-edit-page": "Você não pode editar esta página."
 }
