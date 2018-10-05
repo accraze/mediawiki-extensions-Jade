@@ -21,8 +21,13 @@
 namespace JADE\Content;
 
 use JADE\JADEServices;
+use JADE\JudgmentPageWikitextRenderer;
 use JsonContent;
+use MediaWiki\MediaWikiServices;
+use ParserOptions;
+use ParserOutput;
 use Status;
+use Title;
 use User;
 use WikiPage;
 
@@ -100,6 +105,40 @@ class JudgmentContent extends JsonContent {
 
 	public function isEmpty() {
 		return count( (array)$this->getData()->getValue() ) === 0;
+	}
+
+	/**
+	 * @see AbstractContent::fillParserOutput
+	 *
+	 * @param Title $title Context title for parsing
+	 * @param int|null $revId Revision ID (for {{REVISIONID}})
+	 * @param ParserOptions $options Funny things to tell the parser.
+	 * @param bool $generateHtml Whether or not to generate HTML
+	 * @param ParserOutput &$output The output object to fill (reference).
+	 */
+	public function fillParserOutput(
+		Title $title,
+		$revId,
+		ParserOptions $options,
+		$generateHtml,
+		ParserOutput &$output
+	) {
+		if ( !$this->isValid() ) {
+			// We can't proceed.  JsonContent has a TODO mentioning that this
+			// condition will be deprecated in the future.
+			$output->setText( '' );
+			return;
+		}
+
+		$parser = MediaWikiServices::getInstance()->getParser();
+		$renderer = new JudgmentPageWikitextRenderer;
+		$wikitext = $renderer->getWikitext( $this->getData()->getValue() );
+
+		$output = $parser->parse( $wikitext, $title, $options, true, true, $revId );
+
+		if ( !$generateHtml ) {
+			$output->setText( '' );
+		}
 	}
 
 }
