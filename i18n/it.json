@@ -4,9 +4,9 @@
 			"Beta16"
 		]
 	},
-	"jade-notdamaging": "Non dannosa",
-	"jade-goodfaith": "Buona fede",
-	"jade-badfaith": "Mala fede",
+	"jade-damaging-false": "Non dannosa",
+	"jade-goodfaith-true": "Buona fede",
+	"jade-goodfaith-false": "Mala fede",
 	"jade-delete": "Cancella",
 	"jade-bad-title-format": "Formato titolo non valido",
 	"jade-bad-entity-type": "Tipo di entità non valido ''$1''",

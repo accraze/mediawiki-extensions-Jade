@@ -5,11 +5,14 @@
 		]
 	},
 	"jade-desc": "Bedömnings- och dialogmotor",
-	"jade-damaging": "Skadlig",
-	"jade-notdamaging": "Inte skadlig",
-	"jade-goodfaith": "God avsikt",
-	"jade-badfaith": "Ond avsikt",
+	"jade-damaging-true": "Skadlig",
+	"jade-damaging-false": "Inte skadlig",
+	"jade-goodfaith-true": "God avsikt",
+	"jade-goodfaith-false": "Ond avsikt",
 	"jade-new-judgment": "Ny bedömning",
 	"jade-add-judgment": "Lägg till bedömning",
-	"jade-delete": "Radera"
+	"jade-delete": "Radera",
+	"jade-bad-title-format": "Ogiltigt titelformat",
+	"jade-cannot-create-page": "Du kan inte skapa denna sida.",
+	"jade-cannot-edit-page": "Du kan inte redigera denna sida."
 }

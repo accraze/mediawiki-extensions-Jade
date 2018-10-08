@@ -4,10 +4,10 @@
 			"Robby"
 		]
 	},
-	"jade-damaging": "Schiedlech",
-	"jade-notdamaging": "Net schiedlech",
-	"jade-goodfaith": "Gutt Absicht",
-	"jade-badfaith": "Schlecht Absicht",
+	"jade-damaging-true": "Schiedlech",
+	"jade-damaging-false": "Net schiedlech",
+	"jade-goodfaith-true": "Gutt Absicht",
+	"jade-goodfaith-false": "Schlecht Absicht",
 	"jade-delete": "Läschen",
 	"jade-cannot-edit-page": "Dir kënnt dës Säit net änneren."
 }

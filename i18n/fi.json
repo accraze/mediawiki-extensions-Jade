@@ -4,9 +4,9 @@
 			"Nike"
 		]
 	},
-	"jade-damaging": "Haitallinen",
-	"jade-notdamaging": "Ei haitallinen",
-	"jade-goodfaith": "Hyväntahtoinen",
-	"jade-badfaith": "Pahantahtoinen",
+	"jade-damaging-true": "Haitallinen",
+	"jade-damaging-false": "Ei haitallinen",
+	"jade-goodfaith-true": "Hyväntahtoinen",
+	"jade-goodfaith-false": "Pahantahtoinen",
 	"jade-delete": "Poista"
 }

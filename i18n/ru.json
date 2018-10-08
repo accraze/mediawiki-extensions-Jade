@@ -5,9 +5,9 @@
 		]
 	},
 	"apihelp-createjudgment-param-summary": "необязательное описание правки",
-	"jade-damaging": "Вредоносная",
-	"jade-notdamaging": "Безвредная",
-	"jade-goodfaith": "Добронамеренная",
-	"jade-badfaith": "Злонамеренная",
+	"jade-damaging-true": "Вредоносная",
+	"jade-damaging-false": "Безвредная",
+	"jade-goodfaith-true": "Добронамеренная",
+	"jade-goodfaith-false": "Злонамеренная",
 	"jade-delete": "Удалить"
 }

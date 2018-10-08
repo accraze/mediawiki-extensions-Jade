@@ -4,9 +4,9 @@
 			"Ladsgroup"
 		]
 	},
-	"jade-damaging": "آسیب‌زننده",
-	"jade-notdamaging": "آسیب‌زننده نیست",
-	"jade-goodfaith": "حسن‌نیت",
-	"jade-badfaith": "سونیت",
+	"jade-damaging-true": "آسیب‌زننده",
+	"jade-damaging-false": "آسیب‌زننده نیست",
+	"jade-goodfaith-true": "حسن‌نیت",
+	"jade-goodfaith-false": "سونیت",
 	"jade-delete": "حذف"
 }
