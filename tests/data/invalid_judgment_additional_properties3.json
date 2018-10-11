@@ -3,6 +3,7 @@
         {
             "schema": {
                 "damaging": true,
+                "goodfaith": false,
                 "nothing": "extra"
             },
             "preferred": true

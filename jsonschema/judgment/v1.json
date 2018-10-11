@@ -39,20 +39,10 @@
             "type": "object",
             "properties": {
                 "schema": {
-                    "type": "object",
-                    "properties": {
-                        "contentquality": {
-                            "type": "string"
-                        },
-                        "damaging": {
-                            "type": "boolean"
-                        },
-                        "goodfaith": {
-                            "type": "boolean"
-                        }
-                    },
-                    "minProperties": 1,
-                    "additionalProperties": false
+                    "oneOf": [
+                        { "$ref": "#/definitions/schema/contentquality" },
+                        { "$ref": "#/definitions/schema/editquality" }
+                    ]
                 },
                 "notes": {
                     "type": "string",
@@ -75,6 +65,49 @@
                 "schema"
             ],
             "additionalProperties": false
+        },
+        "schema": {
+            "contentquality": {
+                "type": "object",
+                "properties": {
+                    "contentquality": {
+                        "type": "string"
+                    }
+                },
+                "additionalProperties": false,
+                "required": [ "contentquality" ]
+            },
+            "editquality": {
+                "type": "object",
+                "properties": {
+                    "damaging": {
+                        "type": "boolean"
+                    },
+                    "goodfaith": {
+                        "type": "boolean"
+                    }
+                },
+                "additionalProperties": false,
+                "required": [
+                    "damaging",
+                    "goodfaith"
+                ]
+            }
+        },
+        "user": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer",
+                    "minimum": 0
+                },
+                "ip": {
+                    "type": "string"
+                },
+                "minProperties": 1,
+                "maxProperties": 1,
+                "additionalProperties": false
+            }
         }
     }
 }

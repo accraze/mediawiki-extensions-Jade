@@ -54,6 +54,7 @@ class AbuseFilterTest extends ApiTestCase {
 			'judgments' => [ [
 				'schema' => [
 					'damaging' => false,
+					'goodfaith' => true,
 				],
 				'preferred' => true,
 				'notes' => 'Smash your T.V.!',

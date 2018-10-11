@@ -2,7 +2,8 @@
     "judgments": [
         {
             "schema": {
-                "damaging": true
+                "damaging": true,
+                "goodfaith": false
             },
             "preferred": true
         }
