@@ -35,6 +35,7 @@
 		"JadeJudgment": "JADE\\Content\\JudgmentContentHandler"
 	},
 	"Hooks": {
+		"LoadExtensionSchemaUpdates": "JADE\\Hooks\\DatabaseSchemaHooks::onLoadExtensionSchemaUpdates",
 		"MovePageIsValidMove": "JADE\\Hooks\\MoveHooks::onMovePageIsValidMove"
 	},
 	"MessagesDirs": {
