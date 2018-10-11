@@ -13,10 +13,11 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-namespace JADE\Tests;
+namespace JADE\Tests\Hooks;
 
 use ApiTestCase;
 use ApiUsageException;
+use JADE\Tests\TestStorageHelper;
 
 /**
  * @group API

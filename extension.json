@@ -28,10 +28,8 @@
 		"getjudgments": "JADE\\ApiGetJudgments"
 	},
 	"AutoloadNamespaces": {
-		"JADE\\": "includes/"
-	},
-	"AutoloadClasses": {
-		"JADE\\Tests\\TestStorageHelper": "tests/phpunit/TestStorageHelper.php"
+		"JADE\\": "includes/",
+		"JADE\\Tests\\": "tests/phpunit/"
 	},
 	"ContentHandlers": {
 		"JadeJudgment": "JADE\\Content\\JudgmentContentHandler"
