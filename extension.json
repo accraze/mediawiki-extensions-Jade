@@ -35,8 +35,11 @@
 		"JadeJudgment": "JADE\\Content\\JudgmentContentHandler"
 	},
 	"Hooks": {
+		"ArticleDeleteComplete": "JADE\\Hooks\\LinkTableHooks::onArticleDeleteComplete",
+		"ArticleUndelete": "JADE\\Hooks\\LinkTableHooks::onArticleUndelete",
 		"LoadExtensionSchemaUpdates": "JADE\\Hooks\\DatabaseSchemaHooks::onLoadExtensionSchemaUpdates",
-		"MovePageIsValidMove": "JADE\\Hooks\\MoveHooks::onMovePageIsValidMove"
+		"MovePageIsValidMove": "JADE\\Hooks\\MoveHooks::onMovePageIsValidMove",
+		"PageContentInsertComplete": "JADE\\Hooks\\LinkTableHooks::onPageContentInsertComplete"
 	},
 	"MessagesDirs": {
 		"JADE": [

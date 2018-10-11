@@ -40,7 +40,11 @@ class JudgmentActionsTest extends ApiTestCase {
 
 		parent::setUp();
 
-		$this->tablesUsed[] = 'page';
+		$this->tablesUsed = [
+			'page',
+			'jade_diff_judgment',
+			'jade_revision_judgment',
+		];
 	}
 
 	/**
