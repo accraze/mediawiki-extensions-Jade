@@ -9,7 +9,8 @@
         },
         {
             "schema": {
-                "damaging": true
+                "damaging": false,
+                "goodfaith": true
             },
             "preferred": false
         }

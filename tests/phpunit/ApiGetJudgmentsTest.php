@@ -54,6 +54,7 @@ class ApiGetJudgmentsTest extends ApiTestCase {
 			'judgments' => [ [
 				'schema' => [
 					'damaging' => false,
+					'goodfaith' => true,
 				],
 				'preferred' => true,
 			] ],
@@ -82,6 +83,7 @@ class ApiGetJudgmentsTest extends ApiTestCase {
 			'judgments' => [ [
 				'schema' => [
 					'damaging' => false,
+					'goodfaith' => true,
 				],
 				'preferred' => true,
 			] ],
