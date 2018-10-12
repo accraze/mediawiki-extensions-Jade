@@ -1,123 +1,123 @@
 {
-    "title": "jade/judgment-set",
-    "$schema": "http://json-schema.org/draft-04/schema#",
-    "id": "https://phabricator.wikimedia.org/diffusion/EJAD/browse/master/jsonschema/judgment/v1.json?view=raw",
-    "type": "object",
-    "properties": {
-        "judgments": {
-            "type": "array",
-            "items": {
-                "$ref": "#/definitions/judgment"
-            }
-        }
-    },
-    "additionalProperties": false,
-    "definitions": {
-        "endorsement": {
-            "type": "object",
-            "properties": {
-                "comment": {
-                    "type": "string",
-                    "description": "Wikitext explaining why the user is endorsing"
-                },
-                "user": {
-                    "type": "string",
-                    "description": "Global user ID or an IP address"
-                },
-                "origin": {
-                    "type": "string",
-                    "description": "Plain text identifying the tool and workflow used to make this endorsement"
-                }
-            },
-            "required": [
-                "user"
-            ],
-            "minItems": 1,
-            "additionalProperties": false
-        },
-        "judgment": {
-            "type": "object",
-            "properties": {
-                "schema": {
-                    "oneOf": [
-                        { "$ref": "#/definitions/schema/contentquality" },
-                        { "$ref": "#/definitions/schema/editquality" }
-                    ]
-                },
-                "notes": {
-                    "type": "string",
-                    "description": "Wikitext comments or justification of this judgment."
-                },
-                "preferred": {
-                    "type": "boolean",
-                    "default": false,
-                    "description": "True when this judgment best represents a consensus opinion."
-                },
-                "endorsements": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/endorsement"
-                    }
-                }
-            },
-            "required": [
-                "preferred",
-                "schema"
-            ],
-            "additionalProperties": false
-        },
-        "schema": {
-            "contentquality": {
-                "type": "object",
-                "properties": {
-                    "contentquality": {
-                        "type": "string"
-                    }
-                },
-                "additionalProperties": false,
-                "required": [ "contentquality" ]
-            },
-            "editquality": {
-                "type": "object",
-                "properties": {
-                    "damaging": {
-                        "type": "boolean"
-                    },
-                    "goodfaith": {
-                        "type": "boolean"
-                    }
-                },
-                "additionalProperties": false,
-                "required": [
-                    "damaging",
-                    "goodfaith"
-                ]
-            }
-        },
-        "user": {
-            "oneOf": [
-                {
-                    "type": "object",
-                    "properties": {
-                        "id": {
-                            "type": "integer",
-                            "minimum": 0
-                        }
-                    },
-                    "additionalProperties": false,
-                    "required": [ "id" ]
-                },
-                {
-                    "type": "object",
-                    "properties": {
-                        "ip": {
-                            "type": "string"
-                        }
-                    },
-                    "additionalProperties": false,
-                    "required": [ "ip" ]
-                }
-            ]
-        }
-    }
+	"title": "jade/judgment-set",
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"id": "https://phabricator.wikimedia.org/diffusion/EJAD/browse/master/jsonschema/judgment/v1.json?view=raw",
+	"type": "object",
+	"properties": {
+		"judgments": {
+			"type": "array",
+			"items": {
+				"$ref": "#/definitions/judgment"
+			}
+		}
+	},
+	"additionalProperties": false,
+	"definitions": {
+		"endorsement": {
+			"type": "object",
+			"properties": {
+				"comment": {
+					"type": "string",
+					"description": "Wikitext explaining why the user is endorsing"
+				},
+				"user": {
+					"type": "string",
+					"description": "Global user ID or an IP address"
+				},
+				"origin": {
+					"type": "string",
+					"description": "Plain text identifying the tool and workflow used to make this endorsement"
+				}
+			},
+			"required": [
+				"user"
+			],
+			"minItems": 1,
+			"additionalProperties": false
+		},
+		"judgment": {
+			"type": "object",
+			"properties": {
+				"schema": {
+					"oneOf": [
+						{ "$ref": "#/definitions/schema/contentquality" },
+						{ "$ref": "#/definitions/schema/editquality" }
+					]
+				},
+				"notes": {
+					"type": "string",
+					"description": "Wikitext comments or justification of this judgment."
+				},
+				"preferred": {
+					"type": "boolean",
+					"default": false,
+					"description": "True when this judgment best represents a consensus opinion."
+				},
+				"endorsements": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/endorsement"
+					}
+				}
+			},
+			"required": [
+				"preferred",
+				"schema"
+			],
+			"additionalProperties": false
+		},
+		"schema": {
+			"contentquality": {
+				"type": "object",
+				"properties": {
+					"contentquality": {
+						"type": "string"
+					}
+				},
+				"additionalProperties": false,
+				"required": [ "contentquality" ]
+			},
+			"editquality": {
+				"type": "object",
+				"properties": {
+					"damaging": {
+						"type": "boolean"
+					},
+					"goodfaith": {
+						"type": "boolean"
+					}
+				},
+				"additionalProperties": false,
+				"required": [
+					"damaging",
+					"goodfaith"
+				]
+			}
+		},
+		"user": {
+			"oneOf": [
+				{
+					"type": "object",
+					"properties": {
+						"id": {
+							"type": "integer",
+							"minimum": 0
+						}
+					},
+					"additionalProperties": false,
+					"required": [ "id" ]
+				},
+				{
+					"type": "object",
+					"properties": {
+						"ip": {
+							"type": "string"
+						}
+					},
+					"additionalProperties": false,
+					"required": [ "ip" ]
+				}
+			]
+		}
+	}
 }

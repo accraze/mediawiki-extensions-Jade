@@ -1,11 +1,11 @@
 {
-    "judgments": [
-        {
-            "schema": {
-                "damaging": "true",
-                "goodfaith": false
-            },
-            "preferred": true
-        }
-    ]
+	"judgments": [
+		{
+			"schema": {
+				"damaging": "true",
+				"goodfaith": false
+			},
+			"preferred": true
+		}
+	]
 }

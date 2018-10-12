@@ -1,10 +1,10 @@
 {
-    "judgments": [
-        {
-            "schema": {
-                "contentquality": "FA"
-            },
-            "preferred": true
-        }
-    ]
+	"judgments": [
+		{
+			"schema": {
+				"contentquality": "FA"
+			},
+			"preferred": true
+		}
+	]
 }

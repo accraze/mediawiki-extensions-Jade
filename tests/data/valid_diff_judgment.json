@@ -1,19 +1,19 @@
 {
-    "judgments": [
-        {
-            "schema": {
-                "damaging": true,
-                "goodfaith": false
-            },
-            "notes": "feeble justification",
-            "endorsements": [
-                {
-                    "user": "12345",
-                    "comment": "Sounds thorough to me.",
-                    "origin": "test: ad-hoc tool"
-                }
-            ],
-            "preferred": true
-        }
-    ]
+	"judgments": [
+		{
+			"schema": {
+				"damaging": true,
+				"goodfaith": false
+			},
+			"notes": "feeble justification",
+			"endorsements": [
+				{
+					"user": "12345",
+					"comment": "Sounds thorough to me.",
+					"origin": "test: ad-hoc tool"
+				}
+			],
+			"preferred": true
+		}
+	]
 }

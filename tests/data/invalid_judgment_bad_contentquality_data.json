@@ -1,10 +1,10 @@
 {
-    "judgments": [
-        {
-            "schema": {
-                "contentquality": "grey"
-            },
-            "preferred": true
-        }
-    ]
+	"judgments": [
+		{
+			"schema": {
+				"contentquality": "grey"
+			},
+			"preferred": true
+		}
+	]
 }

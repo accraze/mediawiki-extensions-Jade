@@ -1,22 +1,22 @@
 {
-    "judgments": [
-        {
-            "schema": {
-                "contentquality": "C"
-            },
-            "preferred": true
-        },
-        {
-            "schema": {
-                "contentquality": "B"
-            },
-            "preferred": false
-        },
-        {
-            "schema": {
-                "contentquality": "GA"
-            },
-            "preferred": false
-        }
-    ]
+	"judgments": [
+		{
+			"schema": {
+				"contentquality": "C"
+			},
+			"preferred": true
+		},
+		{
+			"schema": {
+				"contentquality": "B"
+			},
+			"preferred": false
+		},
+		{
+			"schema": {
+				"contentquality": "GA"
+			},
+			"preferred": false
+		}
+	]
 }
