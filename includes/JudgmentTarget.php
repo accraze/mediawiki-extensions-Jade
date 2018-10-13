@@ -16,7 +16,7 @@
 
 namespace JADE;
 
-use IllegalArgumentException;
+use InvalidArgumentException;
 
 /**
  * Pointer to wiki entity type and ID.
@@ -34,7 +34,7 @@ class JudgmentTarget {
 	 * @param int $entityId Page ID or Revision ID of the entity.
 	 *
 	 * @return JudgmentTarget new target object.
-	 * @throws IllegalArgumentException when entity type is invalid.
+	 * @throws InvalidArgumentException when entity type is invalid.
 	 */
 	public static function newGeneric( $entityType, $entityId ) {
 		global $wgJadeEntityTypeNames;
@@ -43,7 +43,7 @@ class JudgmentTarget {
 		// Untrusted parameters should never reach this code, but assert valid
 		// parameters to prevent SQL injection regardless.
 		if ( !array_key_exists( $entityType, $wgJadeEntityTypeNames ) ) {
-			throw new IllegalArgumentException( "Unsupported judgment entity type '{$entityType}'" );
+			throw new InvalidArgumentException( "Unsupported judgment entity type '{$entityType}'" );
 		}
 		$target->entityType = $entityType;
 		$target->entityId = intval( $entityId );

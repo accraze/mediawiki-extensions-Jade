@@ -22,6 +22,7 @@ namespace JADE;
 
 use ChangeTags;
 use FormatJson;
+use Status;
 use WikiPage;
 
 use JADE\Content\JudgmentContent;
