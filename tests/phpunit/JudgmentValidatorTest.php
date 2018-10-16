@@ -20,18 +20,17 @@ use JADE\JADEServices;
 use MediaWikiTestCase;
 use StatusValue;
 
-const DATA_DIR = '../data';
-
 /**
  * @group Database
  * @group JADE
  * @group medium
  *
- * TODO: assert that we're getting the specific, expected error.
- *
  * @covers JADE\JudgmentValidator
+ * @covers JADE\Content\JudgmentContent
  */
 class JudgmentValidatorTest extends MediaWikiTestCase {
+
+	const DATA_DIR = '../data';
 
 	/** @var User */
 	private $user;
@@ -91,7 +90,7 @@ class JudgmentValidatorTest extends MediaWikiTestCase {
 	 * @return StatusValue validation success or errors.
 	 */
 	protected function runValidation( $path ) {
-		$text = file_get_contents( __DIR__ . '/' . DATA_DIR . '/' . $path );
+		$text = file_get_contents( __DIR__ . '/' . self::DATA_DIR . '/' . $path );
 
 		$validator = JADEServices::getJudgmentValidator();
 		$data = FormatJson::decode( $text );
@@ -124,7 +123,7 @@ class JudgmentValidatorTest extends MediaWikiTestCase {
 		list( $page, $revision ) = TestStorageHelper::createEntity( $this->user );
 		$ucType = ucfirst( $type );
 		$title = "{$ucType}/{$revision->getId()}";
-		$text = file_get_contents( __DIR__ . '/' . DATA_DIR . '/' . $path );
+		$text = file_get_contents( __DIR__ . '/' . self::DATA_DIR . '/' . $path );
 
 		$status = TestStorageHelper::saveJudgment( $title, $text, $this->user );
 		$this->assertTrue( $status->isOK() );
@@ -152,7 +151,7 @@ class JudgmentValidatorTest extends MediaWikiTestCase {
 			default:
 				$this->fail( "Not handling bad entity type {$type}" );
 		}
-		$text = file_get_contents( __DIR__ . '/' . DATA_DIR . '/' . $path );
+		$text = file_get_contents( __DIR__ . '/' . self::DATA_DIR . '/' . $path );
 
 		$status = TestStorageHelper::saveJudgment( $title, $text, $this->user );
 		$this->assertFalse( $status->isOK() );
@@ -167,7 +166,8 @@ class JudgmentValidatorTest extends MediaWikiTestCase {
 	public function testValidatePageTitle_invalidLong() {
 		list( $page, $revision ) = TestStorageHelper::createEntity( $this->user );
 		$title = "Revision/{$revision->getId()}/foo";
-		$text = file_get_contents( __DIR__ . '/' . DATA_DIR . '/valid_revision_judgment.json' );
+		$text = file_get_contents(
+			__DIR__ . '/' . self::DATA_DIR . '/valid_revision_judgment.json' );
 
 		$status = TestStorageHelper::saveJudgment( $title, $text, $this->user );
 		$this->assertFalse( $status->isOK() );
@@ -181,7 +181,7 @@ class JudgmentValidatorTest extends MediaWikiTestCase {
 	 */
 	public function testValidatePageTitle_invalidShort() {
 		$title = 'Revision';
-		$text = file_get_contents( __DIR__ . '/' . DATA_DIR . '/valid_diff_judgment.json' );
+		$text = file_get_contents( __DIR__ . '/' . self::DATA_DIR . '/valid_diff_judgment.json' );
 
 		$status = TestStorageHelper::saveJudgment( $title, $text, $this->user );
 		$this->assertFalse( $status->isOK() );
@@ -196,7 +196,7 @@ class JudgmentValidatorTest extends MediaWikiTestCase {
 	public function testValidatePageTitle_invalidRevision() {
 		// A revision that will "never" exist.  We don't create an entity for this test.
 		$title = 'Revision/999999999';
-		$text = file_get_contents( __DIR__ . '/' . DATA_DIR . '/valid_diff_judgment.json' );
+		$text = file_get_contents( __DIR__ . '/' . self::DATA_DIR . '/valid_diff_judgment.json' );
 
 		$status = TestStorageHelper::saveJudgment( $title, $text, $this->user );
 		$this->assertFalse( $status->isOK() );

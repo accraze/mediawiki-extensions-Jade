@@ -77,7 +77,7 @@ class TestStorageHelper {
 	 * @param string|array $text Content to save.
 	 * @param User|null $user User to save as.
 	 *
-	 * @return bool True if successful.
+	 * @return StatusValue
 	 */
 	public static function saveJudgment( $titleStr, $text, $user = null ) {
 		global $wgUser;

@@ -18,13 +18,13 @@ namespace JADE\Tests;
 use PHPUnit\Framework\TestCase;
 use JsonSchema\Validator;
 
-const ROOT_DIR = '../..';
-
 /**
  * @group JADE
  * @coversNothing
  */
 class SchemaValidationTest extends TestCase {
+
+	const ROOT_DIR = '../..';
 
 	public function provideSchemas() {
 		yield [ "jsonschema/judgment/v1.json" ];
@@ -38,7 +38,7 @@ class SchemaValidationTest extends TestCase {
 	 * @param string $subject Path to schema being validated.
 	 */
 	public function testSchemas( $subject ) {
-		$data = json_decode( file_get_contents( __DIR__ . '/' . ROOT_DIR . '/' . $subject ) );
+		$data = json_decode( file_get_contents( __DIR__ . '/' . self::ROOT_DIR . '/' . $subject ) );
 
 		$validator = new Validator;
 		$validator->validate( $data );
