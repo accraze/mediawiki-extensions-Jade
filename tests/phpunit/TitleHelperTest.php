@@ -31,15 +31,9 @@ class TitleHelperTest extends MediaWikiTestCase {
 	 * @covers ::buildJadeTitle
 	 */
 	public function testBuildJadeTitle_badEntityType() {
-		// Make a bad target.
-		$target = $this->getMockBuilder( JudgmentTarget::class )
-			->disableOriginalConstructor()
-			->getMock();
-
-		$target->entityType = 'foo';
-		$target->entityId = 123;
-
+		$target = TestStorageHelper::getBadTarget( $this );
 		$status = TitleHelper::buildJadeTitle( $target );
+
 		$this->assertFalse( $status->isOK() );
 		$errors = $status->getErrors();
 		$this->assertEquals( 1, count( $errors ) );

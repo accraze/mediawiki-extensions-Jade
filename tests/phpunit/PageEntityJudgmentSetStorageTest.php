@@ -78,13 +78,7 @@ class PageEntityJudgmentSetStorageTest extends MediaWikiTestCase {
 	 * @covers ::storeJudgmentSet
 	 */
 	public function testStoreJudgmentSet_badTarget() {
-		// Make a bad target.
-		$target = $this->getMockBuilder( JudgmentTarget::class )
-			->disableOriginalConstructor()
-			->getMock();
-
-		$target->entityType = 'foo';
-		$target->entityId = 123;
+		$target = TestStorageHelper::getBadTarget( $this );
 
 		// Should return a failure status.
 		$status = $this->storage->storeJudgmentSet(
@@ -208,13 +202,7 @@ class PageEntityJudgmentSetStorageTest extends MediaWikiTestCase {
 	 * @covers ::loadJudgmentSet
 	 */
 	public function testLoadJudgmentSet_badTarget() {
-		// Make a bad target.
-		$target = $this->getMockBuilder( JudgmentTarget::class )
-			->disableOriginalConstructor()
-			->getMock();
-
-		$target->entityType = 'foo';
-		$target->entityId = 123;
+		$target = TestStorageHelper::getBadTarget( $this );
 
 		// Should return a failure status.
 		$status = $this->storage->loadJudgmentSet( $target );

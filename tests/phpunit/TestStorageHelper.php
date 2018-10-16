@@ -17,7 +17,9 @@ namespace JADE\Tests;
 
 use ContentHandler;
 use FormatJSON;
+use JADE\JudgmentTarget;
 use PHPUnit\Framework\Assert;
+use PHPUnit\Framework\TestCase;
 use Title;
 use TitleValue;
 use WikiPage;
@@ -141,6 +143,15 @@ class TestStorageHelper {
 			"page" => $page,
 			"revision" => $revision,
 		];
+	}
+
+	public static function getBadTarget( TestCase $testCase ) {
+		$target = $testCase->getMockBuilder( JudgmentTarget::class )
+			->disableOriginalConstructor()
+			->getMock();
+		$target->entityType = 'foo';
+		$target->entityId = 123;
+		return $target;
 	}
 
 }
