@@ -24,13 +24,13 @@ use MediaWiki\MediaWikiServices;
 
 class JADEServices {
 
-	/** @return JudgmentStorage */
-	public static function getEntityJudgmentSetStorage() {
+	/** @return EntityJudgmentSetStorage */
+	public static function getEntityJudgmentSetStorage() : EntityJudgmentSetStorage {
 		return MediaWikiServices::getInstance()->getService( 'JADEEntityJudgmentSetStorage' );
 	}
 
 	/** @return JudgmentValidator */
-	public static function getJudgmentValidator() {
+	public static function getJudgmentValidator() : JudgmentValidator {
 		return MediaWikiServices::getInstance()->getService( 'JADEJudgmentValidator' );
 	}
 
