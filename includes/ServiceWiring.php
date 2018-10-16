@@ -26,10 +26,6 @@ use RequestContext;
 
 return [
 
-	'JADEJudgmentFormatter' => function ( MediaWikiServices $services ) {
-		return new PageFormatter();
-	},
-
 	'JADEEntityJudgmentSetStorage' => function ( MediaWikiServices $services ) {
 		return new PageEntityJudgmentSetStorage();
 	},
