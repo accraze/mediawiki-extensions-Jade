@@ -26,7 +26,7 @@ use FormatJSON;
  * @group medium
  * @group JADE
  *
- * @covers JADE\ApiGetJudgments::run
+ * @covers JADE\ApiGetJudgments
  */
 class ApiGetJudgmentsTest extends ApiTestCase {
 
@@ -47,6 +47,20 @@ class ApiGetJudgmentsTest extends ApiTestCase {
 		] );
 		$this->assertSame( [], $result[0]['query']['getjudgments'] );
 	}
+
+	public function testGetJudgments_invalidEntityType() {
+		$this->setExpectedApiException(
+			[ 'apierror-unrecognizedvalue', 'gjentitytype', 'foo' ] );
+		$result = $this->doApiRequest( [
+			'action' => 'query',
+			'list' => 'getjudgments',
+			'gjentitytype' => 'foo',
+			'gjentityid' => 123,
+		] );
+	}
+
+	// TODO: This would require injection or other trickery.
+	// public function testGetJudgments_disabledEntityType() {
 
 	public function testGetJudgments_success() {
 		list( $page, $revision ) = TestStorageHelper::createEntity();
