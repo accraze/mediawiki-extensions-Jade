@@ -30,6 +30,12 @@ return [
 		return new PageEntityJudgmentSetStorage();
 	},
 
+	'JADEJudgmentIndexStorage' => function ( MediaWikiServices $services ) {
+		return new JudgmentLinkTable(
+			$services->getDBLoadBalancer()
+		);
+	},
+
 	'JADEJudgmentValidator' => function ( MediaWikiServices $services ) {
 		return new JudgmentValidator(
 			RequestContext::getMain()->getConfig(),
