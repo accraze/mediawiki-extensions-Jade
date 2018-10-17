@@ -26,6 +26,12 @@ use WikiPage;
 
 class TestStorageHelper {
 
+	const DEFAULT_CONTENT = 'abcdef';
+	const DEFAULT_SUMMARY = 'some summary';
+
+	const DIFF_JUDGMENT = '../data/valid_diff_judgment.json';
+	const REVISION_JUDGMENT = '../data/valid_revision_judgment.json';
+
 	/**
 	 * Coarse wrapper for creating temporary content.
 	 *
@@ -114,7 +120,13 @@ class TestStorageHelper {
 	 *
 	 * @return array [ 'page' => WikiPage, 'revision' => Revision ]
 	 */
-	public static function makeEdit( $namespace, $title, $content, $summary, $expectedStatus = true ) {
+	public static function makeEdit(
+		$namespace,
+		$title,
+		$content = self::DEFAULT_CONTENT,
+		$summary = self::DEFAULT_SUMMARY,
+		$expectedStatus = true
+	) {
 		global $wgUser;
 
 		$editTarget = new TitleValue( $namespace, $title );
@@ -136,12 +148,12 @@ class TestStorageHelper {
 			return;
 		}
 
-		$revision = $status->value["revision"];
+		$revision = $status->value['revision'];
 		Assert::assertNotNull( $revision, 'No revision after edit' );
 
 		return [
-			"page" => $page,
-			"revision" => $revision,
+			'page' => $page,
+			'revision' => $revision,
 		];
 	}
 
@@ -152,6 +164,22 @@ class TestStorageHelper {
 		$target->entityType = 'foo';
 		$target->entityId = 123;
 		return $target;
+	}
+
+	/**
+	 * Load a judgment fixture.
+	 *
+	 * @param string $entityType Entity type key.
+	 *
+	 * @return string file contents
+	 */
+	public static function getJudgmentText( $entityType ) {
+		$textMap = [
+			'diff' => self::DIFF_JUDGMENT,
+			'revision' => self::REVISION_JUDGMENT,
+		];
+		$textPath = __DIR__ . '/' . $textMap[$entityType];
+		return file_get_contents( $textPath );
 	}
 
 }
