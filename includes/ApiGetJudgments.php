@@ -49,6 +49,7 @@ class ApiGetJudgments extends ApiQueryGeneratorBase {
 		$target = JudgmentTarget::newGeneric( $params['entitytype'], $params['entityid'] );
 		$status = TitleHelper::buildJadeTitle( $target );
 		if ( !$status->isOK() ) {
+			// Should be unreachable.
 			$this->dieStatus( $status );
 		}
 		$title = $status->value;

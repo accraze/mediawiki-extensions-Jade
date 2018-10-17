@@ -59,9 +59,6 @@ class ApiGetJudgmentsTest extends ApiTestCase {
 		] );
 	}
 
-	// TODO: This would require injection or other trickery.
-	// public function testGetJudgments_disabledEntityType() {
-
 	public function testGetJudgments_success() {
 		list( $page, $revision ) = TestStorageHelper::createEntity();
 		$existingJudgment = [
