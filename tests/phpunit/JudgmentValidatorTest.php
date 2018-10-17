@@ -29,8 +29,8 @@ use User;
  * @group JADE
  * @group medium
  *
- * @covers JADE\JudgmentValidator
- * @covers JADE\Content\JudgmentContent
+ * @coversDefaultClass JADE\JudgmentValidator
+ * @covers ::__construct
  */
 class JudgmentValidatorTest extends MediaWikiTestCase {
 
@@ -90,10 +90,12 @@ class JudgmentValidatorTest extends MediaWikiTestCase {
 	 * @param string $path Path to test fixture, relative to the test data
 	 * directory.
 	 *
-	 * @covers JADE\JudgmentValidator::validateBasicSchema
-	 * @covers JADE\JudgmentValidator::validateEndorsementUsers
-	 * @covers JADE\JudgmentValidator::validateJudgmentContent
-	 * @covers JADE\JudgmentValidator::validatePreferred
+	 * @covers ::validateAgainstSchema
+	 * @covers ::validateArticleQualityScale
+	 * @covers ::validateBasicSchema
+	 * @covers ::validateEndorsementUsers
+	 * @covers ::validateJudgmentContent
+	 * @covers ::validatePreferred
 	 */
 	public function testInvalidSchemaContent( $path, $expectedError ) {
 		$status = $this->runValidation( $path );
@@ -122,10 +124,10 @@ class JudgmentValidatorTest extends MediaWikiTestCase {
 	 * @param string $path Path to test fixture, relative to the test data
 	 * directory.
 	 *
-	 * @covers JADE\JudgmentValidator::validateBasicSchema
-	 * @covers JADE\JudgmentValidator::validateEndorsementUsers
-	 * @covers JADE\JudgmentValidator::validateJudgmentContent
-	 * @covers JADE\JudgmentValidator::validatePreferred
+	 * @covers ::validateBasicSchema
+	 * @covers ::validateEndorsementUsers
+	 * @covers ::validateJudgmentContent
+	 * @covers ::validatePreferred
 	 */
 	public function testValidateJudgmentContent( $path ) {
 		$status = $this->runValidation( $path );
@@ -135,9 +137,9 @@ class JudgmentValidatorTest extends MediaWikiTestCase {
 	/**
 	 * @dataProvider provideValidJudgments
 	 *
-	 * @covers JADE\JudgmentValidator::validateEntity
-	 * @covers JADE\JudgmentValidator::validateEntitySchema
-	 * @covers JADE\JudgmentValidator::validatePageTitle
+	 * @covers ::validateEntity
+	 * @covers ::validateEntitySchema
+	 * @covers ::validatePageTitle
 	 */
 	public function testValidatePageTitle_valid( $path, $type ) {
 		list( $page, $revision ) = TestStorageHelper::createEntity( $this->user );
@@ -156,9 +158,9 @@ class JudgmentValidatorTest extends MediaWikiTestCase {
 	 * directory.
 	 * @param string $type Entity type
 	 *
-	 * @covers JADE\JudgmentValidator::validateEntity
-	 * @covers JADE\JudgmentValidator::validateEntitySchema
-	 * @covers JADE\JudgmentValidator::validatePageTitle
+	 * @covers ::validateEntity
+	 * @covers ::validateEntitySchema
+	 * @covers ::validatePageTitle
 	 */
 	public function testValidatePageTitle_invalidWithType( $path, $type ) {
 		list( $page, $revision ) = TestStorageHelper::createEntity( $this->user );
@@ -181,7 +183,7 @@ class JudgmentValidatorTest extends MediaWikiTestCase {
 	}
 
 	/**
-	 * @covers JADE\JudgmentValidator::validatePageTitle
+	 * @covers ::validatePageTitle
 	 */
 	public function testValidatePageTitle_invalidLong() {
 		list( $page, $revision ) = TestStorageHelper::createEntity( $this->user );
@@ -197,7 +199,7 @@ class JudgmentValidatorTest extends MediaWikiTestCase {
 	}
 
 	/**
-	 * @covers JADE\JudgmentValidator::validatePageTitle
+	 * @covers ::validatePageTitle
 	 */
 	public function testValidatePageTitle_invalidShort() {
 		$title = 'Revision';
@@ -211,7 +213,8 @@ class JudgmentValidatorTest extends MediaWikiTestCase {
 	}
 
 	/**
-	 * @covers JADE\JudgmentValidator::validatePageTitle
+	 * @covers ::validateEntity
+	 * @covers ::validatePageTitle
 	 */
 	public function testValidatePageTitle_invalidRevision() {
 		// A revision that will "never" exist.  We don't create an entity for this test.
@@ -226,7 +229,7 @@ class JudgmentValidatorTest extends MediaWikiTestCase {
 	}
 
 	/**
-	 * @covers JADE\JudgmentValidator::validateEndorsementUsers
+	 * @covers ::validateEndorsementUsers
 	 */
 	public function testValidateEndorsementUsers_goodId() {
 		list( $page, $revision ) = TestStorageHelper::createEntity( $this->user );
@@ -251,7 +254,7 @@ class JudgmentValidatorTest extends MediaWikiTestCase {
 	}
 
 	/**
-	 * @covers JADE\JudgmentValidator::validateEndorsementUsers
+	 * @covers ::validateEndorsementUsers
 	 */
 	public function testValidateEndorsementUsers_badId() {
 		$userId = mt_rand();
@@ -282,7 +285,7 @@ class JudgmentValidatorTest extends MediaWikiTestCase {
 	}
 
 	/**
-	 * @covers JADE\JudgmentValidator::validateEndorsementUsers
+	 * @covers ::validateEndorsementUsers
 	 */
 	public function testValidateEndorsementUsers_goodCid() {
 		$centralUserId = CentralIdLookup::factory()->centralIdFromLocalUser( $this->user );
@@ -312,7 +315,7 @@ class JudgmentValidatorTest extends MediaWikiTestCase {
 	/**
 	 * Should be able to use suppressed users since we're only showing the ID.
 	 *
-	 * @covers JADE\JudgmentValidator::validateEndorsementUsers
+	 * @covers ::validateEndorsementUsers
 	 */
 	public function testValidateEndorsementUsers_suppressedCid() {
 		$centralUserId = CentralIdLookup::factory()->centralIdFromLocalUser( $this->user );
@@ -348,7 +351,7 @@ class JudgmentValidatorTest extends MediaWikiTestCase {
 	}
 
 	/**
-	 * @covers JADE\JudgmentValidator::validateEndorsementUsers
+	 * @covers ::validateEndorsementUsers
 	 */
 	public function testValidateEndorsementUsers_badCid() {
 		// Provide a valid local user ID to be sure we're testing the cid.
@@ -385,7 +388,7 @@ class JudgmentValidatorTest extends MediaWikiTestCase {
 	/**
 	 * Local and Global IDs are different users.
 	 *
-	 * @covers JADE\JudgmentValidator::validateEndorsementUsers
+	 * @covers ::validateEndorsementUsers
 	 */
 	public function testValidateEndorsementUsers_idMismatch() {
 		// Valid local user ID.
