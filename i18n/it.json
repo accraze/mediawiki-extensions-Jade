@@ -11,6 +11,9 @@
 	"jade-bad-title-format": "Formato titolo non valido",
 	"jade-bad-entity-type": "Tipo di entità non valido ''$1''",
 	"jade-bad-content-generic": "Errori di sintassi nel contenuto JSON.",
+	"jade-user-local-id-invalid": "L'utente locale con ID ''$1'' non esiste.",
+	"jade-user-central-id-invalid": "L'utente centrale con ID ''$1'' non esiste.",
+	"jade-user-ip-invalid": "L'indirizzo IP ''$1'' non è valido.",
 	"jade-cannot-create-page": "Non puoi creare questa pagina.",
 	"jade-cannot-edit-page": "Non puoi modificare questa pagina."
 }

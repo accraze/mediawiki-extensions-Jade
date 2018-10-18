@@ -4,5 +4,6 @@
 			"Joetaras"
 		]
 	},
-	"jade-desc": "Motore de giudizie e dialoghe"
+	"jade-desc": "Motore de giudizie e dialoghe",
+	"jade-user-ip-invalid": "Indirizze IP \"$1\" non g'è valide."
 }
