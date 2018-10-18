@@ -24,24 +24,36 @@ use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
 use RequestContext;
 
-return [
+if ( !class_exists( 'JADE\ServiceWiring' ) ) {
+	class ServiceWiring {
 
-	'JADEEntityJudgmentSetStorage' => function ( MediaWikiServices $services ) {
-		return new PageEntityJudgmentSetStorage();
-	},
+		public static function getWiring() {
+			return [
 
-	'JADEJudgmentIndexStorage' => function ( MediaWikiServices $services ) {
-		return new JudgmentLinkTable(
-			$services->getDBLoadBalancer()
-		);
-	},
+				'JADEEntityJudgmentSetStorage' => function ( MediaWikiServices $services ) {
+					return new PageEntityJudgmentSetStorage();
+				},
 
-	'JADEJudgmentValidator' => function ( MediaWikiServices $services ) {
-		return new JudgmentValidator(
-			RequestContext::getMain()->getConfig(),
-			LoggerFactory::getInstance( 'JADE' ),
-			$services->getRevisionStore()
-		);
-	},
+				'JADEJudgmentIndexStorage' => function ( MediaWikiServices $services ) {
+					return new JudgmentLinkTable(
+						$services->getDBLoadBalancer()
+					);
+				},
 
-];
+				'JADEJudgmentValidator' => function ( MediaWikiServices $services ) {
+					return new JudgmentValidator(
+						RequestContext::getMain()->getConfig(),
+						LoggerFactory::getInstance( 'JADE' ),
+						$services->getRevisionStore()
+					);
+				},
+
+			];
+		}
+
+	}
+}
+
+// @codeCoverageIgnoreStart
+return ServiceWiring::getWiring();
+// @codeCoverageIgnoreEnd
