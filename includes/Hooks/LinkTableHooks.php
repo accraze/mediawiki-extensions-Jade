@@ -23,6 +23,7 @@ use LogEntry;
 use MediaWiki\Logger\LoggerFactory;
 use Revision;
 use Title;
+use TitleValue;
 use User;
 use WikiPage;
 
@@ -54,7 +55,7 @@ class LinkTableHooks {
 		&$flags,
 		Revision $revision
 	) {
-		$target = self::judgmentTarget( $judgmentPage->getTitle() );
+		$target = self::judgmentTarget( $judgmentPage->getTitle()->getTitleValue() );
 		if ( !$target ) {
 			return;
 		}
@@ -81,7 +82,7 @@ class LinkTableHooks {
 		Content $content,
 		LogEntry $logEntry
 	) {
-		$target = self::judgmentTarget( $judgmentPage->getTitle() );
+		$target = self::judgmentTarget( $judgmentPage->getTitle()->getTitleValue() );
 		if ( !$target ) {
 			return;
 		}
@@ -113,7 +114,7 @@ class LinkTableHooks {
 			// Page already exists, don't create a new link.
 			return;
 		}
-		$target = self::judgmentTarget( $title );
+		$target = self::judgmentTarget( $title->getTitleValue() );
 		if ( !$target ) {
 			return;
 		}
@@ -126,12 +127,12 @@ class LinkTableHooks {
 	/**
 	 * Wrapper around TitleHelper::parseTitle, logging errors if appropriate.
 	 *
-	 * @param Title $title judgment page title to parse.
+	 * @param TitleValue $title judgment page title to parse.
 	 *
 	 * @return JudgmentTarget|null Judgment target, or null if the title
 	 *         couldn't be parsed.
 	 */
-	private static function judgmentTarget( Title $title ) {
+	private static function judgmentTarget( TitleValue $title ) {
 		$status = TitleHelper::parseTitle( $title );
 		if ( !$status->isOK() ) {
 			if ( $title->getNamespace() === NS_JUDGMENT ) {

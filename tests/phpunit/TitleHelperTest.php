@@ -15,10 +15,11 @@
  */
 namespace JADE\Tests;
 
+use JADE\JudgmentEntityType;
 use JADE\JudgmentTarget;
 use JADE\TitleHelper;
 use MediaWikiTestCase;
-use Title;
+use TitleValue;
 
 /**
  * @group JADE
@@ -27,49 +28,59 @@ use Title;
  */
 class TitleHelperTest extends MediaWikiTestCase {
 
-	/**
-	 * @covers ::buildJadeTitle
-	 */
-	public function testBuildJadeTitle_badEntityType() {
-		$target = TestStorageHelper::getBadTarget( $this );
-		$status = TitleHelper::buildJadeTitle( $target );
-
-		$this->assertFalse( $status->isOK() );
-		$errors = $status->getErrors();
-		$this->assertEquals( 1, count( $errors ) );
-		$this->assertEquals( 'jade-bad-entity-type', $errors[0]['message'] );
+	public function setUp() {
+		parent::setUp();
+		$this->revisionType = JudgmentEntityType::sanitizeEntityType( 'revision' )->value;
 	}
 
 	/**
 	 * @covers ::buildJadeTitle
 	 */
 	public function testBuildJadeTitle_success() {
-		$target = JudgmentTarget::newGeneric( 'revision', 123 );
-		$status = TitleHelper::buildJadeTitle( $target );
-		$this->assertTrue( $status->isOK() );
-		$title = $status->value->getDBkey();
-		$this->assertEquals( 'Revision/123', $title );
+		$target = new JudgmentTarget( $this->revisionType, 123 );
+		$title = TitleHelper::buildJadeTitle( $target );
+		$this->assertEquals( 'Revision/123', $title->getDBkey() );
 	}
 
 	public function provideUnparseableTitles() {
-		yield [ 'Talk:Revision/123', 'jade-bad-title-namespace' ];
-		yield [ 'Judgment:Revision/123/321', 'jade-bad-title-format' ];
-		yield [ 'Judgment:Revision', 'jade-bad-title-format' ];
-		yield [ 'Judgment:Foo/123', 'jade-bad-entity-type' ];
-		yield [ 'Judgment:Revision/bar', 'jade-bad-entity-id-format' ];
+		yield [ NS_TALK, 'Revision/123', 'jade-bad-title-namespace' ];
+		yield [ NS_JUDGMENT, 'Revision/123/321', 'jade-bad-title-format' ];
+		yield [ NS_JUDGMENT, 'Revision', 'jade-bad-title-format' ];
+		yield [ NS_JUDGMENT, 'Foo/123', 'jade-bad-entity-type' ];
+		yield [ NS_JUDGMENT, 'Revision/bar', 'jade-bad-entity-id-format' ];
 	}
 
 	/**
 	 * @dataProvider provideUnparseableTitles
 	 * @covers ::parseTitle
 	 */
-	public function testParseTitle_bad( $titleStr, $expectedError ) {
-		$title = Title::newFromText( $titleStr );
+	public function testParseTitle_bad( $namespace, $titleStr, $expectedError ) {
+		$title = new TitleValue( $namespace, $titleStr );
 		$status = TitleHelper::parseTitle( $title );
 		$this->assertFalse( $status->isOK() );
 		$errors = $status->getErrors();
-		$this->assertEquals( 1, count( $errors ) );
+		$this->assertCount( 1, $errors );
 		$this->assertEquals( $expectedError, $errors[0]['message'] );
+	}
+
+	/**
+	 * @covers ::parseTitle
+	 */
+	public function testParseTitle_success() {
+		// Provide a localization which won't accidentally match the type
+		// identifier.
+		$this->setMwGlobals( [
+			'wgJadeEntityTypeNames' => [
+				'diff' => 'Diffie',
+			],
+		] );
+
+		$title = new TitleValue( NS_JUDGMENT, 'Diffie/123' );
+		$status = TitleHelper::parseTitle( $title );
+		$this->assertTrue( $status->isOK() );
+		$target = $status->value;
+		$this->assertEquals( 'diff', $target->entityType );
+		$this->assertEquals( 123, $target->entityId );
 	}
 
 }

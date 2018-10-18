@@ -22,7 +22,7 @@ namespace JADE;
 
 use Status;
 use StatusValue;
-use Title;
+use TitleValue;
 
 class TitleHelper {
 
@@ -31,34 +31,27 @@ class TitleHelper {
 	 *
 	 * @param JudgmentTarget $target Wiki entity to build a judgment page title for.
 	 *
-	 * @return StatusValue value set to a Title where the judgment about the
-	 *         given entity can be stored.
+	 * @return TitleValue Path to where judgments about the given entity should
+	 *         be stored.
 	 */
 	public static function buildJadeTitle( JudgmentTarget $target ) {
-		global $wgJadeEntityTypeNames;
-
-		$entityType = strtolower( $target->entityType );
 		// Get localized title component.
-		if ( !array_key_exists( $entityType, $wgJadeEntityTypeNames ) ) {
-			return Status::newFatal( 'jade-bad-entity-type', $entityType );
-		}
-		$localTitle = $wgJadeEntityTypeNames[$entityType];
+		$localTitle = $target->entityType->getLocalizedName();
 
-		$title = Title::makeTitle(
+		return new TitleValue(
 			NS_JUDGMENT,
 			"{$localTitle}/{$target->entityId}"
 		);
-		return Status::newGood( $title );
 	}
 
 	/**
 	 * Parse Judgment Title object to get target wiki entity information.
 	 *
-	 * @param Title $title Judgment page title.
+	 * @param TitleValue $title Judgment page title.
 	 *
 	 * @return StatusValue with JudgmentTarget value.
 	 */
-	public static function parseTitle( Title $title ) {
+	public static function parseTitle( TitleValue $title ) {
 		global $wgJadeEntityTypeNames;
 
 		$namespace = $title->getNamespace();
@@ -70,16 +63,19 @@ class TitleHelper {
 		if ( count( $titleParts ) !== 2 ) {
 			return Status::newFatal( 'jade-bad-title-format' );
 		}
-		$entityType = array_search( $titleParts[0], $wgJadeEntityTypeNames, true );
-		if ( !$entityType ) {
+		// Find localized title component and get type identifier.
+		$typeName = array_search( $titleParts[0], $wgJadeEntityTypeNames, true );
+		$status = JudgmentEntityType::sanitizeEntityType( $typeName );
+		if ( !$status->isOK() ) {
 			return Status::newFatal( 'jade-bad-entity-type', $titleParts[0] );
 		}
+		$entityType = $status->value;
 		$entityId = intval( $titleParts[1] );
 		if ( $entityId === 0 ) {
 			return Status::newFatal( 'jade-bad-entity-id-format', $titleParts[1] );
 		}
 
-		$target = JudgmentTarget::newGeneric( $entityType, $entityId );
+		$target = new JudgmentTarget( $entityType, $entityId );
 		return Status::newGood( $target );
 	}
 

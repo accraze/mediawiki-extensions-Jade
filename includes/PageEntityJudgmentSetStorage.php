@@ -23,6 +23,7 @@ namespace JADE;
 use ChangeTags;
 use FormatJson;
 use Status;
+use Title;
 use WikiPage;
 
 use JADE\Content\JudgmentContent;
@@ -49,22 +50,19 @@ class PageEntityJudgmentSetStorage implements EntityJudgmentSetStorage {
 	) {
 		global $wgUser;
 
-		$status = TitleHelper::buildJadeTitle( $target );
-		if ( !$status->isOK() ) {
-			return $status;
-		}
-		$title = $status->value;
-		$page = WikiPage::factory( $title );
+		$title = TitleHelper::buildJadeTitle( $target );
+		$dbTitle = Title::newFromTitleValue( $title );
+		$page = WikiPage::factory( $dbTitle );
 
 		// TODO: Why aren't these permissions checks already handled by
 		// doEditContent?
 		if ( !$page->exists() ) {
-			if ( !$page->getTitle()->userCan( 'create', $wgUser ) ) {
+			if ( !$dbTitle->userCan( 'create', $wgUser ) ) {
 				return Status::newFatal( 'jade-cannot-create-page' );
 			}
 		}
 		// `edit` contains checks not present in `create`, do those as well.
-		if ( !$page->getTitle()->userCan( 'edit', $wgUser ) ) {
+		if ( !$dbTitle->userCan( 'edit', $wgUser ) ) {
 			return Status::newFatal( 'jade-cannot-edit-page' );
 		}
 		if ( count( $tags ) > 0 ) {
@@ -97,12 +95,9 @@ class PageEntityJudgmentSetStorage implements EntityJudgmentSetStorage {
 	 *         entity.
 	 */
 	public function loadJudgmentSet( JudgmentTarget $target ) {
-		$status = TitleHelper::buildJadeTitle( $target );
-		if ( !$status->isOK() ) {
-			return $status;
-		}
-		$title = $status->value;
-		$page = WikiPage::factory( $title );
+		$title = TitleHelper::buildJadeTitle( $target );
+		$dbTitle = Title::newFromTitleValue( $title );
+		$page = WikiPage::factory( $dbTitle );
 
 		$currentContent = $page->getContent();
 		// Return content as an associative array.

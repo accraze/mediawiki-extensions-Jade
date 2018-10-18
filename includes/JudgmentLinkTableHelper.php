@@ -17,29 +17,40 @@ namespace JADE;
 
 class JudgmentLinkTableHelper {
 
-	public static function getLinkTable( $entityType ) {
+	/** @var JudgmentEntityType */
+	private $entityType;
+
+	/**
+	 * @param JudgmentEntityType $entityType Link table will be for this type.
+	 */
+	public function __construct( JudgmentEntityType $entityType ) {
+		$this->entityType = $entityType;
+	}
+
+	public function getLinkTable() {
 		// Dynamic link table name per entity type, e.g. "jade_diff_judgment".
-		return "jade_{$entityType}_judgment";
+		return "jade_{$this->entityType}_judgment";
 	}
 
-	public static function getColumnPrefix( $entityType ) {
+	public function getColumnPrefix() {
 		// Table column prefix is constructed using the first letter of the entity type name.
-		return "jade{$entityType[0]}";
+		$entityTypeString = (string)$this->entityType;
+		return "jade{$entityTypeString[0]}";
 	}
 
-	public static function getIdColumn( $entityType ) {
-		$columnPrefix = self::getColumnPrefix( $entityType );
+	public function getIdColumn() {
+		$columnPrefix = $this->getColumnPrefix();
 		return "{$columnPrefix}_id";
 	}
 
-	public static function getJudgmentColumn( $entityType ) {
-		$columnPrefix = self::getColumnPrefix( $entityType );
+	public function getJudgmentColumn() {
+		$columnPrefix = $this->getColumnPrefix();
 		// Column linking to judgment pages, e.g. "jaded_judgment" for the diff link table.
 		return "{$columnPrefix}_judgment";
 	}
 
-	public static function getTargetColumn( $entityType ) {
-		$columnPrefix = self::getColumnPrefix( $entityType );
+	public function getTargetColumn() {
+		$columnPrefix = $this->getColumnPrefix();
 		// Column linking to judgment target revisions, e.g. "jaded_revision".
 		return "{$columnPrefix}_revision";
 	}

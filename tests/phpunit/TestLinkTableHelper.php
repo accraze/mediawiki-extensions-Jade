@@ -15,8 +15,10 @@
  */
 namespace JADE\Tests;
 
+use JADE\JudgmentEntityType;
 use JADE\JudgmentLinkTableHelper;
 use MediaWiki\MediaWikiServices;
+use PHPUnit\Framework\Assert;
 
 /**
  * Break access control as a quick and dirty way to reuse internal string
@@ -26,23 +28,29 @@ use MediaWiki\MediaWikiServices;
  */
 class TestLinkTableHelper {
 
+	/**
+	 * @param string $entityType entity type identifier
+	 * @param int $targetRevisionId revision being judged
+	 * @param int $judgmentPageId page ID being linked
+	 *
+	 * @return mixed Native or wrapped database query result.
+	 */
 	public static function selectJudgmentLink( $entityType, $targetRevisionId, $judgmentPageId ) {
-		// Get string constants for this target entity type.
-		$tableName = JudgmentLinkTableHelper::getLinkTable( $entityType );
-		$judgmentColumn = JudgmentLinkTableHelper::getJudgmentColumn( $entityType );
-		$targetColumn = JudgmentLinkTableHelper::getTargetColumn( $entityType );
+		$status = JudgmentEntityType::sanitizeEntityType( $entityType );
+		Assert::assertTrue( $status->isOK() );
+		$helper = new JudgmentLinkTableHelper( $status->value );
 
 		$dbr = MediaWikiServices::getInstance()->getDBLoadBalancer()
 			->getConnection( DB_REPLICA );
 		$result = $dbr->select(
-			[ $tableName ],
+			[ $helper->getLinkTable() ],
 			[
-				$targetColumn,
-				$judgmentColumn,
+				$helper->getTargetColumn(),
+				$helper->getJudgmentColumn(),
 			],
 			[
-				$targetColumn => $targetRevisionId,
-				$judgmentColumn => $judgmentPageId,
+				$helper->getTargetColumn() => $targetRevisionId,
+				$helper->getJudgmentColumn() => $judgmentPageId,
 			],
 			__METHOD__
 		);

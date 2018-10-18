@@ -103,14 +103,14 @@ class JudgmentValidator {
 	/**
 	 * Ensure that the score schemas are allowed by configuration.
 	 *
-	 * @param string $entityType Machine name for entity type.
+	 * @param JudgmentEntityType $entityType Machine name for entity type.
 	 * @param object $data Data structure to validate.
 	 *
 	 * @return StatusValue isOK if valid.
 	 */
-	protected function validateEntitySchema( $entityType, $data ) {
+	protected function validateEntitySchema( JudgmentEntityType $entityType, $data ) {
 		$allowedScoringSchemas = $this->config->get( 'JadeAllowedScoringSchemas' );
-		$entityAllowedSchemas = $allowedScoringSchemas[$entityType];
+		$entityAllowedSchemas = $allowedScoringSchemas[(string)$entityType];
 
 		foreach ( $data->judgments as $judgment ) {
 			foreach ( $judgment->schema as $schemaName => $value ) {
@@ -260,7 +260,7 @@ class JudgmentValidator {
 	 * @return StatusValue isOK if the page is valid, or fatal and the error message if invalid.
 	 */
 	public function validatePageTitle( WikiPage $page, $judgment ) {
-		$title = $page->getTitle();
+		$title = $page->getTitle()->getTitleValue();
 
 		$status = TitleHelper::parseTitle( $title );
 		if ( !$status->isOK() ) {

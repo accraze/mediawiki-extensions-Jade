@@ -16,6 +16,7 @@
 namespace JADE\Tests;
 
 use FormatJSON;
+use JADE\JudgmentEntityType;
 use JADE\JADEServices;
 use JADE\JudgmentTarget;
 use MediaWikiTestCase;
@@ -45,6 +46,8 @@ class PageEntityJudgmentSetStorageTest extends MediaWikiTestCase {
 		];
 
 		parent::setUp();
+
+		$this->revisionType = JudgmentEntityType::sanitizeEntityType( 'revision' )->value;
 	}
 
 	public function tearDown() {
@@ -79,36 +82,20 @@ class PageEntityJudgmentSetStorageTest extends MediaWikiTestCase {
 	/**
 	 * @covers ::storeJudgmentSet
 	 */
-	public function testStoreJudgmentSet_badTarget() {
-		$target = TestStorageHelper::getBadTarget( $this );
-
-		// Should return a failure status.
-		$status = $this->storage->storeJudgmentSet(
-			$target,
-			$this->getJudgment(),
-			'summary',
-			[]
-		);
-		$this->assertFalse( $status->isOK() );
-		$errors = $status->getErrors();
-		$this->assertEquals( 1, count( $errors ) );
-		$this->assertEquals( 'jade-bad-entity-type', $errors[0]['message'] );
-	}
-
-	/**
-	 * @covers ::storeJudgmentSet
-	 */
 	public function testStoreJudgmentSet_cannotCreate() {
+		global $wgUser;
 		// Prevent page creation.
 		$this->setMwGlobals( [
 			'wgGroupPermissions' => [
 				'*' => [ 'create' => false ],
 			]
 		] );
+		// FIXME: Not sure why we have to flush twice here.
+		$wgUser->clearInstanceCache();
 
 		// Should return a failure status.
 		$status = $this->storage->storeJudgmentSet(
-			JudgmentTarget::newGeneric( 'revision', 123 ),
+			new JudgmentTarget( $this->revisionType, mt_rand() ),
 			$this->getJudgment(),
 			'summary',
 			[]
@@ -142,7 +129,7 @@ class PageEntityJudgmentSetStorageTest extends MediaWikiTestCase {
 
 		// Should return a failure status.
 		$status = $this->storage->storeJudgmentSet(
-			JudgmentTarget::newGeneric( 'revision', $entityRevision->getId() ),
+			new JudgmentTarget( $this->revisionType, $entityRevision->getId() ),
 			$this->getJudgment( self::JUDGMENT_V2 ),
 			'summary',
 			[]
@@ -168,7 +155,7 @@ class PageEntityJudgmentSetStorageTest extends MediaWikiTestCase {
 
 		// Should return a failure status.
 		$status = $this->storage->storeJudgmentSet(
-			JudgmentTarget::newGeneric( 'revision', $entityRevision->getId() ),
+			new JudgmentTarget( $this->revisionType, $entityRevision->getId() ),
 			$this->getJudgment(),
 			'summary',
 			[ 'tag_it' ]
@@ -188,7 +175,7 @@ class PageEntityJudgmentSetStorageTest extends MediaWikiTestCase {
 
 		// Store the judgment.
 		$status = $this->storage->storeJudgmentSet(
-			JudgmentTarget::newGeneric( 'revision', $entityRevision->getId() ),
+			new JudgmentTarget( $this->revisionType, $entityRevision->getId() ),
 			$this->getJudgment(),
 			'summary',
 			[]
@@ -198,20 +185,6 @@ class PageEntityJudgmentSetStorageTest extends MediaWikiTestCase {
 		$title = "Revision/{$entityRevision->getId()}";
 		list( $page, $storedJudgment ) = TestStorageHelper::loadJudgment( $title );
 		$this->assertEquals( $this->getJudgment(), $storedJudgment );
-	}
-
-	/**
-	 * @covers ::loadJudgmentSet
-	 */
-	public function testLoadJudgmentSet_badTarget() {
-		$target = TestStorageHelper::getBadTarget( $this );
-
-		// Should return a failure status.
-		$status = $this->storage->loadJudgmentSet( $target );
-		$this->assertFalse( $status->isOK() );
-		$errors = $status->getErrors();
-		$this->assertEquals( 1, count( $errors ) );
-		$this->assertEquals( 'jade-bad-entity-type', $errors[0]['message'] );
 	}
 
 	/**
@@ -233,7 +206,7 @@ class PageEntityJudgmentSetStorageTest extends MediaWikiTestCase {
 		$success = $judgmentPage->doDeleteArticle( 'reason' );
 		$this->assertTrue( $success );
 
-		$target = JudgmentTarget::newGeneric( 'revision', $entityRevision->getId() );
+		$target = new JudgmentTarget( $this->revisionType, $entityRevision->getId() );
 		$status = $this->storage->loadJudgmentSet( $target );
 		$this->assertTrue( $status->isOK() );
 		$this->assertEquals( [], $status->value );
@@ -252,7 +225,7 @@ class PageEntityJudgmentSetStorageTest extends MediaWikiTestCase {
 			$this->getJudgmentText() );
 		$this->assertTrue( $success->isOK() );
 
-		$target = JudgmentTarget::newGeneric( 'revision', $entityRevision->getId() );
+		$target = new JudgmentTarget( $this->revisionType, $entityRevision->getId() );
 		$status = $this->storage->loadJudgmentSet( $target );
 		$this->assertTrue( $status->isOK() );
 		$this->assertEquals( $this->getJudgment(), $status->value );

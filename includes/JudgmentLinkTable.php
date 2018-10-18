@@ -18,6 +18,9 @@ namespace JADE;
 use Wikimedia\Rdbms\LoadBalancer;
 use WikiPage;
 
+/**
+ * Judgment index storage implemented using a RDBMS link table and indexes.
+ */
 class JudgmentLinkTable implements JudgmentIndexStorage {
 
 	private $loadBalancer;
@@ -27,41 +30,39 @@ class JudgmentLinkTable implements JudgmentIndexStorage {
 	}
 
 	public function insertIndex( JudgmentTarget $target, WikiPage $judgmentPage ) {
-		// Get string constants for this target entity type.
-		// Note that $target->entityType is sanitized by JudgmentTarget::newGeneric.
-		$tableName = JudgmentLinkTableHelper::getLinkTable( $target->entityType );
-		$judgmentColumn = JudgmentLinkTableHelper::getJudgmentColumn( $target->entityType );
-		$targetColumn = JudgmentLinkTableHelper::getTargetColumn( $target->entityType );
+		$tableHelper = new JudgmentLinkTableHelper( $target->entityType );
 
 		// Create row linking the judgment and its target.
 		$dbw = $this->loadBalancer->getConnection( DB_MASTER );
 		$row = [
-			$targetColumn => $target->entityId,
-			$judgmentColumn => $judgmentPage->getId(),
+			$tableHelper->getTargetColumn() => $target->entityId,
+			$tableHelper->getJudgmentColumn() => $judgmentPage->getId(),
 		];
-		$dbw->insert( $tableName, $row, __METHOD__, [ 'IGNORE' ] );
+		$dbw->insert( $tableHelper->getLinkTable(), $row, __METHOD__, [ 'IGNORE' ] );
 	}
 
 	public function deleteIndex( JudgmentTarget $target, WikiPage $judgmentPage ) {
-		// Get string constants for this target entity type.
-		// Note that $target->entityType is sanitized by JudgmentTarget::newGeneric.
-		$tableName = JudgmentLinkTableHelper::getLinkTable( $target->entityType );
-		$judgmentColumn = JudgmentLinkTableHelper::getJudgmentColumn( $target->entityType );
-		$targetColumn = JudgmentLinkTableHelper::getTargetColumn( $target->entityType );
-		$idColumn = JudgmentLinkTableHelper::getIdColumn( $target->entityType );
+		$tableHelper = new JudgmentLinkTableHelper( $target->entityType );
 
 		// Delete row linking the judgment and its target.  Select the primary
 		// key first, to avoid long queries on the master database.
 		$dbr = $this->loadBalancer->getConnection( DB_REPLICA );
 		$conds = [
-			$targetColumn => $target->entityId,
-			$judgmentColumn => $judgmentPage->getId(),
+			$tableHelper->getTargetColumn() => $target->entityId,
+			$tableHelper->getJudgmentColumn() => $judgmentPage->getId(),
 		];
-		$id = $dbr->selectField( $tableName, $idColumn, $conds, __METHOD__ );
+		$id = $dbr->selectField(
+			$tableHelper->getLinkTable(),
+			$tableHelper->getIdColumn(),
+			$conds,
+			__METHOD__ );
 
 		if ( $id !== false ) {
 			$dbw = $this->loadBalancer->getConnection( DB_MASTER );
-			$dbw->delete( $tableName, [ $idColumn => $id ], __METHOD__ );
+			$dbw->delete(
+				$tableHelper->getLinkTable(),
+				[ $tableHelper->getIdColumn() => $id ],
+				__METHOD__ );
 		}
 	}
 

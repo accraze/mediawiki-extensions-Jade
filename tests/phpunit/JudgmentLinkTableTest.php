@@ -15,6 +15,7 @@
  */
 namespace JADE\Tests;
 
+use JADE\JudgmentEntityType;
 use JADE\JudgmentLinkTable;
 use JADE\JudgmentTarget;
 use JADE\TitleHelper;
@@ -64,9 +65,15 @@ class JudgmentLinkTableTest extends MediaWikiTestCase {
 		] );
 	}
 
+	/**
+	 * @param string $entityType
+	 * @param int $entityId
+	 */
 	private function createJudgment( $entityType, $entityId ) {
-		$target = JudgmentTarget::newGeneric( $entityType, $entityId );
-		$title = TitleHelper::buildJadeTitle( $target )->value;
+		$status = JudgmentEntityType::sanitizeEntityType( $entityType );
+		$this->assertTrue( $status->isOK() );
+		$target = new JudgmentTarget( $status->value, $entityId );
+		$title = TitleHelper::buildJadeTitle( $target );
 		$judgmentText = TestStorageHelper::getJudgmentText( $entityType );
 		$judgmentStatus = TestStorageHelper::makeEdit(
 			NS_JUDGMENT, $title->getDBkey(), $judgmentText );
@@ -128,22 +135,6 @@ class JudgmentLinkTableTest extends MediaWikiTestCase {
 		$result = TestLinkTableHelper::selectJudgmentLink(
 			$type, $this->revision->getId(), $judgment['judgmentPage']->getId() );
 		$this->assertEquals( 1, $result->numRows() );
-	}
-
-	/**
-	 * @covers ::insertIndex
-	 * @dataProvider provideEntityTypes
-	 * @expectedException Wikimedia\Rdbms\DBQueryError
-	 */
-	public function testInsertIndex_failure( $type ) {
-		// Cheap way to cause a database failure.
-		$badTarget = TestStorageHelper::getBadTarget( $this );
-
-		// Unrelated judgment, just to have a real WikiPage.
-		$judgment = $this->createJudgment( $type, $this->revision->getId() );
-
-		// Should fail with a database exception.
-		$this->indexStorage->insertIndex( $badTarget, $judgment['judgmentPage'] );
 	}
 
 	/**

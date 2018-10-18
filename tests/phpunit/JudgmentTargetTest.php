@@ -15,37 +15,27 @@
  */
 namespace JADE\Tests;
 
-use InvalidArgumentException;
+use JADE\JudgmentEntityType;
 use JADE\JudgmentTarget;
-use MediaWikiTestCase;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @group JADE
  *
  * @coversDefaultClass JADE\JudgmentTarget
  */
-class JudgmentTargetTest extends MediaWikiTestCase {
-
-	public function provideTargets() {
-		yield [ 'diff', 123, true ];
-		yield [ 'diff', '123', true ];
-		yield [ 'foo', 123, false ];
-	}
+class JudgmentTargetTest extends TestCase {
 
 	/**
-	 * @dataProvider provideTargets
-	 *
-	 * @covers ::newGeneric
+	 * @covers ::__construct
 	 */
-	public function testNewGeneric( $entityType, $entityId, $expectedSuccess ) {
-		if ( !$expectedSuccess ) {
-			$this->setExpectedException( InvalidArgumentException::class );
-		}
-
-		$target = JudgmentTarget::newGeneric( $entityType, $entityId );
-		// Trick question: we can only reach this if successful.
-		$this->assertTrue( $expectedSuccess );
+	public function testConstruct() {
+		$entityType = JudgmentEntityType::sanitizeEntityType( 'diff' )->value;
+		$entityId = 123;
+		$target = new JudgmentTarget( $entityType, $entityId );
 		$this->assertInstanceOf( JudgmentTarget::class, $target );
+		$this->assertEquals( $entityType, $target->entityType );
+		$this->assertEquals( $entityId, $target->entityId );
 	}
 
 }

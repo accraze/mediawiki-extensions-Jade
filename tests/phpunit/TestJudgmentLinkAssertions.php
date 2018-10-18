@@ -28,6 +28,7 @@ trait TestJudgmentLinkAssertions {
 	/**
 	 * Fail if the given link doesn't exist.
 	 *
+	 * @param string $entityType
 	 * @param int $targetRevisionId rev_id of the target revision.
 	 * @param int $judgmentPageId page_id of the judgment page.
 	 */
@@ -42,6 +43,7 @@ trait TestJudgmentLinkAssertions {
 	/**
 	 * Fail if the given link exists.
 	 *
+	 * @param string $entityType
 	 * @param int $targetRevisionId rev_id of the target revision.
 	 * @param int $judgmentPageId page_id of the judgment page.
 	 */

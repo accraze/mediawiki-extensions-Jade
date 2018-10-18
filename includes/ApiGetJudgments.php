@@ -19,6 +19,7 @@ namespace JADE;
 use ApiBase;
 use ApiPageSet;
 use ApiQueryGeneratorBase;
+use Title;
 
 /**
  *
@@ -46,15 +47,17 @@ class ApiGetJudgments extends ApiQueryGeneratorBase {
 		$params = $this->extractRequestParams();
 		$titles = [];
 
-		$target = JudgmentTarget::newGeneric( $params['entitytype'], $params['entityid'] );
-		$status = TitleHelper::buildJadeTitle( $target );
+		$status = JudgmentEntityType::sanitizeEntityType( $params['entitytype'] );
 		if ( !$status->isOK() ) {
-			// Should be unreachable.
+			// Should be unreachable due to API parameter validation.
 			$this->dieStatus( $status );
 		}
-		$title = $status->value;
-		if ( $title->exists() ) {
-			$titles[] = $title;
+		$entityType = $status->value;
+		$target = new JudgmentTarget( $entityType, $params['entityid'] );
+		$title = TitleHelper::buildJadeTitle( $target );
+		$dbTitle = Title::newFromTitleValue( $title );
+		if ( $dbTitle->exists() ) {
+			$titles[] = $dbTitle;
 		}
 
 		if ( is_null( $resultPageSet ) ) {

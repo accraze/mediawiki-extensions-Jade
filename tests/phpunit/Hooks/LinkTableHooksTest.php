@@ -15,6 +15,7 @@
  */
 namespace JADE\Tests\Hooks;
 
+use JADE\JudgmentEntityType;
 use JADE\Hooks\LinkTableHooks;
 use JADE\JudgmentLinkTable;
 use JADE\JudgmentTarget;
@@ -24,6 +25,7 @@ use MediaWikiTestCase;
 use Revision;
 use TextContent;
 use Title;
+use TitleValue;
 use Wikimedia\TestingAccessWrapper;
 use WikiPage;
 
@@ -57,6 +59,10 @@ class LinkTableHooksTest extends MediaWikiTestCase {
 
 		$this->targetRevId = mt_rand();
 
+		$status = JudgmentEntityType::sanitizeEntityType( 'revision' );
+		$this->assertTrue( $status->isOK() );
+		$this->revisionType = $status->value;
+
 		$this->judgmentPageTitle = Title::newFromText( "Judgment:Revision/{$this->targetRevId}" );
 
 		$this->mockJudgmentPage = $this->getMockBuilder( WikiPage::class )
@@ -81,7 +87,7 @@ class LinkTableHooksTest extends MediaWikiTestCase {
 
 		$this->mockStorage->expects( $this->once() )
 			->method( 'insertIndex' )
-			->with( JudgmentTarget::newGeneric( 'revision', $this->targetRevId ), $this->mockJudgmentPage );
+			->with( new JudgmentTarget( $this->revisionType, $this->targetRevId ), $this->mockJudgmentPage );
 
 		LinkTableHooks::onPageContentInsertComplete(
 			$this->mockJudgmentPage,
@@ -125,7 +131,7 @@ class LinkTableHooksTest extends MediaWikiTestCase {
 	public function testOnArticleDeleteComplete_success() {
 		$this->mockStorage->expects( $this->once() )
 			->method( 'deleteIndex' )
-			->with( JudgmentTarget::newGeneric( 'revision', $this->targetRevId ), $this->mockJudgmentPage );
+			->with( new JudgmentTarget( $this->revisionType, $this->targetRevId ), $this->mockJudgmentPage );
 
 		LinkTableHooks::onArticleDeleteComplete(
 			$this->mockJudgmentPage,
@@ -165,7 +171,7 @@ class LinkTableHooksTest extends MediaWikiTestCase {
 		$this->mockStorage->expects( $this->once() )
 			->method( 'insertIndex' )
 			->with(
-				JudgmentTarget::newGeneric( 'revision', $this->targetRevId ),
+				new JudgmentTarget( $this->revisionType, $this->targetRevId ),
 				$this->callback( function ( $page ) use ( $pageId ) {
 					return $page->getId() === $pageId;
 				} )
@@ -220,16 +226,20 @@ class LinkTableHooksTest extends MediaWikiTestCase {
 	}
 
 	public function provideTargets() {
+		$diffType = JudgmentEntityType::sanitizeEntityType( 'diff' )->value;
 		yield [
-			'Judgment:Diff/123',
-			JudgmentTarget::newGeneric( 'diff', 123 ),
+			NS_JUDGMENT,
+			'Diff/123',
+			new JudgmentTarget( $diffType, 123 ),
 		];
 		yield [
-			'Judgment:Diff/FOO',
+			NS_JUDGMENT,
+			'Diff/FOO',
 			null,
 		];
 		yield [
-			'No page',
+			NS_MAIN,
+			'No_page' . strval( mt_rand() ),
 			null,
 		];
 	}
@@ -238,9 +248,10 @@ class LinkTableHooksTest extends MediaWikiTestCase {
 	 * @covers ::judgmentTarget
 	 * @dataProvider provideTargets
 	 */
-	public function testJudgmentTarget( $titleStr, $expectedTarget ) {
+	public function testJudgmentTarget( $namespace, $titleStr, $expectedTarget ) {
 		$hooksStatic = TestingAccessWrapper::newFromClass( LinkTableHooks::class );
-		$target = $hooksStatic->judgmentTarget( Title::newFromDBkey( $titleStr ) );
+		$title = new TitleValue( $namespace, $titleStr );
+		$target = $hooksStatic->judgmentTarget( $title );
 
 		$this->assertEquals( $expectedTarget, $target );
 	}
