@@ -44,6 +44,8 @@ class JudgmentValidatorTest extends MediaWikiTestCase {
 
 		$this->tablesUsed = [
 			'ipblocks',
+			'jade_diff_judgment',
+			'jade_revision_judgment',
 			'page',
 		];
 

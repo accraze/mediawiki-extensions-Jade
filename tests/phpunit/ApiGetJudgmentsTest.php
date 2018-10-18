@@ -33,7 +33,11 @@ class ApiGetJudgmentsTest extends ApiTestCase {
 	public function setUp() {
 		parent::setUp();
 
-		$this->tablesUsed[] = 'page';
+		$this->tablesUsed = [
+			'page',
+			'jade_diff_judgment',
+			'jade_revision_judgment',
+		];
 	}
 
 	public function testGetJudgments_empty() {

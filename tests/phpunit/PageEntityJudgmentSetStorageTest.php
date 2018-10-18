@@ -39,6 +39,8 @@ class PageEntityJudgmentSetStorageTest extends MediaWikiTestCase {
 	public function setUp() {
 		$this->storage = JADEServices::getEntityJudgmentSetStorage();
 		$this->tablesUsed = [
+			'jade_diff_judgment',
+			'jade_revision_judgment',
 			'page',
 		];
 

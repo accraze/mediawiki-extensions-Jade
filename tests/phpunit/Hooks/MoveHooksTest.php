@@ -30,6 +30,15 @@ use JADE\Tests\TestStorageHelper;
 class MoveHooksTest extends ApiTestCase {
 	const DIFF_JUDGMENT = '../../data/valid_diff_judgment.json';
 
+	public function setUp() {
+		parent::setUp();
+		$this->tablesUsed = [
+			'page',
+			'jade_diff_judgment',
+			'jade_revision_judgment',
+		];
+	}
+
 	/**
 	 * @covers JADE\Hooks\MoveHooks::onMovePageIsValidMove
 	 */
