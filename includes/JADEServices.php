@@ -29,6 +29,11 @@ class JADEServices {
 		return MediaWikiServices::getInstance()->getService( 'JADEEntityJudgmentSetStorage' );
 	}
 
+	/** @return JudgmentIndexStorage */
+	public static function getJudgmentIndexStorage() {
+		return MediaWikiServices::getInstance()->getService( 'JADEJudgmentIndexStorage' );
+	}
+
 	/** @return JudgmentValidator */
 	public static function getJudgmentValidator() : JudgmentValidator {
 		return MediaWikiServices::getInstance()->getService( 'JADEJudgmentValidator' );
