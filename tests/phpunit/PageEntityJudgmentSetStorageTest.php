@@ -102,7 +102,7 @@ class PageEntityJudgmentSetStorageTest extends MediaWikiTestCase {
 		);
 		$this->assertFalse( $status->isOK() );
 		$errors = $status->getErrors();
-		$this->assertEquals( 1, count( $errors ) );
+		$this->assertCount( 1, $errors );
 		$this->assertEquals( 'jade-cannot-create-page', $errors[0]['message'] );
 	}
 
@@ -136,7 +136,7 @@ class PageEntityJudgmentSetStorageTest extends MediaWikiTestCase {
 		);
 		$this->assertFalse( $status->isOK() );
 		$errors = $status->getErrors();
-		$this->assertEquals( 1, count( $errors ) );
+		$this->assertCount( 1, $errors );
 		$this->assertEquals( 'jade-cannot-edit-page', $errors[0]['message'] );
 	}
 
@@ -162,7 +162,7 @@ class PageEntityJudgmentSetStorageTest extends MediaWikiTestCase {
 		);
 		$this->assertFalse( $status->isOK() );
 		$errors = $status->getErrors();
-		$this->assertEquals( 1, count( $errors ) );
+		$this->assertCount( 1, $errors );
 		$this->assertEquals( 'tags-apply-no-permission', $errors[0]['message'] );
 	}
 

@@ -21,6 +21,7 @@
 namespace JADE;
 
 use CentralIdLookup;
+use LogicException;
 use MediaWiki\MediaWikiServices;
 use TemplateParser;
 use User;
@@ -180,6 +181,8 @@ class JudgmentPageWikitextRenderer {
 		} elseif ( property_exists( $user, 'ip' ) ) {
 			return "[[User:{$user->ip}]]";
 		}
+
+		throw new LogicException( 'Broken user data structure' );
 	}
 
 }

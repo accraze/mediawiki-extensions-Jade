@@ -19,6 +19,7 @@ use Block;
 use CentralIdLookup;
 use JADE\JudgmentPageWikitextRenderer;
 use LocalIdLookup;
+use LogicException;
 use MediaWikiLangTestCase;
 use Wikimedia\TestingAccessWrapper;
 
@@ -208,6 +209,36 @@ class JudgmentPageWikitextRendererTest extends MediaWikiLangTestCase {
 		$text = $renderer->getSchemaValueText( $schemaName, $value );
 
 		$this->assertEquals( $expectedText, $text );
+	}
+
+	/**
+	 * @covers ::getUserWikitext
+	 */
+	public function testGetUserWikitext_missingCentralUser() {
+		$badCentralId = mt_rand();
+
+		$renderer = TestingAccessWrapper::newFromObject(
+			new JudgmentPageWikitextRenderer );
+		$userObj = (object)[
+			'cid' => $badCentralId,
+			'id' => $this->getTestUser()->getUser()->getId(),
+		];
+		$output = $renderer->getUserWikitext( $userObj );
+
+		$expected = "⧼{$badCentralId}⧽";
+
+		$this->assertEquals( $expected, $output );
+	}
+
+	/**
+	 * @covers ::getUserWikitext
+	 * @expectedException LogicException
+	 */
+	public function testGetUserWikitext_badStruct() {
+		$renderer = TestingAccessWrapper::newFromObject(
+			new JudgmentPageWikitextRenderer );
+		$userObj = new \stdClass;
+		$output = $renderer->getUserWikitext( $userObj );
 	}
 
 }

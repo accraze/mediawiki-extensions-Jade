@@ -23,6 +23,7 @@ use LocalIdLookup;
 use MediaWikiTestCase;
 use StatusValue;
 use User;
+use Wikimedia\TestingAccessWrapper;
 
 /**
  * @group Database
@@ -31,6 +32,8 @@ use User;
  *
  * @coversDefaultClass JADE\JudgmentValidator
  * @covers ::__construct
+ *
+ * TODO: Should construct directly rather than relying on service wiring.
  */
 class JudgmentValidatorTest extends MediaWikiTestCase {
 
@@ -421,6 +424,20 @@ class JudgmentValidatorTest extends MediaWikiTestCase {
 		$errors = $status->getErrors();
 		$this->assertCount( 1, $errors );
 		$this->assertEquals( 'jade-user-id-mismatch', $errors[0]['message'] );
+	}
+
+	/**
+	 * @covers ::validateEntity
+	 */
+	public function testValidateEntity_badType() {
+		$validator = JADEServices::getJudgmentValidator();
+
+		$validator = TestingAccessWrapper::newFromObject( $validator );
+		$status = $validator->validateEntity( 'foo', 123 );
+		$this->assertFalse( $status->isOK() );
+		$errors = $status->getErrors();
+		$this->assertCount( 1, $errors );
+		$this->assertEquals( 'jade-bad-entity-type', $errors[0]['message'] );
 	}
 
 }
