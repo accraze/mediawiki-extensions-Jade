@@ -7,6 +7,8 @@
 	"jade-damaging-false": "Non dannosa",
 	"jade-goodfaith-true": "Buona fede",
 	"jade-goodfaith-false": "Mala fede",
+	"jade-contentquality-ga": "Voce di qualità",
+	"jade-contentquality-fa": "Voce in vetrina",
 	"jade-delete": "Cancella",
 	"jade-bad-title-format": "Formato titolo non valido",
 	"jade-bad-entity-type": "Tipo di entità non valido ''$1''",

@@ -13,6 +13,12 @@
 	"jade-damaging-false": "Μη ζημιοφόρο",
 	"jade-goodfaith-true": "Καλής πίστης",
 	"jade-goodfaith-false": "Κακής πίστης",
+	"jade-contentquality-stub": "Λήμματα τάξης προς επέκταση",
+	"jade-contentquality-start": "Λήμματα τάξης Έναρξη",
+	"jade-contentquality-c": "Λήμμα Τάξης Γ",
+	"jade-contentquality-b": "Λήμματα τάξης Β",
+	"jade-contentquality-ga": "Καλό λήμμα",
+	"jade-contentquality-fa": "Προβεβλημένο λήμμα",
 	"jade-new-judgment": "Νέα κρίση",
 	"jade-add-judgment": "Προσθήκη κρίσης",
 	"jade-delete": "Διαγραφή"
