@@ -5,6 +5,8 @@
 		]
 	},
 	"apihelp-createjudgment-param-summary": "Опционални резиме измене.",
+	"jade-contentquality-ga": "Добар чланак",
+	"jade-contentquality-fa": "Изабрани чланак",
 	"jade-bad-title-format": "Неважећи формат наслова",
 	"jade-bad-entity-type": "Неважећи тип ентитета: „$1”",
 	"jade-bad-entity-id-format": "Неважећи формат ID ентитета „$1”",
