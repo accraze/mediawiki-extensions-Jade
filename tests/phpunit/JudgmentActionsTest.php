@@ -18,14 +18,15 @@ namespace JADE\Tests;
 use ApiTestCase;
 
 /**
+ * Integration tests for page save validation.
+ *
  * @group API
  * @group Database
  * @group JADE
  * @group medium
  *
  * TODO: Rewrite to use API calls.
- *
- * @covers JADE\Content\JudgmentContent
+ * @coversNothing
  */
 class JudgmentActionsTest extends ApiTestCase {
 	const REV_JUDGMENT_V1 = '../data/valid_revision_judgment.json';
@@ -47,10 +48,6 @@ class JudgmentActionsTest extends ApiTestCase {
 		];
 	}
 
-	/**
-	 * @covers JADE\Content\JudgmentContent::prepareSave
-	 * @covers JADE\Content\JudgmentContent::isValid
-	 */
 	public function testCreateRevisionJudgment() {
 		// Create target page.
 		$article = TestStorageHelper::makeEdit(
@@ -70,10 +67,6 @@ class JudgmentActionsTest extends ApiTestCase {
 		$this->assertNotNull( $judgment['revision'] );
 	}
 
-	/**
-	 * @covers JADE\Content\JudgmentContent::prepareSave
-	 * @covers JADE\Content\JudgmentContent::isValid
-	 */
 	public function testUpdateRevisionJudgment() {
 		// Create target page.
 		$article = TestStorageHelper::makeEdit(
@@ -157,9 +150,6 @@ class JudgmentActionsTest extends ApiTestCase {
 		$this->assertEquals( $out['status'], 'Success' );
 	}
 
-	/**
-	 * @covers JADE\JudgmentValidator::validatePageTitle
-	 */
 	public function testCreateJudgment_badTitleRevId() {
 		// Create target page.
 		$article = TestStorageHelper::makeEdit(
@@ -185,9 +175,6 @@ class JudgmentActionsTest extends ApiTestCase {
 		$this->assertNull( $judgment['revision'] );
 	}
 
-	/**
-	 * @covers JADE\JudgmentValidator::validatePageTitle
-	 */
 	public function testCreateJudgment_badTitleType() {
 		// Create target page.
 		$article = TestStorageHelper::makeEdit(
@@ -208,9 +195,6 @@ class JudgmentActionsTest extends ApiTestCase {
 		$this->assertNull( $judgment['revision'] );
 	}
 
-	/**
-	 * @covers JADE\JudgmentValidator::validatePageTitle
-	 */
 	public function testCreateJudgment_badTitleFormat() {
 		// Create target page.
 		$article = TestStorageHelper::makeEdit(
