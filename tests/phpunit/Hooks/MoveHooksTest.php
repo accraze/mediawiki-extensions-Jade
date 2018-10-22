@@ -16,8 +16,9 @@
 namespace JADE\Tests\Hooks;
 
 use ApiTestCase;
-use ApiUsageException;
 use JADE\Tests\TestStorageHelper;
+use Status;
+use WikiPage;
 
 /**
  * @group API
@@ -30,6 +31,11 @@ use JADE\Tests\TestStorageHelper;
 class MoveHooksTest extends ApiTestCase {
 	const DIFF_JUDGMENT = '../../data/valid_diff_judgment.json';
 
+	const MAIN_EXISTING = 'main-existing';
+	const MAIN_NEW = 'main-new';
+	const JUDGMENT_EXISTING = 'judgment-existing';
+	const JUDGMENT_NEW = 'judgment-new';
+
 	public function setUp() {
 		parent::setUp();
 		$this->tablesUsed = [
@@ -37,40 +43,106 @@ class MoveHooksTest extends ApiTestCase {
 			'jade_diff_judgment',
 			'jade_revision_judgment',
 		];
+
+		// Create target content page.
+		$this->article = TestStorageHelper::makeEdit(
+			NS_MAIN, 'TestJudgmentActionsPage', 'abcdef', 'some summary' );
+		$revisionId = $this->article['revision']->getId();
+
+		// Create diff judgment.
+		$judgmentTitle = "Diff/{$revisionId}";
+		$judgmentText = file_get_contents( __DIR__ . '/' . self::DIFF_JUDGMENT );
+		$status = TestStorageHelper::saveJudgment(
+			$judgmentTitle,
+			$judgmentText
+		);
+		$this->assertTrue( $status->isOK() );
+		$this->judgmentPage = WikiPage::newFromID( $status->value['revision-record']->getPageId() );
+		$this->assertTrue( $this->judgmentPage->exists() );
+
+		// Provide the articles as a map from enum since data providers don't
+		// have access to the initialized test case.
+		$this->articleMap = [
+			self::MAIN_EXISTING => "{$this->article['page']->getTitle()->getDBkey()}",
+			self::MAIN_NEW => 'New page' . strval( mt_rand() ),
+			self::JUDGMENT_EXISTING => "Judgment:{$this->judgmentPage->getTitle()->getDBkey()}",
+			self::JUDGMENT_NEW => 'Judgment:Diff/321' . strval( mt_rand() ),
+		];
+
+		// Disable validation since that would prevent moving a wiki page into
+		// the Judgment namespace.
+		$this->mockValidation = $this->getMockBuilder( JudgmentValidator::class )
+			->disableOriginalConstructor()
+			->setMethods( [ 'validateJudgmentContent', 'validatePageTitle' ] )
+			->getMock();
+		$this->setService( 'JADEJudgmentValidator', $this->mockValidation );
+
+		$this->mockValidation
+			->method( 'validateJudgmentContent' )
+			->willReturn( Status::newGood() );
+		$this->mockValidation
+			->method( 'validatePageTitle' )
+			->willReturn( Status::newGood() );
+	}
+
+	public function provideNamespaceCombos() {
+		// FIXME: The judgment titles would fail validation, but maybe this is
+		// okay since we're testing for a specific error code.
+		yield [
+			self::MAIN_EXISTING,
+			self::MAIN_NEW,
+		];
+		yield [
+			self::MAIN_EXISTING,
+			self::JUDGMENT_NEW,
+			'jade-invalid-move-any',
+		];
+		yield [
+			self::JUDGMENT_EXISTING,
+			self::MAIN_NEW,
+			[ 'content-not-allowed-here', 'JadeJudgment', self::MAIN_NEW ],
+		];
+		yield [
+			self::JUDGMENT_EXISTING,
+			self::JUDGMENT_NEW,
+			'jade-invalid-move-any',
+		];
 	}
 
 	/**
 	 * @covers JADE\Hooks\MoveHooks::onMovePageIsValidMove
+	 * @dataProvider provideNamespaceCombos
 	 */
-	public function testOnMovePageIsValidMove() {
-		// Create target page.
-		$article = TestStorageHelper::makeEdit(
-			NS_MAIN, 'TestJudgmentActionsPage', 'abcdef', 'some summary' );
-		$rev_id = $article['revision']->getId();
+	public function testOnMovePageIsValidMove(
+		$oldTitleKey,
+		$newTitleKey,
+		$expectedException = null
+	) {
+		$oldTitle = $this->articleMap[$oldTitleKey];
+		$newTitle = $this->articleMap[$newTitleKey];
 
-		// Create diff judgment.
-		$judgmentText = file_get_contents( __DIR__ . '/' . self::DIFF_JUDGMENT );
-		$judgment = TestStorageHelper::makeEdit(
-			NS_JUDGMENT,
-			"Diff/{$rev_id}",
-			$judgmentText,
-			'summary says'
-		);
-		$this->assertNotNull( $judgment['page'] );
-		$this->assertNotNull( $judgment['revision'] );
-
-		$oldTitle = "Judgment:Diff/{$rev_id}";
-		$newTitle = 'Judgment:Diff/' . strval( $rev_id + 1 );
-
-		// FIXME: fragile.
-		$this->setExpectedException( ApiUsageException::class,
-			'Moving judgment pages is not allowed.' );
+		if ( $expectedException !== null ) {
+			// FIXME: hack to inject calculated values into the provided message fixture.
+			$expectedException = array_map(
+				function ( $item ) {
+					return $this->articleMap[$item] ?? $item;
+				},
+				(array)$expectedException
+			);
+			$this->setExpectedApiException( $expectedException );
+		}
 
 		$result = $this->doApiRequestWithToken( [
 			'action' => 'move',
 			'from' => $oldTitle,
 			'to' => $newTitle,
+			'ignorewarnings' => true,
 		] );
+
+		if ( $expectedException === null ) {
+			// FIXME: test !$result[0]['move']['error'] instead, but what does move call the error field?
+			$this->assertTrue( $result[0]['move']['redirectcreated'] );
+		}
 	}
 
 }
