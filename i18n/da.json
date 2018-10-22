@@ -7,6 +7,7 @@
 	"jade-damaging-true": "Skadelig",
 	"jade-damaging-false": "Ikke skadelig",
 	"jade-contentquality-ga": "God artikel",
+	"jade-contentquality-generic": "Indholds kvalitet \"$1\"",
 	"jade-delete": "Slet",
 	"jade-user-ip-invalid": "IP-adressen ''$1'' er ugyldig.",
 	"jade-cannot-edit-page": "Du kan ikke redigere denne side."

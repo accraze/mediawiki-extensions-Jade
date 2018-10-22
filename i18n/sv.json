@@ -9,10 +9,14 @@
 	"jade-damaging-false": "Inte skadlig",
 	"jade-goodfaith-true": "God avsikt",
 	"jade-goodfaith-false": "Ond avsikt",
+	"jade-contentquality-ga": "Bra artikel",
+	"jade-contentquality-fa": "Utmärkt artikel",
+	"jade-contentquality-generic": "Innehållskvalitet \"$1\"",
 	"jade-new-judgment": "Ny bedömning",
 	"jade-add-judgment": "Lägg till bedömning",
 	"jade-delete": "Radera",
 	"jade-bad-title-format": "Ogiltigt titelformat",
+	"jade-user-ip-invalid": "IP-adressen ''$1'' är ogiltig.",
 	"jade-cannot-create-page": "Du kan inte skapa denna sida.",
 	"jade-cannot-edit-page": "Du kan inte redigera denna sida."
 }
