@@ -24,7 +24,7 @@ use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
 use RequestContext;
 
-if ( !class_exists( 'JADE\ServiceWiring' ) ) {
+if ( !class_exists( ServiceWiring::class ) ) {
 	class ServiceWiring {
 
 		public static function getWiring() {

@@ -127,6 +127,7 @@ class JudgmentContentTest extends MediaWikiLangTestCase {
 		$content = new JudgmentContent( $this->judgmentText );
 
 		$this->mockValidation
+			->expects( $this->once() )
 			->method( 'validateJudgmentContent' )
 			->willReturn( Status::newGood() );
 
