@@ -17,7 +17,11 @@
 namespace JADE\Content;
 
 use JsonContentHandler;
+use ParserOutput;
+use Sanitizer;
+use SearchEngine;
 use Title;
+use WikiPage;
 
 class JudgmentContentHandler extends JsonContentHandler {
 
@@ -31,6 +35,34 @@ class JudgmentContentHandler extends JsonContentHandler {
 
 	public function canBeUsedOn( Title $title ) {
 		return $title->inNamespace( NS_JUDGMENT );
+	}
+
+	/**
+	 * Rewrite the text that will show up in the search results summary, as its
+	 * rendered form rather than raw JSON.
+	 *
+	 * TODO: This is where we would populate additional indexes into the data
+	 * itself.
+	 *
+	 * @param WikiPage $page Page to index
+	 * @param ParserOutput $output Rendered page
+	 * @param SearchEngine $engine Search engine for which we are indexing
+	 *
+	 * @return array Map of name=>value for fields
+	 */
+	public function getDataForSearchIndex(
+		WikiPage $page,
+		ParserOutput $output,
+		SearchEngine $engine
+	) {
+		$fields = parent::getDataForSearchIndex( $page, $output, $engine );
+
+		$text = $output->getText();
+		$stripped = trim( Sanitizer::stripAllTags( $text ) );
+
+		$fields['text'] = $stripped;
+
+		return $fields;
 	}
 
 }
