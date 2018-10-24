@@ -39,8 +39,6 @@ class CleanJudgmentLinksTest extends MaintenanceBaseTestCase {
 	// Include assertions to test judgment links.
 	use TestJudgmentLinkAssertions;
 
-	private $realService;
-
 	public function getMaintenanceClass() {
 		return CleanJudgmentLinks::class;
 	}
@@ -51,12 +49,8 @@ class CleanJudgmentLinksTest extends MaintenanceBaseTestCase {
 		$this->tablesUsed[] = 'jade_revision_judgment';
 	}
 
-	private function getDiffJudgmentContent() {
-		return file_get_contents( __DIR__ . '/../../data/valid_diff_judgment.json' );
-	}
-
-	private function getRevisionJudgmentContent() {
-		return file_get_contents( __DIR__ . '/../../data/valid_revision_judgment.json' );
+	private function getJudgmentContent( $entityType ) {
+		return file_get_contents( __DIR__ . '/../../data/valid_' . $entityType . '_judgment.json' );
 	}
 
 	private function createRevision() {
@@ -64,24 +58,29 @@ class CleanJudgmentLinksTest extends MaintenanceBaseTestCase {
 		return $revision;
 	}
 
-	private function createDiffJudgment( Revision $revision ) {
+	private function createJudgment( Revision $revision, $entityType ) {
+		global $wgJadeEntityTypeNames;
+
 		$status = TestStorageHelper::saveJudgment(
-			"Diff/{$revision->getId()}",
-			$this->getDiffJudgmentContent()
+			$wgJadeEntityTypeNames[$entityType] . "/{$revision->getId()}",
+			$this->getJudgmentContent( $entityType )
 		);
 		$this->assertTrue( $status->isOK() );
-		$page = WikiPage::newFromID( $status->value['revision']->getPage() );
-		return $page;
+
+		return WikiPage::newFromID( $status->value['revision']->getPage() );
 	}
 
-	private function createRevisionJudgment( Revision $revision ) {
-		$status = TestStorageHelper::saveJudgment(
-			"Revision/{$revision->getId()}",
-			$this->getRevisionJudgmentContent()
+	private function executeMaintenanceScript( $batchSize, $dryRun ) {
+		$options = [ 'batch-size' => $batchSize ];
+		if ( $dryRun ) {
+			$options['dry-run'] = true;
+		}
+
+		$this->maintenance->loadParamsAndArgs(
+			null,
+			$options
 		);
-		$this->assertTrue( $status->isOK() );
-		$page = WikiPage::newFromID( $status->value['revision']->getPage() );
-		return $page;
+		$this->maintenance->execute();
 	}
 
 	/**
@@ -106,101 +105,96 @@ class CleanJudgmentLinksTest extends MaintenanceBaseTestCase {
 		$this->assertEquals( 0, $result->numRows() );
 	}
 
-	/**
-	 * @covers ::findAndDeleteOrphanedLinks
-	 * @covers ::findOrphanedLinks
-	 * @covers ::deleteOrphanedLinks
-	 * TODO: merge with Revision test
-	 */
-	public function testDeleteOrphanedDiffLinks() {
-		// Create diff judgment and link.
-		$revision = $this->createRevision();
-		$page = $this->createDiffJudgment( $revision );
-		$pageId = $page->getId();
-
-		// Orphan it by deleting the judgment page, disabling the hook
-		// which would normally clean up the link.
-		$this->setTemporaryHook( 'ArticleDeleteComplete', false );
-		$page->doDeleteArticleReal( 'reasonable' );
-
-		// Check that the link still exists.
-		$this->assertJudgmentLink( 'diff', $revision->getId(), $pageId );
-
-		// Run the job.
-		$this->maintenance->loadParamsAndArgs();
-		$this->maintenance->execute();
-
-		// Check that the link was deleted.
-		$this->assertNoJudgmentLink( 'diff', $revision->getId(), $page->getId() );
+	public function entityTypeDryRunProvider() {
+		yield [ 'diff', false ];
+		yield [ 'revision', false ];
+		yield [ 'diff', 'dryRun' ];
+		yield [ 'revision', 'dryRun' ];
 	}
 
 	/**
+	 * @dataProvider entityTypeDryRunProvider
+	 *
 	 * @covers ::findAndDeleteOrphanedLinks
 	 * @covers ::findOrphanedLinks
 	 * @covers ::deleteOrphanedLinks
 	 */
-	public function testDeleteOrphanedRevisionLinks() {
-		// Create revision judgment and link.
-		$revision = $this->createRevision();
-		$page = $this->createRevisionJudgment( $revision );
-		$pageId = $page->getId();
+	public function testDeleteOrphanedLinks( $entityType, $dryRun ) {
+		$noOfTestJudgements = 3;
+		$revisions = [];
+		$pageIds = [];
 
-		// Orphan it by deleting the judgment page, disabling the hook
-		// which would normally clean up the link.
+		// Make sure page deletions don't auto-delete links
 		$this->setTemporaryHook( 'ArticleDeleteComplete', false );
-		$page->doDeleteArticleReal( 'reasonable' );
 
-		// Check that the link still exists.
-		$this->assertJudgmentLink( 'revision', $revision->getId(), $pageId );
+		for ( $i = 0; $i < $noOfTestJudgements; $i++ ) {
+			$revision = $this->createRevision();
+			$page = $this->createJudgment( $revision, $entityType );
+			$pageId = $page->getId();
 
-		// Run the job.
-		$this->maintenance->loadParamsAndArgs();
-		$this->maintenance->execute();
+			// Orphan it by deleting the judgment page
+			$page->doDeleteArticleReal( 'reasonable' );
 
-		// Check that the link was deleted.
-		$this->assertNoJudgmentLink( 'revision', $revision->getId(), $page->getId() );
+			// Check that the link still exists.
+			$this->assertJudgmentLink( $entityType, $revision->getId(), $pageId );
+
+			$revisions[] = $revision;
+			$pageIds[] = $pageId;
+		}
+
+		// Run the job (with a batch-size lower than $noOfTestJudgements)
+		$this->executeMaintenanceScript( $noOfTestJudgements - 1, $dryRun );
+
+		// Check that the links were deleted.
+		for ( $i = 1; $i < $noOfTestJudgements; $i++ ) {
+			if ( $dryRun ) {
+				// Links should still be present if this is a dry run
+				$this->assertJudgmentLink( $entityType, $revisions[$i]->getId(), $pageIds[$i] );
+			} else {
+				$this->assertNoJudgmentLink( $entityType, $revisions[$i]->getId(), $pageIds[$i] );
+			}
+		}
 	}
 
 	/**
+	 * @dataProvider entityTypeDryRunProvider
+	 *
 	 * @covers ::findAndConnectUnlinkedJudgments
 	 * @covers ::findUnlinkedJudgments
 	 * @covers ::connectUnlinkedJudgments
 	 */
-	public function testConnectUnlinkedDiffJudgments() {
-		// Create diff judgment without link.
+	public function testConnectUnlinkedJudgments( $entityType, $dryRun ) {
+		$noOfTestJudgements = 3;
+		$revisions = [];
+		$pageIds = [];
+
+		// Make sure created judgements are not linked
 		$this->setTemporaryHook( 'PageContentInsertComplete', false );
-		$revision = $this->createRevision();
-		$page = $this->createDiffJudgment( $revision );
 
-		// Check that no link was created.
-		$this->assertNoJudgmentLink( 'diff', $revision->getId(), $page->getId() );
+		for ( $i = 0; $i < $noOfTestJudgements; $i++ ) {
+			// Create judgment without link.
+			$revision = $this->createRevision();
+			$page = $this->createJudgment( $revision, $entityType );
 
-		// Run the job.
-		$this->maintenance->loadParamsAndArgs();
-		$this->maintenance->execute();
+			// Check that no link was created.
+			$this->assertNoJudgmentLink( $entityType, $revision->getId(), $page->getId() );
 
-		$this->assertJudgmentLink( 'diff', $revision->getId(), $page->getId() );
-	}
+			$revisions[] = $revision;
+			$pageIds[] = $page->getId();
+		}
 
-	/**
-	 * @covers ::findAndConnectUnlinkedJudgments
-	 * @covers ::findUnlinkedJudgments
-	 * @covers ::connectUnlinkedJudgments
-	 */
-	public function testConnectUnlinkedRevisionJudgments() {
-		// Create revision judgment without link.
-		$this->setTemporaryHook( 'PageContentInsertComplete', false );
-		$revision = $this->createRevision();
-		$page = $this->createRevisionJudgment( $revision );
+		// Run the job (with a batch-size lower than $noOfTestJudgements)
+		$this->executeMaintenanceScript( $noOfTestJudgements - 1, $dryRun );
 
-		// Check that no link was created.
-		$this->assertNoJudgmentLink( 'revision', $revision->getId(), $page->getId() );
-
-		// Run the job.
-		$this->maintenance->loadParamsAndArgs();
-		$this->maintenance->execute();
-
-		$this->assertJudgmentLink( 'revision', $revision->getId(), $page->getId() );
+		// Check that the links were inserted.
+		for ( $i = 1; $i < $noOfTestJudgements; $i++ ) {
+			if ( !$dryRun ) {
+				$this->assertJudgmentLink( $entityType, $revisions[$i]->getId(), $pageIds[$i] );
+			} else {
+				// Links should still be absent if this is a dry run
+				$this->assertNoJudgmentLink( $entityType, $revisions[$i]->getId(), $pageIds[$i] );
+			}
+		}
 	}
 
 }
