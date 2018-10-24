@@ -52,11 +52,11 @@ class TitleHelperTest extends MediaWikiTestCase {
 
 	/**
 	 * @dataProvider provideUnparseableTitles
-	 * @covers ::parseTitle
+	 * @covers ::parseTitleValue
 	 */
 	public function testParseTitle_bad( $namespace, $titleStr, $expectedError ) {
 		$title = new TitleValue( $namespace, $titleStr );
-		$status = TitleHelper::parseTitle( $title );
+		$status = TitleHelper::parseTitleValue( $title );
 		$this->assertFalse( $status->isOK() );
 		$errors = $status->getErrors();
 		$this->assertCount( 1, $errors );
@@ -64,7 +64,7 @@ class TitleHelperTest extends MediaWikiTestCase {
 	}
 
 	/**
-	 * @covers ::parseTitle
+	 * @covers ::parseTitleValue
 	 */
 	public function testParseTitle_success() {
 		// Provide a localization which won't accidentally match the type
@@ -76,7 +76,7 @@ class TitleHelperTest extends MediaWikiTestCase {
 		] );
 
 		$title = new TitleValue( NS_JUDGMENT, 'Diffie/123' );
-		$status = TitleHelper::parseTitle( $title );
+		$status = TitleHelper::parseTitleValue( $title );
 		$this->assertTrue( $status->isOK() );
 		$target = $status->value;
 		$this->assertEquals( 'diff', $target->entityType );

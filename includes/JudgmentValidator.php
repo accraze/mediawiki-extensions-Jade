@@ -262,7 +262,7 @@ class JudgmentValidator {
 	public function validatePageTitle( WikiPage $page, $judgment ) {
 		$title = $page->getTitle()->getTitleValue();
 
-		$status = TitleHelper::parseTitle( $title );
+		$status = TitleHelper::parseTitleValue( $title );
 		if ( !$status->isOK() ) {
 			return $status;
 		}

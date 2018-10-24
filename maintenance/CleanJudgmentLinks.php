@@ -202,7 +202,7 @@ class CleanJudgmentLinks extends Maintenance {
 
 		foreach ( $unlinked as $row ) {
 			$title = Title::newFromRow( $row );
-			$status = TitleHelper::parseTitle( $title->getTitleValue() );
+			$status = TitleHelper::parseTitleValue( $title->getTitleValue() );
 			if ( !$status->isOK() ) {
 				$this->error( "Failed to parse {$title}: {$status}\n" );
 			} else {

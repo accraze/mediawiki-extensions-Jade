@@ -125,7 +125,7 @@ class LinkTableHooks {
 	}
 
 	/**
-	 * Wrapper around TitleHelper::parseTitle, logging errors if appropriate.
+	 * Wrapper around TitleHelper::parseTitleValue, logging errors if appropriate.
 	 *
 	 * @param TitleValue $title judgment page title to parse.
 	 *
@@ -133,13 +133,13 @@ class LinkTableHooks {
 	 *         couldn't be parsed.
 	 */
 	private static function judgmentTarget( TitleValue $title ) {
-		$status = TitleHelper::parseTitle( $title );
+		$status = TitleHelper::parseTitleValue( $title );
 		if ( !$status->isOK() ) {
 			if ( $title->getNamespace() === NS_JUDGMENT ) {
 				// Should be unreachable thanks to JudgmentValidator.  If
 				// something did go wrong, it should be logged and
 				// investigated.
-				// TODO: Should this be a responsibility of TitleHelper::parseTitle()?
+				// TODO: Should this be a responsibility of TitleHelper::parseTitleValue()?
 				$logger = LoggerFactory::getInstance( 'JADE' );
 				$logger->error( "Cannot parse judgment title: {$status}" );
 			}

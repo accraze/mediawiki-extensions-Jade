@@ -51,7 +51,7 @@ class TitleHelper {
 	 *
 	 * @return StatusValue with JudgmentTarget value.
 	 */
-	public static function parseTitle( TitleValue $title ) {
+	public static function parseTitleValue( TitleValue $title ) {
 		global $wgJadeEntityTypeNames;
 
 		$namespace = $title->getNamespace();
