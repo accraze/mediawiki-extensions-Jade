@@ -10,5 +10,6 @@
 	"jade-goodfaith-false": "Schlecht Absicht",
 	"jade-contentquality-ga": "Gudden Artikel",
 	"jade-delete": "Läschen",
+	"jade-user-ip-invalid": "D'IP-Adress \"$1\" ass net valabel.",
 	"jade-cannot-edit-page": "Dir kënnt dës Säit net änneren."
 }
