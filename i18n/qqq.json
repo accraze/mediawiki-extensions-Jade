@@ -51,6 +51,7 @@
 	"jade-user-central-id-invalid": "Error message when an endorsement central user doesn't exist. Parameters:\n* $1 - attempted user ID",
 	"jade-user-id-mismatch": "Error message when endorsement user IDs don't match. Parameters:\n* $1 - attempted local ID\n* $2 - attempted central ID",
 	"jade-user-ip-invalid": "Error message when a user IP has an invalid format. Parameters:\n* $1 - attempted IP address",
+	"jade-created-timestamp-invalid": "Error message for an invalid ISO 8601 timestamp. Parameters:\n* $1 - Invalid timestamp",
 	"jade-bad-contentquality-value": "Error message when an contentquality value isn't in the configured $wgJadeArticleQualityScale array. Parameters:\n* $1 - attempted value\n* $2 - Comma-separated list of possible values from configuration.",
 	"jade-cannot-create-page": "Error message when the user isn't allowed to create a judgment page.",
 	"jade-cannot-edit-page": "Error message when the user isn't allowed to edit a judgment page.",

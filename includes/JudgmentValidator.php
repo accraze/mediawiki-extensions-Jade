@@ -22,6 +22,7 @@ namespace JADE;
 
 use CentralIdLookup;
 use Config;
+use DateTime;
 use IP;
 use JsonSchema\Constraints\Constraint;
 use JsonSchema\Exception\ValidationException;
@@ -77,6 +78,11 @@ class JudgmentValidator {
 		}
 
 		$status = $this->validateEndorsementUsers( $data );
+		if ( !$status->isOK() ) {
+			return $status;
+		}
+
+		$status = $this->validateEndorsementTimestamps( $data );
 		if ( !$status->isOK() ) {
 			return $status;
 		}
@@ -218,6 +224,26 @@ class JudgmentValidator {
 						// IDs don't match.
 						return Status::newFatal(
 							'jade-user-id-mismatch', $endorsement->user->id, $endorsement->user->cid );
+					}
+				}
+			}
+		}
+		return Status::newGood();
+	}
+
+	protected function validateEndorsementTimestamps( $data ) {
+		foreach ( $data->judgments as $judgment ) {
+			if ( !property_exists( $judgment, 'endorsements' ) ) {
+				// No endorsements, pass.
+				continue;
+			}
+
+			foreach ( $judgment->endorsements as $endorsement ) {
+				if ( property_exists( $endorsement, 'created' ) ) {
+					$date = DateTime::createFromFormat( DateTime::ATOM, $endorsement->created );
+					if ( $date === false ) {
+						return Status::newFatal(
+							'jade-created-timestamp-invalid', $endorsement->created );
 					}
 				}
 			}
