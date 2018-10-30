@@ -1,11 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Eitvys200"
+			"Eitvys200",
+			"Manvydasz"
 		]
 	},
 	"jade-contentquality-start": "Pradinės klasės straipsnis",
 	"jade-contentquality-c": "C klasės straipsnis",
 	"jade-contentquality-b": "B klasės straipsnis",
-	"jade-contentquality-ga": "Geras straipsnis"
+	"jade-contentquality-ga": "Vertingas straipsnis"
 }
