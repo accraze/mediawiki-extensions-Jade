@@ -248,6 +248,7 @@ class JudgmentValidatorTest extends MediaWikiTestCase {
 					'user' => [
 						'id' => $this->user->getId(),
 					],
+					'created' => date( DATE_ATOM ),
 				] ],
 			] ]
 		] );
@@ -276,6 +277,7 @@ class JudgmentValidatorTest extends MediaWikiTestCase {
 					'user' => [
 						'id' => $userId,
 					],
+					'created' => date( DATE_ATOM ),
 				] ],
 			] ]
 		] );
@@ -307,6 +309,7 @@ class JudgmentValidatorTest extends MediaWikiTestCase {
 						'id' => $this->user->getId(),
 						'cid' => $centralUserId,
 					],
+					'created' => date( DATE_ATOM ),
 				] ],
 			] ]
 		] );
@@ -345,6 +348,7 @@ class JudgmentValidatorTest extends MediaWikiTestCase {
 						'id' => $this->user->getId(),
 						'cid' => $centralUserId,
 					],
+					'created' => date( DATE_ATOM ),
 				] ],
 			] ]
 		] );
@@ -377,6 +381,7 @@ class JudgmentValidatorTest extends MediaWikiTestCase {
 						'id' => $localUserId,
 						'cid' => $centralUserId,
 					],
+					'created' => date( DATE_ATOM ),
 				] ],
 			] ]
 		] );
@@ -415,6 +420,7 @@ class JudgmentValidatorTest extends MediaWikiTestCase {
 						'id' => $localUserId,
 						'cid' => $centralUserId,
 					],
+					'created' => date( DATE_ATOM ),
 				] ],
 			] ]
 		] );
@@ -424,6 +430,53 @@ class JudgmentValidatorTest extends MediaWikiTestCase {
 		$errors = $status->getErrors();
 		$this->assertCount( 1, $errors );
 		$this->assertEquals( 'jade-user-id-mismatch', $errors[0]['message'] );
+	}
+
+	public function provideTimestamps() {
+		// Note that we're slightly stricter than ISO 8601.
+		yield [ '2001-04-01T22:22:22Z', true ];
+		yield [ '2001-04-01T22:22:22+01:30', true ];
+		yield [ '2001-04-01', false ];
+		yield [ '2001-04-01T22:22:22', false ];
+		yield [ '20010401T222222Z', false ];
+		yield [ '10-04', false ];
+		yield [ '10-foo', false ];
+	}
+
+	/**
+	 * Timestamp parsing
+	 *
+	 * @dataProvider provideTimestamps
+	 * @covers ::validateEndorsementTimestamps
+	 */
+	public function testValidateTimestamps( $timestamp, $expectedSuccess ) {
+		list( $page, $revision ) = TestStorageHelper::createEntity( $this->user );
+		$title = "Diff/{$revision->getId()}";
+		$text = json_encode( [
+			'judgments' => [ [
+				'schema' => [
+					'damaging' => false,
+					'goodfaith' => true,
+				],
+				'preferred' => true,
+				'endorsements' => [ [
+					'user' => [
+						'id' => $this->user->getId(),
+					],
+					'created' => $timestamp,
+				] ],
+			] ]
+		] );
+
+		$status = TestStorageHelper::saveJudgment( $title, $text, $this->user );
+		if ( $expectedSuccess ) {
+			$this->assertTrue( $status->isOK() );
+		} else {
+			$this->assertFalse( $status->isOK() );
+			$errors = $status->getErrors();
+			$this->assertCount( 1, $errors );
+			$this->assertEquals( 'jade-created-timestamp-invalid', $errors[0]['message'] );
+		}
 	}
 
 	/**

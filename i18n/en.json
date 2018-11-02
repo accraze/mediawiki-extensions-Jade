@@ -48,6 +48,7 @@
 	"jade-user-central-id-invalid": "User central ID ''$1'' doesn't exist.",
 	"jade-user-id-mismatch": "User local ID ''$1'' and central ID ''$2'' identify different users.",
 	"jade-user-ip-invalid": "IP address ''$1'' is invalid.",
+	"jade-created-timestamp-invalid": "Endorsement created timestamp is invalid: ''$1''",
 	"jade-bad-contentquality-value": "Bad value ''$1'' for contentquality schema, possible values are: $2",
 	"jade-cannot-create-page": "You cannot create this page.",
 	"jade-cannot-edit-page": "You cannot edit this page.",

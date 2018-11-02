@@ -27,10 +27,14 @@
 				"origin": {
 					"type": "string",
 					"description": "Plain text identifying the tool and workflow used to make this endorsement"
+				},
+				"created": {
+					"type": "string",
+					"description": "Time created in ISO 8601"
 				}
 			},
 			"required": [
-				"user"
+				"user", "created"
 			],
 			"minItems": 1,
 			"additionalProperties": false
