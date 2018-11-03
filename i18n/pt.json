@@ -2,13 +2,14 @@
 	"@metadata": {
 		"authors": [
 			"Hamilton Abreu",
-			"Vitorvicentevalente"
+			"Vitorvicentevalente",
+			"He7d3r"
 		]
 	},
 	"apihelp-createjudgment-summary": "Criar uma avaliação nova",
 	"apihelp-createjudgment-param-entitytype": "Tipo da entidade alvo na wiki: pode ser lista de \"diferenças\", \"revisão\" ou \"página\".",
 	"apihelp-createjudgment-param-entityid": "Identificador de revisão para alvos de tipo \"diferenças\" e \"revisão\", ou identificador de página para alvos de tipo \"data\".",
-	"apihelp-createjudgment-param-schema": "Esquema de classificação usado por esta avaliação: \"prejudicial\", \"bem intencionada\", \"wp10\" ou \"rascunho\"",
+	"apihelp-createjudgment-param-schema": "Esquema de classificação usado por esta avaliação: \"damaging\", \"goodfaith\", \"wp10\" ou \"drafttopic\"",
 	"apihelp-createjudgment-param-data": "Dados de avaliação em bruto. Os valores \"true\" e \"false\" são interpretados como boolianos.",
 	"apihelp-createjudgment-param-notes": "Texto opcional de explicação da avaliação.",
 	"apihelp-createjudgment-param-summary": "Resumo de edição opcional.",

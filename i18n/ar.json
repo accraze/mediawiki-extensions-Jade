@@ -50,6 +50,7 @@
 	"jade-user-central-id-invalid": "المعرف المركزي للمستخدم ''$1'' غير موجود.",
 	"jade-user-id-mismatch": "المعرف المحلي للمستخدم ''$1'' والمعرف المركزي ''$2'' يعرفان مستخدمين مختلفين.",
 	"jade-user-ip-invalid": "عنوان الأيبي ''$1'' غير صحيح.",
+	"jade-created-timestamp-invalid": "الطابع الزمني المنشأ بواسطة الدعم غير صحيح: ''$1''",
 	"jade-bad-contentquality-value": "قيمة غير صالحة ''$1'' لمخطط جودة المحتوى; القيم الممكنة هي: $2",
 	"jade-cannot-create-page": "لا يمكنك إنشاء هذه الصفحة.",
 	"jade-cannot-edit-page": "لا يمكنك تحرير هذه الصفحة.",

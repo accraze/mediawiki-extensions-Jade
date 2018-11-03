@@ -48,6 +48,7 @@
 	"jade-user-central-id-invalid": "Der Benutzer mit der zentralen Kennung ''$1'' ist nicht vorhanden.",
 	"jade-user-id-mismatch": "Der Benutzer mit der lokalen Kennung ''$1'' und der zentralen Kennung ''$2'' identifizieren unterschiedliche Benutzer.",
 	"jade-user-ip-invalid": "Die IP-Adresse ''$1'' ist ungültig.",
+	"jade-created-timestamp-invalid": "Der Zeitstempel der Erstellung der Bestätigung ist ungültig: ''$1''",
 	"jade-bad-contentquality-value": "Ungültiger Wert ''$1'' für das Schema contentquality, die möglichen Werte sind: $2",
 	"jade-cannot-create-page": "Du kannst diese Seite nicht erstellen.",
 	"jade-cannot-edit-page": "Du kannst diese Seite nicht bearbeiten.",
