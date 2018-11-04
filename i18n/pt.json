@@ -50,6 +50,7 @@
 	"jade-user-central-id-invalid": "O identificador central ''$1'' do utilizador não existe.",
 	"jade-user-id-mismatch": "O identificador local ''$1'' e o identificador central ''$2'' do utilizador identificam utilizadores diferentes.",
 	"jade-user-ip-invalid": "O endereço IP ''$1''  é inválido.",
+	"jade-created-timestamp-invalid": "A data e hora criada é inválida: ''$1''",
 	"jade-bad-contentquality-value": "Valor inválido ''$1'' para o esquema de qualidade de conteúdo; os valores possíveis são: $2",
 	"jade-cannot-create-page": "Não pode criar esta página.",
 	"jade-cannot-edit-page": "Não pode editar esta página.",

@@ -9,6 +9,13 @@
 	"jade-damaging-false": "Безвредная",
 	"jade-goodfaith-true": "Добронамеренная",
 	"jade-goodfaith-false": "Злонамеренная",
+	"jade-contentquality-stub": "Класс «Заготовка»",
+	"jade-contentquality-ga": "Хорошая статья",
 	"jade-contentquality-fa": "Избранная статья",
-	"jade-delete": "Удалить"
+	"jade-contentquality-generic": "Качество «$1»",
+	"jade-delete": "Удалить",
+	"jade-user-local-id-invalid": "Не существует участника с локальным ID ''$1''.",
+	"jade-user-central-id-invalid": "Не существует участника с центральным ID ''$1''.",
+	"jade-user-id-mismatch": "Локальный ID ''$1'' и центральный ID ''$2'' относятся к разным участникам.",
+	"jade-user-ip-invalid": "IP-адрес ''$1'' недействителен."
 }

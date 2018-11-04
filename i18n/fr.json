@@ -51,6 +51,7 @@
 	"jade-user-central-id-invalid": "L’ID d’utilisateur central « $1 » n’existe pas.",
 	"jade-user-id-mismatch": "L’ID de l’utilisateur local « $1 » et l’ID central « $2 » identifient des utilisateurs différents.",
 	"jade-user-ip-invalid": "L’adresse IP « $1 » n’est pas valide.",
+	"jade-created-timestamp-invalid": "L'horodatage créé par l'endossement est invalide: « $1 »",
 	"jade-bad-contentquality-value": "Mauvaise valeur « $1 » pour le schéma contentquality, les valeurs possibles sont : $2",
 	"jade-cannot-create-page": "Vous ne pouvez pas créer cette page.",
 	"jade-cannot-edit-page": "Vous ne pouvez pas modifier cette page.",
