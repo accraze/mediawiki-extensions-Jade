@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Robin van der Linde"
+			"Robin van der Linde",
+			"Mainframe98"
 		]
 	},
-	"jade-contentquality-ga": "Goed artikel"
+	"jade-contentquality-ga": "Goed artikel",
+	"jade-delete": "Verwijderen"
 }
