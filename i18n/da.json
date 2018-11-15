@@ -6,6 +6,8 @@
 	},
 	"jade-damaging-true": "Skadelig",
 	"jade-damaging-false": "Ikke skadelig",
+	"jade-goodfaith-true": "God hensigt",
+	"jade-goodfaith-false": "Ond hensigt",
 	"jade-contentquality-c": "C-klasse artikel",
 	"jade-contentquality-b": "B-klasse artikel",
 	"jade-contentquality-ga": "God artikel",
