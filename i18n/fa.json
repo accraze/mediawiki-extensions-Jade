@@ -1,12 +1,19 @@
 {
 	"@metadata": {
 		"authors": [
-			"Ladsgroup"
+			"Ladsgroup",
+			"درفش کاویانی"
 		]
 	},
 	"jade-damaging-true": "آسیب‌زننده",
 	"jade-damaging-false": "آسیب‌زننده نیست",
 	"jade-goodfaith-true": "حسن‌نیت",
 	"jade-goodfaith-false": "سونیت",
+	"jade-contentquality-stub": "مقالهٔ سطح خُرد",
+	"jade-contentquality-c": "مقالهٔ سطح پ",
+	"jade-contentquality-b": "مقالهٔ سطح ب",
+	"jade-contentquality-ga": "مقالهٔ خوب",
+	"jade-contentquality-fa": "مقالهٔ برگزیده",
+	"jade-contentquality-generic": "کیفیت محتوا «$1»",
 	"jade-delete": "حذف"
 }
