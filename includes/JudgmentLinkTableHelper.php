@@ -55,4 +55,9 @@ class JudgmentLinkTableHelper {
 		return "{$columnPrefix}_revision";
 	}
 
+	public function getSummaryColumn( $schema ) {
+		$columnPrefix = $this->getColumnPrefix();
+		return "{$columnPrefix}_{$schema}";
+	}
+
 }

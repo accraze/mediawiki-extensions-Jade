@@ -5,6 +5,7 @@ namespace JADE\Maintenance;
 use JADE\JADEServices;
 use JADE\JudgmentEntityType;
 use JADE\JudgmentLinkTableHelper;
+use JADE\JudgmentSummarizer;
 use JADE\TitleHelper;
 use Maintenance;
 use MediaWiki\MediaWikiServices;
@@ -209,8 +210,21 @@ class CleanJudgmentLinks extends Maintenance {
 				$judgmentTarget = $status->value;
 				$judgmentPage = WikiPage::factory( $title );
 
+				// Rebuild the index.
 				if ( !$this->getOption( 'dry-run' ) ) {
 					$indexStorage->insertIndex( $judgmentTarget, $judgmentPage );
+				}
+
+				// Summarize judgment.
+				$judgmentContent = $judgmentPage->getContent();
+				$status = JudgmentSummarizer::getSummaryFromContent( $judgmentContent );
+				if ( !$status->isOK() ) {
+					$this->error( "Can't summarize content for {$title}: {$status}" );
+				} else {
+					$summaryValues = $status->value;
+					if ( !$this->getOption( 'dry-run' ) ) {
+						$indexStorage->updateSummary( $judgmentTarget, $summaryValues );
+					}
 				}
 			}
 

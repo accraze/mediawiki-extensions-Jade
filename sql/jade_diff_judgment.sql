@@ -5,10 +5,19 @@ create table /*_*/jade_diff_judgment (
 	-- Revision ID being judged.
 	jaded_revision int unsigned not null,
 	-- Page ID of the judgment.
-	jaded_judgment int unsigned not null
+	jaded_judgment int unsigned not null,
+	-- Judged to be damaging?
+	jaded_damaging tinyint,
+	-- Judged to be good faith?
+	jaded_goodfaith tinyint
 ) /*$wgDBTableOptions*/;
 
--- Join judgments by target revision.  Covers judgment page ID.
-create unique index /*i*/jaded_revision_judgment
+-- Only one judgment per revision.
+create unique index /*i*/jaded_revision
 	on /*_*/jade_diff_judgment
-	(jaded_revision, jaded_judgment);
+	(jaded_revision);
+
+-- Covering index, get all data when joining on target revision.
+create index /*i*/jaded_covering
+	on /*_*/jade_diff_judgment
+	(jaded_revision, jaded_judgment, jaded_damaging, jaded_goodfaith);

@@ -38,5 +38,7 @@
 	"jade-bad-contentquality-value": "Bad index ''$1'' into the content quality schema, must be a quality level between 1 and $2.",
 	"jade-cannot-create-page": "You cannot create this page.",
 	"jade-cannot-edit-page": "You cannot edit this page.",
-	"jade-invalid-move-any": "Moving judgment pages is not allowed."
+	"jade-invalid-move-any": "Moving judgment pages is not allowed.",
+	"jade-db-error": "Database error: $1",
+	"jade-content-model-error": "Wrong content model for judgment."
 }

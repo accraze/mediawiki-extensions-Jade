@@ -164,4 +164,31 @@ class JudgmentLinkTableTest extends MediaWikiTestCase {
 		$this->indexStorage->deleteIndex( $judgment['target'], $judgment['judgmentPage'] );
 	}
 
+	/**
+	 * @covers ::updateSummary
+	 */
+	public function testUpdateSummary_normal() {
+		$judgment = $this->createJudgment( 'diff', $this->revision->getId() );
+
+		// Prepare the row.
+		$this->indexStorage->insertIndex( $judgment['target'], $judgment['judgmentPage'] );
+		$this->assertJudgmentLink( 'diff', $this->revision->getId(), $judgment['judgmentPage']->getId() );
+
+		$this->indexStorage->updateSummary( $judgment['target'], [
+			'damaging' => true,
+			'goodfaith' => false,
+		] );
+
+		$result = TestLinkTableHelper::selectJudgmentLink(
+			'diff',
+			$this->revision->getId(),
+			$judgment['judgmentPage']->getId(),
+			[ 'damaging', 'goodfaith' ] );
+		$this->assertEquals( 1, $result->numRows() );
+		foreach ( $result as $row ) {
+			$this->assertEquals( 1, $row->jaded_damaging );
+			$this->assertEquals( 0, $row->jaded_goodfaith );
+		}
+	}
+
 }
