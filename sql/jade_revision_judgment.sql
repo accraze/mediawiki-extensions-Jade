@@ -19,3 +19,8 @@ create unique index /*i*/jader_revision
 create index /*i*/jader_covering
 	on /*_*/jade_revision_judgment
 	(jader_revision, jader_judgment, jader_contentquality);
+
+-- TODO: Review this index once we have an idea of real-world usage statistics.
+create index /*i*/jader_contentquality
+	on /*_*/jade_revision_judgment
+	(jader_contentquality);

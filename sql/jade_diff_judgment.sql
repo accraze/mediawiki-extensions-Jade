@@ -21,3 +21,13 @@ create unique index /*i*/jaded_revision
 create index /*i*/jaded_covering
 	on /*_*/jade_diff_judgment
 	(jaded_revision, jaded_judgment, jaded_damaging, jaded_goodfaith);
+
+-- TODO: Review this index once we have an idea of real-world usage statistics.
+create index /*i*/jaded_damaging
+	on /*_*/jade_diff_judgment
+	(jaded_damaging);
+
+-- TODO: Review this index once we have an idea of real-world usage statistics.
+create index /*i*/jaded_goodfaith
+	on /*_*/jade_diff_judgment
+	(jaded_goodfaith);
