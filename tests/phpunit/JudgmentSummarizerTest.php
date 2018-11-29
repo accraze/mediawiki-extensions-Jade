@@ -13,17 +13,17 @@
 * You should have received a copy of the GNU General Public License
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
-namespace JADE\Tests;
+namespace Jade\Tests;
 
-use JADE\Content\JudgmentContent;
-use JADE\JudgmentSummarizer;
+use Jade\Content\JudgmentContent;
+use Jade\JudgmentSummarizer;
 use MediaWikiTestCase;
 use TextContent;
 
 /**
- * @group JADE
+ * @group Jade
  *
- * @coversDefaultClass JADE\JudgmentSummarizer
+ * @coversDefaultClass Jade\JudgmentSummarizer
  */
 class JudgmentSummarizerTest extends MediaWikiTestCase {
 

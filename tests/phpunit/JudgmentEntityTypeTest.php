@@ -13,16 +13,16 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-namespace JADE\Tests;
+namespace Jade\Tests;
 
-use JADE\JudgmentEntityType;
+use Jade\JudgmentEntityType;
 use MediaWikiLangTestCase;
 use Wikimedia\TestingAccessWrapper;
 
 /**
- * @group JADE
+ * @group Jade
  *
- * @coversDefaultClass JADE\JudgmentEntityType
+ * @coversDefaultClass Jade\JudgmentEntityType
  */
 class JudgmentEntityTypeTest extends MediaWikiLangTestCase {
 

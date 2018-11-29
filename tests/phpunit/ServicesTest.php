@@ -13,51 +13,51 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-namespace JADE\Tests;
+namespace Jade\Tests;
 
-use JADE\EntityJudgmentSetStorage;
-use JADE\JudgmentIndexStorage;
-use JADE\JudgmentValidator;
-use JADE\JADEServices;
-use JADE\ServiceWiring;
+use Jade\EntityJudgmentSetStorage;
+use Jade\JudgmentIndexStorage;
+use Jade\JudgmentValidator;
+use Jade\JadeServices;
+use Jade\ServiceWiring;
 use MediaWiki\MediaWikiServices;
 use MediaWikiTestCase;
 
 /**
- * @group JADE
+ * @group Jade
  */
 class ServicesTest extends MediaWikiTestCase {
 
 	public function provideServices() {
 		yield [
 			'getEntityJudgmentSetStorage',
-			'JADEEntityJudgmentSetStorage',
+			'JadeEntityJudgmentSetStorage',
 			EntityJudgmentSetStorage::class
 		];
 		yield [
 			'getJudgmentIndexStorage',
-			'JADEJudgmentIndexStorage',
+			'JadeJudgmentIndexStorage',
 			JudgmentIndexStorage::class
 		];
 		yield [
 			'getJudgmentValidator',
-			'JADEJudgmentValidator',
+			'JadeJudgmentValidator',
 			JudgmentValidator::class
 		];
 	}
 
 	/**
 	 * @dataProvider provideServices
-	 * @covers JADE\JADEServices
+	 * @covers Jade\JadeServices
 	 */
-	public function testJADEServices( $funcName, $_serviceKey, $className ) {
-		$service = call_user_func( [ JADEServices::class, $funcName ] );
+	public function testJadeServices( $funcName, $_serviceKey, $className ) {
+		$service = call_user_func( [ JadeServices::class, $funcName ] );
 		$this->assertInstanceOf( $className, $service );
 	}
 
 	/**
 	 * @dataProvider provideServices
-	 * @covers JADE\ServiceWiring::getWiring
+	 * @covers Jade\ServiceWiring::getWiring
 	 */
 	public function testServiceWiring( $_funcName, $serviceKey, $className ) {
 		$wiring = ServiceWiring::getWiring();

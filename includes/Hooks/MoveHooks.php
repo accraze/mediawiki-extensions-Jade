@@ -14,7 +14,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-namespace JADE\Hooks;
+namespace Jade\Hooks;
 
 use Status;
 use Title;

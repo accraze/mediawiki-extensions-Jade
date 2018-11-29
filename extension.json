@@ -1,5 +1,5 @@
 {
-	"name": "JADE",
+	"name": "Jade",
 	"descriptionmsg": "jade-desc",
 	"version": "0.0.1",
 	"license-name": "GPL-3.0-or-later",
@@ -25,26 +25,26 @@
 		}
 	],
 	"APIListModules": {
-		"getjudgments": "JADE\\ApiGetJudgments"
+		"getjudgments": "Jade\\ApiGetJudgments"
 	},
 	"AutoloadNamespaces": {
-		"JADE\\": "includes/",
-		"JADE\\Maintenance\\": "maintenance/",
-		"JADE\\Tests\\": "tests/phpunit/"
+		"Jade\\": "includes/",
+		"Jade\\Maintenance\\": "maintenance/",
+		"Jade\\Tests\\": "tests/phpunit/"
 	},
 	"ContentHandlers": {
-		"JadeJudgment": "JADE\\Content\\JudgmentContentHandler"
+		"JadeJudgment": "Jade\\Content\\JudgmentContentHandler"
 	},
 	"Hooks": {
-		"ArticleDeleteComplete": "JADE\\Hooks\\LinkTableHooks::onArticleDeleteComplete",
-		"ArticleUndelete": "JADE\\Hooks\\LinkTableHooks::onArticleUndelete",
-		"LoadExtensionSchemaUpdates": "JADE\\Hooks\\DatabaseSchemaHooks::onLoadExtensionSchemaUpdates",
-		"MovePageIsValidMove": "JADE\\Hooks\\MoveHooks::onMovePageIsValidMove",
-		"PageContentInsertComplete": "JADE\\Hooks\\LinkTableHooks::onPageContentInsertComplete",
-		"PageContentSaveComplete": "JADE\\Hooks\\LinkSummaryHooks::onPageContentSaveComplete"
+		"ArticleDeleteComplete": "Jade\\Hooks\\LinkTableHooks::onArticleDeleteComplete",
+		"ArticleUndelete": "Jade\\Hooks\\LinkTableHooks::onArticleUndelete",
+		"LoadExtensionSchemaUpdates": "Jade\\Hooks\\DatabaseSchemaHooks::onLoadExtensionSchemaUpdates",
+		"MovePageIsValidMove": "Jade\\Hooks\\MoveHooks::onMovePageIsValidMove",
+		"PageContentInsertComplete": "Jade\\Hooks\\LinkTableHooks::onPageContentInsertComplete",
+		"PageContentSaveComplete": "Jade\\Hooks\\LinkSummaryHooks::onPageContentSaveComplete"
 	},
 	"MessagesDirs": {
-		"JADE": [
+		"Jade": [
 			"i18n",
 			"i18n/api"
 		]
@@ -75,7 +75,7 @@
 		}
 	},
 	"ExtensionMessagesFiles": {
-		"JADENamespaces": "JADE.namespaces.php"
+		"JadeNamespaces": "Jade.namespaces.php"
 	},
 	"manifest_version": 2
 }

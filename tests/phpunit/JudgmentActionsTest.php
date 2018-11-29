@@ -13,7 +13,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-namespace JADE\Tests;
+namespace Jade\Tests;
 
 use ApiTestCase;
 
@@ -22,7 +22,7 @@ use ApiTestCase;
  *
  * @group API
  * @group Database
- * @group JADE
+ * @group Jade
  * @group medium
  *
  * TODO: Rewrite to use API calls.

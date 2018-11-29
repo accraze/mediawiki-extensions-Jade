@@ -13,15 +13,15 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-namespace JADE\Tests\Hooks;
+namespace Jade\Tests\Hooks;
 
-use JADE\Content\JudgmentContent;
-use JADE\Hooks\LinkSummaryHooks;
-use JADE\JudgmentEntityType;
-use JADE\JudgmentLinkTable;
-use JADE\JudgmentTarget;
-use JADE\Tests\TestJudgmentLinkAssertions;
-use JADE\Tests\TestStorageHelper;
+use Jade\Content\JudgmentContent;
+use Jade\Hooks\LinkSummaryHooks;
+use Jade\JudgmentEntityType;
+use Jade\JudgmentLinkTable;
+use Jade\JudgmentTarget;
+use Jade\Tests\TestJudgmentLinkAssertions;
+use Jade\Tests\TestStorageHelper;
 use MediaWikiTestCase;
 use Revision;
 use Status;
@@ -29,11 +29,11 @@ use Title;
 use WikiPage;
 
 /**
- * @group JADE
+ * @group Jade
  * @group Database
  * @group medium
  *
- * @coversDefaultClass JADE\Hooks\LinkSummaryHooks
+ * @coversDefaultClass Jade\Hooks\LinkSummaryHooks
  */
 class LinkSummaryHooksTest extends MediaWikiTestCase {
 
@@ -54,7 +54,7 @@ class LinkSummaryHooksTest extends MediaWikiTestCase {
 
 		$this->mockStorage = $this->getMockBuilder( JudgmentLinkTable::class )
 			->disableOriginalConstructor()->getMock();
-		$this->setService( 'JADEJudgmentIndexStorage', $this->mockStorage );
+		$this->setService( 'JadeJudgmentIndexStorage', $this->mockStorage );
 
 		$this->targetRevId = mt_rand();
 

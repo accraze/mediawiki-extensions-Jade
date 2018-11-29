@@ -13,13 +13,13 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-namespace JADE\Tests;
+namespace Jade\Tests;
 
 use PHPUnit\Framework\TestCase;
 use JsonSchema\Validator;
 
 /**
- * @group JADE
+ * @group Jade
  * @coversNothing
  */
 class SchemaValidationTest extends TestCase {

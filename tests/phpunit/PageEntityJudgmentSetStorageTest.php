@@ -13,21 +13,21 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-namespace JADE\Tests;
+namespace Jade\Tests;
 
 use FormatJSON;
-use JADE\JudgmentEntityType;
-use JADE\JADEServices;
-use JADE\JudgmentTarget;
+use Jade\JudgmentEntityType;
+use Jade\JadeServices;
+use Jade\JudgmentTarget;
 use MediaWikiTestCase;
 use WikiPage;
 
 /**
  * @group Database
- * @group JADE
+ * @group Jade
  * @group medium
  *
- * @coversDefaultClass JADE\PageEntityJudgmentSetStorage
+ * @coversDefaultClass Jade\PageEntityJudgmentSetStorage
  */
 class PageEntityJudgmentSetStorageTest extends MediaWikiTestCase {
 
@@ -38,7 +38,7 @@ class PageEntityJudgmentSetStorageTest extends MediaWikiTestCase {
 	private $storage;
 
 	public function setUp() {
-		$this->storage = JADEServices::getEntityJudgmentSetStorage();
+		$this->storage = JadeServices::getEntityJudgmentSetStorage();
 		$this->tablesUsed = [
 			'jade_diff_judgment',
 			'jade_revision_judgment',

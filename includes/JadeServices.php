@@ -18,22 +18,22 @@
  * @file
  */
 
-namespace JADE;
+namespace Jade;
 
 use MediaWiki\MediaWikiServices;
 
-class JADEServices {
+class JadeServices {
 
 	public static function getEntityJudgmentSetStorage() : EntityJudgmentSetStorage {
-		return MediaWikiServices::getInstance()->getService( 'JADEEntityJudgmentSetStorage' );
+		return MediaWikiServices::getInstance()->getService( 'JadeEntityJudgmentSetStorage' );
 	}
 
 	public static function getJudgmentIndexStorage() : JudgmentIndexStorage {
-		return MediaWikiServices::getInstance()->getService( 'JADEJudgmentIndexStorage' );
+		return MediaWikiServices::getInstance()->getService( 'JadeJudgmentIndexStorage' );
 	}
 
 	public static function getJudgmentValidator() : JudgmentValidator {
-		return MediaWikiServices::getInstance()->getService( 'JADEJudgmentValidator' );
+		return MediaWikiServices::getInstance()->getService( 'JadeJudgmentValidator' );
 	}
 
 }

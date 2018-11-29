@@ -13,17 +13,17 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-namespace JADE\Tests\AbuseFilter;
+namespace Jade\Tests\AbuseFilter;
 
 use ApiTestCase;
 use ExtensionRegistry;
-use JADE\Tests\TestStorageHelper;
+use Jade\Tests\TestStorageHelper;
 
 /**
  * Check that AbuseFilter integration works in judgment JSON.
  *
  * @group AbuseFilter
- * @group JADE
+ * @group Jade
  * @group Database
  * @group medium
  *

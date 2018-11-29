@@ -13,9 +13,9 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-namespace JADE\Tests\Content;
+namespace Jade\Tests\Content;
 
-use JADE\Tests\TestStorageHelper;
+use Jade\Tests\TestStorageHelper;
 use MediaWikiLangTestCase;
 use Title;
 use SearchEngine;
@@ -23,10 +23,10 @@ use WikiPage;
 
 /**
  * @group Database
- * @group JADE
+ * @group Jade
  * @group medium
  *
- * @coversDefaultClass JADE\Content\JudgmentContentHandler
+ * @coversDefaultClass Jade\Content\JudgmentContentHandler
  */
 class JudgmentContentHandlerTest extends MediaWikiLangTestCase {
 

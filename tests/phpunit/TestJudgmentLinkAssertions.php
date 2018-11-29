@@ -18,7 +18,7 @@
  * @file
  */
 
-namespace JADE\Tests;
+namespace Jade\Tests;
 
 /**
  * Reusable judgment link assertions.

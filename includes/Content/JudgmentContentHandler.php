@@ -14,7 +14,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-namespace JADE\Content;
+namespace Jade\Content;
 
 use JsonContentHandler;
 use ParserOutput;
