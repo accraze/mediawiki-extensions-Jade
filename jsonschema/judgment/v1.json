@@ -36,7 +36,6 @@
 			"required": [
 				"user", "created"
 			],
-			"minItems": 1,
 			"additionalProperties": false
 		},
 		"judgment": {
@@ -61,7 +60,8 @@
 					"type": "array",
 					"items": {
 						"$ref": "#/definitions/endorsement"
-					}
+					},
+					"minItems": 1
 				}
 			},
 			"required": [

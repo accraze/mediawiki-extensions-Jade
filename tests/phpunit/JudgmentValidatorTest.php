@@ -70,6 +70,7 @@ class JudgmentValidatorTest extends MediaWikiTestCase {
 		yield [ 'invalid_judgment_additional_properties.json', 'jade-bad-content' ];
 		yield [ 'invalid_judgment_additional_properties2.json', 'jade-bad-content' ];
 		yield [ 'invalid_judgment_additional_properties3.json', 'jade-bad-content' ];
+		yield [ 'invalid_judgment_empty_endorsements.json', 'jade-bad-content' ];
 		yield [ 'invalid_judgment_none_preferred.json', 'jade-none-preferred' ];
 		yield [ 'invalid_judgment_two_preferred.json', 'jade-too-many-preferred' ];
 		yield [ 'invalid_judgment_bad_contentquality_data.json', 'jade-bad-contentquality-value' ];
