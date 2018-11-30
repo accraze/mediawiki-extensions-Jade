@@ -75,7 +75,7 @@
 				"type": "object",
 				"properties": {
 					"contentquality": {
-						"type": "string"
+						"type": "integer"
 					}
 				},
 				"additionalProperties": false,

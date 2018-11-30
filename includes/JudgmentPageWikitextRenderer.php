@@ -108,7 +108,7 @@ class JudgmentPageWikitextRenderer {
 			$valueStr = strtolower( strval( $value ) );
 		}
 
-		$calculatedMessageKey = "jade-{$schemaName}-{$valueStr}";
+		$calculatedMessageKey = "jade-{$schemaName}-scale-{$valueStr}-label";
 		$message = wfMessage( $calculatedMessageKey );
 
 		if ( $message->exists() ) {

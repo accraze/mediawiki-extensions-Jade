@@ -193,9 +193,9 @@ class JudgmentPageWikitextRendererTest extends MediaWikiLangTestCase {
 		// the test.
 		yield [ 'damaging', true, 'Damaging' ];
 		yield [ 'damaging', false, 'Not damaging' ];
-		yield [ 'contentquality', 'start', 'Start-class article' ];
-		yield [ 'contentquality', 'ABC', 'Content quality "ABC"' ];
-		yield [ 'missing', true, '⧼jade-missing-true⧽' ];
+		yield [ 'contentquality', 2, 'Start-class article' ];
+		yield [ 'contentquality', '0', 'Content quality "0"' ];
+		yield [ 'missing', true, '⧼jade-missing-scale-true-label⧽' ];
 	}
 
 	/**
