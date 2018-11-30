@@ -25,7 +25,7 @@ use WikiPage;
 
 class JudgmentContentHandler extends JsonContentHandler {
 
-	public function __construct( $modelId = 'JadeJudgment' ) {
+	public function __construct( $modelId = JudgmentContent::CONTENT_MODEL_JUDGMENT ) {
 		parent::__construct( $modelId );
 	}
 

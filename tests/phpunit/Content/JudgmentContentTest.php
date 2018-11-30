@@ -52,7 +52,9 @@ class JudgmentContentTest extends MediaWikiLangTestCase {
 	public function testConstruct() {
 		$content = new JudgmentContent( $this->judgmentText );
 
-		$this->assertEquals( 'JadeJudgment', $content->getModel() );
+		$this->assertEquals(
+			JudgmentContent::CONTENT_MODEL_JUDGMENT,
+			$content->getModel() );
 	}
 
 	/**

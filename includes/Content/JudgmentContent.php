@@ -32,10 +32,11 @@ use User;
 use WikiPage;
 
 class JudgmentContent extends JsonContent {
+	const CONTENT_MODEL_JUDGMENT = 'JadeJudgment';
 	const JUDGMENT_SCHEMA = '/../../jsonschema/judgment/v1.json';
 	const SCORING_SCHEMA_ROOT = '/../../jsonschema/scoring';
 
-	public function __construct( $text, $modelId = 'JadeJudgment' ) {
+	public function __construct( $text, $modelId = self::CONTENT_MODEL_JUDGMENT ) {
 		parent::__construct( $text, $modelId );
 	}
 

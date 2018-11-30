@@ -16,6 +16,7 @@
 namespace JADE\Tests\Hooks;
 
 use ApiTestCase;
+use JADE\Content\JudgmentContent;
 use JADE\Tests\TestStorageHelper;
 use Status;
 use WikiPage;
@@ -100,7 +101,7 @@ class MoveHooksTest extends ApiTestCase {
 		yield [
 			self::JUDGMENT_EXISTING,
 			self::MAIN_NEW,
-			[ 'content-not-allowed-here', 'JadeJudgment', self::MAIN_NEW ],
+			[ 'content-not-allowed-here', JudgmentContent::CONTENT_MODEL_JUDGMENT, self::MAIN_NEW, 'main' ],
 		];
 		yield [
 			self::JUDGMENT_EXISTING,
