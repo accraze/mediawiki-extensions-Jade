@@ -95,7 +95,7 @@ class JudgmentValidatorTest extends MediaWikiTestCase {
 	 * directory.
 	 *
 	 * @covers ::validateAgainstSchema
-	 * @covers ::validateArticleQualityScale
+	 * @covers ::validateContentQualityScale
 	 * @covers ::validateBasicSchema
 	 * @covers ::validateEndorsementUsers
 	 * @covers ::validateJudgmentContent

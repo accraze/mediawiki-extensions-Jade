@@ -68,7 +68,7 @@
 				"revision": "Revision"
 			}
 		},
-		"JadeArticleQualityScale": {
+		"JadeContentQualityScale": {
 			"value": [
 				"FA",
 				"GA",

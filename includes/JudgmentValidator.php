@@ -87,7 +87,7 @@ class JudgmentValidator {
 			return $status;
 		}
 
-		$status = $this->validateArticleQualityScale( $data );
+		$status = $this->validateContentQualityScale( $data );
 		if ( !$status->isOK() ) {
 			return $status;
 		}
@@ -161,8 +161,8 @@ class JudgmentValidator {
 	 *
 	 * @return StatusValue isOK if valid.
 	 */
-	protected function validateArticleQualityScale( $data ) {
-		global $wgJadeArticleQualityScale;
+	protected function validateContentQualityScale( $data ) {
+		global $wgJadeContentQualityScale;
 
 		foreach ( $data->judgments as $judgment ) {
 			foreach ( $judgment->schema as $schemaName => $value ) {
@@ -172,10 +172,10 @@ class JudgmentValidator {
 				}
 
 				// Does this value appear in the locally-configured scale?
-				if ( !in_array( $value, $wgJadeArticleQualityScale, true ) ) {
+				if ( !in_array( $value, $wgJadeContentQualityScale, true ) ) {
 					// Return an error.  Include the valid scale as a courtesy.
 					$scale = RequestContext::getMain()->getLanguage()
-						->commaList( $wgJadeArticleQualityScale );
+						->commaList( $wgJadeContentQualityScale );
 
 					return Status::newFatal( 'jade-bad-contentquality-value', $value, $scale );
 				}
