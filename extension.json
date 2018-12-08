@@ -44,7 +44,8 @@
 	},
 	"MessagesDirs": {
 		"JADE": [
-			"i18n"
+			"i18n",
+			"i18n/api"
 		]
 	},
 	"ServiceWiringFiles": [
