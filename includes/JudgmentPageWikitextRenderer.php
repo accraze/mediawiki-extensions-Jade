@@ -76,6 +76,11 @@ class JudgmentPageWikitextRenderer {
 		}
 		$params['judgments'] = $judgmentList;
 
+		// Translated strings.
+		$params['msg-jade-endorsement'] = wfMessage( 'jade-endorsement' )->plain();
+		$params['msg-jade-endorsements'] = wfMessage( 'jade-endorsements' )->plain();
+		$params['msg-jade-user'] = wfMessage( 'jade-user' )->plain();
+
 		return $this->templateRenderer->processTemplate(
 			self::JUDGMENT_PAGE_TEMPLATE,
 			$params );

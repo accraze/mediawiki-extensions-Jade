@@ -40,5 +40,8 @@
 	"jade-cannot-edit-page": "You cannot edit this page.",
 	"jade-invalid-move-any": "Moving judgment pages is not allowed.",
 	"jade-db-error": "Database error: $1",
-	"jade-content-model-error": "Wrong content model for judgment."
+	"jade-content-model-error": "Wrong content model for judgment.",
+	"jade-endorsement": "Endorsement",
+	"jade-endorsements": "Endorsements",
+	"jade-user": "User"
 }

@@ -43,5 +43,8 @@
 	"jade-cannot-edit-page": "Error message when the user isn't allowed to edit a judgment page.",
 	"jade-invalid-move-any": "Error message when moving judgment pages, when no moves are allowed.",
 	"jade-db-error": "Error message for database errors. Parameters:\n $1 - Exception message.",
-	"jade-content-model-error": "Error message when a document in the Judgment namespace has the wrong content model."
+	"jade-content-model-error": "Error message when a document in the Judgment namespace has the wrong content model.",
+	"jade-endorsement": "Label for an endorsement comment.",
+	"jade-endorsements": "Label for a group of endorsements.",
+	"jade-user": "Label for a user nick or IP."
 }
