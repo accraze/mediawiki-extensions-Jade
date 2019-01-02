@@ -27,7 +27,7 @@ use IP;
 use JsonSchema\Constraints\Constraint;
 use JsonSchema\Exception\ValidationException;
 use JsonSchema\Validator;
-use MediaWiki\Storage\RevisionStore;
+use MediaWiki\Revision\RevisionStore;
 use Psr\Log\LoggerInterface;
 use RequestContext;
 use Status;

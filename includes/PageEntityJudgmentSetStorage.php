@@ -23,6 +23,7 @@ namespace JADE;
 use ChangeTags;
 use FormatJson;
 use Status;
+use StatusValue;
 use Title;
 use WikiPage;
 

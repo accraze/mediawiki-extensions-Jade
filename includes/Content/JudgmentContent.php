@@ -27,6 +27,7 @@ use MediaWiki\MediaWikiServices;
 use ParserOptions;
 use ParserOutput;
 use Status;
+use StatusValue;
 use Title;
 use User;
 use WikiPage;

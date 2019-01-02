@@ -20,6 +20,8 @@
 
 namespace JADE;
 
+use StatusValue;
+
 interface EntityJudgmentSetStorage {
 
 	/**

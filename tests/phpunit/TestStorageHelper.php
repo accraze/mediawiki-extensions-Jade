@@ -18,6 +18,7 @@ namespace JADE\Tests;
 use ContentHandler;
 use FormatJSON;
 use PHPUnit\Framework\Assert;
+use StatusValue;
 use Title;
 use TitleValue;
 use WikiPage;
