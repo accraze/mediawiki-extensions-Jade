@@ -18,6 +18,7 @@ namespace JADE\Hooks;
 
 use Content;
 use JADE\JADEServices;
+use JADE\JudgmentTarget;
 use JADE\TitleHelper;
 use LogEntry;
 use MediaWiki\Logger\LoggerFactory;
