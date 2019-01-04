@@ -74,7 +74,7 @@ class CleanJudgmentLinks extends Maintenance {
 	/**
 	 * Find link entries for which the judgment page is missing.
 	 *
-	 * @param string $type Entity type for this batch.
+	 * @param JudgmentEntityType $type Entity type for this batch.
 	 * @param int $skipPastId Search beginning with this primary key value.
 	 *
 	 * @return array List of primary keys for orphaned link table rows.
@@ -110,7 +110,7 @@ class CleanJudgmentLinks extends Maintenance {
 	 * Bulk delete link rows.
 	 *
 	 * @param array $orphans List of primary keys to link rows.
-	 * @param string $type Entity type
+	 * @param JudgmentEntityType $type Entity type
 	 */
 	private function deleteOrphanedLinks( $orphans, $type ) {
 		$tableHelper = new JudgmentLinkTableHelper( $type );
@@ -187,7 +187,7 @@ class CleanJudgmentLinks extends Maintenance {
 	/**
 	 * Helper to make new links for a list of judgment pages.
 	 *
-	 * @param ResultWrapper $orphans judgment pages to reconnect.
+	 * @param ResultWrapper $unlinked judgment pages to reconnect.
 	 * @param JudgmentEntityType $entityType Entity type
 	 *
 	 * @return int Highest primary key touched in this batch.
