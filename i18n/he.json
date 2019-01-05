@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Amire80",
-			"Guycn2"
+			"Guycn2",
+			"Strayblues"
 		]
 	},
 	"apihelp-createjudgment-summary": "יצירת שיפוט חדש",
@@ -40,7 +41,7 @@
 	"jade-bad-entity-type": "סוג ישות בלתי־תקין \"$1\"",
 	"jade-bad-entity-id-format": "תסדיר מזהה ישות בלתי־תקין \"$1\"",
 	"jade-bad-revision-id": "לא ניתן למצוא את הגרסה לפי מזהה: \"$1\"",
-	"jade-bad-content-generic": "שגיאות תחביר בהקשר JSON.",
+	"jade-bad-content-generic": "שגיאות תחביר בתוכן JSON.",
 	"jade-bad-content": "השיפוט אינו מתאים לסכמה: $1",
 	"jade-too-many-preferred": "שיפוטים מועדפים רבים, אבל יכול להיות רק אחד.",
 	"jade-none-preferred": "אין שיפוט מועדף, אבל חובה לבחור אחד.",
