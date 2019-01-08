@@ -1,0 +1,21 @@
+{
+	"@metadata": {
+		"authors": [
+			"Bjankuloski06"
+		]
+	},
+	"apihelp-createjudgment-summary": "Создај нов суд",
+	"apihelp-createjudgment-param-entitytype": "Целна вид викиединица, може да биде „diff“, „revision“ или „page“.",
+	"apihelp-createjudgment-param-entityid": "Назнака на преработката за разликата и целта на преработката, назнака на страницата за видот на датумска цел",
+	"apihelp-createjudgment-param-schema": "Шемата на оценување која се користи во ова просудување; може да биде „damaging“, „goodfaith“, „wp10“ или „drafttopic“.",
+	"apihelp-createjudgment-param-data": "Сирови податоци од оценувањето. data=\"true\" и \"false\" се толкуват како Булови.",
+	"apihelp-createjudgment-param-notes": "Незадолжителен текст во кој се објаснува просудувањето.",
+	"apihelp-createjudgment-param-summary": "Незадолжителен опис на уредувањето.",
+	"apihelp-createjudgment-param-tags": "Незадолжителни ознаки за промената за примена врз просудувањето.",
+	"apihelp+jade-createjudgment-example": "Создај просудување кое вели дека разликата 3 е штетна.",
+	"apihelp-query+getjudgments-param-entitytype": "Целна вид викиединица, може да биде „diff“, „revision“ или „page“.",
+	"apihelp-query+getjudgments-param-entityid": "Назнака на преработката за разликата и целта на преработката, назнака на страницата за типот на датумска цел",
+	"apihelp-query+getjudgments-summary": "Дај ги достапните просудувања за извесна викиединица.",
+	"apihelp-query+jade-getjudgments-list-example": "Наведува страница на просудувањето за разликата 3.",
+	"apihelp-query+jade-getjudgments-generator-example": "Наведува содржина на просудувањето за разликата 3."
+}

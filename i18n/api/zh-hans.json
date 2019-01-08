@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"A Chinese Wikipedian",
+			"夢蝶葬花"
+		]
+	},
+	"apihelp-createjudgment-summary": "创建新活动",
+	"apihelp-createjudgment-param-summary": "可选的编辑摘要。",
+	"apihelp-createjudgment-param-tags": "可选的更改标记以应用于判断。"
+}

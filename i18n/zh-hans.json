@@ -8,9 +8,6 @@
 			"Phenolla"
 		]
 	},
-	"apihelp-createjudgment-summary": "创建新活动",
-	"apihelp-createjudgment-param-summary": "可选的编辑摘要。",
-	"apihelp-createjudgment-param-tags": "可选的更改标记以应用于判断。",
 	"jade-desc": "判断和会话引擎",
 	"jade-damaging-true": "有害",
 	"jade-damaging-false": "无害",

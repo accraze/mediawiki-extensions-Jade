@@ -4,10 +4,6 @@
 			"Xuacu"
 		]
 	},
-	"apihelp-createjudgment-summary": "Crear un xuiciu nuevu",
-	"apihelp-createjudgment-param-entitytype": "Tipu d'entidá wiki de destín, puede ser una \"diff\", \"revision\", o \"páxina\".",
-	"apihelp-createjudgment-param-notes": "Testu opcional pa esplicar el xuiciu.",
-	"apihelp-createjudgment-param-summary": "Resume d'edición opcional.",
 	"jade-desc": "Motor de xuiciu y diálogu",
 	"jade-damaging-true": "Dañible",
 	"jade-damaging-false": "Non dañible",

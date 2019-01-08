@@ -4,11 +4,6 @@
 			"Nikosgranturismogt"
 		]
 	},
-	"apihelp-createjudgment-summary": "Δημιουργία νέας κρίσης",
-	"apihelp-createjudgment-param-entityid": "Αναγνωριστικό αναθεώρησης για στόχους διαφοράς και αναθεώρησης, αναγνωριστικό σελίδας για τύπο στόχου ημερομηνίας.",
-	"apihelp-createjudgment-param-notes": "Προαιρετικό κείμενο που εξηγεί την απόφαση.",
-	"apihelp-createjudgment-param-summary": "Προαιρετική σύνοψη επεξεργασίας.",
-	"apihelp-createjudgment-param-tags": "Προαιρετικές ετικέτες αλλαγές για την εφαρμογή της σκέψης.",
 	"jade-damaging-true": "Επιζήμια",
 	"jade-damaging-false": "Μη ζημιοφόρο",
 	"jade-goodfaith-true": "Καλής πίστης",

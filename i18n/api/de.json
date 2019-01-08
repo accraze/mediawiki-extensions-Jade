@@ -1,0 +1,21 @@
+{
+	"@metadata": {
+		"authors": [
+			"Metalhead64"
+		]
+	},
+	"apihelp-createjudgment-summary": "Erstellt eine neue Beurteilung.",
+	"apihelp-createjudgment-param-entitytype": "Elementtyp des Zielwikis. Kann „diff“, „revision“ oder „page“ sein.",
+	"apihelp-createjudgment-param-entityid": "Versionskennung für den Unterschied und Versionsziele, Seitenkennung für den Datumszieltyp.",
+	"apihelp-createjudgment-param-schema": "Das von dieser Beurteilung verwendete Bewertungsschema, entweder „damaging“, „goodfaith“, „wp10“ oder „drafttopic“.",
+	"apihelp-createjudgment-param-data": "Rohe Bewertungsdaten. data=\"true\" und \"false\" werden als boolesch interpretiert.",
+	"apihelp-createjudgment-param-notes": "Optionaler Text, der die Beurteilung erklärt.",
+	"apihelp-createjudgment-param-summary": "Optionale Bearbeitungszusammenfassung.",
+	"apihelp-createjudgment-param-tags": "Optionale auf die Beurteilung anzuwendende Änderungsmarkierungen.",
+	"apihelp+jade-createjudgment-example": "Erstellt eine Beurteilung, die aussagt, dass der Unterschied 3 schädlich ist.",
+	"apihelp-query+getjudgments-param-entitytype": "Elementtyp des Zielwikis. Kann „diff“, „revision“ oder „page“ sein.",
+	"apihelp-query+getjudgments-param-entityid": "Versionskennung für den Unterschied und Versionsziele, Seitenkennung für den Datumszieltyp.",
+	"apihelp-query+getjudgments-summary": "Ruft beliebige verfügbare Beurteilungen für ein Wikielement ab.",
+	"apihelp-query+jade-getjudgments-list-example": "Listet die Beurteilungsseite für den Unterschied 3 auf.",
+	"apihelp-query+jade-getjudgments-generator-example": "Ruft den Beurteilungsinhalt für den Unterschied 3 ab."
+}
