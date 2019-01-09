@@ -29,7 +29,6 @@ use JsonSchema\Exception\ValidationException;
 use JsonSchema\Validator;
 use MediaWiki\Revision\RevisionStore;
 use Psr\Log\LoggerInterface;
-use RequestContext;
 use Status;
 use StatusValue;
 use User;
@@ -162,7 +161,7 @@ class JudgmentValidator {
 	 * @return StatusValue isOK if valid.
 	 */
 	protected function validateContentQualityScale( $data ) {
-		global $wgJadeContentQualityScale;
+		global $wgJadeContentQualityLevels;
 
 		foreach ( $data->judgments as $judgment ) {
 			foreach ( $judgment->schema as $schemaName => $value ) {
@@ -171,13 +170,13 @@ class JudgmentValidator {
 					continue;
 				}
 
-				// Does this value appear in the locally-configured scale?
-				if ( !in_array( $value, $wgJadeContentQualityScale, true ) ) {
-					// Return an error.  Include the valid scale as a courtesy.
-					$scale = RequestContext::getMain()->getLanguage()
-						->commaList( $wgJadeContentQualityScale );
-
-					return Status::newFatal( 'jade-bad-contentquality-value', $value, $scale );
+				// Does this 1-based index appear in the locally-configured scale?
+				// TODO: Generalize this validation to reuse with other ordinal fields.
+				if ( !in_array( $value, range( 1, $wgJadeContentQualityLevels ) ) ) {
+					return Status::newFatal(
+						'jade-bad-contentquality-value',
+						$value,
+						$wgJadeContentQualityLevels );
 				}
 			}
 		}

@@ -69,15 +69,8 @@
 				"revision": "Revision"
 			}
 		},
-		"JadeContentQualityScale": {
-			"value": [
-				"FA",
-				"GA",
-				"B",
-				"C",
-				"Start",
-				"Stub"
-			]
+		"JadeContentQualityLevels": {
+			"value": 6
 		}
 	},
 	"ExtensionMessagesFiles": {
