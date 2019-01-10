@@ -5,8 +5,8 @@
 			"Manvydasz"
 		]
 	},
-	"jade-contentquality-start": "Pradinės klasės straipsnis",
-	"jade-contentquality-c": "C klasės straipsnis",
-	"jade-contentquality-b": "B klasės straipsnis",
-	"jade-contentquality-ga": "Vertingas straipsnis"
+	"jade-contentquality-scale-2-label": "Pradinės klasės straipsnis",
+	"jade-contentquality-scale-3-label": "C klasės straipsnis",
+	"jade-contentquality-scale-4-label": "B klasės straipsnis",
+	"jade-contentquality-scale-5-label": "Vertingas straipsnis"
 }

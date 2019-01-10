@@ -4,7 +4,7 @@
 			"Banjo"
 		]
 	},
-	"jade-goodfaith-true": "Boa fe",
-	"jade-goodfaith-false": "Mala fe",
+	"jade-goodfaith-scale-true-label": "Boa fe",
+	"jade-goodfaith-scale-false-label": "Mala fe",
 	"jade-delete": "Borrar"
 }

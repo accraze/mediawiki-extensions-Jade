@@ -5,15 +5,15 @@
 			"درفش کاویانی"
 		]
 	},
-	"jade-damaging-true": "آسیب‌زننده",
-	"jade-damaging-false": "آسیب‌زننده نیست",
-	"jade-goodfaith-true": "حسن‌نیت",
-	"jade-goodfaith-false": "سونیت",
-	"jade-contentquality-stub": "مقالهٔ سطح خُرد",
-	"jade-contentquality-c": "مقالهٔ سطح پ",
-	"jade-contentquality-b": "مقالهٔ سطح ب",
-	"jade-contentquality-ga": "مقالهٔ خوب",
-	"jade-contentquality-fa": "مقالهٔ برگزیده",
+	"jade-damaging-scale-true-label": "آسیب‌زننده",
+	"jade-damaging-scale-false-label": "آسیب‌زننده نیست",
+	"jade-goodfaith-scale-true-label": "حسن‌نیت",
+	"jade-goodfaith-scale-false-label": "سونیت",
+	"jade-contentquality-scale-1-label": "مقالهٔ سطح خُرد",
+	"jade-contentquality-scale-3-label": "مقالهٔ سطح پ",
+	"jade-contentquality-scale-4-label": "مقالهٔ سطح ب",
+	"jade-contentquality-scale-5-label": "مقالهٔ خوب",
+	"jade-contentquality-scale-6-label": "مقالهٔ برگزیده",
 	"jade-contentquality-generic": "کیفیت محتوا «$1»",
 	"jade-delete": "حذف"
 }

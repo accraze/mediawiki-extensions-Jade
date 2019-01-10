@@ -4,12 +4,12 @@
 			"BadDog"
 		]
 	},
-	"jade-contentquality-stub": "Чланак класе „Клица”",
-	"jade-contentquality-start": "Чланак класе „Зачетак”",
-	"jade-contentquality-c": "Чланак класе III",
-	"jade-contentquality-b": "Чланак класе II",
-	"jade-contentquality-ga": "Добар чланак",
-	"jade-contentquality-fa": "Изабрани чланак",
+	"jade-contentquality-scale-1-label": "Чланак класе „Клица”",
+	"jade-contentquality-scale-2-label": "Чланак класе „Зачетак”",
+	"jade-contentquality-scale-3-label": "Чланак класе III",
+	"jade-contentquality-scale-4-label": "Чланак класе II",
+	"jade-contentquality-scale-5-label": "Добар чланак",
+	"jade-contentquality-scale-6-label": "Изабрани чланак",
 	"jade-contentquality-generic": "Квалитет садржаја „$1”",
 	"jade-bad-title-format": "Неважећи формат наслова",
 	"jade-bad-entity-type": "Неважећи тип ентитета: „$1”",

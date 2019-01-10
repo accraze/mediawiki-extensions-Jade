@@ -4,11 +4,11 @@
 			"Beta16"
 		]
 	},
-	"jade-damaging-false": "Non dannosa",
-	"jade-goodfaith-true": "Buona fede",
-	"jade-goodfaith-false": "Mala fede",
-	"jade-contentquality-ga": "Voce di qualità",
-	"jade-contentquality-fa": "Voce in vetrina",
+	"jade-damaging-scale-false-label": "Non dannosa",
+	"jade-goodfaith-scale-true-label": "Buona fede",
+	"jade-goodfaith-scale-false-label": "Mala fede",
+	"jade-contentquality-scale-5-label": "Voce di qualità",
+	"jade-contentquality-scale-6-label": "Voce in vetrina",
 	"jade-delete": "Cancella",
 	"jade-bad-title-format": "Formato titolo non valido",
 	"jade-bad-entity-type": "Tipo di entità non valido ''$1''",

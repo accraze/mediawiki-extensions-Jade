@@ -4,13 +4,13 @@
 			"Robby"
 		]
 	},
-	"jade-damaging-true": "Schiedlech",
-	"jade-damaging-false": "Net schiedlech",
-	"jade-goodfaith-true": "Gutt Absicht",
-	"jade-goodfaith-false": "Schlecht Absicht",
-	"jade-contentquality-c": "C-Klass-Artikel",
-	"jade-contentquality-b": "B-Klass-Artikel",
-	"jade-contentquality-ga": "Gudden Artikel",
+	"jade-damaging-scale-true-label": "Schiedlech",
+	"jade-damaging-scale-false-label": "Net schiedlech",
+	"jade-goodfaith-scale-true-label": "Gutt Absicht",
+	"jade-goodfaith-scale-false-label": "Schlecht Absicht",
+	"jade-contentquality-scale-3-label": "C-Klass-Artikel",
+	"jade-contentquality-scale-4-label": "B-Klass-Artikel",
+	"jade-contentquality-scale-5-label": "Gudden Artikel",
 	"jade-delete": "Läschen",
 	"jade-user-ip-invalid": "D'IP-Adress \"$1\" ass net valabel.",
 	"jade-cannot-edit-page": "Dir kënnt dës Säit net änneren."
