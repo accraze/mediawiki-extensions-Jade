@@ -68,7 +68,7 @@ class AbuseFilterTest extends ApiTestCase {
 			'a summary'
 		);
 
-		$rcId = $judgmentResult['revision']->getRecentChange()->mAttribs['rc_id'];
+		$rcId = $judgmentResult['revision']->getRecentChange()->getAttribute( 'rc_id' );
 		$result = $this->doApiRequest( [
 			'action' => 'abusefiltercheckmatch',
 			'filter' => 'added_lines irlike "\bT\.?V\.?\b"',
