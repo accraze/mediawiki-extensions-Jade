@@ -1,0 +1,21 @@
+{
+	"@metadata": {
+		"authors": [
+			"Piramidion"
+		]
+	},
+	"apihelp-createjudgment-summary": "Створити нову оцінку",
+	"apihelp-createjudgment-param-entitytype": "Тип сутності цільової вікі, може бути «diff», «revision», або «page».",
+	"apihelp-createjudgment-param-entityid": "Ідентифікатор версії для цільових типів «diff» та «revision», ідентифікатор сторінки для цільового типу «date».",
+	"apihelp-createjudgment-param-schema": "Схема оцінювання, використана цією оцінкою: або «damaging«, «goodfaith», «wp10», або «drafttopic».",
+	"apihelp-createjudgment-param-data": "Сирі дані оцінювання. data=\"true\" і \"false\" розцінюються як логічні значення.",
+	"apihelp-createjudgment-param-notes": "Необов'язковий текст, що пояснює оцінку.",
+	"apihelp-createjudgment-param-summary": "Необов'язковий опис редагування.",
+	"apihelp-createjudgment-param-tags": "Необов'язкові мітки редагування для застосування до оцінки.",
+	"apihelp+jade-createjudgment-example": "Створити оцінку, яка стверджує, що версія #3 є шкідливою.",
+	"apihelp-query+getjudgments-param-entitytype": "Тип сутності цільової вікі, може бути «diff», «revision», або «page».",
+	"apihelp-query+getjudgments-param-entityid": "Ідентифікатор версії для цільових типів «diff» та «revision», ідентифікатор сторінки для цільового типу «date».",
+	"apihelp-query+getjudgments-summary": "Отримати будь-які доступні оцінки для сутності вікі.",
+	"apihelp-query+jade-getjudgments-list-example": "Вивести список сторінки оцінок для версії #3.",
+	"apihelp-query+jade-getjudgments-generator-example": "Отримати вміст оцінки для версії #3."
+}

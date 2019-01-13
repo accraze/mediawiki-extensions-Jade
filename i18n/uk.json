@@ -1,0 +1,42 @@
+{
+	"@metadata": {
+		"authors": [
+			"Piramidion"
+		]
+	},
+	"jade-desc": "Рушій для оцінок і діалогів",
+	"jade-damaging-scale-true-label": "Шкідливе",
+	"jade-damaging-scale-false-label": "Нешкідливе",
+	"jade-goodfaith-scale-true-label": "З добрими намірами",
+	"jade-goodfaith-scale-false-label": "Зловмисне",
+	"jade-contentquality-scale-1-label": "Стаття класу «заготовка»",
+	"jade-contentquality-scale-2-label": "Стаття класу «початок»",
+	"jade-contentquality-scale-3-label": "Стаття класу C",
+	"jade-contentquality-scale-4-label": "Стаття класу B",
+	"jade-contentquality-scale-5-label": "Добра стаття",
+	"jade-contentquality-scale-6-label": "Вибрана стаття",
+	"jade-contentquality-generic": "Якість вмісту «$1»",
+	"jade-new-judgment": "Нова оцінка",
+	"jade-add-judgment": "Додати оцінку",
+	"jade-notes-placeholder": "Примітки щодо оцінки",
+	"jade-delete": "Вилучити",
+	"jade-bad-title-format": "Недійсний формат назви",
+	"jade-bad-title-namespace": "Недійсний простір назв для назви оцінки.",
+	"jade-bad-entity-type": "Недійсний тип сутності ''$1''",
+	"jade-bad-entity-id-format": "Недійсний формат ідентифікатора сутності ''$1''",
+	"jade-bad-revision-id": "Не вдалося знайти версію за ідентифікатором: ''$1''",
+	"jade-bad-content-generic": "Синтаксичні помилки у вмісті JSON.",
+	"jade-bad-content": "Оцінка не узгоджується зі схемою: $1",
+	"jade-too-many-preferred": "Бажано, щоб було кілька оцінок, але одна теж може бути.",
+	"jade-none-preferred": "Жодна оцінка не позначена як бажана, але одну слід вибрати.",
+	"jade-illegal-schema": "Схема ''$1'' не дозволена для цього типу сутності.",
+	"jade-user-local-id-invalid": "Локальний ідентифікатор користувача ''$1'' не існує.",
+	"jade-user-central-id-invalid": "Центральний ідентифікатор користувача ''$1'' не існує.",
+	"jade-user-id-mismatch": "Локальний ідентифікатор користувача ''$1'' і центральний ідентифікатор ''$2'' ідентифікують різних користувачів.",
+	"jade-user-ip-invalid": "IP-адреса ''$1'' — недійсна.",
+	"jade-created-timestamp-invalid": "Мітка часу, створена підтвердженням, є недійсною: ''$1''",
+	"jade-bad-contentquality-value": "Поганий індекс ''$1'' у схему якості вмісту; це має бути рівень якості між 1 і $2.",
+	"jade-cannot-create-page": "Ви не можете створити цю сторінку.",
+	"jade-cannot-edit-page": "Ви не можете редагувати цю сторінку.",
+	"jade-invalid-move-any": "Перейменування сторінок з оцінками не дозволене."
+}
