@@ -207,13 +207,29 @@ class JudgmentValidatorTest extends MediaWikiTestCase {
 	 */
 	public function testValidatePageTitle_invalidShort() {
 		$title = 'Revision';
-		$text = file_get_contents( __DIR__ . '/' . self::DATA_DIR . '/valid_diff_judgment.json' );
+		$text = file_get_contents( __DIR__ . '/' . self::DATA_DIR . '/valid_revision_judgment.json' );
 
 		$status = TestStorageHelper::saveJudgment( $title, $text, $this->user );
 		$this->assertFalse( $status->isOK() );
 		$errors = $status->getErrors();
 		$this->assertCount( 1, $errors );
 		$this->assertEquals( 'jade-bad-title-format', $errors[0]['message'] );
+	}
+
+	/**
+	 * @covers ::validatePageTitle
+	 */
+	public function testValidatePageTitle_invalidNonCanonicalLeadingZero() {
+		list( $page, $revision ) = TestStorageHelper::createEntity( $this->user );
+		$title = "Revision/0{$revision->getId()}";
+		$text = file_get_contents( __DIR__ . '/' . self::DATA_DIR . '/valid_diff_judgment.json' );
+
+		$status = TestStorageHelper::saveJudgment( $title, $text, $this->user );
+		$this->assertFalse( $status->isOK() );
+		$errors = $status->getErrors();
+		$this->assertCount( 1, $errors );
+		$this->assertEquals( 'jade-non-canonical-title', $errors[0]['message'] );
+		$this->assertEquals( "Revision/{$revision->getId()}", $errors[0]['params'][0] );
 	}
 
 	/**
@@ -492,6 +508,7 @@ class JudgmentValidatorTest extends MediaWikiTestCase {
 		$errors = $status->getErrors();
 		$this->assertCount( 1, $errors );
 		$this->assertEquals( 'jade-bad-entity-type', $errors[0]['message'] );
+		$this->assertEquals( 'foo', $errors[0]['params'][0] );
 	}
 
 }

@@ -25,6 +25,7 @@
 	"jade-delete": "Label for the judgment delete button\n{{Identical|Delete}}",
 	"jade-bad-title-format": "Error message for an illegal judgment page title.",
 	"jade-bad-title-namespace": "Error message when trying to use judgment titles outside of the Judgment namespace.",
+	"jade-non-canonical-title": "Error message when a title has a non-canonical form. Parameters:\n* $1 - expected title for this target",
 	"jade-bad-entity-type": "Error message for an illegal entity type in page title. Parameters:\n* $1 - requested entity type",
 	"jade-bad-entity-id-format": "Error message for a nonnumeric entity ID. Parameters:\n* $1 - requested entity ID",
 	"jade-bad-revision-id": "Error message when a revision judgment target cannot be found. Parameters:\n* $1 - Revision ID",

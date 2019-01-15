@@ -293,6 +293,13 @@ class JudgmentValidator {
 		}
 		$target = $status->value;
 
+		// Assert that the title has the canonical form and, for example, no
+		// leading zeroes.
+		$expectedTitle = TitleHelper::buildJadeTitle( $target );
+		if ( $expectedTitle->getDBkey() !== $title->getDBkey() ) {
+			return Status::newFatal( 'jade-non-canonical-title', $expectedTitle->getDBkey() );
+		}
+
 		$status = $this->validateEntity( $target->entityType, $target->entityId );
 		if ( !$status->isOK() ) {
 			return $status;
