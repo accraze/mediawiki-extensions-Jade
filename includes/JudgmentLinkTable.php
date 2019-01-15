@@ -15,6 +15,8 @@
  */
 namespace JADE;
 
+use Status;
+use StatusValue;
 use Wikimedia\Rdbms\LoadBalancer;
 use WikiPage;
 
@@ -63,6 +65,34 @@ class JudgmentLinkTable implements JudgmentIndexStorage {
 				$tableHelper->getLinkTable(),
 				[ $tableHelper->getIdColumn() => $id ],
 				__METHOD__ );
+		}
+	}
+
+	public function updateSummary( JudgmentTarget $target, array $summaryValues ) : StatusValue {
+		if ( !$summaryValues ) {
+			// Nothing to do.
+			return Status::newGood();
+		}
+
+		$tableHelper = new JudgmentLinkTableHelper( $target->entityType );
+
+		$row = [];
+		foreach ( $summaryValues as $key => $value ) {
+			$summaryColumn = $tableHelper->getSummaryColumn( $key );
+			$row[$summaryColumn] = $value;
+		}
+
+		try {
+			$dbw = $this->loadBalancer->getConnection( DB_MASTER );
+			$dbw->update(
+				$tableHelper->getLinkTable(),
+				$row,
+				[ $tableHelper->getTargetColumn() => $target->entityId ],
+				__METHOD__
+			);
+			return Status::newGood();
+		} catch ( DBError $ex ) {
+			return Status::newFatal( 'jade-db-error', $ex->getMessage() );
 		}
 	}
 

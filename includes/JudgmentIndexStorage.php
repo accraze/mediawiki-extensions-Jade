@@ -15,6 +15,7 @@
  */
 namespace JADE;
 
+use StatusValue;
 use WikiPage;
 
 /**
@@ -37,5 +38,15 @@ interface JudgmentIndexStorage {
 	 * @param WikiPage $judgmentPage Page where judgment is recorded.
 	 */
 	public function deleteIndex( JudgmentTarget $target, WikiPage $judgmentPage );
+
+	/**
+	 * Update summary columns
+	 *
+	 * @param JudgmentTarget $target Wiki entity being judged.
+	 * @param array $summaryValues Map of fields to update.
+	 *
+	 * @return StatusValue indicates success.
+	 */
+	public function updateSummary( JudgmentTarget $target, array $summaryValues ) : StatusValue;
 
 }

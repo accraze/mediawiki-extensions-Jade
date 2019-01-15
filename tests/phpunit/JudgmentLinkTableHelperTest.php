@@ -84,4 +84,12 @@ class JudgmentLinkTableHelperTest extends MediaWikiTestCase {
 		$this->assertEquals( 'jaded_revision', $helper->getTargetColumn() );
 	}
 
+	/**
+	 * @covers ::getSummaryColumn
+	 */
+	public function testGetSummaryColumn() {
+		$helper = new JudgmentLinkTableHelper( $this->diffType );
+		$this->assertEquals( 'jaded_damaging', $helper->getSummaryColumn( 'damaging' ) );
+	}
+
 }

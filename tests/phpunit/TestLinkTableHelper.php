@@ -32,22 +32,33 @@ class TestLinkTableHelper {
 	 * @param string $entityType entity type identifier
 	 * @param int $targetRevisionId revision being judged
 	 * @param int $judgmentPageId page ID being linked
+	 * @param array $summaryColumns Any additional summary fields to retrieve.
 	 *
 	 * @return mixed Native or wrapped database query result.
 	 */
-	public static function selectJudgmentLink( $entityType, $targetRevisionId, $judgmentPageId ) {
+	public static function selectJudgmentLink(
+		$entityType,
+		$targetRevisionId,
+		$judgmentPageId,
+		$summaryColumns = []
+	) {
 		$status = JudgmentEntityType::sanitizeEntityType( $entityType );
 		Assert::assertTrue( $status->isOK() );
 		$helper = new JudgmentLinkTableHelper( $status->value );
+
+		$selectColumns = [
+			$helper->getTargetColumn(),
+			$helper->getJudgmentColumn(),
+		];
+		foreach ( $summaryColumns as $schemaName ) {
+			$selectColumns[] = $helper->getSummaryColumn( $schemaName );
+		}
 
 		$dbr = MediaWikiServices::getInstance()->getDBLoadBalancer()
 			->getConnection( DB_REPLICA );
 		$result = $dbr->select(
 			[ $helper->getLinkTable() ],
-			[
-				$helper->getTargetColumn(),
-				$helper->getJudgmentColumn(),
-			],
+			$selectColumns,
 			[
 				$helper->getTargetColumn() => $targetRevisionId,
 				$helper->getJudgmentColumn() => $judgmentPageId,

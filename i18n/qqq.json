@@ -41,5 +41,7 @@
 	"jade-bad-contentquality-value": "Error message when attempting to use a contentquality outside the range of $wgJadeArticleQualityLevels. Parameters:\n* $1 - attempted value\n* $2 - Number of quality levels on this wiki.",
 	"jade-cannot-create-page": "Error message when the user isn't allowed to create a judgment page.",
 	"jade-cannot-edit-page": "Error message when the user isn't allowed to edit a judgment page.",
-	"jade-invalid-move-any": "Error message when moving judgment pages, when no moves are allowed."
+	"jade-invalid-move-any": "Error message when moving judgment pages, when no moves are allowed.",
+	"jade-db-error": "Error message for database errors. Parameters:\n $1 - Exception message.",
+	"jade-content-model-error": "Error message when a document in the Judgment namespace has the wrong content model."
 }
