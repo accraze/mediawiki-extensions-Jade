@@ -14,10 +14,10 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-namespace JADE;
+namespace Jade;
 
 use Content;
-use JADE\Content\JudgmentContent;
+use Jade\Content\JudgmentContent;
 use Status;
 use StatusValue;
 

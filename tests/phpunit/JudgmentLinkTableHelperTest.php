@@ -13,17 +13,17 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-namespace JADE\Tests;
+namespace Jade\Tests;
 
-use JADE\JudgmentEntityType;
-use JADE\JudgmentLinkTableHelper;
+use Jade\JudgmentEntityType;
+use Jade\JudgmentLinkTableHelper;
 use MediaWikiTestCase;
 use Wikimedia\TestingAccessWrapper;
 
 /**
- * @group JADE
+ * @group Jade
  *
- * @coversDefaultClass JADE\JudgmentLinkTableHelper
+ * @coversDefaultClass Jade\JudgmentLinkTableHelper
  */
 class JudgmentLinkTableHelperTest extends MediaWikiTestCase {
 

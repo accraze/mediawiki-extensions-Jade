@@ -18,7 +18,7 @@
  * @file
  */
 
-namespace JADE;
+namespace Jade;
 
 use CentralIdLookup;
 use LogicException;

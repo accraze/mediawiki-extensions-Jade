@@ -18,7 +18,7 @@
  * @file
  */
 
-namespace JADE;
+namespace Jade;
 
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
@@ -30,20 +30,20 @@ if ( !class_exists( ServiceWiring::class ) ) {
 		public static function getWiring() {
 			return [
 
-				'JADEEntityJudgmentSetStorage' => function ( MediaWikiServices $services ) {
+				'JadeEntityJudgmentSetStorage' => function ( MediaWikiServices $services ) {
 					return new PageEntityJudgmentSetStorage();
 				},
 
-				'JADEJudgmentIndexStorage' => function ( MediaWikiServices $services ) {
+				'JadeJudgmentIndexStorage' => function ( MediaWikiServices $services ) {
 					return new JudgmentLinkTable(
 						$services->getDBLoadBalancer()
 					);
 				},
 
-				'JADEJudgmentValidator' => function ( MediaWikiServices $services ) {
+				'JadeJudgmentValidator' => function ( MediaWikiServices $services ) {
 					return new JudgmentValidator(
 						RequestContext::getMain()->getConfig(),
-						LoggerFactory::getInstance( 'JADE' ),
+						LoggerFactory::getInstance( 'Jade' ),
 						$services->getRevisionStore()
 					);
 				},

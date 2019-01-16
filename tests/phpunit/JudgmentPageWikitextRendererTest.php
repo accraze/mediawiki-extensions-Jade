@@ -13,11 +13,11 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-namespace JADE\Tests;
+namespace Jade\Tests;
 
 use Block;
 use CentralIdLookup;
-use JADE\JudgmentPageWikitextRenderer;
+use Jade\JudgmentPageWikitextRenderer;
 use LocalIdLookup;
 use LogicException;
 use MediaWikiLangTestCase;
@@ -25,10 +25,10 @@ use Wikimedia\TestingAccessWrapper;
 
 /**
  * @group Database
- * @group JADE
+ * @group Jade
  * @group medium
  *
- * @coversDefaultClass JADE\JudgmentPageWikitextRenderer
+ * @coversDefaultClass Jade\JudgmentPageWikitextRenderer
  *
  * TODO: Could make some tests more unit-y, calling the methods through a
  * TestingAccessWrapper rather than going through the public getWikitext.

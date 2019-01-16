@@ -13,18 +13,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-namespace JADE\Tests\SpamBlacklist;
+namespace Jade\Tests\SpamBlacklist;
 
 use ApiTestCase;
 use BaseBlacklist;
 use ExtensionRegistry;
-use JADE\Tests\TestStorageHelper;
+use Jade\Tests\TestStorageHelper;
 use ReflectionClass;
 
 /**
  * Check that SpamBlacklist integration works in judgment JSON.
  *
- * @group JADE
+ * @group Jade
  * @group Database
  * @group medium
  * @group SpamBlacklist

@@ -13,21 +13,21 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-namespace JADE\Tests;
+namespace Jade\Tests;
 
-use JADE\JudgmentEntityType;
-use JADE\JudgmentLinkTable;
-use JADE\JudgmentTarget;
-use JADE\TitleHelper;
+use Jade\JudgmentEntityType;
+use Jade\JudgmentLinkTable;
+use Jade\JudgmentTarget;
+use Jade\TitleHelper;
 use MediaWiki\MediaWikiServices;
 use MediaWikiTestCase;
 
 /**
- * @group JADE
+ * @group Jade
  * @group Database
  * @group medium
  *
- * @coversDefaultClass JADE\JudgmentLinkTable
+ * @coversDefaultClass Jade\JudgmentLinkTable
  * @covers ::__construct
  */
 class JudgmentLinkTableTest extends MediaWikiTestCase {
@@ -54,7 +54,7 @@ class JudgmentLinkTableTest extends MediaWikiTestCase {
 		/*
 		 * Note: Normal clients should fetch the service rather than directly
 		 * instantiating.
-		 *     $storage = JADEServices::getJudgmentIndexStorage();
+		 *     $storage = JadeServices::getJudgmentIndexStorage();
 		 */
 		$this->indexStorage = new JudgmentLinkTable(
 			MediaWikiServices::getInstance()->getDBLoadBalancer() );

@@ -13,10 +13,10 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-namespace JADE\Tests;
+namespace Jade\Tests;
 
-use JADE\JudgmentEntityType;
-use JADE\JudgmentLinkTableHelper;
+use Jade\JudgmentEntityType;
+use Jade\JudgmentLinkTableHelper;
 use MediaWiki\MediaWikiServices;
 use PHPUnit\Framework\Assert;
 

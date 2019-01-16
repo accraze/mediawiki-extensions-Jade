@@ -14,12 +14,12 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-namespace JADE\Hooks;
+namespace Jade\Hooks;
 
 use Content;
-use JADE\JADEServices;
-use JADE\JudgmentSummarizer;
-use JADE\TitleHelper;
+use Jade\JadeServices;
+use Jade\JudgmentSummarizer;
+use Jade\TitleHelper;
 use MediaWiki\Logger\LoggerFactory;
 use Revision;
 use Status;
@@ -70,17 +70,17 @@ class LinkSummaryHooks {
 
 		$status = JudgmentSummarizer::getSummaryFromContent( $content );
 		if ( !$status->isOK() ) {
-			LoggerFactory::getInstance( 'JADE' )
+			LoggerFactory::getInstance( 'Jade' )
 				->warning( 'Failed to extract judgment summary: {status}', [ 'status' => $status ] );
 
 			return;
 		}
 		$summaryValues = $status->value;
-		$status = JADEServices::getJudgmentIndexStorage()
+		$status = JadeServices::getJudgmentIndexStorage()
 			->updateSummary( $target, $summaryValues );
 
 		if ( !$status->isOK() ) {
-			LoggerFactory::getInstance( 'JADE' )
+			LoggerFactory::getInstance( 'Jade' )
 				->warning( 'Failed to update judgment summary: {status}', [ 'status' => $status ] );
 		}
 	}

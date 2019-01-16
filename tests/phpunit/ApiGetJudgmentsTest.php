@@ -13,20 +13,20 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-namespace JADE\Tests;
+namespace Jade\Tests;
 
 use ApiTestCase;
 use FormatJSON;
 
 /**
- * Integration tests for the JADE API.
+ * Integration tests for the Jade API.
  *
  * @group API
  * @group Database
  * @group medium
- * @group JADE
+ * @group Jade
  *
- * @covers JADE\ApiGetJudgments
+ * @covers Jade\ApiGetJudgments
  */
 class ApiGetJudgmentsTest extends ApiTestCase {
 

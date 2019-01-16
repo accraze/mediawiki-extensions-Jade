@@ -1,12 +1,12 @@
 <?php
 
-namespace JADE\Maintenance;
+namespace Jade\Maintenance;
 
-use JADE\JADEServices;
-use JADE\JudgmentEntityType;
-use JADE\JudgmentLinkTableHelper;
-use JADE\JudgmentSummarizer;
-use JADE\TitleHelper;
+use Jade\JadeServices;
+use Jade\JudgmentEntityType;
+use Jade\JudgmentLinkTableHelper;
+use Jade\JudgmentSummarizer;
+use Jade\TitleHelper;
 use Maintenance;
 use MediaWiki\MediaWikiServices;
 use Title;
@@ -36,7 +36,7 @@ class CleanJudgmentLinks extends Maintenance {
 	public function __construct() {
 		parent::__construct();
 
-		$this->requireExtension( 'JADE' );
+		$this->requireExtension( 'Jade' );
 		$this->addDescription( 'Clean up judgment link tables, looking for orphaned ' .
 			'and missing links.' );
 		$this->addOption( 'dry-run', 'Search but don\'t make changes to the link tables.' );
@@ -45,7 +45,7 @@ class CleanJudgmentLinks extends Maintenance {
 	}
 
 	public function execute() {
-		$this->output( "Starting JADE cleanup...\n" );
+		$this->output( "Starting Jade cleanup...\n" );
 
 		$this->findAndDeleteOrphanedLinks();
 		$this->findAndConnectUnlinkedJudgments();
@@ -198,7 +198,7 @@ class CleanJudgmentLinks extends Maintenance {
 		JudgmentEntityType $entityType
 	) {
 		$tableHelper = new JudgmentLinkTableHelper( $entityType );
-		$indexStorage = JADEServices::getJudgmentIndexStorage();
+		$indexStorage = JadeServices::getJudgmentIndexStorage();
 		$lastId = 0;
 
 		foreach ( $unlinked as $row ) {

@@ -1,6 +1,6 @@
 <?php
 
-namespace JADE;
+namespace Jade;
 
 use Status;
 use StatusValue;

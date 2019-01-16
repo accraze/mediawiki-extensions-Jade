@@ -13,12 +13,12 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-namespace JADE\Tests;
+namespace Jade\Tests;
 
 use Block;
 use CentralIdLookup;
 use FormatJson;
-use JADE\JADEServices;
+use Jade\JadeServices;
 use LocalIdLookup;
 use MediaWikiTestCase;
 use StatusValue;
@@ -27,10 +27,10 @@ use Wikimedia\TestingAccessWrapper;
 
 /**
  * @group Database
- * @group JADE
+ * @group Jade
  * @group medium
  *
- * @coversDefaultClass JADE\JudgmentValidator
+ * @coversDefaultClass Jade\JudgmentValidator
  * @covers ::__construct
  *
  * TODO: Should construct directly rather than relying on service wiring.
@@ -117,7 +117,7 @@ class JudgmentValidatorTest extends MediaWikiTestCase {
 	protected function runValidation( $path ) {
 		$text = file_get_contents( __DIR__ . '/' . self::DATA_DIR . '/' . $path );
 
-		$validator = JADEServices::getJudgmentValidator();
+		$validator = JadeServices::getJudgmentValidator();
 		$data = FormatJson::decode( $text );
 		return $validator->validateJudgmentContent( $data );
 	}
@@ -484,7 +484,7 @@ class JudgmentValidatorTest extends MediaWikiTestCase {
 	 * @covers ::validateEntity
 	 */
 	public function testValidateEntity_badType() {
-		$validator = JADEServices::getJudgmentValidator();
+		$validator = JadeServices::getJudgmentValidator();
 
 		$validator = TestingAccessWrapper::newFromObject( $validator );
 		$status = $validator->validateEntity( 'foo', 123 );

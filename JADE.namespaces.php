@@ -1,6 +1,6 @@
 <?php
 /**
- * Translations of the namespaces introduced by JADE.
+ * Translations of the namespaces introduced by Jade.
  *
  * @file
  */

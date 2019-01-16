@@ -13,21 +13,21 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-namespace JADE\Tests\Hooks;
+namespace Jade\Tests\Hooks;
 
 use ApiTestCase;
-use JADE\Content\JudgmentContent;
-use JADE\Tests\TestStorageHelper;
+use Jade\Content\JudgmentContent;
+use Jade\Tests\TestStorageHelper;
 use Status;
 use WikiPage;
 
 /**
  * @group API
  * @group Database
- * @group JADE
+ * @group Jade
  * @group medium
  *
- * @covers JADE\Hooks\MoveHooks
+ * @covers Jade\Hooks\MoveHooks
  */
 class MoveHooksTest extends ApiTestCase {
 	const DIFF_JUDGMENT = '../../data/valid_diff_judgment.json';
@@ -76,7 +76,7 @@ class MoveHooksTest extends ApiTestCase {
 			->disableOriginalConstructor()
 			->setMethods( [ 'validateJudgmentContent', 'validatePageTitle' ] )
 			->getMock();
-		$this->setService( 'JADEJudgmentValidator', $this->mockValidation );
+		$this->setService( 'JadeJudgmentValidator', $this->mockValidation );
 
 		$this->mockValidation
 			->method( 'validateJudgmentContent' )
@@ -111,7 +111,7 @@ class MoveHooksTest extends ApiTestCase {
 	}
 
 	/**
-	 * @covers JADE\Hooks\MoveHooks::onMovePageIsValidMove
+	 * @covers Jade\Hooks\MoveHooks::onMovePageIsValidMove
 	 * @dataProvider provideNamespaceCombos
 	 */
 	public function testOnMovePageIsValidMove(

@@ -14,12 +14,12 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-namespace JADE\Hooks;
+namespace Jade\Hooks;
 
 use Content;
-use JADE\JADEServices;
-use JADE\JudgmentTarget;
-use JADE\TitleHelper;
+use Jade\JadeServices;
+use Jade\JudgmentTarget;
+use Jade\TitleHelper;
 use LogEntry;
 use MediaWiki\Logger\LoggerFactory;
 use Revision;
@@ -61,7 +61,7 @@ class LinkTableHooks {
 			return;
 		}
 
-		JADEServices::getJudgmentIndexStorage()
+		JadeServices::getJudgmentIndexStorage()
 			->insertIndex( $target, $judgmentPage );
 	}
 
@@ -88,7 +88,7 @@ class LinkTableHooks {
 			return;
 		}
 
-		JADEServices::getJudgmentIndexStorage()
+		JadeServices::getJudgmentIndexStorage()
 			->deleteIndex( $target, $judgmentPage );
 	}
 
@@ -121,7 +121,7 @@ class LinkTableHooks {
 		}
 
 		$judgmentPage = WikiPage::newFromID( $oldPageId );
-		JADEServices::getJudgmentIndexStorage()
+		JadeServices::getJudgmentIndexStorage()
 			->insertIndex( $target, $judgmentPage );
 	}
 
@@ -141,7 +141,7 @@ class LinkTableHooks {
 				// something did go wrong, it should be logged and
 				// investigated.
 				// TODO: Should this be a responsibility of TitleHelper::parseTitleValue()?
-				$logger = LoggerFactory::getInstance( 'JADE' );
+				$logger = LoggerFactory::getInstance( 'Jade' );
 				$logger->error( "Cannot parse judgment title: {$status}" );
 			}
 			return null;

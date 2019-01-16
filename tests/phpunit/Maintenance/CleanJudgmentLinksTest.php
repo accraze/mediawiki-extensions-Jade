@@ -18,21 +18,21 @@
  * @file
  */
 
-namespace JADE\Tests\Maintenance;
+namespace Jade\Tests\Maintenance;
 
-use JADE\Maintenance\CleanJudgmentLinks;
-use JADE\Tests\TestJudgmentLinkAssertions;
-use JADE\Tests\TestStorageHelper;
+use Jade\Maintenance\CleanJudgmentLinks;
+use Jade\Tests\TestJudgmentLinkAssertions;
+use Jade\Tests\TestStorageHelper;
 use MediaWiki\Tests\Maintenance\MaintenanceBaseTestCase;
 use Revision;
 use WikiPage;
 
 /**
- * @group JADE
+ * @group Jade
  * @group Database
  * @group medium
- * @covers JADE\Maintenance\CleanJudgmentLinks
- * @coversDefaultClass JADE\Maintenance\CleanJudgmentLinks
+ * @covers Jade\Maintenance\CleanJudgmentLinks
+ * @coversDefaultClass Jade\Maintenance\CleanJudgmentLinks
  */
 class CleanJudgmentLinksTest extends MaintenanceBaseTestCase {
 

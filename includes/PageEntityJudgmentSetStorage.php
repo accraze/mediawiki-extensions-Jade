@@ -18,7 +18,7 @@
  * @file
  */
 
-namespace JADE;
+namespace Jade;
 
 use ChangeTags;
 use FormatJson;
@@ -27,7 +27,7 @@ use StatusValue;
 use Title;
 use WikiPage;
 
-use JADE\Content\JudgmentContent;
+use Jade\Content\JudgmentContent;
 
 /**
  * Backend to store judgments as wiki pages under a new namespace.

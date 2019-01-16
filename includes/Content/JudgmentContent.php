@@ -18,10 +18,10 @@
  * @file
  */
 
-namespace JADE\Content;
+namespace Jade\Content;
 
-use JADE\JADEServices;
-use JADE\JudgmentPageWikitextRenderer;
+use Jade\JadeServices;
+use Jade\JudgmentPageWikitextRenderer;
 use JsonContent;
 use MediaWiki\MediaWikiServices;
 use ParserOptions;
@@ -69,7 +69,7 @@ class JudgmentContent extends JsonContent {
 			return $status;
 		}
 
-		$validator = JADEServices::getJudgmentValidator();
+		$validator = JadeServices::getJudgmentValidator();
 		return $validator->validatePageTitle( $page, $data );
 	}
 
@@ -101,7 +101,7 @@ class JudgmentContent extends JsonContent {
 		}
 
 		$data = $this->getData()->getValue();
-		$validator = JADEServices::getJudgmentValidator();
+		$validator = JadeServices::getJudgmentValidator();
 		return $validator->validateJudgmentContent( $data );
 	}
 

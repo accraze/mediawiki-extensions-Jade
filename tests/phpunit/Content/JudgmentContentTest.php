@@ -13,11 +13,11 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-namespace JADE\Tests\Content;
+namespace Jade\Tests\Content;
 
-use JADE\Content\JudgmentContent;
-use JADE\JudgmentValidator;
-use JADE\Tests\TestStorageHelper;
+use Jade\Content\JudgmentContent;
+use Jade\JudgmentValidator;
+use Jade\Tests\TestStorageHelper;
 use MediaWikiLangTestCase;
 use ParserOptions;
 use ParserOutput;
@@ -28,10 +28,10 @@ use Title;
 
 /**
  * @group Database
- * @group JADE
+ * @group Jade
  * @group medium
  *
- * @coversDefaultClass JADE\Content\JudgmentContent
+ * @coversDefaultClass Jade\Content\JudgmentContent
  */
 class JudgmentContentTest extends MediaWikiLangTestCase {
 
@@ -42,7 +42,7 @@ class JudgmentContentTest extends MediaWikiLangTestCase {
 		$this->mockValidation = $this->getMockBuilder( JudgmentValidator::class )
 			->disableOriginalConstructor()
 			->getMock();
-		$this->setService( 'JADEJudgmentValidator', $this->mockValidation );
+		$this->setService( 'JadeJudgmentValidator', $this->mockValidation );
 
 		$this->judgmentText = TestStorageHelper::getJudgmentText( 'diff' );
 	}
