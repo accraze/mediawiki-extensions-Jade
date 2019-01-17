@@ -18,5 +18,6 @@
 	"jade-bad-title-format": "Ogiltigt titelformat",
 	"jade-user-ip-invalid": "IP-adressen ''$1'' är ogiltig.",
 	"jade-cannot-create-page": "Du kan inte skapa denna sida.",
-	"jade-cannot-edit-page": "Du kan inte redigera denna sida."
+	"jade-cannot-edit-page": "Du kan inte redigera denna sida.",
+	"jade-db-error": "Databasfel: $1"
 }

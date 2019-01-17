@@ -41,5 +41,7 @@
 	"jade-bad-contentquality-value": "Mauvais indice « $1 » pour le schéma de qualité du contenu; le niveau de qualité doit être compris entre 1 et $2 .",
 	"jade-cannot-create-page": "Vous ne pouvez pas créer cette page.",
 	"jade-cannot-edit-page": "Vous ne pouvez pas modifier cette page.",
-	"jade-invalid-move-any": "Le renommage des pages d'appréciation n'est pas autorisé."
+	"jade-invalid-move-any": "Le renommage des pages d'appréciation n'est pas autorisé.",
+	"jade-db-error": "Erreur de base de données : $1",
+	"jade-content-model-error": "Mauvais modèle de contenu pour les appréciations."
 }

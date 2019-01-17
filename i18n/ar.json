@@ -40,5 +40,7 @@
 	"jade-bad-contentquality-value": "يجب أن يكون المؤشر السيئ ''$1'' في مخطط جودة المحتوى، مستوى جودة يتراوح بين 1 و$2.",
 	"jade-cannot-create-page": "لا يمكنك إنشاء هذه الصفحة.",
 	"jade-cannot-edit-page": "لا يمكنك تحرير هذه الصفحة.",
-	"jade-invalid-move-any": "نقل صفحات الحكم غير مسموح به."
+	"jade-invalid-move-any": "نقل صفحات الحكم غير مسموح به.",
+	"jade-db-error": "خطأ في قاعدة البيانات: $1",
+	"jade-content-model-error": "نموذج محتوى غير صحيح للحكم."
 }

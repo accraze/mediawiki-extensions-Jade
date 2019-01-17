@@ -22,6 +22,7 @@
 	"jade-delete": "刪除",
 	"jade-bad-title-format": "無效的標題格式",
 	"jade-bad-title-namespace": "用於判斷標題的無效命名空間。",
+	"jade-non-canonical-title": "標題應包含自''$1''的規範形式。",
 	"jade-bad-entity-type": "無效項目類型''$1''",
 	"jade-bad-entity-id-format": "無效項目 ID 格式「$1」",
 	"jade-bad-revision-id": "找不到 ID 為：''$1'' 的修訂",
@@ -35,8 +36,13 @@
 	"jade-user-id-mismatch": "使用者本地 ID「$1」與中心 ID「$2」兩方識別成是不同的使用者。",
 	"jade-user-ip-invalid": "IP 地址「$1」無效。",
 	"jade-created-timestamp-invalid": "簽署建立的時間戳無效：「$1」",
-	"jade-bad-contentquality-value": "內容品質架構的錯誤值「$1」，可能的值應為：$2",
+	"jade-bad-contentquality-value": "內容品質架構中的錯誤索引「''$1''」，品質等級必須介於 1 與 $2 之間。",
 	"jade-cannot-create-page": "您不能建立此頁面。",
 	"jade-cannot-edit-page": "您不能編輯此頁面。",
-	"jade-invalid-move-any": "不允許移動判斷頁面。"
+	"jade-invalid-move-any": "不允許移動判斷頁面。",
+	"jade-db-error": "資料庫錯誤：$1",
+	"jade-content-model-error": "用於判斷的錯誤內容模組。",
+	"jade-endorsement": "簽署",
+	"jade-endorsements": "簽署",
+	"jade-user": "使用者"
 }

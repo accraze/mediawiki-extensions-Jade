@@ -15,5 +15,7 @@
 	"jade-contentquality-generic": "Indholds kvalitet \"$1\"",
 	"jade-delete": "Slet",
 	"jade-user-ip-invalid": "IP-adressen ''$1'' er ugyldig.",
-	"jade-cannot-edit-page": "Du kan ikke redigere denne side."
+	"jade-cannot-edit-page": "Du kan ikke redigere denne side.",
+	"jade-db-error": "Databasefejl: $1",
+	"jade-user": "Bruger"
 }

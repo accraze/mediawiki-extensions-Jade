@@ -38,5 +38,7 @@
 	"jade-bad-contentquality-value": "Ungültiger Index ''$1'' im Inhaltsqualitätsschema, muss ein Qualitätsniveau zwischen 1 und $2 sein.",
 	"jade-cannot-create-page": "Du kannst diese Seite nicht erstellen.",
 	"jade-cannot-edit-page": "Du kannst diese Seite nicht bearbeiten.",
-	"jade-invalid-move-any": "Das Verschieben von Beurteilungsseiten ist nicht erlaubt."
+	"jade-invalid-move-any": "Das Verschieben von Beurteilungsseiten ist nicht erlaubt.",
+	"jade-db-error": "Datenbankfehler: $1",
+	"jade-content-model-error": "Falsches Inhaltsmodell für die Beurteilung."
 }

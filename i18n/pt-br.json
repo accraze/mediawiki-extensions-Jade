@@ -38,5 +38,7 @@
 	"jade-bad-contentquality-value": "Índice ''$1'' inválido para o esquema de qualidade de conteúdo; tem de ser um nível de qualidade entre 1 e $2.",
 	"jade-cannot-create-page": "Você não pode criar esta página.",
 	"jade-cannot-edit-page": "Você não pode editar esta página.",
-	"jade-invalid-move-any": "Mover páginas de julgamento não é permitido."
+	"jade-invalid-move-any": "Mover páginas de julgamento não é permitido.",
+	"jade-db-error": "Erro no banco de dados: $1",
+	"jade-content-model-error": "Modelo de conteúdo errado para julgamento."
 }
