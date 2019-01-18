@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Eduardo Addad de Oliveira"
+			"Eduardo Addad de Oliveira",
+			"Felipe L. Ewald"
 		]
 	},
 	"jade-desc": "Motor de avaliação e diálogo JADE",
@@ -40,5 +41,6 @@
 	"jade-cannot-edit-page": "Você não pode editar esta página.",
 	"jade-invalid-move-any": "Mover páginas de julgamento não é permitido.",
 	"jade-db-error": "Erro no banco de dados: $1",
-	"jade-content-model-error": "Modelo de conteúdo errado para julgamento."
+	"jade-content-model-error": "Modelo de conteúdo errado para julgamento.",
+	"jade-user": "Usuário"
 }

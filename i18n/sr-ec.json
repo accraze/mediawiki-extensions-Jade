@@ -12,6 +12,7 @@
 	"jade-contentquality-scale-6-label": "Изабрани чланак",
 	"jade-contentquality-generic": "Квалитет садржаја „$1”",
 	"jade-bad-title-format": "Неважећи формат наслова",
+	"jade-non-canonical-title": "Наслов треба да има канонски облик „$1”.",
 	"jade-bad-entity-type": "Неважећи тип ентитета: „$1”",
 	"jade-bad-entity-id-format": "Неважећи формат ID ентитета „$1”",
 	"jade-bad-revision-id": "Није могуће пронаћи измену по ID-у: „$1”",
@@ -21,5 +22,9 @@
 	"jade-user-central-id-invalid": "Кориснички централни ID „$1” не постоји.",
 	"jade-user-ip-invalid": "IP адреса „$1” није важећа.",
 	"jade-cannot-create-page": "Не можете да направите ову страницу.",
-	"jade-cannot-edit-page": "Не можете да уређујете ову страницу."
+	"jade-cannot-edit-page": "Не можете да уређујете ову страницу.",
+	"jade-db-error": "Грешка у бази података: $1",
+	"jade-endorsement": "Потврђивање",
+	"jade-endorsements": "Потврђивања",
+	"jade-user": "Корисник"
 }

@@ -22,6 +22,7 @@
 	"jade-delete": "Löschen",
 	"jade-bad-title-format": "Ungültiges Titelformat",
 	"jade-bad-title-namespace": "Ungültiger Namensraum für einen Beurteilungstitel.",
+	"jade-non-canonical-title": "Der Titel sollte die kanonische Form ''$1'' haben.",
 	"jade-bad-entity-type": "Ungültiger Objekttyp ''$1''",
 	"jade-bad-entity-id-format": "Ungültiges Objektkennung-Format ''$1''",
 	"jade-bad-revision-id": "Die Version nach Kennung konnte nicht gefunden werden: ''$1''",
@@ -40,5 +41,8 @@
 	"jade-cannot-edit-page": "Du kannst diese Seite nicht bearbeiten.",
 	"jade-invalid-move-any": "Das Verschieben von Beurteilungsseiten ist nicht erlaubt.",
 	"jade-db-error": "Datenbankfehler: $1",
-	"jade-content-model-error": "Falsches Inhaltsmodell für die Beurteilung."
+	"jade-content-model-error": "Falsches Inhaltsmodell für die Beurteilung.",
+	"jade-endorsement": "Bestätigung",
+	"jade-endorsements": "Bestätigungen",
+	"jade-user": "Benutzer"
 }
