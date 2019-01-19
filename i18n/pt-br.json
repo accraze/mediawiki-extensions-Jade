@@ -23,6 +23,7 @@
 	"jade-delete": "Deletar",
 	"jade-bad-title-format": "Formato de título inválido",
 	"jade-bad-title-namespace": "Espaço de nomes inválido para um título de julgamento.",
+	"jade-non-canonical-title": "Título deve ter forma canônica ''$1''.",
 	"jade-bad-entity-type": "Tipo de entidade inválido ''$1''",
 	"jade-bad-entity-id-format": "Formato de ID de entidade inválido ''$1''",
 	"jade-bad-revision-id": "Não é possível encontrar revisão por ID: ''$1''",
@@ -42,5 +43,7 @@
 	"jade-invalid-move-any": "Mover páginas de julgamento não é permitido.",
 	"jade-db-error": "Erro no banco de dados: $1",
 	"jade-content-model-error": "Modelo de conteúdo errado para julgamento.",
+	"jade-endorsement": "Endosso",
+	"jade-endorsements": "Endossos",
 	"jade-user": "Usuário"
 }
