@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Ladsgroup",
-			"درفش کاویانی"
+			"درفش کاویانی",
+			"Amirsara"
 		]
 	},
 	"jade-damaging-scale-true-label": "آسیب‌زننده",
@@ -15,5 +16,6 @@
 	"jade-contentquality-scale-5-label": "مقالهٔ خوب",
 	"jade-contentquality-scale-6-label": "مقالهٔ برگزیده",
 	"jade-contentquality-generic": "کیفیت محتوا «$1»",
-	"jade-delete": "حذف"
+	"jade-delete": "حذف",
+	"jade-user": "کاربر"
 }

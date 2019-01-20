@@ -25,5 +25,7 @@
 	"jade-user-id-mismatch": "\"$1\" 사용자 로컬 ID와 \"$2\" 통합 ID가 서로 다른 사용자로 식별됩니다.",
 	"jade-user-ip-invalid": "\"$1\" IP 주소가 유효하지 않습니다.",
 	"jade-cannot-create-page": "이 문서를 만들 수 없습니다.",
-	"jade-cannot-edit-page": "이 문서를 편집할 수 없습니다."
+	"jade-cannot-edit-page": "이 문서를 편집할 수 없습니다.",
+	"jade-db-error": "데이터베이스 오류: $1",
+	"jade-user": "사용자"
 }
