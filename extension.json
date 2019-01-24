@@ -62,16 +62,22 @@
 				"revision": [
 					"contentquality"
 				]
-			}
+			},
+			"description": "Map from entity type to the judgment schemas allowed for that type.",
+			"public": true
 		},
 		"JadeEntityTypeNames": {
 			"value": {
 				"diff": "Diff",
 				"revision": "Revision"
-			}
+			},
+			"description": "Title fragment used as a label for each entity type.  Generally not changed after deployment.",
+			"public": true
 		},
 		"JadeContentQualityLevels": {
-			"value": 6
+			"value": 6,
+			"description": "Count of how many content quality levels are used on your wiki.",
+			"public": true
 		}
 	},
 	"ExtensionMessagesFiles": {
