@@ -2,9 +2,11 @@
 	"@metadata": {
 		"authors": [
 			"Robin van der Linde",
-			"Mainframe98"
+			"Mainframe98",
+			"Elroy"
 		]
 	},
 	"jade-contentquality-scale-5-label": "Goed artikel",
-	"jade-delete": "Verwijderen"
+	"jade-delete": "Verwijderen",
+	"jade-user": "Gebruiker"
 }
