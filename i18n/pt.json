@@ -24,6 +24,7 @@
 	"jade-delete": "Eliminar",
 	"jade-bad-title-format": "Formato de título inválido",
 	"jade-bad-title-namespace": "Espaço nominal/domínio inválido para o título de uma avaliação.",
+	"jade-non-canonical-title": "O título deve ter forma a canónica ''$1''.",
 	"jade-bad-entity-type": "Tipo de entidade inválido ''$1''",
 	"jade-bad-entity-id-format": "Formato de identificador de entidade inválido ''$1''",
 	"jade-bad-revision-id": "Não foi possível encontrar uma revisão pelo identificador: ''$1''",
@@ -36,9 +37,14 @@
 	"jade-user-central-id-invalid": "O identificador central ''$1'' do utilizador não existe.",
 	"jade-user-id-mismatch": "O identificador local ''$1'' e o identificador central ''$2'' do utilizador identificam utilizadores diferentes.",
 	"jade-user-ip-invalid": "O endereço IP ''$1''  é inválido.",
-	"jade-created-timestamp-invalid": "A data e hora criada é inválida: ''$1''",
+	"jade-created-timestamp-invalid": "A data e hora criada pela aprovação é inválida: ''$1''",
 	"jade-bad-contentquality-value": "Índice ''$1'' inválido para o esquema de qualidade de conteúdo; tem de ser um nível de qualidade entre 1 e $2.",
 	"jade-cannot-create-page": "Não pode criar esta página.",
 	"jade-cannot-edit-page": "Não pode editar esta página.",
-	"jade-invalid-move-any": "Não é permitido mover páginas de avaliações."
+	"jade-invalid-move-any": "Não é permitido mover páginas de avaliações.",
+	"jade-db-error": "Erro da base de dados: $1",
+	"jade-content-model-error": "Modelo de conteúdo incorreto para a avaliação.",
+	"jade-endorsement": "Aprovação",
+	"jade-endorsements": "Aprovações",
+	"jade-user": "Utilizador"
 }
