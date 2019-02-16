@@ -1,9 +1,5 @@
 {
-	"repository": {
-		"type": "git",
-		"url": "https://phabricator.wikimedia.org/diffusion/EJAD/"
-	},
-	"license": "GPL-3.0-or-later",
+	"private": true,
 	"scripts": {
 		"test": "grunt test"
 	},
