@@ -59,6 +59,7 @@ class JudgmentValidatorTest extends MediaWikiTestCase {
 			'wgCentralIdLookupProviders' => [
 				'local' => [ 'class' => LocalIdLookup::class ],
 			],
+			'wgCentralIdLookupProvider' => 'local',
 		] );
 	}
 

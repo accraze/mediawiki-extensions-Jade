@@ -162,6 +162,7 @@ class JudgmentPageWikitextRendererTest extends MediaWikiLangTestCase {
 			'wgCentralIdLookupProviders' => [
 				'local' => [ 'class' => LocalIdLookup::class ],
 			],
+			'wgCentralIdLookupProvider' => 'local',
 		] );
 
 		$user = $this->getTestUser()->getUser();
