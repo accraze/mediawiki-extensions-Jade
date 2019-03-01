@@ -17,6 +17,7 @@ namespace Jade;
 
 use Status;
 use StatusValue;
+use Wikimedia\Rdbms\DBError;
 use Wikimedia\Rdbms\LoadBalancer;
 use WikiPage;
 
