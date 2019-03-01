@@ -63,12 +63,12 @@ class JudgmentContent extends JsonContent {
 		// here.  This may change if additional tests or side-effects are added to
 		// AbstractContent::prepareSave in the future.
 
-		$data = $this->getData()->getValue();
-		$status = $this->validateContent( $data );
+		$status = $this->validateContent();
 		if ( !$status->isOK() ) {
 			return $status;
 		}
 
+		$data = $this->getData()->getValue();
 		$validator = JadeServices::getJudgmentValidator();
 		return $validator->validatePageTitle( $page, $data );
 	}
