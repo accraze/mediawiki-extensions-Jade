@@ -74,7 +74,7 @@ class JudgmentPageWikitextRenderer {
 
 			$judgmentList[] = $judgment;
 		}
-		$params['judgments'] = $judgmentList;
+		$params = [ 'judgments' => $judgmentList ];
 
 		// Translated strings.
 		$params['msg-jade-endorsement'] = wfMessage( 'jade-endorsement' )->plain();
