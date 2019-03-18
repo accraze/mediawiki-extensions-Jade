@@ -11,8 +11,15 @@
 	"jade-damaging-scale-false-label": "Productiva",
 	"jade-goodfaith-scale-true-label": "Buena fe",
 	"jade-goodfaith-scale-false-label": "Mala fe",
+	"jade-contentquality-scale-6-label": "Artículo destacado",
 	"jade-new-judgment": "Nueva valoración",
 	"jade-add-judgment": "Añadir valoración",
 	"jade-notes-placeholder": "Notas acerca de la valoración",
-	"jade-delete": "Borrar"
+	"jade-delete": "Borrar",
+	"jade-bad-content-generic": "Error de sintaxis en el contenido JSON.",
+	"jade-user-ip-invalid": "La dirección IP \"$1\" no es válida.",
+	"jade-cannot-create-page": "No puedes crear esta página.",
+	"jade-cannot-edit-page": "No puedes editar esta página.",
+	"jade-db-error": "Error de la base de datos: $1",
+	"jade-user": "Usuario"
 }
