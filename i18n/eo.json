@@ -1,0 +1,21 @@
+{
+	"@metadata": {
+		"authors": [
+			"Mirin"
+		]
+	},
+	"jade-contentquality-scale-3-label": "Artikolo de klaso C",
+	"jade-contentquality-scale-4-label": "Artikolo de klaso B",
+	"jade-contentquality-scale-5-label": "Bona artikolo",
+	"jade-contentquality-scale-6-label": "Elstara artikolo",
+	"jade-new-judgment": "Novan juĝon",
+	"jade-add-judgment": "Aldoni juĝon",
+	"jade-notes-placeholder": "Notoj pri juĝo",
+	"jade-delete": "Forigi",
+	"jade-bad-entity-type": "Ne valida enta tipo ''$1''",
+	"jade-bad-entity-id-format": "Ne valida enta identigilo ''$1''",
+	"jade-bad-content-generic": "Sintaksaj eraroj en JSON-enhavo.",
+	"jade-user-ip-invalid": "IP-adreso ''$1'' ne estas valida.",
+	"jade-db-error": "Datenbanka eraro: $1",
+	"jade-user": "Uzanto"
+}
