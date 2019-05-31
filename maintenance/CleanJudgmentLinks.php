@@ -10,7 +10,7 @@ use Jade\TitleHelper;
 use Maintenance;
 use MediaWiki\MediaWikiServices;
 use Title;
-use Wikimedia\Rdbms\ResultWrapper;
+use Wikimedia\Rdbms\IResultWrapper;
 use WikiPage;
 
 // @codeCoverageIgnoreStart
@@ -188,13 +188,13 @@ class CleanJudgmentLinks extends Maintenance {
 	/**
 	 * Helper to make new links for a list of judgment pages.
 	 *
-	 * @param ResultWrapper $unlinked judgment pages to reconnect.
+	 * @param IResultWrapper $unlinked judgment pages to reconnect.
 	 * @param JudgmentEntityType $entityType Entity type
 	 *
 	 * @return int Highest primary key touched in this batch.
 	 */
 	private function connectUnlinkedJudgments(
-		ResultWrapper $unlinked,
+		IResultWrapper $unlinked,
 		JudgmentEntityType $entityType
 	) {
 		$tableHelper = new JudgmentLinkTableHelper( $entityType );

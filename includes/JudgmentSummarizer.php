@@ -34,6 +34,7 @@ class JudgmentSummarizer {
 			return Status::newFatal( 'jade-content-model-error' );
 		}
 		// FIXME: Relies on duck typing, unfriendly to static analysis.
+		'@phan-var JudgmentContent $content';
 		$data = $content->getData()->getValue();
 
 		$preferred = self::extractPreferredJudgment( $data );
