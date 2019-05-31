@@ -15,11 +15,11 @@
  */
 namespace Jade\Tests;
 
-use Block;
 use CentralIdLookup;
 use FormatJson;
 use Jade\JadeServices;
 use LocalIdLookup;
+use MediaWiki\Block\DatabaseBlock;
 use MediaWikiTestCase;
 use StatusValue;
 use User;
@@ -345,7 +345,7 @@ class JudgmentValidatorTest extends MediaWikiTestCase {
 		$centralUserId = CentralIdLookup::factory()->centralIdFromLocalUser( $this->user );
 
 		// Suppress username.
-		$block = new Block( [
+		$block = new DatabaseBlock( [
 			'address' => $this->user->getName(),
 			'by' => $this->getTestSysop()->getUser()->getId(),
 			'hideName' => true,

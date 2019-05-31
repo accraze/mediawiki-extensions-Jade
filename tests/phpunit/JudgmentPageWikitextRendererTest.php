@@ -15,11 +15,11 @@
  */
 namespace Jade\Tests;
 
-use Block;
 use CentralIdLookup;
 use Jade\JudgmentPageWikitextRenderer;
 use LocalIdLookup;
 use LogicException;
+use MediaWiki\Block\DatabaseBlock;
 use MediaWikiLangTestCase;
 use Wikimedia\TestingAccessWrapper;
 
@@ -126,7 +126,7 @@ class JudgmentPageWikitextRendererTest extends MediaWikiLangTestCase {
 		$user = $this->getTestUser()->getUser();
 
 		// Suppress username.
-		$block = new Block();
+		$block = new DatabaseBlock();
 		$block->setTarget( $user->getName() );
 		$block->setBlocker( $this->getTestSysop()->getUser() );
 		$block->mHideName = true;
