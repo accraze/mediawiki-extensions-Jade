@@ -24,6 +24,7 @@
 	"jade-delete": "מחיקה",
 	"jade-bad-title-format": "תסדיר כותרת בלתי־תקין",
 	"jade-bad-title-namespace": "מרחב שם בלתי־תקין אבל כותרת של שיפוט.",
+	"jade-non-canonical-title": "הכותרת צריכה להיות בתבנית הקנונית \"$1\".",
 	"jade-bad-entity-type": "סוג ישות בלתי־תקין \"$1\"",
 	"jade-bad-entity-id-format": "תסדיר מזהה ישות בלתי־תקין \"$1\"",
 	"jade-bad-revision-id": "לא ניתן למצוא את הגרסה לפי מזהה: \"$1\"",
