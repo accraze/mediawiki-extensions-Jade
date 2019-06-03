@@ -129,7 +129,7 @@ class JudgmentPageWikitextRendererTest extends MediaWikiLangTestCase {
 		$block = new DatabaseBlock();
 		$block->setTarget( $user->getName() );
 		$block->setBlocker( $this->getTestSysop()->getUser() );
-		$block->mHideName = true;
+		$block->setHideName( true );
 		$block->insert();
 
 		$judgment = [ 'judgments' => [ [
