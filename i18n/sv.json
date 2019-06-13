@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"WikiPhoenix"
+			"WikiPhoenix",
+			"Mjälten"
 		]
 	},
 	"jade-desc": "Bedömnings- och dialogmotor",
@@ -9,6 +10,8 @@
 	"jade-damaging-scale-false-label": "Inte skadlig",
 	"jade-goodfaith-scale-true-label": "God avsikt",
 	"jade-goodfaith-scale-false-label": "Ond avsikt",
+	"jade-contentquality-scale-3-label": "C-klass artikel",
+	"jade-contentquality-scale-4-label": "B-klass artikel",
 	"jade-contentquality-scale-5-label": "Bra artikel",
 	"jade-contentquality-scale-6-label": "Utmärkt artikel",
 	"jade-contentquality-generic": "Innehållskvalitet \"$1\"",
