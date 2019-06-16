@@ -3,7 +3,8 @@
 		"authors": [
 			"Amire80",
 			"Guycn2",
-			"Strayblues"
+			"Strayblues",
+			"Steeve815"
 		]
 	},
 	"jade-desc": "מנוע שיפוט ושיחה (JADE)",
@@ -40,5 +41,6 @@
 	"jade-bad-contentquality-value": "ערך גרוע \"$1\" עבור סכמת contentquality, הערכים האפשריים הם: $2",
 	"jade-cannot-create-page": "לא ניתן ליצור את הדף הזה.",
 	"jade-cannot-edit-page": "אין באפשרותך לערוך את הדף הזה.",
-	"jade-invalid-move-any": "העברת דפי שיפוט אינה מותרת."
+	"jade-invalid-move-any": "העברת דפי שיפוט אינה מותרת.",
+	"jade-user": "משתמש"
 }
