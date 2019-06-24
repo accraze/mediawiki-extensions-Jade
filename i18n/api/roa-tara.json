@@ -4,5 +4,18 @@
 			"Joetaras"
 		]
 	},
-	"apihelp-createjudgment-summary": "Ccrèje 'nu giudizie nuève"
+	"apihelp-createjudgment-summary": "Ccrèje 'nu giudizie nuève",
+	"apihelp-createjudgment-param-entitytype": "Tipe de l'endità d'a uicchi de destinazione, pò esseere 'nu \"diff\", \"revision\" o \"page\".",
+	"apihelp-createjudgment-param-entityid": "ID d'a revisione pe le destinaziune de differenze e revisione, ID d'a pàgene pu tipe de date de destinazione",
+	"apihelp-createjudgment-param-schema": "Scheme de pundegge ausate da stu giudiziune, sie \"damaging\", \"goodfaith\", \"wp10\", o \"drafttopic\".",
+	"apihelp-createjudgment-param-data": "Date d'u pundegge grezze. data=\"true\" e \"false\" avènene 'nderpretate cumme boolean.",
+	"apihelp-createjudgment-param-notes": "Teste facoltative ca spieghe 'u giudizie.",
+	"apihelp-createjudgment-param-summary": "Cangiamende d'u riepiloghe facoltative.",
+	"apihelp-createjudgment-param-tags": "Cangiamende de le tag da applecà a 'u giudizie facoltative.",
+	"apihelp+jade-createjudgment-example": "Cangiamende de 'nu giudizie ca dice ca 'a diff #3 face danne facoltative.",
+	"apihelp-query+getjudgments-param-entitytype": "Tipe de l'endità d'a uicchi de destinazione, pò essere 'na \"diff\", \"revision\", o \"page\".",
+	"apihelp-query+getjudgments-param-entityid": "ID d'a revisione pe le destinaziune de differenze e revisione, ID d'a pàgene pu tipe de date de destinazione",
+	"apihelp-query+getjudgments-summary": "Pigghie ogne giudizie disponibbele pe 'n'endità d'a uicchi.",
+	"apihelp-query+jade-getjudgments-list-example": "Elenghe 'a pàgene de giudizie pe diff #3",
+	"apihelp-query+jade-getjudgments-generator-example": "Pigghie 'u condenute d'u giudizie pe diff #3."
 }
