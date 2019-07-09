@@ -18,7 +18,7 @@ namespace Jade;
 use Status;
 use StatusValue;
 use Wikimedia\Rdbms\DBError;
-use Wikimedia\Rdbms\LoadBalancer;
+use Wikimedia\Rdbms\ILoadBalancer;
 use WikiPage;
 
 /**
@@ -28,7 +28,7 @@ class JudgmentLinkTable implements JudgmentIndexStorage {
 
 	private $loadBalancer;
 
-	public function __construct( LoadBalancer $loadBalancer ) {
+	public function __construct( ILoadBalancer $loadBalancer ) {
 		$this->loadBalancer = $loadBalancer;
 	}
 
