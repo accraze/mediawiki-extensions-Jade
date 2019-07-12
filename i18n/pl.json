@@ -1,14 +1,26 @@
 {
 	"@metadata": {
 		"authors": [
-			"Chrumps"
+			"Chrumps",
+			"Railfail536"
 		]
 	},
+	"jade-damaging-scale-true-label": "Szkodliwa",
+	"jade-damaging-scale-false-label": "Nie szkodliwa",
+	"jade-goodfaith-scale-true-label": "W dobrej wierze",
+	"jade-goodfaith-scale-false-label": "W złej wierze",
+	"jade-contentquality-scale-1-label": "Zalążek artykułu",
+	"jade-contentquality-scale-2-label": "Artykuł początkowy",
+	"jade-contentquality-scale-3-label": "Artykuł klasy C",
+	"jade-contentquality-scale-4-label": "Artykuł klasy B",
+	"jade-contentquality-scale-5-label": "Dobry artykuł",
 	"jade-contentquality-scale-6-label": "Wyróżniony artykuł",
+	"jade-contentquality-generic": "Jakość treści to „$1”",
 	"jade-delete": "Usuń",
 	"jade-bad-title-format": "Nieprawidłowy format tytułu",
 	"jade-bad-content-generic": "Błędy składni w treści JSON.",
 	"jade-user-ip-invalid": "Adres IP „$1” jest nieprawidłowy.",
 	"jade-cannot-create-page": "Nie możesz utworzyć tej strony.",
-	"jade-cannot-edit-page": "Nie możesz edytować tej strony."
+	"jade-cannot-edit-page": "Nie możesz edytować tej strony.",
+	"jade-user": "Użytkownik"
 }
