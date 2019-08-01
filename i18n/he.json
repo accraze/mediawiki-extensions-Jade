@@ -42,5 +42,6 @@
 	"jade-cannot-create-page": "לא ניתן ליצור את הדף הזה.",
 	"jade-cannot-edit-page": "אין באפשרותך לערוך את הדף הזה.",
 	"jade-invalid-move-any": "העברת דפי שיפוט אינה מותרת.",
+	"jade-db-error": "שגיאת בסיס נתונים: $1",
 	"jade-user": "משתמש"
 }
