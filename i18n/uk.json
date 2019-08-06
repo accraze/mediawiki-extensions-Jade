@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Piramidion",
-			"Vlad5250"
+			"Vlad5250",
+			"Ата"
 		]
 	},
 	"jade-desc": "Рушій для оцінок і діалогів",
@@ -43,5 +44,7 @@
 	"jade-invalid-move-any": "Перейменування сторінок з оцінками не дозволене.",
 	"jade-db-error": "Помилка бази даних: $1",
 	"jade-content-model-error": "Неправильна контентна модель для оцінки.",
+	"jade-endorsement": "Схвалення",
+	"jade-endorsements": "Схвалення",
 	"jade-user": "Користувач"
 }
