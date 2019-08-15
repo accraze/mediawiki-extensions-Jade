@@ -4,6 +4,10 @@
 			"Mirin"
 		]
 	},
+	"jade-damaging-scale-true-label": "Damaĝante",
+	"jade-damaging-scale-false-label": "Ne damaĝante",
+	"jade-goodfaith-scale-true-label": "Bonintence",
+	"jade-goodfaith-scale-false-label": "Fiintence",
 	"jade-contentquality-scale-3-label": "Artikolo de klaso C",
 	"jade-contentquality-scale-4-label": "Artikolo de klaso B",
 	"jade-contentquality-scale-5-label": "Bona artikolo",
