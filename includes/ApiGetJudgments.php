@@ -107,7 +107,7 @@ class ApiGetJudgments extends ApiQueryGeneratorBase {
 	}
 
 	public function getHelpUrls() {
-		return 'https://www.mediawiki.org/wiki/Extension:JADE';
+		return 'https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:JADE';
 	}
 
 }
