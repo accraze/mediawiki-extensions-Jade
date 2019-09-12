@@ -2,19 +2,20 @@
 	"@metadata": {
 		"authors": [
 			"Gomoko",
-			"Wladek92"
+			"Wladek92",
+			"Thibaut120094"
 		]
 	},
 	"apihelp-createjudgment-summary": "Créer un nouveau jugement",
-	"apihelp-createjudgment-param-entitytype": "Type d’entité du wiki cible, peut être « diff », « revision » ou « page ».",
+	"apihelp-createjudgment-param-entitytype": "Type d’entité du wiki cible, peut être « diff », « revision » ou « page ».",
 	"apihelp-createjudgment-param-entityid": "ID de révision pour les cibles diff et revision, ID de page pour le type de cible date.",
-	"apihelp-createjudgment-param-schema": "Schéma de notation utilisé par ce jugement, soit « damaging », « goodfaith », « wp10 » ou « drafttopic ».",
+	"apihelp-createjudgment-param-schema": "Schéma de notation utilisé par ce jugement, soit « damaging », « goodfaith », « wp10 » ou « drafttopic ».",
 	"apihelp-createjudgment-param-data": "Données de notation brutes. data=\"true\" et \"false\" sont interprétés comme des booléens.",
 	"apihelp-createjudgment-param-notes": "Texte facultatif expliquant le jugement.",
 	"apihelp-createjudgment-param-summary": "Résumé facultatif de la modification.",
 	"apihelp-createjudgment-param-tags": "Balises facultatives de la modification à appliquer au jugement.",
 	"apihelp+jade-createjudgment-example": "Créer un jugement disant que diff #3 est endommagé.",
-	"apihelp-query+getjudgments-param-entitytype": "Type d’entité du wiki cible, peut être « diff », « revision » ou « page ».",
+	"apihelp-query+getjudgments-param-entitytype": "Type d’entité du wiki cible, peut être « diff », « revision » ou « page ».",
 	"apihelp-query+getjudgments-param-entityid": "ID de révision pour les cibles diff et revision, ID de page pour le type de cible date.",
 	"apihelp-query+getjudgments-summary": "Obtenir des jugements disponibles pour une entité wiki.",
 	"apihelp-query+jade-getjudgments-list-example": "Lister la page de jugement pour le diff #3.",

@@ -4,7 +4,8 @@
 			"Gomoko",
 			"Wladek92",
 			"Zarisi",
-			"Tartare"
+			"Tartare",
+			"Thibaut120094"
 		]
 	},
 	"jade-desc": "Moteur de verdict et de dialogue",
@@ -18,7 +19,7 @@
 	"jade-contentquality-scale-4-label": "Article de classe B",
 	"jade-contentquality-scale-5-label": "Bon article",
 	"jade-contentquality-scale-6-label": "Article en vedette",
-	"jade-contentquality-generic": "Qualité du contenu « $1 »",
+	"jade-contentquality-generic": "Qualité du contenu « $1 »",
 	"jade-new-judgment": "Nouveau jugement",
 	"jade-add-judgment": "Ajouter un jugement",
 	"jade-notes-placeholder": "Notes sur le jugement",
@@ -34,10 +35,10 @@
 	"jade-too-many-preferred": "Préférence aux appréciations multiples, mais une seule est autorisée.",
 	"jade-none-preferred": "Pas de préférence d'avis, mais il en faut un.",
 	"jade-illegal-schema": "Schéma « $1 » non autorisé pour ce type d'entité.",
-	"jade-user-local-id-invalid": "L’ID d’utilisateur local « $1 » n’existe pas.",
-	"jade-user-central-id-invalid": "L’ID d’utilisateur central « $1 » n’existe pas.",
-	"jade-user-id-mismatch": "L’ID de l’utilisateur local « $1 » et l’ID central « $2 » identifient des utilisateurs différents.",
-	"jade-user-ip-invalid": "L’adresse IP « $1 » n’est pas valide.",
+	"jade-user-local-id-invalid": "L’ID d’utilisateur local « $1 » n’existe pas.",
+	"jade-user-central-id-invalid": "L’ID d’utilisateur central « $1 » n’existe pas.",
+	"jade-user-id-mismatch": "L’ID de l’utilisateur local « $1 » et l’ID central « $2 » identifient des utilisateurs différents.",
+	"jade-user-ip-invalid": "L’adresse IP « $1 » n’est pas valide.",
 	"jade-created-timestamp-invalid": "L'horodatage créé par l'endossement est invalide: « $1 »",
 	"jade-bad-contentquality-value": "Mauvais indice « $1 » pour le schéma de qualité du contenu; le niveau de qualité doit être compris entre 1 et $2 .",
 	"jade-cannot-create-page": "Vous ne pouvez pas créer cette page.",
