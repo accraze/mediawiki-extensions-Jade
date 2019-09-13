@@ -49,6 +49,7 @@
 	"jade-endorsement": "Label for an endorsement comment.",
 	"jade-endorsements": "Label for a group of endorsements.",
 	"jade-user": "Label for a user nick or IP.\n{{Identical|User}}",
+	"jade-proposalexists": "Error message displayed if a proposal with the specified data already exists",
 	"jade-proposalnotfound": "Error message displayed when a proposed label cannot be found for endorsement or deletion.  Parameters:\n* $1 - The structured data use to identify a proposed label.",
 	"jade-endorsementnotfound": "Error message displayed when an endorsement cannot be found.",
 	"jade-endorsingnonpreferredproposal": "Warning message displayed when endorsing a non-preferred proposal.",

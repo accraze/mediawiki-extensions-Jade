@@ -102,5 +102,4 @@ class CreateAndEndorse extends JadeApiBase {
 				=> 'apihelp-jadecreateandendorse-example-2',
 		];
 	}
-
 }

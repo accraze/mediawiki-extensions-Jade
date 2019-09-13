@@ -18,7 +18,6 @@ namespace Jade\Tests\Hooks;
 use Jade\ProposalEntityType;
 use Jade\Hooks\LinkTableHooks;
 use Jade\ProposalTarget;
-use Jade\Tests\TestJudgmentLinkAssertions;
 use LogEntry;
 use MediaWikiTestCase;
 use Revision;
@@ -38,7 +37,7 @@ use WikiPage;
 class LinkTableHooksTest extends MediaWikiTestCase {
 
 	// Include assertions to test judgment links.
-	use TestJudgmentLinkAssertions;
+	// use TestJudgmentLinkAssertions;
 
 	const DIFF_JUDGMENT = '../../data/valid_diff_judgment.json';
 	const REVISION_JUDGMENT = '../../data/valid_revision_judgment.json';

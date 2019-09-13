@@ -33,7 +33,7 @@ use MediaWikiTestCase;
 class JudgmentLinkTableTest extends MediaWikiTestCase {
 
 	// Include assertions to test judgment links.
-	use TestJudgmentLinkAssertions;
+	// use TestJudgmentLinkAssertions;
 
 	public function setUp() : void {
 		parent::setUp();

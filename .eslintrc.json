@@ -1,0 +1,61 @@
+{
+	"root": true,
+	"extends": [
+		"wikimedia/client",
+		"wikimedia/mediawiki"
+	],
+	"globals": {
+		"module": false,
+		"dataTypes": false,
+		"dataValues": false,
+		"OO": false,
+		"require": false,
+		"util": false,
+		"Promise": false,
+		"valueFormatters": false,
+		"valueParsers": false,
+		"$": false
+	},
+	"rules": {
+		"indent": [
+			"error",
+			"tab",
+			{
+				"SwitchCase": 1,
+				"MemberExpression": "off"
+			}
+		],
+		"max-len": "off",
+		"mediawiki/valid-package-file-require": "error",
+		"mediawiki/msg-doc": "off",
+		"new-cap": "off",
+		"no-underscore-dangle": "off",
+		"no-use-before-define": [
+			"error",
+			"nofunc"
+		],
+		"no-unused-vars": [
+			"error",
+			{
+				"args": "none"
+			}
+		],
+		"no-useless-concat": "off",
+		"one-var": "off",
+		"operator-linebreak": "off",
+		"valid-jsdoc": "off",
+		"vars-on-top": "off"
+	},
+	"parserOptions": { "sourceType": "module", "ecmaVersion": "2017" },
+	"settings": {
+		"polyfills": ["promise"]
+	},
+	"plugins": [
+		"mediawiki"
+	],
+	"env": {
+		"node": true,
+		"es6": true
+	}
+}
+
