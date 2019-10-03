@@ -11,6 +11,8 @@
 	"jade-damaging-scale-false-label": "Productiva",
 	"jade-goodfaith-scale-true-label": "Buena fe",
 	"jade-goodfaith-scale-false-label": "Mala fe",
+	"jade-contentquality-scale-1-label": "Esbozo",
+	"jade-contentquality-scale-5-label": "Artículo bueno",
 	"jade-contentquality-scale-6-label": "Artículo destacado",
 	"jade-new-judgment": "Nueva valoración",
 	"jade-add-judgment": "Añadir valoración",
