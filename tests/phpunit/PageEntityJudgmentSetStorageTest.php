@@ -87,11 +87,13 @@ class PageEntityJudgmentSetStorageTest extends MediaWikiTestCase {
 		// Prevent page creation.
 		$this->setMwGlobals( [
 			'wgGroupPermissions' => [
-				'*' => [ 'create' => false ],
+				'*' => [ 'createpage' => false ],
 			]
 		] );
 		// FIXME: Not sure why we have to flush twice here.
 		$wgUser->clearInstanceCache();
+
+		$this->resetServices();
 
 		// Should return a failure status.
 		$status = $this->storage->storeJudgmentSet(
@@ -121,6 +123,8 @@ class PageEntityJudgmentSetStorageTest extends MediaWikiTestCase {
 		// FIXME: unknown why we have to flush twice.
 		$wgUser->clearInstanceCache();
 
+		$this->resetServices();
+
 		// Create a normal judgment to be edited.
 		list( $entityPage, $entityRevision ) = TestStorageHelper::createEntity();
 		TestStorageHelper::saveJudgment(
@@ -149,9 +153,11 @@ class PageEntityJudgmentSetStorageTest extends MediaWikiTestCase {
 		// Prevent adding tags.
 		$this->setMwGlobals( [
 			'wgGroupPermissions' => [
-				'*' => [ 'applychangetags' => false ],
+				'*' => [ 'applychangetags' => false, 'createpage' => true, 'edit' => true ],
 			]
 		] );
+
+		$this->resetServices();
 
 		// Should return a failure status.
 		$status = $this->storage->storeJudgmentSet(

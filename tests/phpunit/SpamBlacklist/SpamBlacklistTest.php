@@ -16,6 +16,7 @@
 namespace Jade\Tests\SpamBlacklist;
 
 use ApiTestCase;
+use ApiUsageException;
 use BaseBlacklist;
 use ExtensionRegistry;
 use Jade\Tests\TestStorageHelper;
@@ -76,18 +77,15 @@ class SpamBlacklistTest extends ApiTestCase {
 			] ],
 		] );
 
+		$this->expectException( ApiUsageException::class );
+		$this->expectExceptionMessageRegExp( '/spam\s+filter:\s+unusual-stringy/' );
+
 		$result = $this->doApiRequestWithToken( [
 			'action' => 'edit',
 			'title' => "Judgment:Diff/{$revision->getId()}",
 			'text' => $content,
 			'summary' => 'a summary',
 		] );
-
-		$expected = [
-			'spamblacklist' => 'unusual-stringy',
-			'result' => 'Failure',
-		];
-		$this->assertEquals( $expected, $result[0]['edit'] );
 	}
 
 	public function testFilterJudgment_nonmatching() {
