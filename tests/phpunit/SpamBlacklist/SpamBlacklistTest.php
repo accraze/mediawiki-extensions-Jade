@@ -35,7 +35,7 @@ class SpamBlacklistTest extends ApiTestCase {
 
 	const BLACKLIST_FILE = 'spam_blacklist.txt';
 
-	public function setUp() {
+	public function setUp() : void {
 		parent::setUp();
 
 		if ( !ExtensionRegistry::getInstance()->isLoaded( 'SpamBlacklist' ) ) {

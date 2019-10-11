@@ -32,7 +32,7 @@ class JudgmentActionsTest extends ApiTestCase {
 	const REV_JUDGMENT_V1 = '../data/valid_revision_judgment.json';
 	const REV_JUDGMENT_V2 = '../data/valid_revision_judgment_v2.json';
 
-	public function setUp() {
+	public function setUp() : void {
 		// Needs to be before setup since this gets cached
 		$this->mergeMwGlobalArrayValue(
 			'wgGroupPermissions',

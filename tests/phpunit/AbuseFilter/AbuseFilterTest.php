@@ -31,7 +31,7 @@ use Jade\Tests\TestStorageHelper;
  */
 class AbuseFilterTest extends ApiTestCase {
 
-	public function setUp() {
+	public function setUp() : void {
 		parent::setUp();
 
 		if ( !ExtensionRegistry::getInstance()->isLoaded( 'Abuse Filter' ) ) {

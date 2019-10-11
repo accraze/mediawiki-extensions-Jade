@@ -29,7 +29,7 @@ class JudgmentLinkTableHelperTest extends MediaWikiTestCase {
 
 	private $diffType;
 
-	public function setUp() {
+	public function setUp() : void {
 		parent::setUp();
 
 		$this->diffType = JudgmentEntityType::sanitizeEntityType( 'diff' )->value;

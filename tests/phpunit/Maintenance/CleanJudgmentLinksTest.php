@@ -43,7 +43,7 @@ class CleanJudgmentLinksTest extends MaintenanceBaseTestCase {
 		return CleanJudgmentLinks::class;
 	}
 
-	public function setUp() {
+	public function setUp() : void {
 		parent::setUp();
 		$this->tablesUsed[] = 'jade_diff_judgment';
 		$this->tablesUsed[] = 'jade_revision_judgment';

@@ -233,12 +233,12 @@ class JudgmentPageWikitextRendererTest extends MediaWikiLangTestCase {
 
 	/**
 	 * @covers ::getUserWikitext
-	 * @expectedException LogicException
 	 */
 	public function testGetUserWikitext_badStruct() {
 		$renderer = TestingAccessWrapper::newFromObject(
 			new JudgmentPageWikitextRenderer );
 		$userObj = new \stdClass;
+		$this->expectException( LogicException::class );
 		$output = $renderer->getUserWikitext( $userObj );
 	}
 

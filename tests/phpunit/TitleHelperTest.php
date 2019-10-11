@@ -28,7 +28,7 @@ use TitleValue;
  */
 class TitleHelperTest extends MediaWikiTestCase {
 
-	public function setUp() {
+	public function setUp() : void {
 		parent::setUp();
 		$this->revisionType = JudgmentEntityType::sanitizeEntityType( 'revision' )->value;
 	}

@@ -43,7 +43,7 @@ class LinkSummaryHooksTest extends MediaWikiTestCase {
 	const DIFF_JUDGMENT = '../../data/valid_diff_judgment.json';
 	const REVISION_JUDGMENT = '../../data/valid_revision_judgment.json';
 
-	public function setUp() {
+	public function setUp() : void {
 		parent::setUp();
 
 		$this->tablesUsed = [

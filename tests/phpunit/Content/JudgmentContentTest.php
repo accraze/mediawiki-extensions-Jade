@@ -35,7 +35,7 @@ use Title;
  */
 class JudgmentContentTest extends MediaWikiLangTestCase {
 
-	public function setUp() {
+	public function setUp() : void {
 		parent::setUp();
 
 		// Mock validation.

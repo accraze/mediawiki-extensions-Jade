@@ -37,7 +37,7 @@ class PageEntityJudgmentSetStorageTest extends MediaWikiTestCase {
 
 	private $storage;
 
-	public function setUp() {
+	public function setUp() : void {
 		$this->storage = JadeServices::getEntityJudgmentSetStorage();
 		$this->tablesUsed = [
 			'jade_diff_judgment',
@@ -50,7 +50,7 @@ class PageEntityJudgmentSetStorageTest extends MediaWikiTestCase {
 		$this->revisionType = JudgmentEntityType::sanitizeEntityType( 'revision' )->value;
 	}
 
-	public function tearDown() {
+	public function tearDown() : void {
 		global $wgUser;
 
 		parent::tearDown();

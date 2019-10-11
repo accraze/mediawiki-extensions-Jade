@@ -37,7 +37,7 @@ class MoveHooksTest extends ApiTestCase {
 	const JUDGMENT_EXISTING = 'judgment-existing';
 	const JUDGMENT_NEW = 'judgment-new';
 
-	public function setUp() {
+	public function setUp() : void {
 		parent::setUp();
 		$this->tablesUsed = [
 			'page',

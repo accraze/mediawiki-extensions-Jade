@@ -168,7 +168,6 @@ class CleanJudgmentLinks extends Maintenance {
 			[ 'page_id', 'page_namespace', 'page_title', $tableHelper->getIdColumn() ],
 			[
 				'page_namespace = ' . intval( NS_JUDGMENT ),
-				// @phan-suppress-next-line PhanParamTooMany T191668
 				'page_title ' . $dbr->buildLike( "{$titlePrefix}/", $dbr->anyString() ),
 				"page_id > {$skipPastId}",
 				$tableHelper->getJudgmentColumn() => null,

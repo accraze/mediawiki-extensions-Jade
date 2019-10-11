@@ -35,7 +35,7 @@ class JudgmentLinkTableTest extends MediaWikiTestCase {
 	// Include assertions to test judgment links.
 	use TestJudgmentLinkAssertions;
 
-	public function setUp() {
+	public function setUp() : void {
 		parent::setUp();
 
 		$this->tablesUsed = [

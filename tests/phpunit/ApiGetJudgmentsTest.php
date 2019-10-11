@@ -30,7 +30,7 @@ use FormatJSON;
  */
 class ApiGetJudgmentsTest extends ApiTestCase {
 
-	public function setUp() {
+	public function setUp() : void {
 		parent::setUp();
 
 		$this->tablesUsed = [
