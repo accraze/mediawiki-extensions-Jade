@@ -142,12 +142,10 @@ class JudgmentContentTest extends MediaWikiLangTestCase {
 			file_get_contents( __DIR__ . '/../../data/invalid_judgment_bad_json.notjson' ),
 			Status::newFatal( 'jade-bad-content-generic' ),
 		];
-		/* FIXME: HHVM and Zend PHP can't agree on this case, see T207523
-		 * yield [
-		 * 	'',
-		 * 	Status::newFatal( 'jade-bad-content-generic' ),
-		 * ];
-		 */
+		yield [
+			'',
+			Status::newFatal( 'jade-bad-content-generic' ),
+		];
 		yield [
 			'{}',
 			Status::newGood(),
