@@ -31,9 +31,9 @@ use WikiPage;
 class LinkTableHooks {
 
 	/**
-	 * Update link tables after a new judgment page is inserted.
+	 * Update link tables after a new entity page is inserted.
 	 *
-	 * @param WikiPage &$judgmentPage WikiPage created
+	 * @param WikiPage &$entityPage WikiPage created
 	 * @param User &$user User creating the article
 	 * @param Content $content New content as a Content object
 	 * @param string $summary Edit summary/comment
@@ -46,7 +46,7 @@ class LinkTableHooks {
 	 * TODO: move to a deferred update?
 	 */
 	public static function onPageContentInsertComplete(
-		WikiPage &$judgmentPage,
+		WikiPage &$entityPage,
 		User &$user,
 		Content $content,
 		$summary,
@@ -56,19 +56,19 @@ class LinkTableHooks {
 		&$flags,
 		Revision $revision
 	) {
-		$target = self::judgmentTarget( $judgmentPage->getTitle()->getTitleValue() );
+		$target = self::entityTarget( $entityPage->getTitle()->getTitleValue() );
 		if ( !$target ) {
 			return;
 		}
 
-		JadeServices::getJudgmentIndexStorage()
-			->insertIndex( $target, $judgmentPage );
+		JadeServices::getEntityIndexStorage()
+			->insertIndex( $target, $entityPage );
 	}
 
 	/**
-	 * Remove link when judgment page is deleted.
+	 * Remove link when entity page is deleted.
 	 *
-	 * @param WikiPage &$judgmentPage the article that was deleted.
+	 * @param WikiPage &$entityPage the article that was deleted.
 	 * @param User &$user the user that deleted the article
 	 * @param string $reason the reason the article was deleted
 	 * @param int $id id of the article that was deleted
@@ -76,24 +76,24 @@ class LinkTableHooks {
 	 * @param LogEntry $logEntry the log entry used to record the deletion
 	 */
 	public static function onArticleDeleteComplete(
-		WikiPage &$judgmentPage,
+		WikiPage &$entityPage,
 		User &$user,
 		$reason,
 		$id,
 		Content $content,
 		LogEntry $logEntry
 	) {
-		$target = self::judgmentTarget( $judgmentPage->getTitle()->getTitleValue() );
+		$target = self::entityTarget( $entityPage->getTitle()->getTitleValue() );
 		if ( !$target ) {
 			return;
 		}
 
-		JadeServices::getJudgmentIndexStorage()
-			->deleteIndex( $target, $judgmentPage );
+		JadeServices::getEntityIndexStorage()
+			->deleteIndex( $target, $entityPage );
 	}
 
 	/**
-	 * Restore link when a judgment page is undeleted.
+	 * Restore link when a entity page is undeleted.
 	 *
 	 * @param Title $title the article being restored
 	 * @param bool $create Whether or not the restoration caused the page to be
@@ -115,14 +115,14 @@ class LinkTableHooks {
 			// Page already exists, don't create a new link.
 			return;
 		}
-		$target = self::judgmentTarget( $title->getTitleValue() );
+		$target = self::entityTarget( $title->getTitleValue() );
 		if ( !$target ) {
 			return;
 		}
 
-		$judgmentPage = WikiPage::newFromID( $oldPageId );
-		JadeServices::getJudgmentIndexStorage()
-			->insertIndex( $target, $judgmentPage );
+		$entityPage = WikiPage::newFromID( $oldPageId );
+		JadeServices::getEntityIndexStorage()
+			->insertIndex( $target, $entityPage );
 	}
 
 	/**
@@ -133,16 +133,16 @@ class LinkTableHooks {
 	 * @return JudgmentTarget|null Judgment target, or null if the title
 	 *         couldn't be parsed.
 	 */
-	private static function judgmentTarget( TitleValue $title ) {
+	private static function entityTarget( TitleValue $title ) {
 		$status = TitleHelper::parseTitleValue( $title );
 		if ( !$status->isOK() ) {
-			if ( $title->getNamespace() === NS_JUDGMENT ) {
+			if ( $title->getNamespace() === NS_JADE ) {
 				// Should be unreachable thanks to JudgmentValidator.  If
 				// something did go wrong, it should be logged and
 				// investigated.
 				// TODO: Should this be a responsibility of TitleHelper::parseTitleValue()?
 				$logger = LoggerFactory::getInstance( 'Jade' );
-				$logger->error( "Cannot parse judgment title: {$status}" );
+				$logger->error( "Cannot parse entity title: {$status}" );
 			}
 			return null;
 		}

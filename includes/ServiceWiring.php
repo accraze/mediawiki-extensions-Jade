@@ -30,18 +30,18 @@ if ( !class_exists( ServiceWiring::class ) ) {
 		public static function getWiring() {
 			return [
 
-				'JadeEntityJudgmentSetStorage' => function ( MediaWikiServices $services ) {
-					return new PageEntityJudgmentSetStorage();
+				'JadeEntityProposalSetStorage' => function ( MediaWikiServices $services ) {
+					return new PageEntityProposalSetStorage();
 				},
 
-				'JadeJudgmentIndexStorage' => function ( MediaWikiServices $services ) {
-					return new JudgmentLinkTable(
+				'JadeEntityIndexStorage' => function ( MediaWikiServices $services ) {
+					return new ProposalLinkTable(
 						$services->getDBLoadBalancer()
 					);
 				},
 
-				'JadeJudgmentValidator' => function ( MediaWikiServices $services ) {
-					return new JudgmentValidator(
+				'JadeProposalValidator' => function ( MediaWikiServices $services ) {
+					return new ProposalValidator(
 						RequestContext::getMain()->getConfig(),
 						LoggerFactory::getInstance( 'Jade' ),
 						$services->getRevisionStore()

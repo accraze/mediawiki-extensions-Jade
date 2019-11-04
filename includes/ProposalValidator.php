@@ -20,10 +20,7 @@
 
 namespace Jade;
 
-use CentralIdLookup;
 use Config;
-use DateTime;
-use IP;
 use JsonSchema\Constraints\Constraint;
 use JsonSchema\Exception\ValidationException;
 use JsonSchema\Validator;
@@ -31,12 +28,10 @@ use MediaWiki\Revision\RevisionStore;
 use Psr\Log\LoggerInterface;
 use Status;
 use StatusValue;
-use User;
 use WikiPage;
 
-class JudgmentValidator {
-	const JUDGMENT_SCHEMA = '/../jsonschema/judgment/v1.json';
-	const SCORING_SCHEMA_ROOT = '/../jsonschema/scoring';
+class ProposalValidator {
+	const PROPOSAL_SCHEMA = '/../jsonschema/proposal/v2.json';
 
 	/**
 	 * @var Config
@@ -64,13 +59,13 @@ class JudgmentValidator {
 	}
 
 	/**
-	 * Check that the judgment content is well-formed.
+	 * Check that the proposal content is well-formed.
 	 *
 	 * @param object $data Data structure to validate.
 	 *
 	 * @return StatusValue isOK if the content is valid.
 	 */
-	public function validateJudgmentContent( $data ) {
+	public function validateProposalContent( $data ) {
 		$status = $this->validateBasicSchema( $data );
 		if ( !$status->isOK() ) {
 			return $status;
@@ -95,30 +90,30 @@ class JudgmentValidator {
 	}
 
 	/**
-	 * Ensure that the general judgment schema is followed.
+	 * Ensure that the general proposal schema is followed.
 	 *
 	 * @param object $data Data structure to validate.
 	 *
 	 * @return StatusValue isOK?
 	 */
 	protected function validateBasicSchema( $data ) {
-		return $this->validateAgainstSchema( $data, __DIR__ . self::JUDGMENT_SCHEMA );
+		return $this->validateAgainstSchema( $data, __DIR__ . self::PROPOSAL_SCHEMA );
 	}
 
 	/**
 	 * Ensure that the score schemas are allowed by configuration.
 	 *
-	 * @param JudgmentEntityType $entityType Machine name for entity type.
+	 * @param ProposalEntityType $entityType Machine name for entity type.
 	 * @param object $data Data structure to validate.
 	 *
 	 * @return StatusValue isOK if valid.
 	 */
-	protected function validateEntitySchema( JudgmentEntityType $entityType, $data ) {
+	protected function validateEntitySchema( ProposalEntityType $entityType, $data ) {
 		$allowedScoringSchemas = $this->config->get( 'JadeAllowedScoringSchemas' );
 		$entityAllowedSchemas = $allowedScoringSchemas[(string)$entityType];
 
-		foreach ( $data->judgments as $judgment ) {
-			foreach ( $judgment->schema as $schemaName => $value ) {
+		foreach ( $data->proposals as $proposal ) {
+			foreach ( $proposal->schema as $schemaName => $value ) {
 				// Schema must be allowed.
 				if ( !in_array( $schemaName, $entityAllowedSchemas ) ) {
 					return Status::newFatal( 'jade-illegal-schema', $schemaName );
@@ -129,7 +124,7 @@ class JudgmentValidator {
 	}
 
 	/**
-	 * Check that exactly one judgment is preferred.
+	 * Check that exactly one proposal is preferred.
 	 *
 	 * @param object $data Data structure to validate.
 	 *
@@ -137,17 +132,17 @@ class JudgmentValidator {
 	 */
 	protected function validatePreferred( $data ) {
 		$preferredCount = 0;
-		foreach ( $data->judgments as $judgment ) {
-			if ( $judgment->preferred ?? false ) {
-				$preferredCount++;
-			}
-		}
-		if ( $preferredCount < 1 ) {
-			return Status::newFatal( 'jade-none-preferred' );
-		}
-		if ( $preferredCount > 1 ) {
-			return Status::newFatal( 'jade-too-many-preferred' );
-		}
+		// foreach ( $data->proposals as $proposal ) {
+		// if ( $proposal->preferred ?? false ) {
+		// $preferredCount++;
+		// }
+		// }
+		// if ( $preferredCount < 1 ) {
+		// return Status::newFatal( 'jade-none-preferred' );
+		// }
+		// if ( $preferredCount > 1 ) {
+		// return Status::newFatal( 'jade-too-many-preferred' );
+		// }
 
 		return Status::newGood();
 	}
@@ -161,92 +156,92 @@ class JudgmentValidator {
 	 * @return StatusValue isOK if valid.
 	 */
 	protected function validateContentQualityScale( $data ) {
-		global $wgJadeContentQualityLevels;
+		// global $wgJadeContentQualityLevels;
 
-		foreach ( $data->judgments as $judgment ) {
-			foreach ( $judgment->schema as $schemaName => $value ) {
-				// Only validate the contentquality scale.
-				if ( $schemaName !== 'contentquality' ) {
-					continue;
-				}
-
-				// Does this 1-based index appear in the locally-configured scale?
-				// TODO: Generalize this validation to reuse with other ordinal fields.
-				if ( !in_array( $value, range( 1, $wgJadeContentQualityLevels ) ) ) {
-					return Status::newFatal(
-						'jade-bad-contentquality-value',
-						$value,
-						$wgJadeContentQualityLevels );
-				}
-			}
-		}
+		// foreach ( $data->proposals as $proposal ) {
+		// foreach ( $proposal->schema as $schemaName => $value ) {
+		// // Only validate the contentquality scale.
+		// if ( $schemaName !== 'contentquality' ) {
+		// continue;
+		// }
+	//
+		// // Does this 1-based index appear in the locally-configured scale?
+		// // TODO: Generalize this validation to reuse with other ordinal fields.
+		// if ( !in_array( $value, range( 1, $wgJadeContentQualityLevels ) ) ) {
+		// return Status::newFatal(
+		// 'jade-bad-contentquality-value',
+		// $value,
+		// $wgJadeContentQualityLevels );
+		// }
+		// }
+		// }
 		return Status::newGood();
 	}
 
 	protected function validateEndorsementUsers( $data ) {
-		foreach ( $data->judgments as $judgment ) {
-			if ( !property_exists( $judgment, 'endorsements' ) ) {
-				// No endorsements, pass.
-				continue;
-			}
-
-			foreach ( $judgment->endorsements as $endorsement ) {
-				if ( property_exists( $endorsement->user, 'ip' ) ) {
-					// Check that the IP address is a real thing.
-					if ( !IP::isValid( $endorsement->user->ip ) ) {
-						return Status::newFatal( 'jade-user-ip-invalid', $endorsement->user->ip );
-					}
-				}
-
-				if ( property_exists( $endorsement->user, 'id' ) ) {
-					// Lookup by local user ID.
-					// TODO: Can be optimized by querying all users at once.
-					$localUsername = User::whoIs( intval( $endorsement->user->id ) );
-					if ( $localUsername === false ) {
-						// No such user.
-						return Status::newFatal( 'jade-user-local-id-invalid', $endorsement->user->id );
-					}
-				}
-
-				if ( property_exists( $endorsement->user, 'cid' ) ) {
-					// Lookup by central user ID.
-					$localUser = CentralIdLookup::factory()->localUserFromCentralId(
-						intval( $endorsement->user->cid ),
-						CentralIdLookup::AUDIENCE_RAW );
-					if ( $localUser === null ) {
-						// No such user.
-						return Status::newFatal( 'jade-user-central-id-invalid', $endorsement->user->cid );
-					}
-
-					// Check that the central and local users match.
-					if ( $localUser->getId() !== intval( $endorsement->user->id ) ) {
-						// IDs don't match.
-						return Status::newFatal(
-							'jade-user-id-mismatch', $endorsement->user->id, $endorsement->user->cid );
-					}
-				}
-			}
-		}
+		// foreach ( $data->proposals as $proposal ) {
+		// if ( !property_exists( $proposal, 'endorsements' ) ) {
+		// // No endorsements, pass.
+		// continue;
+		// }
+	//
+		// foreach ( $proposal->endorsements as $endorsement ) {
+		// if ( property_exists( $endorsement->user, 'ip' ) ) {
+		// // Check that the IP address is a real thing.
+		// if ( !IP::isValid( $endorsement->user->ip ) ) {
+		// return Status::newFatal( 'jade-user-ip-invalid', $endorsement->user->ip );
+		// }
+		// }
+	//
+		// if ( property_exists( $endorsement->user, 'id' ) ) {
+		// // Lookup by local user ID.
+		// // TODO: Can be optimized by querying all users at once.
+		// $localUsername = User::whoIs( intval( $endorsement->user->id ) );
+		// if ( $localUsername === false ) {
+		// // No such user.
+		// return Status::newFatal( 'jade-user-local-id-invalid', $endorsement->user->id );
+		// }
+		// }
+	//
+		// if ( property_exists( $endorsement->user, 'cid' ) ) {
+		// // Lookup by central user ID.
+		// $localUser = CentralIdLookup::factory()->localUserFromCentralId(
+		// intval( $endorsement->user->cid ),
+		// CentralIdLookup::AUDIENCE_RAW );
+		// if ( $localUser === null ) {
+		// // No such user.
+		// return Status::newFatal( 'jade-user-central-id-invalid', $endorsement->user->cid );
+		// }
+	//
+		// // Check that the central and local users match.
+		// if ( $localUser->getId() !== intval( $endorsement->user->id ) ) {
+		// // IDs don't match.
+		// return Status::newFatal(
+		// 'jade-user-id-mismatch', $endorsement->user->id, $endorsement->user->cid );
+		// }
+		// }
+		// }
+		// }
 		return Status::newGood();
 	}
 
 	protected function validateEndorsementTimestamps( $data ) {
-		foreach ( $data->judgments as $judgment ) {
-			if ( !property_exists( $judgment, 'endorsements' ) ) {
-				// No endorsements, pass.
-				continue;
-			}
+		// foreach ( $data->proposals as $proposal ) {
+		// if ( !property_exists( $proposal, 'endorsements' ) ) {
+		// // No endorsements, pass.
+		// continue;
+		// }
 
-			foreach ( $judgment->endorsements as $endorsement ) {
-				if ( property_exists( $endorsement, 'created' ) ) {
-					$date = DateTime::createFromFormat( DateTime::ATOM, $endorsement->created );
-					if ( $date === false ) {
-						return Status::newFatal(
-							'jade-created-timestamp-invalid', $endorsement->created );
-					}
-				}
-			}
-		}
+		// foreach ( $proposal->endorsements as $endorsement ) {
+		// if ( property_exists( $endorsement, 'created' ) ) {
+		// $date = DateTime::createFromFormat( DateTime::ATOM, $endorsement->created );
+		// if ( $date === false ) {
+		// return Status::newFatal(
+		// 'jade-created-timestamp-invalid', $endorsement->created );
+		// }
+		// }
+		// }
+		// }
 		return Status::newGood();
 	}
 
@@ -277,14 +272,14 @@ class JudgmentValidator {
 
 	/**
 	 * Ensure that the page title is allowed, the entity exists, and that
-	 * judgment schemas match the entity type.
+	 * proposal schemas match the entity type.
 	 *
-	 * @param WikiPage $page Page in which we're trying to store this judgment.
-	 * @param object $judgment Judgment data to validate against.
+	 * @param WikiPage $page Page in which we're trying to store this proposal.
+	 * @param object $proposal proposal data to validate against.
 	 *
 	 * @return StatusValue isOK if the page is valid, or fatal and the error message if invalid.
 	 */
-	public function validatePageTitle( WikiPage $page, $judgment ) {
+	public function validatePageTitle( WikiPage $page, $proposal ) {
 		$title = $page->getTitle()->getTitleValue();
 
 		$status = TitleHelper::parseTitleValue( $title );
@@ -304,7 +299,7 @@ class JudgmentValidator {
 		if ( !$status->isOK() ) {
 			return $status;
 		}
-		return $this->validateEntitySchema( $target->entityType, $judgment );
+		return $this->validateEntitySchema( $target->entityType, $proposal );
 	}
 
 	/**

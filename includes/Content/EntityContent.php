@@ -21,7 +21,7 @@
 namespace Jade\Content;
 
 use Jade\JadeServices;
-use Jade\JudgmentPageWikitextRenderer;
+use Jade\ProposalPageWikitextRenderer;
 use JsonContent;
 use MediaWiki\MediaWikiServices;
 use ParserOptions;
@@ -32,12 +32,11 @@ use Title;
 use User;
 use WikiPage;
 
-class JudgmentContent extends JsonContent {
-	const CONTENT_MODEL_JUDGMENT = 'JadeJudgment';
-	const JUDGMENT_SCHEMA = '/../../jsonschema/judgment/v1.json';
-	const SCORING_SCHEMA_ROOT = '/../../jsonschema/scoring';
+class EntityContent extends JsonContent {
+	const CONTENT_MODEL_ENTITY = 'JadeEntity';
+	const ENTITY_SCHEMA = '/../../jsonschema/proposal/v2.json';
 
-	public function __construct( $text, $modelId = self::CONTENT_MODEL_JUDGMENT ) {
+	public function __construct( $text, $modelId = self::CONTENT_MODEL_ENTITY ) {
 		parent::__construct( $text, $modelId );
 	}
 
@@ -69,12 +68,13 @@ class JudgmentContent extends JsonContent {
 		}
 
 		$data = $this->getData()->getValue();
-		$validator = JadeServices::getJudgmentValidator();
-		return $validator->validatePageTitle( $page, $data );
+		$validator = JadeServices::getProposalValidator();
+		// return $validator->validatePageTitle( $page, $data );
+		return Status::newGood();
 	}
 
 	/**
-	 * Check that the judgment content is well-formed.
+	 * Check that the Entity content is well-formed.
 	 *
 	 * @return bool True if the content is valid.
 	 *
@@ -101,8 +101,8 @@ class JudgmentContent extends JsonContent {
 		}
 
 		$data = $this->getData()->getValue();
-		$validator = JadeServices::getJudgmentValidator();
-		return $validator->validateJudgmentContent( $data );
+		$validator = JadeServices::getProposalValidator();
+		return $validator->validateProposalContent( $data );
 	}
 
 	public function isEmpty() {
@@ -133,7 +133,7 @@ class JudgmentContent extends JsonContent {
 		}
 
 		$parser = MediaWikiServices::getInstance()->getParser();
-		$renderer = new JudgmentPageWikitextRenderer;
+		$renderer = new ProposalPageWikitextRenderer;
 		$wikitext = $renderer->getWikitext( $this->getData()->getValue() );
 
 		$output = $parser->parse( $wikitext, $title, $options, true, true, $revId );

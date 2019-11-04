@@ -24,16 +24,16 @@ use MediaWiki\MediaWikiServices;
 
 class JadeServices {
 
-	public static function getEntityJudgmentSetStorage() : EntityJudgmentSetStorage {
-		return MediaWikiServices::getInstance()->getService( 'JadeEntityJudgmentSetStorage' );
+	public static function getEntityProposalSetStorage() : EntityProposalSetStorage {
+		return MediaWikiServices::getInstance()->getService( 'JadeEntityProposalSetStorage' );
 	}
 
-	public static function getJudgmentIndexStorage() : JudgmentIndexStorage {
-		return MediaWikiServices::getInstance()->getService( 'JadeJudgmentIndexStorage' );
+	public static function getEntityIndexStorage() : EntityIndexStorage {
+		return MediaWikiServices::getInstance()->getService( 'JadeEntityIndexStorage' );
 	}
 
-	public static function getJudgmentValidator() : JudgmentValidator {
-		return MediaWikiServices::getInstance()->getService( 'JadeJudgmentValidator' );
+	public static function getProposalValidator() : ProposalValidator {
+		return MediaWikiServices::getInstance()->getService( 'JadeProposalValidator' );
 	}
 
 }

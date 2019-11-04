@@ -4,7 +4,8 @@
 			"Adamw",
 			"Robby",
 			"Umherirrender",
-			"Raymond"
+			"Raymond",
+			"Accraze"
 		]
 	},
 	"jade-desc": "{{desc|name=JADE|url=https://www.mediawiki.org/wiki/Extension:JADE}}",
@@ -19,8 +20,6 @@
 	"jade-contentquality-scale-5-label": "Label for this wiki's fifth-from-lowest quality rating.",
 	"jade-contentquality-scale-6-label": "Label for this wiki's sixth-from-lowest quality rating. On English Wikipedia the sixth level would be its highest quality \"Featured article\" but your wiki's scale may have more or fewer levels. Customized labels can be applied on the local wiki, sorry if this breaks TWN integration.",
 	"jade-contentquality-generic": "Label for a content quality judgment. This is a fallback which only appears when translations are missing. Parameters:\n* $1 - content quality code or level number.",
-	"jade-new-judgment": "Label for the new judgment form",
-	"jade-add-judgment": "Label for the judgment submit button",
 	"jade-notes-placeholder": "Placeholder for the judgment notes field",
 	"jade-delete": "Label for the judgment delete button\n{{Identical|Delete}}",
 	"jade-bad-title-format": "Error message for an illegal judgment page title.",
@@ -47,5 +46,11 @@
 	"jade-content-model-error": "Error message when a document in the Judgment namespace has the wrong content model.",
 	"jade-endorsement": "Label for an endorsement comment.",
 	"jade-endorsements": "Label for a group of endorsements.",
-	"jade-user": "Label for a user nick or IP.\n{{Identical|User}}"
-}
+	"jade-user": "Label for a user nick or IP.\n{{Identical|User}}",
+	"jade-proposalnotfound": "Error message displayed when a proposed label cannot be found for endorsement or deletion.  Parameters:\n $1 - The structured data use to identify a proposed label.",
+	"jade-endorsementnotfound":"Error message displayed when an endorsement cannot be found.",
+	"jade-endorsingnonpreferredproposal": "Warning message displayed when endorsing a non-preferred proposal.",
+	"jade-nochange": "Error message displayed when the action would result in no change to the Entity.",
+	"jade-proposalispreferred": "Error message displayed when trying to delete a preferred proposal when it is not the only remaining proposal for a facet.",
+	"jade-invalidtitleentitydata":"Error message displayed when one of title or entitydata API parameters are not given."
+	}

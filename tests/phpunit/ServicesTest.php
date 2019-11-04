@@ -15,9 +15,9 @@
  */
 namespace Jade\Tests;
 
-use Jade\EntityJudgmentSetStorage;
-use Jade\JudgmentIndexStorage;
-use Jade\JudgmentValidator;
+use Jade\PageEntityProposalSetStorage;
+use Jade\EntityIndexStorage;
+use Jade\ProposalValidator;
 use Jade\JadeServices;
 use Jade\ServiceWiring;
 use MediaWiki\MediaWikiServices;
@@ -30,19 +30,19 @@ class ServicesTest extends MediaWikiTestCase {
 
 	public function provideServices() {
 		yield [
-			'getEntityJudgmentSetStorage',
-			'JadeEntityJudgmentSetStorage',
-			EntityJudgmentSetStorage::class
+			'getEntityProposalSetStorage',
+			'JadeEntityProposalSetStorage',
+			PageEntityProposalSetStorage::class
 		];
 		yield [
-			'getJudgmentIndexStorage',
-			'JadeJudgmentIndexStorage',
-			JudgmentIndexStorage::class
+			'getEntityIndexStorage',
+			'JadeEntityIndexStorage',
+			EntityIndexStorage::class
 		];
 		yield [
-			'getJudgmentValidator',
-			'JadeJudgmentValidator',
-			JudgmentValidator::class
+			'getProposalValidator',
+			'JadeProposalValidator',
+			ProposalValidator::class
 		];
 	}
 

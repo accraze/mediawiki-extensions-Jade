@@ -154,7 +154,7 @@
             }
          },
          "required":[
-            "user",
+            "author",
             "touched",
             "created"
          ],

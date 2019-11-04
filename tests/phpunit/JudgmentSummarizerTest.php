@@ -15,15 +15,15 @@
 */
 namespace Jade\Tests;
 
-use Jade\Content\JudgmentContent;
-use Jade\JudgmentSummarizer;
+use Jade\Content\ProposalContent;
+use Jade\ProposalSummarizer;
 use MediaWikiTestCase;
 use TextContent;
 
 /**
  * @group Jade
  *
- * @coversDefaultClass Jade\JudgmentSummarizer
+ * @coversDefaultClass Jade\ProposalSummarizer
  */
 class JudgmentSummarizerTest extends MediaWikiTestCase {
 
@@ -31,8 +31,9 @@ class JudgmentSummarizerTest extends MediaWikiTestCase {
 	 * @covers ::getSummaryFromContent
 	 */
 	public function testGetSummaryFromContent_success() {
-		$content = new JudgmentContent( TestStorageHelper::getJudgmentText( 'diff' ) );
-		$status = JudgmentSummarizer::getSummaryFromContent( $content );
+		$this->markTestSkipped( 'not in use.' );
+		$content = new ProposalContent( TestStorageHelper::getJudgmentText( 'diff' ) );
+		$status = ProposalSummarizer::getSummaryFromContent( $content );
 		$this->assertTrue( $status->isOK() );
 		$this->assertEquals(
 			[
@@ -49,7 +50,7 @@ class JudgmentSummarizerTest extends MediaWikiTestCase {
 	public function testGetSummaryFromContent_failure() {
 		$badJson = '[abc';
 		$content = new TextContent( $badJson );
-		$status = JudgmentSummarizer::getSummaryFromContent( $content );
+		$status = ProposalSummarizer::getSummaryFromContent( $content );
 		$this->assertFalse( $status->isOK() );
 	}
 

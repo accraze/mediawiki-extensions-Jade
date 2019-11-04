@@ -15,9 +15,9 @@
  */
 namespace Jade\Tests;
 
-use Jade\JudgmentEntityType;
-use Jade\JudgmentLinkTable;
-use Jade\JudgmentTarget;
+use Jade\ProposalEntityType;
+use Jade\ProposalLinkTable;
+use Jade\ProposalTarget;
 use Jade\TitleHelper;
 use MediaWiki\MediaWikiServices;
 use MediaWikiTestCase;
@@ -37,7 +37,7 @@ class JudgmentLinkTableTest extends MediaWikiTestCase {
 
 	public function setUp() : void {
 		parent::setUp();
-
+		$this->markTestSkipped( 'not in use' );
 		$this->tablesUsed = [
 			'jade_diff_judgment',
 			'jade_revision_judgment',
@@ -56,7 +56,7 @@ class JudgmentLinkTableTest extends MediaWikiTestCase {
 		 * instantiating.
 		 *     $storage = JadeServices::getJudgmentIndexStorage();
 		 */
-		$this->indexStorage = new JudgmentLinkTable(
+		$this->indexStorage = new ProposalLinkTable(
 			MediaWikiServices::getInstance()->getDBLoadBalancer() );
 
 		// Disable all hooks, so that judgment links can only be altered manually.
@@ -70,13 +70,13 @@ class JudgmentLinkTableTest extends MediaWikiTestCase {
 	 * @param int $entityId
 	 */
 	private function createJudgment( $entityType, $entityId ) {
-		$status = JudgmentEntityType::sanitizeEntityType( $entityType );
+		$status = ProposalEntityType::sanitizeEntityType( $entityType );
 		$this->assertTrue( $status->isOK() );
-		$target = new JudgmentTarget( $status->value, $entityId );
+		$target = new ProposalTarget( $status->value, $entityId );
 		$title = TitleHelper::buildJadeTitle( $target );
 		$judgmentText = TestStorageHelper::getJudgmentText( $entityType );
 		$judgmentStatus = TestStorageHelper::makeEdit(
-			NS_JUDGMENT, $title->getDBkey(), $judgmentText );
+			NS_JADE, $title->getDBkey(), $judgmentText );
 		$this->assertNotNull( $judgmentStatus['page'] );
 		$this->assertNotNull( $judgmentStatus['revision'] );
 

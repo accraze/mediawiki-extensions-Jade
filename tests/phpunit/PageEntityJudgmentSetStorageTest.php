@@ -38,7 +38,8 @@ class PageEntityJudgmentSetStorageTest extends MediaWikiTestCase {
 	private $storage;
 
 	public function setUp() : void {
-		$this->storage = JadeServices::getEntityJudgmentSetStorage();
+		$this->markTestSkipped( 'not used' );
+		$this->storage = JadeServices::getEntityProposalSetStorage();
 		$this->tablesUsed = [
 			'jade_diff_judgment',
 			'jade_revision_judgment',

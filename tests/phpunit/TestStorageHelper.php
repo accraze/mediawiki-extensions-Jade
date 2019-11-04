@@ -94,7 +94,7 @@ class TestStorageHelper {
 		if ( is_array( $text ) ) {
 			$text = FormatJSON::encode( $text );
 		}
-		$editTarget = new TitleValue( NS_JUDGMENT, $titleStr );
+		$editTarget = new TitleValue( NS_JADE, $titleStr );
 		$title = Title::newFromLinkTarget( $editTarget );
 		$summary = 'Test edit';
 		$page = WikiPage::factory( $title );

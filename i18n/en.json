@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Adamw"
+			"Adamw",
+			"Accraze"
 		]
 	},
 	"jade-desc": "Judgment and dialog engine",
@@ -16,20 +17,18 @@
 	"jade-contentquality-scale-5-label": "Good article",
 	"jade-contentquality-scale-6-label": "Featured article",
 	"jade-contentquality-generic": "Content quality \"$1\"",
-	"jade-new-judgment": "New judgment",
-	"jade-add-judgment": "Add judgment",
-	"jade-notes-placeholder": "Notes about the judgment",
+	"jade-notes-placeholder": "Notes about the proposal",
 	"jade-delete": "Delete",
 	"jade-bad-title-format": "Invalid title format",
-	"jade-bad-title-namespace": "Invalid namespace for a judgment title.",
+	"jade-bad-title-namespace": "Invalid namespace for a Jade Entity title.",
 	"jade-non-canonical-title": "Title should have canonical form ''$1''.",
 	"jade-bad-entity-type": "Invalid entity type ''$1''",
 	"jade-bad-entity-id-format": "Invalid entity ID format ''$1''",
 	"jade-bad-revision-id": "Cannot find revision by ID: ''$1''",
 	"jade-bad-content-generic": "Syntax errors in JSON content.",
-	"jade-bad-content": "Judgment doesn't conform to schema: $1",
+	"jade-bad-content": "Jade Entity doesn't conform to schema: $1",
 	"jade-too-many-preferred": "Multiple judgments preferred, but there can be only one.",
-	"jade-none-preferred": "No judgments are preferred, but there must be a chosen one.",
+	"jade-none-preferred": "No labels are preferred, but there must be a chosen one.",
 	"jade-illegal-schema": "Schema ''$1'' not allowed for this entity type.",
 	"jade-user-local-id-invalid": "User local ID ''$1'' doesn't exist.",
 	"jade-user-central-id-invalid": "User central ID ''$1'' doesn't exist.",
@@ -39,10 +38,17 @@
 	"jade-bad-contentquality-value": "Bad index ''$1'' into the content quality schema, must be a quality level between 1 and $2.",
 	"jade-cannot-create-page": "You cannot create this page.",
 	"jade-cannot-edit-page": "You cannot edit this page.",
-	"jade-invalid-move-any": "Moving judgment pages is not allowed.",
+	"jade-invalid-move-any": "Moving Jade Entity pages is not allowed.",
 	"jade-db-error": "Database error: $1",
-	"jade-content-model-error": "Wrong content model for judgment.",
+	"jade-content-model-error": "Wrong content model for Jade Entity.",
 	"jade-endorsement": "Endorsement",
 	"jade-endorsements": "Endorsements",
-	"jade-user": "User"
+	"jade-user": "User",
+	"jade-proposalnotfound": "Could not find a proposal with matching \"data\" ''$1''",
+	"jade-endorsementnotfound":"Could not find an endorsement from the target user.",
+	"jade-endorsingnonpreferredproposal": "This action resulted in creating an endorsement for a proposal that is not flagged as preferred.",
+	"jade-nochange": "This action would result in no change.",
+	"jade-proposalispreferred": "Cannot delete a preferred proposal except when it is the only remaining proposal for a facet. You must set another proposal to be \"preferred\"",
+	"jade-invalidtitleentitydata":"Title or entitydata param must be provided.",
+	"jade-nochange": "This action would result in no change.  User has already endorsed labeldata."
 }

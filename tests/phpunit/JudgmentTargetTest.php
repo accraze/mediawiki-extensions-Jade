@@ -15,8 +15,8 @@
  */
 namespace Jade\Tests;
 
-use Jade\JudgmentEntityType;
-use Jade\JudgmentTarget;
+use Jade\ProposalEntityType;
+use Jade\ProposalTarget;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -30,10 +30,10 @@ class JudgmentTargetTest extends TestCase {
 	 * @covers ::__construct
 	 */
 	public function testConstruct() {
-		$entityType = JudgmentEntityType::sanitizeEntityType( 'diff' )->value;
+		$entityType = ProposalEntityType::sanitizeEntityType( 'diff' )->value;
 		$entityId = 123;
-		$target = new JudgmentTarget( $entityType, $entityId );
-		$this->assertInstanceOf( JudgmentTarget::class, $target );
+		$target = new ProposalTarget( $entityType, $entityId );
+		$this->assertInstanceOf( ProposalTarget::class, $target );
 		$this->assertEquals( $entityType, $target->entityType );
 		$this->assertEquals( $entityId, $target->entityId );
 	}

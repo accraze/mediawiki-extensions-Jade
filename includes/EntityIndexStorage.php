@@ -21,32 +21,32 @@ use WikiPage;
 /**
  * Low-level service responsible for storing secondary indexes to judgments.
  */
-interface JudgmentIndexStorage {
+interface EntityIndexStorage {
 
 	/**
 	 * Create any indexes needed to associate a judgment with its target.
 	 *
-	 * @param JudgmentTarget $target Wiki entity being judged.
+	 * @param ProposalTarget $target Wiki entity being judged.
 	 * @param WikiPage $judgmentPage Page where judgment is recorded.
 	 */
-	public function insertIndex( JudgmentTarget $target, WikiPage $judgmentPage );
+	public function insertIndex( ProposalTarget $target, WikiPage $judgmentPage );
 
 	/**
 	 * Delete any indexes associating a judgment with its target.
 	 *
-	 * @param JudgmentTarget $target Wiki entity being judged.
+	 * @param ProposalTarget $target Wiki entity being judged.
 	 * @param WikiPage $judgmentPage Page where judgment is recorded.
 	 */
-	public function deleteIndex( JudgmentTarget $target, WikiPage $judgmentPage );
+	public function deleteIndex( ProposalTarget $target, WikiPage $judgmentPage );
 
 	/**
 	 * Update summary columns
 	 *
-	 * @param JudgmentTarget $target Wiki entity being judged.
+	 * @param ProposalTarget $target Wiki entity being judged.
 	 * @param array $summaryValues Map of fields to update.
 	 *
 	 * @return StatusValue indicates success.
 	 */
-	public function updateSummary( JudgmentTarget $target, array $summaryValues ) : StatusValue;
+	public function updateSummary( ProposalTarget $target, array $summaryValues ) : StatusValue;
 
 }

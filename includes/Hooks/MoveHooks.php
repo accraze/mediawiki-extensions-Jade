@@ -36,8 +36,8 @@ class MoveHooks {
 	) {
 		// Deny all moves within or into JudgmentPage.
 		// TODO: In the future, we may allow some movements after validating.
-		if ( $oldTitle->getNamespace() === NS_JUDGMENT
-			|| $newTitle->getNamespace() === NS_JUDGMENT
+		if ( $oldTitle->getNamespace() === NS_JADE
+			|| $newTitle->getNamespace() === NS_JADE
 		) {
 			$status->error( 'jade-invalid-move-any' );
 			$status->setOK( false );

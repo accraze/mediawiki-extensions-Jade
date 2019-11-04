@@ -27,17 +27,17 @@ use TemplateParser;
 use User;
 
 /**
- * Renders judgments into wikitext, suitable for rendering a judgment page.
+ * Renders proposals into wikitext, suitable for rendering a proposal page.
  *
  * TODO: Review whether we should be using content language, e.g. if translate
  * tags are present in the freeform wikitext fields.
  */
-class JudgmentPageWikitextRenderer {
+class ProposalPageWikitextRenderer {
 
 	const TEMPLATES_PATH = '../templates';
 
-	/** Template to render a judgment page as wikitext. */
-	const JUDGMENT_PAGE_TEMPLATE = 'judgment_page.wiki';
+	/** Template to render a proposal page as wikitext. */
+	const ENTITY_PAGE_TEMPLATE = 'entity_page.wiki';
 
 	private $templateRenderer;
 
@@ -49,32 +49,32 @@ class JudgmentPageWikitextRenderer {
 	/**
 	 * Render as wikitext.
 	 *
-	 * @param object $judgmentData Judgment page content, decoded as a stdClass.
+	 * @param object $proposalData Proposal page content, decoded as a stdClass.
 	 *
 	 * @return string Wikitext representation.
 	 */
-	public function getWikitext( $judgmentData ) {
-		// Transform raw judgment data into parameters and wikitext suitable
+	public function getWikitext( $proposalData ) {
+		// Transform raw proposal data into parameters and wikitext suitable
 		// for use in the template.
-		$judgmentList = [];
-		foreach ( $judgmentData->judgments as $rawJudgment ) {
-			$judgment = [];
-
-			// Notes are literal wikitext, or a placeholder if empty.
-			$judgment['notes'] = $rawJudgment->notes ?? '';
-
-			$judgment['value'] = $this->getSchemaSummary( $rawJudgment->schema );
-
-			$judgment['preferred'] = $rawJudgment->preferred;
-
-			if ( property_exists( $rawJudgment, 'endorsements' ) ) {
-				$judgment['hasEndorsements'] = true;
-				$judgment['endorsements'] = $this->getEndorsements( $rawJudgment->endorsements );
-			}
-
-			$judgmentList[] = $judgment;
-		}
-		$params = [ 'judgments' => $judgmentList ];
+		$proposalList = [];
+		// foreach ( $proposalData->proposals as $rawProposal ) {
+		// $proposal = [];
+	//
+		// // Notes are literal wikitext, or a placeholder if empty.
+		// $proposal['notes'] = $rawProposal->notes ?? '';
+	//
+		// $proposal['value'] = $this->getSchemaSummary( $rawProposal->schema );
+	//
+		// $proposal['preferred'] = $rawProposal->preferred;
+	//
+		// if ( property_exists( $rawProposal, 'endorsements' ) ) {
+		// $proposal['hasEndorsements'] = true;
+		// $proposal['endorsements'] = $this->getEndorsements( $rawProposal->endorsements );
+		// }
+	//
+		// $proposalList[] = $proposal;
+		// }
+		$params = [ 'proposals' => $proposalList ];
 
 		// Translated strings.
 		$params['msg-jade-endorsement'] = wfMessage( 'jade-endorsement' )->plain();
@@ -82,25 +82,25 @@ class JudgmentPageWikitextRenderer {
 		$params['msg-jade-user'] = wfMessage( 'jade-user' )->plain();
 
 		return $this->templateRenderer->processTemplate(
-			self::JUDGMENT_PAGE_TEMPLATE,
+			self::ENTITY_PAGE_TEMPLATE,
 			$params );
 	}
 
 	/**
-	 * Produce a human-readable summary of the judgment schema value.
+	 * Produce a human-readable summary of the proposal schema value.
 	 *
-	 * @param object $schemaList Judgment's schema values, as a map from schema
-	 *        name to judgment value for that schema.
+	 * @param object $schemaList Proposal's schema values, as a map from schema
+	 *        name to proposal value for that schema.
 	 *
 	 * @return string Wikitext snippet summarizing the values.
 	 */
 	private function getSchemaSummary( $schemaList ) {
 		$contentLanguage = MediaWikiServices::getInstance()->getContentLanguage();
 
-		// Convert schema values to a human-readable summary of the judgment.
+		// Convert schema values to a human-readable summary of the proposal.
 		$schemaTextList = [];
 		foreach ( $schemaList as $schemaName => $value ) {
-			// Human text for this judgment schema's value.
+			// Human text for this proposal schema's value.
 			$schemaTextList[] = $this->getSchemaValueText( $schemaName, $value );
 		}
 		return $contentLanguage->listToText( $schemaTextList );
@@ -120,7 +120,7 @@ class JudgmentPageWikitextRenderer {
 			// If a message exists for this exact value, use it.
 			return $message->inContentLanguage()->text();
 		} elseif ( $schemaName === 'contentquality' ) {
-			// Generic statement for an unknown content quality key.  For wikis
+			// Generic statement for an unkn own content quality key.  For wikis
 			// that override the article quality scale, we'll need to figure
 			// out if it's appropriate to include the custom keys in the
 			// extension, or if these should be provided as local wiki strings.

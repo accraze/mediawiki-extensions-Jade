@@ -15,15 +15,15 @@
  */
 namespace Jade\Tests;
 
-use Jade\JudgmentEntityType;
-use Jade\JudgmentLinkTableHelper;
+use Jade\ProposalEntityType;
+use Jade\ProposalLinkTableHelper;
 use MediaWikiTestCase;
 use Wikimedia\TestingAccessWrapper;
 
 /**
  * @group Jade
  *
- * @coversDefaultClass Jade\JudgmentLinkTableHelper
+ * @coversDefaultClass Jade\ProposalLinkTableHelper
  */
 class JudgmentLinkTableHelperTest extends MediaWikiTestCase {
 
@@ -32,14 +32,14 @@ class JudgmentLinkTableHelperTest extends MediaWikiTestCase {
 	public function setUp() : void {
 		parent::setUp();
 
-		$this->diffType = JudgmentEntityType::sanitizeEntityType( 'diff' )->value;
+		$this->diffType = ProposalEntityType::sanitizeEntityType( 'diff' )->value;
 	}
 
 	/**
 	 * @covers ::__construct
 	 */
 	public function testNewFromEntityType() {
-		$helper = new JudgmentLinkTableHelper( $this->diffType );
+		$helper = new ProposalLinkTableHelper( $this->diffType );
 		$helper = TestingAccessWrapper::newFromObject( $helper );
 		$this->assertEquals( $this->diffType, $helper->entityType );
 	}
@@ -48,15 +48,15 @@ class JudgmentLinkTableHelperTest extends MediaWikiTestCase {
 	 * @covers ::getLinkTable
 	 */
 	public function testGetLinkTable() {
-		$helper = new JudgmentLinkTableHelper( $this->diffType );
-		$this->assertEquals( 'jade_diff_judgment', $helper->getLinkTable() );
+		$helper = new ProposalLinkTableHelper( $this->diffType );
+		$this->assertEquals( 'jade_diff_proposal', $helper->getLinkTable() );
 	}
 
 	/**
 	 * @covers ::getColumnPrefix
 	 */
 	public function testGetColumnPrefix() {
-		$helper = new JudgmentLinkTableHelper( $this->diffType );
+		$helper = new ProposalLinkTableHelper( $this->diffType );
 		$this->assertEquals( 'jaded', $helper->getColumnPrefix() );
 	}
 
@@ -64,23 +64,23 @@ class JudgmentLinkTableHelperTest extends MediaWikiTestCase {
 	 * @covers ::getIdColumn
 	 */
 	public function testGetIdColumn() {
-		$helper = new JudgmentLinkTableHelper( $this->diffType );
+		$helper = new ProposalLinkTableHelper( $this->diffType );
 		$this->assertEquals( 'jaded_id', $helper->getIdColumn() );
 	}
 
 	/**
-	 * @covers ::getJudgmentColumn
+	 * @covers ::getProposalColumn
 	 */
 	public function testGetJudgmentColumn() {
-		$helper = new JudgmentLinkTableHelper( $this->diffType );
-		$this->assertEquals( 'jaded_judgment', $helper->getJudgmentColumn() );
+		$helper = new ProposalLinkTableHelper( $this->diffType );
+		$this->assertEquals( 'jaded_proposal', $helper->getProposalColumn() );
 	}
 
 	/**
 	 * @covers ::getTargetColumn
 	 */
 	public function testGetTargetColumn() {
-		$helper = new JudgmentLinkTableHelper( $this->diffType );
+		$helper = new ProposalLinkTableHelper( $this->diffType );
 		$this->assertEquals( 'jaded_revision', $helper->getTargetColumn() );
 	}
 
@@ -88,7 +88,7 @@ class JudgmentLinkTableHelperTest extends MediaWikiTestCase {
 	 * @covers ::getSummaryColumn
 	 */
 	public function testGetSummaryColumn() {
-		$helper = new JudgmentLinkTableHelper( $this->diffType );
+		$helper = new ProposalLinkTableHelper( $this->diffType );
 		$this->assertEquals( 'jaded_damaging', $helper->getSummaryColumn( 'damaging' ) );
 	}
 

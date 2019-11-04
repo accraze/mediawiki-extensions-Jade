@@ -27,25 +27,25 @@ use StatusValue;
 use Title;
 use WikiPage;
 
-use Jade\Content\JudgmentContent;
+use Jade\Content\EntityContent;
 
 /**
- * Backend to store judgments as wiki pages under a new namespace.
+ * Backend to store Proposals as wiki pages under a new namespace.
  */
-class PageEntityJudgmentSetStorage implements EntityJudgmentSetStorage {
+class PageEntityProposalSetStorage implements EntityProposalSetStorage {
 
 	/**
-	 * @param JudgmentTarget $target identity of target wiki entity.
-	 * @param array $judgmentSet All judgments on this entity, as nested
+	 * @param ProposalTarget $target identity of target wiki entity.
+	 * @param array $proposalSet All Proposals on this entity, as nested
 	 * associative arrays, normalized for storage.
 	 * @param string $summary Edit summary.
 	 * @param array $tags Optional list of change tags to set on the revision being created.
 	 *
 	 * @return StatusValue isOK if the edit was successful.
 	 */
-	public function storeJudgmentSet(
-		JudgmentTarget $target,
-		array $judgmentSet,
+	public function storeProposalSet(
+		ProposalTarget $target,
+		array $proposalSet,
 		$summary,
 		array $tags
 	) {
@@ -73,9 +73,9 @@ class PageEntityJudgmentSetStorage implements EntityJudgmentSetStorage {
 			}
 		}
 
-		// Serialize to a new judgment ContentHandler.
-		$judgmentText = FormatJson::encode( $judgmentSet, true, 0 );
-		$content = new JudgmentContent( $judgmentText );
+		// Serialize to a new proposal ContentHandler.
+		$proposalText = FormatJson::encode( $proposalSet, true, 0 );
+		$content = new EntityContent( $proposalText );
 
 		// TODO: Migrate to use the PageUpdater API once it matures.
 		return $page->doEditContent(
@@ -90,12 +90,12 @@ class PageEntityJudgmentSetStorage implements EntityJudgmentSetStorage {
 	}
 
 	/**
-	 * @param JudgmentTarget $target identity of target wiki entity.
+	 * @param ProposalTarget $target identity of target wiki entity.
 	 *
-	 * @return StatusValue with array value containing all judgments for this
+	 * @return StatusValue with array value containing all proposals for this
 	 *         entity.
 	 */
-	public function loadJudgmentSet( JudgmentTarget $target ) {
+	public function loadProposalSet( ProposalTarget $target ) {
 		$title = TitleHelper::buildJadeTitle( $target );
 		$dbTitle = Title::newFromTitleValue( $title );
 		$page = WikiPage::factory( $dbTitle );
@@ -103,11 +103,11 @@ class PageEntityJudgmentSetStorage implements EntityJudgmentSetStorage {
 		$currentContent = $page->getContent();
 		// Return content as an associative array.
 		if ( $currentContent !== null ) {
-			$currentJudgment = FormatJson::decode( $currentContent->getNativeData(), true );
+			$currentProposal = FormatJson::decode( $currentContent->getNativeData(), true );
 		} else {
-			$currentJudgment = [];
+			$currentProposal = [];
 		}
-		return Status::newGood( $currentJudgment );
+		return Status::newGood( $currentProposal );
 	}
 
 }

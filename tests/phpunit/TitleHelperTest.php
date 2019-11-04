@@ -15,8 +15,8 @@
  */
 namespace Jade\Tests;
 
-use Jade\JudgmentEntityType;
-use Jade\JudgmentTarget;
+use Jade\ProposalEntityType;
+use Jade\ProposalTarget;
 use Jade\TitleHelper;
 use MediaWikiTestCase;
 use TitleValue;
@@ -30,24 +30,24 @@ class TitleHelperTest extends MediaWikiTestCase {
 
 	public function setUp() : void {
 		parent::setUp();
-		$this->revisionType = JudgmentEntityType::sanitizeEntityType( 'revision' )->value;
+		$this->revisionType = ProposalEntityType::sanitizeEntityType( 'revision' )->value;
 	}
 
 	/**
 	 * @covers ::buildJadeTitle
 	 */
 	public function testBuildJadeTitle_success() {
-		$target = new JudgmentTarget( $this->revisionType, 123 );
+		$target = new ProposalTarget( $this->revisionType, 123 );
 		$title = TitleHelper::buildJadeTitle( $target );
 		$this->assertEquals( 'Revision/123', $title->getDBkey() );
 	}
 
 	public function provideUnparseableTitles() {
 		yield [ NS_TALK, 'Revision/123', 'jade-bad-title-namespace' ];
-		yield [ NS_JUDGMENT, 'Revision/123/321', 'jade-bad-title-format' ];
-		yield [ NS_JUDGMENT, 'Revision', 'jade-bad-title-format' ];
-		yield [ NS_JUDGMENT, 'Foo/123', 'jade-bad-entity-type' ];
-		yield [ NS_JUDGMENT, 'Revision/bar', 'jade-bad-entity-id-format' ];
+		yield [ NS_JADE, 'Revision/123/321', 'jade-bad-title-format' ];
+		yield [ NS_JADE, 'Revision', 'jade-bad-title-format' ];
+		yield [ NS_JADE, 'Foo/123', 'jade-bad-entity-type' ];
+		yield [ NS_JADE, 'Revision/bar', 'jade-bad-entity-id-format' ];
 	}
 
 	/**
@@ -75,7 +75,7 @@ class TitleHelperTest extends MediaWikiTestCase {
 			],
 		] );
 
-		$title = new TitleValue( NS_JUDGMENT, 'Diffie/123' );
+		$title = new TitleValue( NS_JADE, 'Diffie/123' );
 		$status = TitleHelper::parseTitleValue( $title );
 		$this->assertTrue( $status->isOK() );
 		$target = $status->value;

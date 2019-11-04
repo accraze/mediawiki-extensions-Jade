@@ -1,0 +1,228 @@
+{
+  "title": "/mediawiki/jade/entity/1.0.0",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "https://phabricator.wikimedia.org/diffusion/EJAD/browse/master/jsonschema/proposal/v1.json?view=raw",
+  "type": "object",
+  "properties": {
+    "facets": {
+      "type": "object",
+      "properties": {
+        "editquality": {
+          "$ref": "#/definitions/facets/editquality"
+        },
+        "contentquality": {
+          "$ref": "#/definitions/facets/contentquality"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false,
+  "definitions": {
+    "facets": {
+      "editquality": {
+        "type": "object",
+        "properties": {
+          "proposals": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/proposals/editquality"
+            }
+          }
+        }
+      },
+      "contentquality": {
+        "type": "object",
+        "properties": {
+          "proposals": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/proposals/contentquality"
+            }
+          }
+        }
+      }
+    },
+    "proposals": {
+      "editquality": {
+        "allOf": [
+          {
+            "$ref": "#/definitions/proposals/base"
+          },
+          {
+            "properties": {
+              "labeldata": {
+                "$ref": "#/definitions/schemas/editquality"
+              }
+            }
+          }
+        ]
+      },
+      "contentquality": {
+        "allOf": [
+          {
+            "$ref": "#/definitions/proposals/base"
+          },
+          {
+            "properties": {
+              "data": {
+                "type": "integer",
+                "$ref": "#/definitions/schemas/contentquality"
+              }
+            },
+            "required": [
+              "data"
+            ]
+          }
+        ]
+      },
+      "base": {
+
+        "properties": {
+          "notes": {
+            "type": "string",
+            "description": "Wikitext comments or justification of this label."
+          },
+          "preferred": {
+            "type": "boolean",
+            "default": false,
+            "description": "True when this label best represents a consensus opinion."
+          },
+          "endorsements": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/endorsement"
+            }
+          },
+          "author": {
+            "$ref": "#/definitions/user",
+            "description": "Proposal author"
+          }
+        },
+        "required": [
+          "preferred",
+          "endorsements",
+          "author"
+        ]
+      }
+    },
+    "schemas": {
+      "editquality": {
+        "type": "object",
+        "properties": {
+          "damaging": {
+            "type": "boolean"
+          },
+          "goodfaith": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "damaging",
+          "goodfaith"
+        ]
+      },
+      "contentquality": {
+        "type": "number"
+      }
+    },
+    "endorsement": {
+      "type": "object",
+      "properties": {
+        "comment": {
+          "type": "string",
+          "description": "Wikitext explaining why the user is endorsing"
+        },
+        "author": {
+          "$ref": "#/definitions/user",
+          "description": "Endorsement author"
+        },
+        "origin": {
+          "type": "string",
+          "description": "Plain text identifying the tool and workflow used to make this endorsement"
+        },
+        "touched": {
+          "type": "string",
+          "description": "Time created in ISO 8601"
+        },
+        "created": {
+          "type": "string",
+          "description": "Time created in ISO 8601"
+        }
+      },
+      "required": [
+        "author",
+        "touched",
+        "created"
+      ],
+      "additionalProperties": false
+    },
+    "schema": {
+      "contentquality": {
+        "type": "object",
+        "properties": {
+          "contentquality": {
+            "type": "integer"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "contentquality"
+        ]
+      },
+      "editquality": {
+        "type": "object",
+        "properties": {
+          "damaging": {
+            "type": "boolean"
+          },
+          "goodfaith": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "damaging",
+          "goodfaith"
+        ]
+      }
+    },
+    "user": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "integer",
+              "description": "Local wiki ID for contributor.",
+              "minimum": 0
+            },
+            "cid": {
+              "type": "integer",
+              "description": "Central ID for contributor.",
+              "minimum": 0
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "id"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "ip": {
+              "type": "string",
+              "description": "IP address (v4 or v6) for contributor."
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "ip"
+          ]
+        }
+      ]
+    }
+  }
+}

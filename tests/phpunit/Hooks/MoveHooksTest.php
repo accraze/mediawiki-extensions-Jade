@@ -16,7 +16,7 @@
 namespace Jade\Tests\Hooks;
 
 use ApiTestCase;
-use Jade\Content\JudgmentContent;
+use Jade\Content\EntityContent;
 use Jade\Tests\TestStorageHelper;
 use Status;
 use WikiPage;
@@ -39,6 +39,7 @@ class MoveHooksTest extends ApiTestCase {
 
 	public function setUp() : void {
 		parent::setUp();
+		$this->markTestSkipped( ' notin use.' );
 		$this->tablesUsed = [
 			'page',
 			'jade_diff_judgment',
@@ -66,20 +67,20 @@ class MoveHooksTest extends ApiTestCase {
 		$this->articleMap = [
 			self::MAIN_EXISTING => "{$this->article['page']->getTitle()->getDBkey()}",
 			self::MAIN_NEW => 'New page' . strval( mt_rand() ),
-			self::JUDGMENT_EXISTING => "Judgment:{$this->judgmentPage->getTitle()->getDBkey()}",
-			self::JUDGMENT_NEW => 'Judgment:Diff/321' . strval( mt_rand() ),
+			self::JUDGMENT_EXISTING => "Jade:{$this->judgmentPage->getTitle()->getDBkey()}",
+			self::JUDGMENT_NEW => 'Jade:Diff/321' . strval( mt_rand() ),
 		];
 
 		// Disable validation since that would prevent moving a wiki page into
 		// the Judgment namespace.
-		$this->mockValidation = $this->getMockBuilder( JudgmentValidator::class )
+		$this->mockValidation = $this->getMockBuilder( ProposalValidator::class )
 			->disableOriginalConstructor()
-			->setMethods( [ 'validateJudgmentContent', 'validatePageTitle' ] )
+			->setMethods( [ 'validateProposalContent', 'validatePageTitle' ] )
 			->getMock();
-		$this->setService( 'JadeJudgmentValidator', $this->mockValidation );
+		$this->setService( 'JadeProposalValidator', $this->mockValidation );
 
 		$this->mockValidation
-			->method( 'validateJudgmentContent' )
+			->method( 'validateProposalContent' )
 			->willReturn( Status::newGood() );
 		$this->mockValidation
 			->method( 'validatePageTitle' )
@@ -101,7 +102,7 @@ class MoveHooksTest extends ApiTestCase {
 		yield [
 			self::JUDGMENT_EXISTING,
 			self::MAIN_NEW,
-			[ 'content-not-allowed-here', JudgmentContent::CONTENT_MODEL_JUDGMENT, self::MAIN_NEW, 'main' ],
+			[ 'content-not-allowed-here', EntityContent::CONTENT_MODEL_ENTITY, self::MAIN_NEW, 'main' ],
 		];
 		yield [
 			self::JUDGMENT_EXISTING,

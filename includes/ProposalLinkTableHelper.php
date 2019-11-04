@@ -15,21 +15,21 @@
  */
 namespace Jade;
 
-class JudgmentLinkTableHelper {
+class ProposalLinkTableHelper {
 
-	/** @var JudgmentEntityType */
+	/** @var ProposalEntityType */
 	private $entityType;
 
 	/**
-	 * @param JudgmentEntityType $entityType Link table will be for this type.
+	 * @param ProposalEntityType $entityType Link table will be for this type.
 	 */
-	public function __construct( JudgmentEntityType $entityType ) {
+	public function __construct( ProposalEntityType $entityType ) {
 		$this->entityType = $entityType;
 	}
 
 	public function getLinkTable() {
-		// Dynamic link table name per entity type, e.g. "jade_diff_judgment".
-		return "jade_{$this->entityType}_judgment";
+		// Dynamic link table name per entity type, e.g. "jade_diff_proposal".
+		return "jade_{$this->entityType}_proposal";
 	}
 
 	public function getColumnPrefix() {
@@ -43,15 +43,15 @@ class JudgmentLinkTableHelper {
 		return "{$columnPrefix}_id";
 	}
 
-	public function getJudgmentColumn() {
+	public function getProposalColumn() {
 		$columnPrefix = $this->getColumnPrefix();
-		// Column linking to judgment pages, e.g. "jaded_judgment" for the diff link table.
-		return "{$columnPrefix}_judgment";
+		// Column linking to proposal pages, e.g. "jaded_proposal" for the diff link table.
+		return "{$columnPrefix}_proposal";
 	}
 
 	public function getTargetColumn() {
 		$columnPrefix = $this->getColumnPrefix();
-		// Column linking to judgment target revisions, e.g. "jaded_revision".
+		// Column linking to proposal target revisions, e.g. "jaded_revision".
 		return "{$columnPrefix}_revision";
 	}
 

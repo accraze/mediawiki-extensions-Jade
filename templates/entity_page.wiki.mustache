@@ -1,0 +1,17 @@
+__NOTOC__
+{{# judgments }}== {{ value }}{{# preferred }} *{{/ preferred }} ==
+{{ notes }}
+{{# hasEndorsements }}
+=== {{ msg-jade-endorsements }} ===
+{| class="wikitable"
+! {{ msg-jade-user }}
+! {{ msg-jade-endorsement }}
+{{# endorsements }}
+|-
+| {{ user }}
+| {{ comment }}
+{{/ endorsements }}
+|}
+{{/ hasEndorsements }}
+
+{{/ judgments }}

@@ -19,21 +19,21 @@ namespace Jade;
 /**
  * Pointer to wiki entity type and ID.
  */
-class JudgmentTarget {
+class ProposalTarget {
 
 	// Only friend classes should be accessing these :-/
-	/** @var JudgmentEntityType */
+	/** @var ProposalEntityType */
 	public $entityType;
 	/** @var int */
 	public $entityId;
 
 	/**
-	 * Create a judgment target from type name and ID.
+	 * Create a proposal target from type name and ID.
 	 *
-	 * @param JudgmentEntityType $entityType Name of wiki entity type, in lowercase.
+	 * @param ProposalEntityType $entityType Name of wiki entity type, in lowercase.
 	 * @param int $entityId Page ID or Revision ID of the entity.
 	 */
-	public function __construct( JudgmentEntityType $entityType, $entityId ) {
+	public function __construct( ProposalEntityType $entityType, $entityId ) {
 		$this->entityType = $entityType;
 		$this->entityId = intval( $entityId );
 	}

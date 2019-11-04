@@ -23,18 +23,25 @@ use SearchEngine;
 use Title;
 use WikiPage;
 
-class JudgmentContentHandler extends JsonContentHandler {
+/**
+ * Json Content Handler for all Jade Entity Content.
+ *
+ * @license GPL-3.0-or-later
+ * @author Andy Craze < acraze@wikimedia.org >
+ */
 
-	public function __construct( $modelId = JudgmentContent::CONTENT_MODEL_JUDGMENT ) {
+class EntityContentHandler extends JsonContentHandler {
+
+	public function __construct( $modelId = EntityContent::CONTENT_MODEL_ENTITY ) {
 		parent::__construct( $modelId );
 	}
 
 	protected function getContentClass() {
-		return JudgmentContent::class;
+		return EntityContent::class;
 	}
 
 	public function canBeUsedOn( Title $title ) {
-		return $title->inNamespace( NS_JUDGMENT );
+		return $title->inNamespace( NS_JADE );
 	}
 
 	/**

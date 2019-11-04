@@ -27,36 +27,36 @@ use TitleValue;
 class TitleHelper {
 
 	/**
-	 * Build Title object for the judgment page on an entity.
+	 * Build Title object for the Proposal page on an entity.
 	 *
-	 * @param JudgmentTarget $target Wiki entity to build a judgment page title for.
+	 * @param ProposalTarget $target Wiki entity to build a Proposal page title for.
 	 *
-	 * @return TitleValue Path to where judgments about the given entity should
+	 * @return TitleValue Path to where proposals about the given entity should
 	 *         be stored.
 	 */
-	public static function buildJadeTitle( JudgmentTarget $target ) {
+	public static function buildJadeTitle( ProposalTarget $target ) {
 		// Get localized title component.
 		$localTitle = $target->entityType->getLocalizedName();
 
 		return new TitleValue(
-			NS_JUDGMENT,
+			NS_JADE,
 			"{$localTitle}/{$target->entityId}"
 		);
 	}
 
 	/**
-	 * Parse Judgment Title object to get target wiki entity information.
+	 * Parse Proposal Title object to get target wiki entity information.
 	 *
-	 * @param TitleValue $title Judgment page title.
+	 * @param TitleValue $title proposal page title.
 	 *
-	 * @return StatusValue with JudgmentTarget value.
+	 * @return StatusValue with ProposalTarget value.
 	 */
 	public static function parseTitleValue( TitleValue $title ) {
 		global $wgJadeEntityTypeNames;
 
 		$namespace = $title->getNamespace();
-		if ( $namespace !== NS_JUDGMENT ) {
-			// This is not a judgment, fail.
+		if ( $namespace !== NS_JADE ) {
+			// This is not a proposal, fail.
 			return Status::newFatal( 'jade-bad-title-namespace' );
 		}
 		$titleParts = explode( '/', $title->getDBkey() );
@@ -65,7 +65,7 @@ class TitleHelper {
 		}
 		// Find localized title component and get type identifier.
 		$typeName = array_search( $titleParts[0], $wgJadeEntityTypeNames, true );
-		$status = JudgmentEntityType::sanitizeEntityType( $typeName );
+		$status = ProposalEntityType::sanitizeEntityType( $typeName );
 		if ( !$status->isOK() ) {
 			return Status::newFatal( 'jade-bad-entity-type', $titleParts[0] );
 		}
@@ -75,7 +75,7 @@ class TitleHelper {
 			return Status::newFatal( 'jade-bad-entity-id-format', $titleParts[1] );
 		}
 
-		$target = new JudgmentTarget( $entityType, $entityId );
+		$target = new ProposalTarget( $entityType, $entityId );
 		return Status::newGood( $target );
 	}
 

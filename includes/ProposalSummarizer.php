@@ -17,40 +17,41 @@
 namespace Jade;
 
 use Content;
-use Jade\Content\JudgmentContent;
+use Jade\Content\EntityContent;
 use Status;
 use StatusValue;
 
-class JudgmentSummarizer {
+class ProposalSummarizer {
 
 	/**
-	 * Extract preferred judgment values.
+	 * Extract preferred proposal values.
 	 *
-	 * @param Content $content Judgment page content to summarize.
+	 * @param Content $content proposal page content to summarize.
 	 * @return StatusValue When successful, includes a map from schema to preferred value.
 	 */
 	public static function getSummaryFromContent( Content $content ) {
-		if ( JudgmentContent::CONTENT_MODEL_JUDGMENT !== $content->getModel() ) {
+		if ( EntityContent::CONTENT_MODEL_ENTITY !== $content->getModel() ) {
 			return Status::newFatal( 'jade-content-model-error' );
 		}
 		// FIXME: Relies on duck typing, unfriendly to static analysis.
-		'@phan-var JudgmentContent $content';
+		'@phan-var EntityContent $content';
 		$data = $content->getData()->getValue();
 
-		$preferred = self::extractPreferredJudgment( $data );
-		return Status::newGood( (array)$preferred->schema );
+		// $preferred = self::extractPreferredProposal( $data );
+		// return Status::newGood( (array)$preferred->schema );
+		return Status::newGood();
 	}
 
 	/**
-	 * @param object $data Judgment page content as an object.
+	 * @param object $data proposal page content as an object.
 	 *
-	 * @return object preferred judgment
+	 * @return object preferred proposal
 	 */
-	private static function extractPreferredJudgment( $data ) {
+	private static function extractPreferredProposal( $data ) {
 		$preferredList = array_filter(
-			$data->judgments,
-			function ( $judgment ) {
-				return $judgment->preferred;
+			$data->proposals,
+			function ( $proposal ) {
+				return $proposal->preferred;
 			}
 		);
 		return $preferredList[0];

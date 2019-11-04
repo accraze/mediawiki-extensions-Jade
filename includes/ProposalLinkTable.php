@@ -22,9 +22,9 @@ use Wikimedia\Rdbms\ILoadBalancer;
 use WikiPage;
 
 /**
- * Judgment index storage implemented using a RDBMS link table and indexes.
+ * Proposal index storage implemented using a RDBMS link table and indexes.
  */
-class JudgmentLinkTable implements JudgmentIndexStorage {
+class ProposalLinkTable implements EntityIndexStorage {
 
 	private $loadBalancer;
 
@@ -32,27 +32,27 @@ class JudgmentLinkTable implements JudgmentIndexStorage {
 		$this->loadBalancer = $loadBalancer;
 	}
 
-	public function insertIndex( JudgmentTarget $target, WikiPage $judgmentPage ) {
-		$tableHelper = new JudgmentLinkTableHelper( $target->entityType );
+	public function insertIndex( ProposalTarget $target, WikiPage $proposalPage ) {
+		$tableHelper = new ProposalLinkTableHelper( $target->entityType );
 
-		// Create row linking the judgment and its target.
+		// Create row linking the Proposal and its target.
 		$dbw = $this->loadBalancer->getConnection( DB_MASTER );
 		$row = [
 			$tableHelper->getTargetColumn() => $target->entityId,
-			$tableHelper->getJudgmentColumn() => $judgmentPage->getId(),
+			$tableHelper->getProposalColumn() => $proposalPage->getId(),
 		];
 		$dbw->insert( $tableHelper->getLinkTable(), $row, __METHOD__, [ 'IGNORE' ] );
 	}
 
-	public function deleteIndex( JudgmentTarget $target, WikiPage $judgmentPage ) {
-		$tableHelper = new JudgmentLinkTableHelper( $target->entityType );
+	public function deleteIndex( ProposalTarget $target, WikiPage $proposalPage ) {
+		$tableHelper = new ProposalLinkTableHelper( $target->entityType );
 
-		// Delete row linking the judgment and its target.  Select the primary
+		// Delete row linking the Proposal and its target.  Select the primary
 		// key first, to avoid long queries on the master database.
 		$dbr = $this->loadBalancer->getConnection( DB_REPLICA );
 		$conds = [
 			$tableHelper->getTargetColumn() => $target->entityId,
-			$tableHelper->getJudgmentColumn() => $judgmentPage->getId(),
+			$tableHelper->getProposalColumn() => $proposalPage->getId(),
 		];
 		$id = $dbr->selectField(
 			$tableHelper->getLinkTable(),
@@ -69,13 +69,13 @@ class JudgmentLinkTable implements JudgmentIndexStorage {
 		}
 	}
 
-	public function updateSummary( JudgmentTarget $target, array $summaryValues ) : StatusValue {
+	public function updateSummary( ProposalTarget $target, array $summaryValues ) : StatusValue {
 		if ( !$summaryValues ) {
 			// Nothing to do.
 			return Status::newGood();
 		}
 
-		$tableHelper = new JudgmentLinkTableHelper( $target->entityType );
+		$tableHelper = new ProposalLinkTableHelper( $target->entityType );
 
 		$row = [];
 		foreach ( $summaryValues as $key => $value ) {

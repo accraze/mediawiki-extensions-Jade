@@ -12,18 +12,12 @@ $namespaceAliases = [];
 
 /** English */
 $namespaceNames['en'] = [
-	NS_JUDGMENT => 'Judgment',
-	NS_JUDGMENT_TALK => 'Judgment_talk',
-];
-
-// "judgment" and "judgement" are alternative spellings, so allow either.
-$namespaceAliases['en'] = [
-	'Judgement' => NS_JUDGMENT,
-	'Judgement_talk' => NS_JUDGMENT_TALK,
+	NS_JADE => 'Jade',
+	NS_JADE_TALK => 'Jade_talk',
 ];
 
 /** Spanish */
 $namespaceNames['es'] = [
-	NS_JUDGMENT => 'Jade',
-	NS_JUDGMENT_TALK => 'Jade_discusión',
+	NS_JADE => 'Jade',
+	NS_JADE_TALK => 'Jade_discusión',
 ];

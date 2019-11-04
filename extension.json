@@ -5,27 +5,36 @@
 	"license-name": "GPL-3.0-or-later",
 	"type": "other",
 	"author": [
-		"Adam Roses Wight"
+		"Adam Roses Wight",
+		"Andy Craze"
 	],
-	"url": "https://www.mediawiki.org/wiki/Extension:JADE",
+	"url": "https://www.mediawiki.org/wiki/Extension:Jade",
 	"requires": {
 		"MediaWiki": ">= 1.34.0"
 	},
 	"namespaces": [
 		{
 			"id": 810,
-			"constant": "NS_JUDGMENT",
-			"name": "Judgment",
-			"defaultcontentmodel": "JadeJudgment"
+			"constant": "NS_JADE",
+			"name": "Jade",
+			"defaultcontentmodel": "JadeEntity"
 		},
 		{
 			"id": 811,
-			"constant": "NS_JUDGMENT_TALK",
-			"name": "Judgment_talk"
+			"constant": "NS_JADE_TALK",
+			"name": "Jade_talk"
 		}
 	],
-	"APIListModules": {
-		"getjudgments": "Jade\\ApiGetJudgments"
+	"APIModules": {
+		"jadecreateandendorse": "Jade\\Api\\CreateAndEndorse",
+		"jadesetpreference": "Jade\\Api\\SetPreference",
+		"jadeupdateproposal": "Jade\\Api\\UpdateProposal",
+		"jadedeleteproposal": "Jade\\Api\\DeleteProposal",
+		"jadeendorse": "Jade\\Api\\Endorse",
+		"jadedeleteendorsement": "Jade\\Api\\DeleteEndorsement",
+		"jadeupdateendorsement": "Jade\\Api\\UpdateEndorsement",
+		"jademoveendorsement": "Jade\\Api\\MoveEndorsement",
+		"jadeproposeorendorse": "Jade\\Api\\ProposeOrEndorse"
 	},
 	"AutoloadNamespaces": {
 		"Jade\\": "includes/",
@@ -33,15 +42,7 @@
 		"Jade\\Tests\\": "tests/phpunit/"
 	},
 	"ContentHandlers": {
-		"JadeJudgment": "Jade\\Content\\JudgmentContentHandler"
-	},
-	"Hooks": {
-		"ArticleDeleteComplete": "Jade\\Hooks\\LinkTableHooks::onArticleDeleteComplete",
-		"ArticleUndelete": "Jade\\Hooks\\LinkTableHooks::onArticleUndelete",
-		"LoadExtensionSchemaUpdates": "Jade\\Hooks\\DatabaseSchemaHooks::onLoadExtensionSchemaUpdates",
-		"MovePageIsValidMove": "Jade\\Hooks\\MoveHooks::onMovePageIsValidMove",
-		"PageContentInsertComplete": "Jade\\Hooks\\LinkTableHooks::onPageContentInsertComplete",
-		"PageContentSaveComplete": "Jade\\Hooks\\LinkSummaryHooks::onPageContentSaveComplete"
+		"JadeEntity": "Jade\\Content\\EntityContentHandler"
 	},
 	"MessagesDirs": {
 		"Jade": [
@@ -78,7 +79,13 @@
 			"value": 6,
 			"description": "Count of how many content quality levels are used on your wiki.",
 			"public": true
+		},
+		"JadeAllowedFacets": {
+			"value": [ "editquality", "contentquality" ],
+			"description": "List containing allowed facet strings.",
+			"public": true
 		}
+
 	},
 	"ExtensionMessagesFiles": {
 		"JadeNamespaces": "Jade.namespaces.php"

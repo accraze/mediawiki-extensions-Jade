@@ -44,6 +44,7 @@ class CleanJudgmentLinksTest extends MaintenanceBaseTestCase {
 	}
 
 	public function setUp() : void {
+		$this->markTestSkipped( 'not used' );
 		parent::setUp();
 		$this->tablesUsed[] = 'jade_diff_judgment';
 		$this->tablesUsed[] = 'jade_revision_judgment';

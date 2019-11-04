@@ -22,34 +22,34 @@ namespace Jade;
 
 use StatusValue;
 
-interface EntityJudgmentSetStorage {
+interface EntityProposalSetStorage {
 
 	/**
-	 * Store a revision of judgment content.
+	 * Store a revision of proposal content.
 	 *
 	 * Overwrites the page without merging.
 	 *
 	 * TODO: editRevId for conflict detection?
-	 * @param JudgmentTarget $target identity of target wiki entity.
-	 * @param array $judgmentSet All judgments on this entity, as nested
+	 * @param ProposalTarget $target identity of target wiki entity.
+	 * @param array $proposalSet All proposals on this entity, as nested
 	 * associative arrays, normalized for storage.
 	 * @param string $summary Edit summary.
 	 * @param array $tags Optional list of change tags to set on the revision being created.
 	 *
 	 * @return StatusValue isOK if stored successfully.
 	 */
-	public function storeJudgmentSet(
-		JudgmentTarget $target,
-		array $judgmentSet,
+	public function storeProposalSet(
+		ProposalTarget $target,
+		array $proposalSet,
 		$summary,
 		array $tags );
 
 	/**
-	 * @param JudgmentTarget $target identity of target wiki entity.
+	 * @param ProposalTarget $target identity of target wiki entity.
 	 *
-	 * @return StatusValue with array value containing all judgments for this
+	 * @return StatusValue with array value containing all proposals for this
 	 *         entity.
 	 */
-	public function loadJudgmentSet( JudgmentTarget $target );
+	public function loadProposalSet( ProposalTarget $target );
 
 }
