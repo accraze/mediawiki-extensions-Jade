@@ -1,0 +1,21 @@
+{
+	"@metadata": {
+		"authors": [
+			"Jon Harald Søby"
+		]
+	},
+	"apihelp-createjudgment-summary": "Opprett en ny bedømmelse",
+	"apihelp-createjudgment-param-entitytype": "Målentitetstype for wikien, kan være «diff», «revision» eller «page».",
+	"apihelp-createjudgment-param-entityid": "Revisjons-ID for diff- og revisjonsmål, side-ID for datomåltypen.",
+	"apihelp-createjudgment-param-schema": "Poengskjema brukt av denne bedømmelsen, enten «damaging», «goodfaith», «wp10» eller «drafttopic».",
+	"apihelp-createjudgment-param-data": "Rå poengdata. data=\"true\" og \"false\" tolkes som boolske verdier.",
+	"apihelp-createjudgment-param-notes": "Valgfri tekst som forklarer bedømmelsen.",
+	"apihelp-createjudgment-param-summary": "Valgfritt redigeringssammendrag.",
+	"apihelp-createjudgment-param-tags": "Valgfrie endringstagger som skal gjelde bedømmelsen.",
+	"apihelp+jade-createjudgment-example": "Opprett en bedømmelse som sier at diff #3 er skadelig.",
+	"apihelp-query+getjudgments-param-entitytype": "Målentitetstype for wikien, kan være «diff», «revision» eller «page».",
+	"apihelp-query+getjudgments-param-entityid": "Revisjons-ID for diff- og revisjonsmål, side-ID for datomåltype.",
+	"apihelp-query+getjudgments-summary": "Hent alle tilgjengelige bedømmelser for en wikientitet.",
+	"apihelp-query+jade-getjudgments-list-example": "List opp bedømmelser for diff #3.",
+	"apihelp-query+jade-getjudgments-generator-example": "Hent bedømmelsesinnhold for diff #3."
+}
