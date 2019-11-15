@@ -38,10 +38,14 @@
 	"jade-user-central-id-invalid": "מזהה משתמש מרכזי \"$1\" אינו קיים.",
 	"jade-user-id-mismatch": "מזהה משתמש מקומי \"$1\" ומזהה מרכזי \"$2\" מזהים משתמשים שונים.",
 	"jade-user-ip-invalid": "כתובת ה־IP‏ \"$1\" אינה תקינה.",
-	"jade-bad-contentquality-value": "ערך גרוע \"$1\" עבור סכמת contentquality, הערכים האפשריים הם: $2",
+	"jade-created-timestamp-invalid": "חותם־זמן שנוצר על־ידי הבעת התמיכה אינו תקין: \"$1\"",
+	"jade-bad-contentquality-value": "אינדקס גרוע \"$1\" לסכֵמה של איכות תוכן, חייבת להיות רמת איכות בין 1 לבין $2.",
 	"jade-cannot-create-page": "לא ניתן ליצור את הדף הזה.",
 	"jade-cannot-edit-page": "אין באפשרותך לערוך את הדף הזה.",
 	"jade-invalid-move-any": "העברת דפי שיפוט אינה מותרת.",
 	"jade-db-error": "שגיאת בסיס נתונים: $1",
+	"jade-content-model-error": "מודל תוכן שגוי לשיפוט",
+	"jade-endorsement": "הבעת תמיכה",
+	"jade-endorsements": "הבעות תמיכה",
 	"jade-user": "משתמש"
 }
