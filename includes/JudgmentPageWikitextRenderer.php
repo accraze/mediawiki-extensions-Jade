@@ -110,10 +110,10 @@ class JudgmentPageWikitextRenderer {
 		if ( is_bool( $value ) ) {
 			$valueStr = $value ? 'true' : 'false';
 		} else {
-			$valueStr = strtolower( strval( $value ) );
+			$valueStr = strval( $value );
 		}
 
-		$calculatedMessageKey = "jade-{$schemaName}-scale-{$valueStr}-label";
+		$calculatedMessageKey = 'jade-' . $schemaName . '-scale-' . strtolower( $valueStr ) . '-label';
 		$message = wfMessage( $calculatedMessageKey );
 
 		if ( $message->exists() ) {
@@ -124,7 +124,7 @@ class JudgmentPageWikitextRenderer {
 			// that override the article quality scale, we'll need to figure
 			// out if it's appropriate to include the custom keys in the
 			// extension, or if these should be provided as local wiki strings.
-			return wfMessage( 'jade-contentquality-generic', $value )->inContentLanguage()->text();
+			return wfMessage( 'jade-contentquality-generic', $valueStr )->inContentLanguage()->text();
 		}
 
 		// It should be impossible to get here.  Fall through by displaying the
