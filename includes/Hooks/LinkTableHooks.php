@@ -72,7 +72,7 @@ class LinkTableHooks {
 	 * @param User &$user the user that deleted the article
 	 * @param string $reason the reason the article was deleted
 	 * @param int $id id of the article that was deleted
-	 * @param Content|null $content the content of the deleted article, or null in case of an error
+	 * @param Content $content the content of the deleted article
 	 * @param LogEntry $logEntry the log entry used to record the deletion
 	 */
 	public static function onArticleDeleteComplete(
