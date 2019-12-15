@@ -38,7 +38,7 @@
 	"apihelp-jadedeleteproposal-param-entitydata": "The type of Jade entity, e.g. <kbd>{\"type\": \"diff\", \"id\": \"123456\"}</kbd>. One of <var>title</var> or <var>entitydata</var> is required.",
 	"apihelp-jadedeleteproposal-param-facet": "The facet of the entity.",
 	"apihelp-jadedeleteproposal-param-labeldata": "The relevant label data, e.g. <kbd>{\"damaging\":false, \"goodfaith\": true}</kbd>. See [[mw:Extension:Jade/API]] for more info.",
-	"apihelp-jadedeleteproposal-example": "Remove a specific proposal using the <var><title</var> param.",
+	"apihelp-jadedeleteproposal-example": "Remove a specific proposal using the <var>title</var> param.",
 	"apihelp-jadedeleteproposal-example-2": "Remove a specific proposal using the <var>entitydata</var> param.",
 	"apihelp-jadeendorse-summary": "Adds a new endorsement to a proposal.",
 	"apihelp-jadeendorse-param-title": "The encoded entity name, e.g. <kbd>Jade:Diff/123456</kbd>. One of <var>title</var> or <var>entitydata</var> is required.",
