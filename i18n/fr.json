@@ -20,9 +20,7 @@
 	"jade-contentquality-scale-5-label": "Bon article",
 	"jade-contentquality-scale-6-label": "Article en vedette",
 	"jade-contentquality-generic": "Qualité du contenu « $1 »",
-	"jade-new-judgment": "Nouveau jugement",
-	"jade-add-judgment": "Ajouter un jugement",
-	"jade-notes-placeholder": "Notes sur le jugement",
+	"jade-notes-placeholder": "Notes sur la proposition",
 	"jade-delete": "Supprimer",
 	"jade-bad-title-format": "Format de titre invalide",
 	"jade-bad-title-namespace": "Espace de noms non valide pour un titre d'appréciation.",
@@ -31,7 +29,7 @@
 	"jade-bad-entity-id-format": "Format non valide de l'entité d'ID « $1 »",
 	"jade-bad-revision-id": "Version non trouvée avec l'ID: « $1 »",
 	"jade-bad-content-generic": "Erreurs de syntaxe dans le contenu JSON.",
-	"jade-bad-content": "L'appréciation n'est pas conforme au schéma: $1",
+	"jade-bad-content": "L’entité Jade n’est pas conforme au schéma : $1",
 	"jade-too-many-preferred": "Préférence aux appréciations multiples, mais une seule est autorisée.",
 	"jade-none-preferred": "Pas de préférence d'avis, mais il en faut un.",
 	"jade-illegal-schema": "Schéma « $1 » non autorisé pour ce type d'entité.",
@@ -48,5 +46,6 @@
 	"jade-content-model-error": "Mauvais modèle de contenu pour les appréciations.",
 	"jade-endorsement": "Approbation",
 	"jade-endorsements": "Approbation",
-	"jade-user": "Utilisateur"
+	"jade-user": "Utilisateur",
+	"jade-nochange": "Cette action n’apportera aucune modification. L’utilisateur a déjà approuvé labeldata."
 }

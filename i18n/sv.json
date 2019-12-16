@@ -15,8 +15,6 @@
 	"jade-contentquality-scale-5-label": "Bra artikel",
 	"jade-contentquality-scale-6-label": "Utmärkt artikel",
 	"jade-contentquality-generic": "Innehållskvalitet \"$1\"",
-	"jade-new-judgment": "Ny bedömning",
-	"jade-add-judgment": "Lägg till bedömning",
 	"jade-delete": "Radera",
 	"jade-bad-title-format": "Ogiltigt titelformat",
 	"jade-user-ip-invalid": "IP-adressen ''$1'' är ogiltig.",

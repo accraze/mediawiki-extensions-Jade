@@ -6,18 +6,16 @@
 			"Thibaut120094"
 		]
 	},
-	"apihelp-createjudgment-summary": "Créer un nouveau jugement",
-	"apihelp-createjudgment-param-entitytype": "Type d’entité du wiki cible, peut être « diff », « revision » ou « page ».",
-	"apihelp-createjudgment-param-entityid": "ID de révision pour les cibles diff et revision, ID de page pour le type de cible date.",
-	"apihelp-createjudgment-param-schema": "Schéma de notation utilisé par ce jugement, soit « damaging », « goodfaith », « wp10 » ou « drafttopic ».",
-	"apihelp-createjudgment-param-data": "Données de notation brutes. data=\"true\" et \"false\" sont interprétés comme des booléens.",
-	"apihelp-createjudgment-param-notes": "Texte facultatif expliquant le jugement.",
-	"apihelp-createjudgment-param-summary": "Résumé facultatif de la modification.",
-	"apihelp-createjudgment-param-tags": "Balises facultatives de la modification à appliquer au jugement.",
-	"apihelp+jade-createjudgment-example": "Créer un jugement disant que diff #3 est endommagé.",
-	"apihelp-query+getjudgments-param-entitytype": "Type d’entité du wiki cible, peut être « diff », « revision » ou « page ».",
-	"apihelp-query+getjudgments-param-entityid": "ID de révision pour les cibles diff et revision, ID de page pour le type de cible date.",
-	"apihelp-query+getjudgments-summary": "Obtenir des jugements disponibles pour une entité wiki.",
-	"apihelp-query+jade-getjudgments-list-example": "Lister la page de jugement pour le diff #3.",
-	"apihelp-query+jade-getjudgments-generator-example": "Obtenir le contenu du jugement pour diff #3."
+	"apihelp-jadecreateandendorse-param-entitydata": "Le type de l’entité Jade, par exemple <kbd>{\"type\": \"diff\", \"id\": \"123456\"}</kbd>. Une valeur de <var>title</var> ou <var>entitydata</var> est obligatoire.",
+	"apihelp-jadecreateandendorse-param-comment": "Résumé de la révision",
+	"apihelp-jadesetpreference-example": "Marque une proposition spécifique comme étant la préférée en utilisant le paramètre <var>title</var>.",
+	"apihelp-jadedeleteproposal-param-comment": "Résumé de la révision.",
+	"apihelp-jadedeleteproposal-summary": "Supprimer une proposition spécifique.",
+	"apihelp-jadeendorse-param-labeldata": "Les données relatives à l'étiquette, par exemple <kbd>{« préjudiciable » : faux, « de bonne foi »: vrai}</kbd>. Voir [[mw:Extension:Jade/API]] pour davantage d'informations.",
+	"apihelp-jadeendorse-param-comment": "Résumé de la révision",
+	"apihelp-jadedeleteendorsement-param-comment": "Résumé de la révision",
+	"apihelp-jadedeleteendorsement-example-2": "Supprimez l’approbation d’un utilisateur sur une proposition en utilisant le paramètre <var>entitydata</var>.",
+	"apihelp-jadeupdateendorsement-param-comment": "Résumé de la révision",
+	"apihelp-jademoveendorsement-param-comment": "Résumé de la révision",
+	"apihelp-jadeproposeorendorse-param-comment": "Résumé de la révision"
 }
