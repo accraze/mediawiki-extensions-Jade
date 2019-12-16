@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Robby"
+		]
+	},
+	"apihelp-jadecreateandendorse-param-comment": "Resumé vun der Versioun",
+	"apihelp-jadeendorse-param-comment": "Resumé vun der Versioun",
+	"apihelp-jademoveendorsement-param-comment": "Resumé vun der Versioun"
+}

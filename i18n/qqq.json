@@ -5,7 +5,8 @@
 			"Robby",
 			"Umherirrender",
 			"Raymond",
-			"Accraze"
+			"Accraze",
+			"Amire80"
 		]
 	},
 	"jade-desc": "{{desc|name=JADE|url=https://www.mediawiki.org/wiki/Extension:JADE}}",
@@ -47,10 +48,10 @@
 	"jade-endorsement": "Label for an endorsement comment.",
 	"jade-endorsements": "Label for a group of endorsements.",
 	"jade-user": "Label for a user nick or IP.\n{{Identical|User}}",
-	"jade-proposalnotfound": "Error message displayed when a proposed label cannot be found for endorsement or deletion.  Parameters:\n $1 - The structured data use to identify a proposed label.",
-	"jade-endorsementnotfound":"Error message displayed when an endorsement cannot be found.",
+	"jade-proposalnotfound": "Error message displayed when a proposed label cannot be found for endorsement or deletion.  Parameters:\n* $1 - The structured data use to identify a proposed label.",
+	"jade-endorsementnotfound": "Error message displayed when an endorsement cannot be found.",
 	"jade-endorsingnonpreferredproposal": "Warning message displayed when endorsing a non-preferred proposal.",
 	"jade-nochange": "Error message displayed when the action would result in no change to the Entity.",
 	"jade-proposalispreferred": "Error message displayed when trying to delete a preferred proposal when it is not the only remaining proposal for a facet.",
-	"jade-invalidtitleentitydata":"Error message displayed when one of title or entitydata API parameters are not given."
-	}
+	"jade-invalidtitleentitydata": "Error message displayed when one of title or entitydata API parameters are not given."
+}

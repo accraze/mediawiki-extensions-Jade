@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Kunokuno"
+		]
+	},
+	"apihelp-jadedeleteproposal-example": "Tangkason an espisipikong kahagadan gamit an parametrong <var>title</var>.",
+	"apihelp-jadeproposeorendorse-param-notes": "Mga tala na kaipohan tandaan pagkrear nin bagong proposal. Magkakaigwa nin warning kun an proposal eksistido na. An mga tala dai man tulos mapapatungan nin iba pa."
+}

@@ -17,9 +17,7 @@
 	"jade-contentquality-scale-5-label": "Artigos bom",
 	"jade-contentquality-scale-6-label": "Artigo destacado",
 	"jade-contentquality-generic": "Qualidade do conteúdo \"$1\"",
-	"jade-new-judgment": "Nova avaliação",
-	"jade-add-judgment": "Adicionar avaliação",
-	"jade-notes-placeholder": "Notas sobre a avaliação",
+	"jade-notes-placeholder": "Notas sobre a proposta",
 	"jade-delete": "Deletar",
 	"jade-bad-title-format": "Formato de título inválido",
 	"jade-bad-title-namespace": "Espaço de nomes inválido para um título de julgamento.",
@@ -45,5 +43,7 @@
 	"jade-content-model-error": "Modelo de conteúdo errado para julgamento.",
 	"jade-endorsement": "Endosso",
 	"jade-endorsements": "Endossos",
-	"jade-user": "Usuário"
+	"jade-user": "Usuário",
+	"jade-endorsementnotfound": "Não foi possível encontrar um endosso do usuário de destino.",
+	"jade-nochange": "Esta ação resultaria em nenhuma alteração. O usuário já endossou labeldata."
 }
