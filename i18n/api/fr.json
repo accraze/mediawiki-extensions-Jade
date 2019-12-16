@@ -47,7 +47,6 @@
 	"apihelp-jadeendorse-param-entitydata": "Le type d’entité Jade, par ex. <kbd>{\"type\": \"diff\", \"id\": \"123456\"}</kbd>. Un des paramètres <var>title</var> ou <var>entitydata</var> est nécessaire.",
 	"apihelp-jadeendorse-param-facet": "La facette de l’entité.",
 	"apihelp-jadeendorse-param-labeldata": "Les données appropriées  au libellé, par ex. <kbd>{\"damaging\": false, \"goodfaith\": true}</kbd>. Voir [[mw:Extension:Jade/API]] pour davantage d’informations.",
-	"apihelp-jadeendorse-param-notes": "Notes à enregistrer lors de la création d’une nouvelle proposition. Une alerte sera émise si une proposition existe déjà. Les notes ne seront pas automatiquement écrasées.",
 	"apihelp-jadeendorse-param-endorsementcomment": "Commentaire à laisser avec l’approbation.",
 	"apihelp-jadeendorse-param-endorsementorigin": "Une chaîne représentant ce que l’utilisateur regardait quand il a fait ce jugement.",
 	"apihelp-jadeendorse-param-nomove": "Si défini, ne pas déplacer une approbation. À la place, renvoyer une erreur.",

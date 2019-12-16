@@ -17,7 +17,6 @@
 	"apihelp-jadedeleteproposal-param-facet": "A faceta da entidade.",
 	"apihelp-jadeendorse-summary": "Adiciona um novo endosso a uma proposta.",
 	"apihelp-jadeendorse-param-facet": "A faceta da entidade.",
-	"apihelp-jadeendorse-param-notes": "Notas para salvar ao criar uma nova proposta. Um aviso será gerado se uma proposta já existir. As anotações não serão substituídas automaticamente.",
 	"apihelp-jadeendorse-param-endorsementcomment": "Comente para deixar com o endosso.",
 	"apihelp-jadeendorse-param-endorsementorigin": "Uma sequência que representa o que o usuário estava vendo quando fez esse julgamento.",
 	"apihelp-jadeendorse-param-nomove": "Se definido, não mova um endosso. Em vez disso, lance um erro.",

@@ -46,7 +46,6 @@
 	"apihelp-jadeendorse-param-entitydata": "הסוג של ישות ג'ייד, למשל <kbd dir=\"ltr\">{\"type\": \"diff\", \"id\": \"123456\"}</kbd>. נדרש אחד מתוך <var>title</var> או <var>entitydata</var>.",
 	"apihelp-jadeendorse-param-facet": "ההיבט של הישות.",
 	"apihelp-jadeendorse-param-labeldata": "נתוני התווית הרלוונטיים, למשל <kbd dir=\"ltr\">{\"damaging\": false, \"goodfaith\": true}</kbd>. ר' [[mw:Extension:Jade/API]] למידע נוסף.",
-	"apihelp-jadeendorse-param-notes": "הערות שתישמרנה בעת יצירת הצעה חדשה. תועלה אזהרה אם ההצעה כבר קיימת. ההערות לא תידרסנה אוטומטית.",
 	"apihelp-jadeendorse-param-endorsementcomment": "איזו הערה להשאיר עם הבעת התמיכה.",
 	"apihelp-jadeendorse-param-endorsementorigin": "מחרוזת שמייצגת את מה שהמשתמש חיפש כשעשה את השיפוט הזה.",
 	"apihelp-jadeendorse-param-nomove": "אם זה מוגדר, לא להעביר את הבעת התמיכה. לזרוק שגיאה במקום זאת.",

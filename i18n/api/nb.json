@@ -44,7 +44,6 @@
 	"apihelp-jadeendorse-param-entitydata": "Typen Jade-entitet, f.eks. <kbd>{\"type\": \"diff\", \"id\": \"123456\"}</kbd>. Enten <kbd>title</var> eller <var>entitydata</var> kreves.",
 	"apihelp-jadeendorse-param-facet": "Entitetens fasett.",
 	"apihelp-jadeendorse-param-labeldata": "De relevante etikettdataene, f.eks. <kbd>{\"damaging\": false, \"goodfaith\": true}</kbd>. Se [[mw:Extension:Jade/API]] for mer informasjon.",
-	"apihelp-jadeendorse-param-notes": "Merknader som skal lagres når man oppretter et nytt forslag. En advarsel gis hvis et forslag allerede finnes. Merknader blir ikke automatisk overskrevet.",
 	"apihelp-jadeendorse-param-endorsementcomment": "Kommentar som skal leveres sammen med støtteerklæringen.",
 	"apihelp-jadeendorse-param-endorsementorigin": "En streng som representerer hva brukeren så på når h*n ga denne bedømmelsen.",
 	"apihelp-jadeendorse-param-nomove": "Støtteerklæring flyttes ikke hvis denne er satt, men gir en feil i stedet.",

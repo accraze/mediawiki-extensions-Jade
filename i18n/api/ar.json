@@ -44,7 +44,6 @@
 	"apihelp-jadeendorse-param-entitydata": "اسم كيان Jade، على سبيل المثال <kbd>{\"type\": \"diff\", \"id\": \"123456\"}</kbd>، مطلوب واحد من <var>title</var> أو <var>entitydata</var>.",
 	"apihelp-jadeendorse-param-facet": "وجه الكيان.",
 	"apihelp-jadeendorse-param-labeldata": "بيانات التسمية ذات الصلة، على سبيل المثال <kbd>{\"damaging\":false, \"goodfaith\": true}</kbd>، انظر [[mw:Extension:Jade/API]] لمزيد من المعلومات.",
-	"apihelp-jadeendorse-param-notes": "ملاحظات للحفظ عند إنشاء اقتراح جديد، سيتم رفع تحذير إذا كان هناك اقتراح موجود بالفعل، لن يتم استبدال الملاحظات تلقائيا.",
 	"apihelp-jadeendorse-param-endorsementcomment": "التعليق على مغادرة مع تأييد.",
 	"apihelp-jadeendorse-param-endorsementorigin": "سلسلة تمثل ما كان المستخدم ينظر عندما أصدروا هذا الحكم.",
 	"apihelp-jadeendorse-param-nomove": "إذا تم التعيين، لا تقم بتحريك تأييد، بدلا من رمي خطأ.",

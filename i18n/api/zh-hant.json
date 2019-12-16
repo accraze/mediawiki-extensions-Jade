@@ -44,7 +44,6 @@
 	"apihelp-jadeendorse-param-entitydata": "Jade 單元類型，例如：<kbd>{\"type\": \"diff\", \"id\": \"123456\"}</kbd>。其中 <var>title</var> 或是 <var>entitydata</var> 為必要。",
 	"apihelp-jadeendorse-param-facet": "單元方面。",
 	"apihelp-jadeendorse-param-labeldata": "相關標籤資料，例如：<kbd>{\"damaging\":false, \"goodfaith\": true}</kbd>。請查看 [[mw:Extension:Jade/API]] 來獲得更多資訊。",
-	"apihelp-jadeendorse-param-notes": "當建立新提議要保存的備註。若提議已存在會出現警告。備註不會被自動覆寫。",
 	"apihelp-jadeendorse-param-endorsementcomment": "留下評論並贊同。",
 	"apihelp-jadeendorse-param-endorsementorigin": "代表著當使用者做出判斷時，他們所查看內容的字串。",
 	"apihelp-jadeendorse-param-nomove": "若有設定，不要移動贊同，反之會拋出錯誤。",

@@ -45,7 +45,6 @@
 	"apihelp-jadeendorse-param-entitydata": "The type of Jade entity, e.g. <kbd>{\"type\": \"diff\", \"id\": \"123456\"}</kbd>. One of <var>title</var> or <var>entitydata</var> is required.",
 	"apihelp-jadeendorse-param-facet": "The facet of the entity.",
 	"apihelp-jadeendorse-param-labeldata": "The relevant label data, e.g. <kbd>{\"damaging\": false, \"goodfaith\": true}</kbd>. See [[mw:Extension:Jade/API]] for more info.",
-	"apihelp-jadeendorse-param-notes": "Notes to save when creating a new proposal. A warning will be raised if a proposal already exists. Notes will not be automatically overwritten.",
 	"apihelp-jadeendorse-param-endorsementcomment": "Comment to leave with the endorsement.",
 	"apihelp-jadeendorse-param-endorsementorigin": "A string representing what the user was looking at when they made this judgment.",
 	"apihelp-jadeendorse-param-nomove": "If set, do not move an endorsement. Instead throw an error.",

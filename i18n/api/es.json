@@ -7,7 +7,6 @@
 	},
 	"apihelp-jadedeleteproposal-param-facet": "La faceta de la entidad.",
 	"apihelp-jadedeleteproposal-example": "Eliminar una propuesta específica utilizando el parámetro <var>title</var>.",
-	"apihelp-jadeendorse-param-notes": "Notas para guardar al crear una nueva propuesta. Se generará una advertencia si ya existe una propuesta. Las notas no se sobrescribirán automáticamente.",
 	"apihelp-jadedeleteendorsement-param-comment": "Resumen de revisión",
 	"apihelp-jadeupdateendorsement-param-comment": "Resumen de revisión",
 	"apihelp-jademoveendorsement-param-facet": "La faceta de la entidad.",
