@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Adamw",
-			"Accraze"
+			"Accraze",
+			"Verdy p"
 		]
 	},
 	"apihelp-jadecreateandendorse-summary": "Creates a new proposal and files an endorsement.  If the user already endorsed another proposal within the facet, move the user's endorsement to the new proposal.",
@@ -37,7 +38,7 @@
 	"apihelp-jadedeleteproposal-param-title": "The encoded entity name, e.g. <kbd>Jade:Diff/123456</kbd>. One of <var>title</var> or <var>entitydata</var> is required.",
 	"apihelp-jadedeleteproposal-param-entitydata": "The type of Jade entity, e.g. <kbd>{\"type\": \"diff\", \"id\": \"123456\"}</kbd>. One of <var>title</var> or <var>entitydata</var> is required.",
 	"apihelp-jadedeleteproposal-param-facet": "The facet of the entity.",
-	"apihelp-jadedeleteproposal-param-labeldata": "The relevant label data, e.g. <kbd>{\"damaging\":false, \"goodfaith\": true}</kbd>. See [[mw:Extension:Jade/API]] for more info.",
+	"apihelp-jadedeleteproposal-param-labeldata": "The relevant label data, e.g. <kbd>{\"damaging\":false, \"goodfaith\": true}</kbd>. See [[mw:Extension:Jade/API]] for more info.\n\nNote this example data must be using the JSON: it is a comma separated list of properties given as <kbd>\"key\":value</kbd> pairs, surrounded by curly braces. The keys should be documented but usuially not translatable; the boolean values <kbd>true</kbd> and <kbd>false</kbd> are not translated; as well numeric values use JSON syntax, based on the English locale. Keys and string values are between \"double English quotation marks\"., and date/time values are strings usually in ISO format (indepenfant of the locale).",
 	"apihelp-jadedeleteproposal-example": "Remove a specific proposal using the <var><title</var> param.",
 	"apihelp-jadedeleteproposal-example-2": "Remove a specific proposal using the <var>entitydata</var> param.",
 	"apihelp-jadeendorse-summary": "Adds a new endorsement to a proposal.",

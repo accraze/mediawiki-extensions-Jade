@@ -5,7 +5,8 @@
 			"Wladek92",
 			"Zarisi",
 			"Tartare",
-			"Thibaut120094"
+			"Thibaut120094",
+			"Verdy p"
 		]
 	},
 	"jade-desc": "Moteur de verdict et de dialogue",
@@ -23,7 +24,7 @@
 	"jade-notes-placeholder": "Notes sur la proposition",
 	"jade-delete": "Supprimer",
 	"jade-bad-title-format": "Format de titre invalide",
-	"jade-bad-title-namespace": "Espace de noms non valide pour un titre d'appréciation.",
+	"jade-bad-title-namespace": "Espace de noms non valide pour un titre d’entité Jade.",
 	"jade-non-canonical-title": "Le titre doit avoir la forme canonique ''$1''.",
 	"jade-bad-entity-type": "Type invalide d'entité « $1 »",
 	"jade-bad-entity-id-format": "Format non valide de l'entité d'ID « $1 »",
@@ -31,7 +32,7 @@
 	"jade-bad-content-generic": "Erreurs de syntaxe dans le contenu JSON.",
 	"jade-bad-content": "L’entité Jade n’est pas conforme au schéma : $1",
 	"jade-too-many-preferred": "Préférence aux appréciations multiples, mais une seule est autorisée.",
-	"jade-none-preferred": "Pas de préférence d'avis, mais il en faut un.",
+	"jade-none-preferred": "Aucun libellé n’est préféré, mais il faut en choisir un.",
 	"jade-illegal-schema": "Schéma « $1 » non autorisé pour ce type d'entité.",
 	"jade-user-local-id-invalid": "L’ID d’utilisateur local « $1 » n’existe pas.",
 	"jade-user-central-id-invalid": "L’ID d’utilisateur central « $1 » n’existe pas.",
@@ -41,11 +42,16 @@
 	"jade-bad-contentquality-value": "Mauvais indice « $1 » pour le schéma de qualité du contenu; le niveau de qualité doit être compris entre 1 et $2 .",
 	"jade-cannot-create-page": "Vous ne pouvez pas créer cette page.",
 	"jade-cannot-edit-page": "Vous ne pouvez pas modifier cette page.",
-	"jade-invalid-move-any": "Le renommage des pages d'appréciation n'est pas autorisé.",
+	"jade-invalid-move-any": "Le renommage des pages d’entité Jade n’est pas autorisé.",
 	"jade-db-error": "Erreur de base de données : $1",
-	"jade-content-model-error": "Mauvais modèle de contenu pour les appréciations.",
+	"jade-content-model-error": "Mauvais modèle de contenu pour l’entité Jade.",
 	"jade-endorsement": "Approbation",
 	"jade-endorsements": "Approbation",
 	"jade-user": "Utilisateur",
-	"jade-nochange": "Cette action n’apportera aucune modification. L’utilisateur a déjà approuvé labeldata."
+	"jade-proposalnotfound": "Impossible de trouver une proposition où « data » correspond à ''$1''",
+	"jade-endorsementnotfound": "Impossible de trouver une approbation par l’utilisateur cible.",
+	"jade-endorsingnonpreferredproposal": "Cette action a conduit à créer une approbation pour une proposition qui n’est pas signalée comme préférée.",
+	"jade-nochange": "Cette action n’apportera aucune modification. L’utilisateur a déjà approuvé labeldata.",
+	"jade-proposalispreferred": "Impossible de supprimer une proposition sauf quand c’est la seule proposition restante pour une facette. Vous devez définir une autre proposition qui doit être « préférée ».",
+	"jade-invalidtitleentitydata": "Un paramètre « title » ou « entitydata » doit être fourni."
 }
