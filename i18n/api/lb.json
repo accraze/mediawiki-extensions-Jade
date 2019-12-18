@@ -5,6 +5,10 @@
 		]
 	},
 	"apihelp-jadecreateandendorse-param-comment": "Resumé vun der Versioun",
+	"apihelp-jadedeleteproposal-param-comment": "Resumé vun der Versioun.",
 	"apihelp-jadeendorse-param-comment": "Resumé vun der Versioun",
-	"apihelp-jademoveendorsement-param-comment": "Resumé vun der Versioun"
+	"apihelp-jadedeleteendorsement-param-comment": "Resumé vun der Versioun",
+	"apihelp-jadeupdateendorsement-param-comment": "Resumé vun der Versioun",
+	"apihelp-jademoveendorsement-param-comment": "Resumé vun der Versioun",
+	"apihelp-jadeproposeorendorse-param-comment": "Resumé vun der Versioun"
 }

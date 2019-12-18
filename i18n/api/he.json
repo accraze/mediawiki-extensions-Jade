@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Amire80",
-			"Guycn2"
+			"Guycn2",
+			"Ghsuvr"
 		]
 	},
 	"apihelp-jadecreateandendorse-summary": "יוצרת הצעה חדשה ומתייקת הבעת תמיכה. אם המשתמש כבר תמך בהצעה אחרת בהיבט, להעביר את התמיכה של המשתמש להצעה החדשה.",
@@ -80,7 +81,7 @@
 	"apihelp-jademoveendorsement-param-entitydata": "הסוג של ישות ג'ייד, למשל <kbd dir=\"ltr\">{\"type\": \"diff\", \"id\": \"123456\"}</kbd>. נדרש אחד מתוך <var>title</var> או <var>entitydata</var>.",
 	"apihelp-jademoveendorsement-param-facet": "ההיבט של הישות.",
 	"apihelp-jademoveendorsement-param-labeldata": "נתוני התווית הרלוונטיים, למשל <kbd dir=\"ltr\">{\"damaging\": false, \"goodfaith\": true}</kbd>. ר' [[mw:Extension:Jade/API]] למידע נוסף.",
-	"apihelp-jademoveendorsement-param-endorsementcomment": "שדה ההערה החדשה להבעת התמיכה. יש להשאיר ללא שינוי אם זה לא מוגדר.",
+	"apihelp-jademoveendorsement-param-endorsementcomment": "שדה ההערה החדשה להבעת התמיכה. יש להשאיר ללא שינוי אם לא הוגדר.",
 	"apihelp-jademoveendorsement-param-comment": "סיכום גרסה",
 	"apihelp-jademoveendorsement-example": "העברת הבעת תמיכה חדשה להצעה חדשה באמצעות הפרמטר <var>title</var>.",
 	"apihelp-jademoveendorsement-example-2": "העברת הבעת תמיכה חדשה להצעה חדשה באמצעות הפרמטר <var>entitydata</var>.",

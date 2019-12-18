@@ -44,6 +44,8 @@
 	"jade-endorsement": "Endosso",
 	"jade-endorsements": "Endossos",
 	"jade-user": "Usuário",
+	"jade-proposalnotfound": "Não foi possível encontrar uma proposta com \"dados\" correspondentes ''$1''",
 	"jade-endorsementnotfound": "Não foi possível encontrar um endosso do usuário de destino.",
-	"jade-nochange": "Esta ação resultaria em nenhuma alteração. O usuário já endossou labeldata."
+	"jade-nochange": "Esta ação resultaria em nenhuma alteração. O usuário já endossou labeldata.",
+	"jade-invalidtitleentitydata": "O parâmetro title ou entitydata deve ser fornecido."
 }

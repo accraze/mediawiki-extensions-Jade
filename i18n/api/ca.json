@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Fitoschido"
+		]
+	},
+	"apihelp-jadecreateandendorse-param-comment": "Resum de la revisió",
+	"apihelp-jadedeleteproposal-param-comment": "Resum de la revisió.",
+	"apihelp-jadeendorse-param-comment": "Resum de la revisió",
+	"apihelp-jadeupdateendorsement-param-comment": "Resum de la revisió",
+	"apihelp-jademoveendorsement-param-comment": "Resum de la revisió"
+}
