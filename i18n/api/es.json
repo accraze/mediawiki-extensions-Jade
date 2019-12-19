@@ -2,13 +2,19 @@
 	"@metadata": {
 		"authors": [
 			"Yllelder",
-			"Ihojose"
+			"Ihojose",
+			"Fitoschido"
 		]
 	},
+	"apihelp-jadecreateandendorse-param-comment": "Resumen de revisión",
+	"apihelp-jadesetpreference-param-facet": "La faceta de la entidad.",
+	"apihelp-jadeupdateproposal-param-facet": "La faceta de la entidad.",
 	"apihelp-jadedeleteproposal-param-facet": "La faceta de la entidad.",
 	"apihelp-jadedeleteproposal-example": "Eliminar una propuesta específica utilizando el parámetro <var>title</var>.",
+	"apihelp-jadeendorse-param-comment": "Resumen de revisión",
 	"apihelp-jadedeleteendorsement-param-comment": "Resumen de revisión",
 	"apihelp-jadeupdateendorsement-param-comment": "Resumen de revisión",
 	"apihelp-jademoveendorsement-param-facet": "La faceta de la entidad.",
+	"apihelp-jademoveendorsement-param-comment": "Resumen de revisión",
 	"apihelp-jadeproposeorendorse-param-comment": "Resumen de revisión"
 }
