@@ -4,7 +4,11 @@
 			"Ykhwong"
 		]
 	},
-	"apihelp-createjudgment-param-entitytype": "대상 위키 엔티티 타입으로, \"diff\", \"revision\" 또는 \"page\"가 올 수 있습니다.",
-	"apihelp-createjudgment-param-summary": "선택적 편집 요약입니다.",
-	"apihelp-query+getjudgments-param-entitytype": "대상 위키 엔티티 타입으로, \"diff\", \"revision\" 또는 \"page\"가 올 수 있습니다."
+	"apihelp-jadecreateandendorse-param-comment": "판 요약",
+	"apihelp-jadedeleteproposal-param-comment": "판 요약입니다.",
+	"apihelp-jadeendorse-param-comment": "판 요약",
+	"apihelp-jadedeleteendorsement-param-comment": "판 요약",
+	"apihelp-jadeupdateendorsement-param-comment": "판 요약",
+	"apihelp-jademoveendorsement-param-comment": "판 요약",
+	"apihelp-jadeproposeorendorse-param-comment": "판 요약"
 }

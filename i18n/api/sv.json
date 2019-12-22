@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"WikiPhoenix"
+		]
+	},
+	"apihelp-jadecreateandendorse-param-comment": "Versionssammanfattning",
+	"apihelp-jadedeleteproposal-param-comment": "Versionssammanfattning.",
+	"apihelp-jadeendorse-param-comment": "Versionssammanfattning",
+	"apihelp-jadedeleteendorsement-param-comment": "Versionssammanfattning",
+	"apihelp-jadeupdateendorsement-param-comment": "Versionssammanfattning",
+	"apihelp-jademoveendorsement-param-comment": "Versionssammanfattning",
+	"apihelp-jadeproposeorendorse-param-comment": "Versionssammanfattning"
+}
