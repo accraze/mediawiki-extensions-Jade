@@ -41,6 +41,7 @@ class DeleteEndorsement extends JadeApiBase {
 		if ( $contents === null ) {
 			$this->dieWithError( 'jade-entitynotfound' );
 		}
+		// @phan-suppress-next-line PhanTypeMismatchArgumentNullable T240141
 		$data = $builder->deleteEndorsement( $params, $title, $contents );
 		$this->buildResult( $data );
 	}

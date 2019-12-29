@@ -29,25 +29,21 @@ use ApiBase;
 abstract class JadeApiBase extends ApiBase {
 
 	/**
-	 * @see ApiBase::isWriteMode
-	 * @return string
+	 * @inheritDoc
 	 */
 	public function isWriteMode() {
 		return true;
 	}
 
 	/**
-	 * @see ApiBase::needsToken
-	 *
-	 * @return string
+	 * @inheritDoc
 	 */
 	public function needsToken() {
 		return 'csrf';
 	}
 
 	/**
-	 * @see ApiBase::getHelpUrls
-	 * @return string
+	 * @inheritDoc
 	 */
 	public function getHelpUrls() {
 		return 'https://www.mediawiki.org/wiki/Extension:Jade';
@@ -74,7 +70,6 @@ abstract class JadeApiBase extends ApiBase {
 
 	public function buildResult( $data ) {
 		list( $status, $entity, $warnings ) = $data;
-		// @phan-suppress-next-line PhanUndeclaredClassMethod StatusValue
 		$this->checkErrors( $status );
 		$this->checkWarnings( $warnings );
 		$res = $this->getResult();

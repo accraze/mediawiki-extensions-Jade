@@ -41,6 +41,7 @@ class UpdateProposal extends JadeApiBase {
 		if ( is_null( $contents ) ) {
 			$this->dieWithError( 'jade-entitynotfound' );
 		}
+		// @phan-suppress-next-line PhanTypeMismatchArgumentNullable T240141
 		$data = $builder->updateProposal( $params, $title, $contents );
 		$this->buildResult( $data );
 	}

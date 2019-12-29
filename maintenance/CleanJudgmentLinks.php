@@ -3,9 +3,9 @@
 namespace Jade\Maintenance;
 
 use Jade\JadeServices;
-use Jade\JudgmentEntityType;
-use Jade\JudgmentLinkTableHelper;
-use Jade\JudgmentSummarizer;
+use Jade\ProposalEntityType;
+use Jade\ProposalLinkTableHelper;
+use Jade\ProposalSummarizer;
 use Jade\TitleHelper;
 use Maintenance;
 use MediaWiki\MediaWikiServices;
@@ -59,7 +59,7 @@ class CleanJudgmentLinks extends Maintenance {
 
 		foreach ( $entityTypes as $type ) {
 			$skipPastId = 0;
-			$status = JudgmentEntityType::sanitizeEntityType( $type );
+			$status = ProposalEntityType::sanitizeEntityType( $type );
 			$entityType = $status->value;
 
 			do {
@@ -75,13 +75,13 @@ class CleanJudgmentLinks extends Maintenance {
 	/**
 	 * Find link entries for which the judgment page is missing.
 	 *
-	 * @param JudgmentEntityType $type Entity type for this batch.
+	 * @param ProposalEntityType $type Entity type for this batch.
 	 * @param int $skipPastId Search beginning with this primary key value.
 	 *
 	 * @return array List of primary keys for orphaned link table rows.
 	 */
 	private function findOrphanedLinks( $type, $skipPastId = 0 ) {
-		$tableHelper = new JudgmentLinkTableHelper( $type );
+		$tableHelper = new ProposalLinkTableHelper( $type );
 
 		$dbr = MediaWikiServices::getInstance()
 			->getDBLoadBalancer()->getConnection( DB_REPLICA );
@@ -101,7 +101,7 @@ class CleanJudgmentLinks extends Maintenance {
 				'ORDER BY' => $tableHelper->getIdColumn(),
 			],
 			[ 'page' => [
-				'LEFT JOIN', "page_id = {$tableHelper->getJudgmentColumn()}",
+				'LEFT JOIN', "page_id = {$tableHelper->getProposalColumn()}",
 			] ]
 		);
 		return $orphans;
@@ -111,10 +111,10 @@ class CleanJudgmentLinks extends Maintenance {
 	 * Bulk delete link rows.
 	 *
 	 * @param array $orphans List of primary keys to link rows.
-	 * @param JudgmentEntityType $type Entity type
+	 * @param ProposalEntityType $type Entity type
 	 */
 	private function deleteOrphanedLinks( $orphans, $type ) {
-		$tableHelper = new JudgmentLinkTableHelper( $type );
+		$tableHelper = new ProposalLinkTableHelper( $type );
 
 		$lbFactory = MediaWikiServices::getInstance()->getDBLoadBalancerFactory();
 		$dbw = $lbFactory->getMainLB()->getConnection( DB_MASTER );
@@ -142,7 +142,7 @@ class CleanJudgmentLinks extends Maintenance {
 		foreach ( $entityTypes as $type ) {
 			$skipPastId = 0;
 			do {
-				$status = JudgmentEntityType::sanitizeEntityType( $type );
+				$status = ProposalEntityType::sanitizeEntityType( $type );
 				$entityType = $status->value;
 
 				$unlinked = $this->findUnlinkedJudgments( $entityType, $skipPastId );
@@ -153,8 +153,8 @@ class CleanJudgmentLinks extends Maintenance {
 		}
 	}
 
-	private function findUnlinkedJudgments( JudgmentEntityType $type, $skipPastId ) {
-		$tableHelper = new JudgmentLinkTableHelper( $type );
+	private function findUnlinkedJudgments( ProposalEntityType $type, $skipPastId ) {
+		$tableHelper = new ProposalLinkTableHelper( $type );
 		$titlePrefix = $type->getLocalizedName();
 
 		// Find judgments with no matching link row.
@@ -167,10 +167,10 @@ class CleanJudgmentLinks extends Maintenance {
 			],
 			[ 'page_id', 'page_namespace', 'page_title', $tableHelper->getIdColumn() ],
 			[
-				'page_namespace = ' . intval( NS_JUDGMENT ),
+				'page_namespace = ' . intval( NS_JADE ),
 				'page_title ' . $dbr->buildLike( "{$titlePrefix}/", $dbr->anyString() ),
 				"page_id > {$skipPastId}",
-				$tableHelper->getJudgmentColumn() => null,
+				$tableHelper->getProposalColumn() => null,
 			],
 			__METHOD__,
 			[
@@ -178,7 +178,7 @@ class CleanJudgmentLinks extends Maintenance {
 				'ORDER BY' => $tableHelper->getIdColumn(),
 			],
 			[ $tableHelper->getLinkTable() => [
-				'LEFT JOIN', "page_id = {$tableHelper->getJudgmentColumn()}",
+				'LEFT JOIN', "page_id = {$tableHelper->getProposalColumn()}",
 			] ]
 		);
 
@@ -189,16 +189,16 @@ class CleanJudgmentLinks extends Maintenance {
 	 * Helper to make new links for a list of judgment pages.
 	 *
 	 * @param IResultWrapper $unlinked judgment pages to reconnect.
-	 * @param JudgmentEntityType $entityType Entity type
+	 * @param ProposalEntityType $entityType Entity type
 	 *
 	 * @return int Highest primary key touched in this batch.
 	 */
 	private function connectUnlinkedJudgments(
 		IResultWrapper $unlinked,
-		JudgmentEntityType $entityType
+		ProposalEntityType $entityType
 	) {
-		$tableHelper = new JudgmentLinkTableHelper( $entityType );
-		$indexStorage = JadeServices::getJudgmentIndexStorage();
+		$tableHelper = new ProposalLinkTableHelper( $entityType );
+		$indexStorage = JadeServices::getEntityIndexStorage();
 		$lastId = 0;
 
 		foreach ( $unlinked as $row ) {
@@ -217,7 +217,7 @@ class CleanJudgmentLinks extends Maintenance {
 
 				// Summarize judgment.
 				$judgmentContent = $judgmentPage->getContent();
-				$status = JudgmentSummarizer::getSummaryFromContent( $judgmentContent );
+				$status = ProposalSummarizer::getSummaryFromContent( $judgmentContent );
 				if ( !$status->isOK() ) {
 					$this->error( "Can't summarize content for {$title}: {$status}" );
 				} else {
