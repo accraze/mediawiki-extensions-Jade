@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"MJL"
+		]
+	},
+	"apihelp-jadecreateandendorse-param-comment": "Reveesion ootline",
+	"apihelp-jadedeleteproposal-param-comment": "Reveesion ootline.",
+	"apihelp-jadeendorse-param-comment": "Reveesion ootline",
+	"apihelp-jadedeleteendorsement-param-comment": "Reveesion ootline",
+	"apihelp-jadeupdateendorsement-param-comment": "Reveesion ootline",
+	"apihelp-jademoveendorsement-param-comment": "Reveesion ootline",
+	"apihelp-jadeproposeorendorse-param-comment": "Reveesion ootline"
+}

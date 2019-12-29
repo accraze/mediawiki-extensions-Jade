@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"CyberTroopers",
+			"Tofeiku"
+		]
+	},
+	"apihelp-jadecreateandendorse-param-comment": "Ringkasan semakan",
+	"apihelp-jadedeleteproposal-param-comment": "Ringkasan semakan",
+	"apihelp-jadeendorse-param-comment": "Ringkasan semakan",
+	"apihelp-jadedeleteendorsement-param-comment": "Ringkasan semakan",
+	"apihelp-jadeupdateendorsement-param-comment": "Ringkasan semakan",
+	"apihelp-jademoveendorsement-param-comment": "Ringkasan semakan",
+	"apihelp-jadeproposeorendorse-param-comment": "Ringkasan semakan"
+}
