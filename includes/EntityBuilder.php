@@ -34,6 +34,11 @@ use CentralIdLookup;
 
 class EntityBuilder {
 
+	/**
+	 * @param array $params
+	 * @param bool|null $create
+	 * @return string
+	 */
 	public function resolveTitle( $params, $create = null ) {
 		if ( $params['title'] !== null ) {
 			$title = '';
@@ -48,9 +53,13 @@ class EntityBuilder {
 		}
 	}
 
+	/**
+	 * Check if the Jade namespace is included.
+	 *
+	 * @param string $title
+	 * @return string
+	 */
 	public function cleanTitle( $title ) {
-		// check if the Jade namespace is included.
-		// $title = null;
 		if ( strpos( $title, 'Jade' ) !== false ) {
 			// remove unecessary 'Jade' substring
 			$title = strstr( $title, ':' );
@@ -59,14 +68,25 @@ class EntityBuilder {
 		return $title;
 	}
 
+	/**
+	 * @param array $params
+	 * @return string
+	 */
 	public function buildTitle( $params ) {
-		// create a title
 		$data = json_decode( $params['entitydata'] );
 		return ucwords( strtolower( $data->type ) ) . "/" . $data->id;
 	}
 
+	/**
+	 * Save an entity page to the DB.
+	 *
+	 * @param string $titleStr
+	 * @param array|string $text
+	 * @param string $summary
+	 * @param User|null $user
+	 * @return \Status
+	 */
 	public function saveEntityPage( $titleStr, $text, $summary, $user = null ) {
-		// Save an entity page to the DB.
 		// first lookup the user.
 		global $wgUser;
 		if ( is_null( $user ) ) {
@@ -89,8 +109,13 @@ class EntityBuilder {
 		);
 	}
 
+	/**
+	 * Retrieve an Entity page from the DB
+	 *
+	 * @param string $titleStr
+	 * @return array|null
+	 */
 	public static function loadEntityPage( $titleStr ) {
-		// Retrieve an Entity page from the DB
 		$target = new TitleValue( NS_JADE, $titleStr );
 		$title = Title::newFromLinkTarget( $target );
 		$page = WikiPage::factory( $title );
@@ -103,8 +128,13 @@ class EntityBuilder {
 		return [ $page, $entity ];
 	}
 
+	/**
+	 * Check if facets have a consensus proposal.
+	 *
+	 * @param array $entity
+	 * @return bool
+	 */
 	public function hasPreferredLabels( $entity ) {
-		// check if facets have a consensus proposal.
 		$foundPreferred = false;
 		foreach ( $entity['facets']as &$facet ) {
 			foreach ( $facet['proposals'] as &$proposal ) {
@@ -116,8 +146,13 @@ class EntityBuilder {
 		return $foundPreferred;
 	}
 
+	/**
+	 * Set the first proposal in a facet as preferred.
+	 *
+	 * @param array $entity
+	 * @return array
+	 */
 	public function setFirstPreferred( $entity ) {
-		// Set the first proposal in a facet as preferred.
 		foreach ( $entity['facets'] as $key => &$facet ) {
 			$foundPreferred = false;
 			foreach ( $facet['proposals'] as &$proposal ) {
@@ -136,8 +171,13 @@ class EntityBuilder {
 		return $entity;
 	}
 
+	/**
+	 * Build a new Jade Entity as an associative array.
+	 *
+	 * @param array $params
+	 * @return array
+	 */
 	public function buildEntity( $params ) {
-		// Build a new Jade Entity as an associative array.
 		$facets = $this->buildFacets( $params );
 		$data = [
 			'facets' => $facets,
@@ -145,8 +185,13 @@ class EntityBuilder {
 		return $data;
 	}
 
+	/**
+	 * Build Jade Entity facets object as assoc array.
+	 *
+	 * @param array $params
+	 * @return array
+	 */
 	public function buildFacets( $params ) {
-		// Build Jade Entity facets object as assoc array.
 		return [
 			$params['facet'] => [
 				'proposals' => $this->buildProposals( $params )
@@ -154,15 +199,26 @@ class EntityBuilder {
 		];
 	}
 
+	/**
+	 * Build Jade Entity proposals as an assoc. array.
+	 *
+	 * @param array $params
+	 * @return array
+	 */
 	public function buildProposals( $params ) {
-		// Build Jade Entity proposals as an assoc. array.
 		return [
 			$this->buildProposal( $params, true )
 		];
 	}
 
+	/**
+	 * Build a single Jade Entity proposal as an assoc. array.
+	 *
+	 * @param array $params
+	 * @param bool $preferred
+	 * @return array
+	 */
 	public function buildProposal( $params, $preferred = false ) {
-		// Build a single Jade Entity proposal as an assoc. array.
 		$proposaldataname = $this->getProposalDataName( $params );
 		return [
 			$proposaldataname => json_decode( $params[$proposaldataname] ),
@@ -173,26 +229,41 @@ class EntityBuilder {
 		];
 	}
 
+	/**
+	 * Build Jade Entity endorsements as assoc. array.
+	 *
+	 * @param array $params
+	 * @return array
+	 */
 	public function buildEndorsements( $params ) {
-		// Build Jade Entity endorsements as assoc. array.
 		return [
 			$this->buildEndorsement( $params )
 		];
 	}
 
+	/**
+	 * Build a single endorsement for Jade Entity proposal as an array.
+	 *
+	 * @param array $params
+	 * @return array
+	 */
 	public function buildEndorsement( $params ) {
-		// Build a single endorsement for Jade Entity proposal as an array.
 		return [
-				'author' => $this->buildAuthor( $params ),
-				'comment' => $params['endorsementcomment'],
-				'origin' => $params['endorsementorigin'],
-				'created' => date( 'c' ),
-				'touched' => date( 'c' )
-			];
+			'author' => $this->buildAuthor( $params ),
+			'comment' => $params['endorsementcomment'],
+			'origin' => $params['endorsementorigin'],
+			'created' => date( 'c' ),
+			'touched' => date( 'c' )
+		];
 	}
 
+	/**
+	 * Build a single Jade Entity author object as an array.
+	 *
+	 * @param array $params
+	 * @return array
+	 */
 	public function buildAuthor( $params ) {
-		// Build a single Jade Entity author object as an array.
 		$userdata = $this->getUserData( $params );
 		if ( $userdata[0] === 0 || is_null( $userdata[0] ) ) {
 			$id = $userdata[1];
@@ -208,8 +279,13 @@ class EntityBuilder {
 		return [ 'id' => $id, 'cid' => $cid ];
 	}
 
+	/**
+	 * Return the name of the proposal's 'data' field, depending on facet type.
+	 *
+	 * @param array $params
+	 * @return string
+	 */
 	public function  getProposalDataName( $params ) {
-		// Return the name of the proposal's 'data' field, depending on facet type.
 		$proposaldataname = 'data';
 		if ( $params['facet'] === 'editquality' ) {
 			$proposaldataname = 'labeldata';
@@ -217,8 +293,15 @@ class EntityBuilder {
 		return $proposaldataname;
 	}
 
+	/**
+	 * Set the specified label as preferred.
+	 *
+	 * @param array $params
+	 * @param string $title
+	 * @param array $contents
+	 * @return array
+	 */
 	public function setPreferred( $params, $title, $contents ) {
-		// Set the specified label as preferred.
 		$warnings = [];
 		$entity = $contents[1];
 		$labelname = $this->getProposalDataName( $params );
@@ -247,8 +330,15 @@ class EntityBuilder {
 		return [ $status, $entity, $warnings ];
 	}
 
+	/**
+	 * Update a specific propopsal's notes fields.
+	 *
+	 * @param array $params
+	 * @param string $title
+	 * @param array $contents
+	 * @return array
+	 */
 	public function updateProposal( $params, $title, $contents ) {
-		// Update a specific propopsal's notes fields.
 		$warnings = [];
 		$entity = $contents[1];
 		$labelname = $this->getProposalDataName( $params );
@@ -276,8 +366,15 @@ class EntityBuilder {
 		return [ $status, $entity, $warnings ];
 	}
 
+	/**
+	 * Delete a specific proposal from within a given facet.
+	 *
+	 * @param array $params
+	 * @param string $title
+	 * @param array $contents
+	 * @return array
+	 */
 	public function deleteProposal( $params, $title, $contents ) {
-		// Delete a specific proposal from within a given facet.
 		$warnings = [];
 		$entity = $contents[1];
 		$labelname = $this->getProposalDataName( $params );
@@ -309,6 +406,12 @@ class EntityBuilder {
 		return [ $status, (array)$entity, $warnings ];
 	}
 
+	/**
+	 * @param array $params
+	 * @param string $title
+	 * @param array $contents
+	 * @return array
+	 */
 	public function endorseProposal( $params, $title, $contents ) {
 		$warnings = [];
 		$entity = $contents[1];
@@ -345,8 +448,15 @@ class EntityBuilder {
 		return [ $status, $entity, $warnings ];
 	}
 
+	/**
+	 * Delete a specific Endorsement for a Proposal.
+	 *
+	 * @param array $params
+	 * @param string $title
+	 * @param array $contents
+	 * @return array
+	 */
 	public function deleteEndorsement( $params, $title, $contents ) {
-		// Delete a specific Endorsement for a Proposal.
 		$warnings = [];
 		$entity = $contents[1];
 		$labelname = $this->getProposalDataName( $params );
@@ -394,8 +504,7 @@ class EntityBuilder {
 		}
 		if ( $deleted === false ) {
 			// no endorsement found
-	  return [ 'jade-endorsementnotfound', $entity, $warnings ];
-
+			return [ 'jade-endorsementnotfound', $entity, $warnings ];
 		}
 		// save updated entity
 		$comment = '/* jade-deleteendorsement */ ' . json_encode( $label ) .
@@ -404,8 +513,15 @@ class EntityBuilder {
 		return [ $status, $entity, $warnings ];
 	}
 
+	/**
+	 * Create a new Jade Entity with a single proposal and one endorsement.
+	 *
+	 * @param array $params
+	 * @param string $title
+	 * @param User|null $user
+	 * @return array
+	 */
 	public function createAndEndorse( $params, $title, $user = null ) {
-		// Create a new Jade Entity with a single proposal and one endorsement.
 		$warnings = [];
 		$entity = $this->buildEntity( $params );
 		if ( $this->userAlreadyEndorsed( $params, [ null, $entity ] ) && $params['nomove'] ) {
@@ -420,8 +536,15 @@ class EntityBuilder {
 		return [ $status, $entity, $warnings ];
 	}
 
+	/**
+	 * Update a user's endorsement on a specific proposal.
+	 *
+	 * @param array $params
+	 * @param string $title
+	 * @param array $contents
+	 * @return array
+	 */
 	public function updateEndorsement( $params, $title, $contents ) {
-		// Update a user's endorsement on a specific proposal.
 		$warnings  = [];
 		$entity = $contents[1];
 		$labelname = $this->getProposalDataName( $params );
@@ -478,17 +601,29 @@ class EntityBuilder {
 		return [ $status, $entity, $warnings ];
 	}
 
-  public function isPreferredLabel( $proposal ) {
-		// Checks if proposal has preferred bit. Returns bool.
+	/**
+	 * Checks if proposal has preferred bit.
+	 *
+	 * @param array $proposal
+	 * @return bool
+	 */
+	public function isPreferredLabel( $proposal ) {
 		$preferred = false;
 		if ( $proposal['preferred'] ) {
 			$preferred = true;
 		}
 		return $preferred;
-	 }
+	}
 
+	/**
+	 * Moves an endorsements from one proposal to another.
+	 *
+	 * @param array $params
+	 * @param string $title
+	 * @param array $contents
+	 * @return array
+	 */
 	public function moveEndorsement( $params, $title, $contents ) {
-		// Moves an endorsements from one proposal to another.
 		$warnings = [];
 		$entity = $contents[1];
 		$labelname = $this->getProposalDataName( $params );
@@ -572,8 +707,14 @@ class EntityBuilder {
 		return [ $status, $entity, $warnings ];
 	}
 
+	/**
+	 * Checks if target proposal is contained within target facet.
+	 *
+	 * @param array $params
+	 * @param array $contents
+	 * @return bool
+	 */
 	public function doesFacetContainProposal( $params, $contents ) {
-		// checks if target proposal is contained within target facet.
 		$entity = $contents[1];
 		$labelname = $this->getProposalDataName( $params );
 		$label = json_decode( $params[$labelname], true );
@@ -589,8 +730,14 @@ class EntityBuilder {
 		return $found;
 	}
 
+	/**
+	 * Checks if user has endorsed the target proposal.
+	 *
+	 * @param array $params
+	 * @param array $contents
+	 * @return bool
+	 */
 	public function userEndorsedProposal( $params, $contents ) {
-		// Checks if user has endorsed the target proposal. Returns bool.
 		$entity = $contents[1];
 		$labelname = $this->getProposalDataName( $params );
 		$label = json_decode( $params[$labelname], true );
@@ -612,9 +759,14 @@ class EntityBuilder {
 		return $userEndorsed;
 	}
 
+	/**
+	 * Checks to see if any proposals have been endorsed by current user.
+	 *
+	 * @param array $params
+	 * @param array $contents
+	 * @return bool
+	 */
 	public function userEndorsedAnyProposal( $params, $contents ) {
-		// Checks to see if any proposals have been endorsed by current user.
-		// Returns bool.
 		$entity = $contents[1];
 		$labelname = $this->getProposalDataName( $params );
 		$label = json_decode( $params[$labelname], true );
@@ -634,9 +786,14 @@ class EntityBuilder {
 		return $userEndorsed;
 	}
 
+	/**
+	 * Checks if userdata matches entity author data.
+	 *
+	 * @param array $userdata
+	 * @param array $authordata
+	 * @return bool
+	 */
 	public function userMatch( $userdata, $authordata ) {
-		// Checks if userdata matches entity author data.
-		// Returns bool.
 		$match = false;
 		if ( $userdata[0] === 0 ) {
 			// anonymous user so look at IP
@@ -658,11 +815,17 @@ class EntityBuilder {
 		return $match;
 	}
 
+	/**
+	 * A catch-all routing method that tries to *do the right thing*.
+	 * It resolves the context based on the parameters passed in and
+	 * the state of the DB.
+	 *
+	 * @param array $params
+	 * @param string $title
+	 * @param array $contents
+	 * @return array
+	 */
 	public function proposeOrEndorse( $params, $title, $contents ) {
-		// A catch-all routing method that tries to *do the right thing*.
-		// It resolves the context based on the parameters passed in and
-		// the state of the DB.
-		//
 		// does entity page exist?
 		if ( is_null( $contents ) ) {
 			// page does not exist
@@ -711,8 +874,14 @@ class EntityBuilder {
 		}
 	}
 
+	/**
+	 * Has the user already endorsed any proposal within the target facet?
+	 *
+	 * @param array $params
+	 * @param array $contents
+	 * @return bool
+	 */
 	public function userAlreadyEndorsed( $params, $contents ) {
-		// Has the user already endorsed any proposal within the target facet?
 		$entity = $contents[1];
 		$labelname = $this->getProposalDataName( $params );
 		$label = json_decode( $params[$labelname], true );
@@ -730,8 +899,15 @@ class EntityBuilder {
 		return $userEndorsed;
 	}
 
+	/**
+	 * Create a new proposal and move a previous endorsement to it.
+	 *
+	 * @param array $params
+	 * @param string $title
+	 * @param array $contents
+	 * @return array
+	 */
 	public function createProposalAndMoveEndorsement( $params, $title, $contents ) {
-		// Create a new proposal and move a previous endorsement to it.
 		$warnings  = [];
 		$entity = $contents[1];
 		$labelname = $this->getProposalDataName( $params );
@@ -779,8 +955,15 @@ class EntityBuilder {
 		return [ $status, $entity, $warnings ];
 	}
 
+	/**
+	 * Create a new proposal with a single endorsement as assoc array.
+	 *
+	 * @param array $params
+	 * @param string $title
+	 * @param array $contents
+	 * @return array
+	 */
 	public function createProposalAndEndorsement( $params, $title, $contents ) {
-		// Create a new proposal with a single endorsement as assoc array.
 		$warnings = [];
 		$entity = $contents[1];
 		$labelname = $this->getProposalDataName( $params );
@@ -797,9 +980,13 @@ class EntityBuilder {
 		return [ $status, $entity, $warnings ];
 	}
 
+	/**
+	 * Retrieve user data for Entity author objects.
+	 *
+	 * @param array $params
+	 * @return array
+	 */
 	public function getUserData( $params ) {
-		// Retrive user data for Entity author objects.
-		// Returns array
 		global $wgUser;
 		$ip = $this->arrayValue( $params, 'ip' );
 		$globalId = $this->arrayValue( $params, 'global_id' );
@@ -821,10 +1008,17 @@ class EntityBuilder {
 		} elseif ( $ip !== null ) {
 			return [ 0, $params['ip'] ];
 		}
- }
+	}
 
+	/**
+	 * Check if array contains a specific key.
+	 *
+	 * @param array $array
+	 * @param mixed $key
+	 * @param mixed|null $default_value
+	 * @return mixed|null
+	 */
 	public function arrayValue( $array, $key, $default_value = null ) {
-		// Check if array contains a specific key. Returns value or null.
 		return is_array( $array ) && array_key_exists( $key, $array ) ? $array[$key] : $default_value;
 	}
 }
