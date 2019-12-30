@@ -38,7 +38,9 @@
 	},
 	"AutoloadNamespaces": {
 		"Jade\\": "includes/",
-		"Jade\\Maintenance\\": "maintenance/",
+		"Jade\\Maintenance\\": "maintenance/"
+	},
+	"TestAutoloadNamespaces": {
 		"Jade\\Tests\\": "tests/phpunit/"
 	},
 	"ContentHandlers": {
