@@ -47,7 +47,6 @@
 	"jade-proposalnotfound": "Could not find a proposal with matching \"data\" ''$1''",
 	"jade-endorsementnotfound":"Could not find an endorsement from the target user.",
 	"jade-endorsingnonpreferredproposal": "This action resulted in creating an endorsement for a proposal that is not flagged as preferred.",
-	"jade-nochange": "This action would result in no change.",
 	"jade-proposalispreferred": "Cannot delete a preferred proposal except when it is the only remaining proposal for a facet. You must set another proposal to be \"preferred\"",
 	"jade-invalidtitleentitydata":"Title or entitydata param must be provided.",
 	"jade-nochange": "This action would result in no change. User has already endorsed labeldata."
