@@ -47,7 +47,7 @@
 	"jade-proposalnotfound": "Eşleşen \"veriler\" \"$1\" ile bir teklif bulunamadı",
 	"jade-endorsementnotfound": "Hedef kullanıcıdan bir onay bulunamadı.",
 	"jade-endorsingnonpreferredproposal": "Bu eylem, tercih edilen olarak işaretlenmeyen bir teklif için bir onay oluşturulmasına neden oldu.",
-	"jade-nochange": "Bu eylem hiçbir değişikliğe neden olmaz. Kullanıcı etiket verilerini zaten onayladı.",
 	"jade-proposalispreferred": "Bir faset için kalan tek teklif olduğu durumlar dışında, tercih edilen bir teklif silinemez. Başka bir teklifi \"tercih edilecek\" olarak ayarlamanız gerekir",
-	"jade-invalidtitleentitydata": "Başlık veya varlık verileri parametresi sağlanmalıdır."
+	"jade-invalidtitleentitydata": "Başlık veya varlık verileri parametresi sağlanmalıdır.",
+	"jade-nochange": "Bu eylem hiçbir değişikliğe neden olmaz. Kullanıcı etiket verilerini zaten onayladı."
 }

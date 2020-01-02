@@ -51,7 +51,7 @@
 	"jade-proposalnotfound": "Impossible de trouver une proposition où « data » correspond à ''$1''",
 	"jade-endorsementnotfound": "Impossible de trouver une approbation par l’utilisateur cible.",
 	"jade-endorsingnonpreferredproposal": "Cette action a conduit à créer une approbation pour une proposition qui n’est pas signalée comme préférée.",
-	"jade-nochange": "Cette action n’apportera aucune modification. L’utilisateur a déjà approuvé labeldata.",
 	"jade-proposalispreferred": "Impossible de supprimer une proposition sauf quand c’est la seule proposition restante pour une facette. Vous devez définir une autre proposition qui doit être « préférée ».",
-	"jade-invalidtitleentitydata": "Un paramètre « title » ou « entitydata » doit être fourni."
+	"jade-invalidtitleentitydata": "Un paramètre « title » ou « entitydata » doit être fourni.",
+	"jade-nochange": "Cette action n’apportera aucune modification. L’utilisateur a déjà approuvé labeldata."
 }

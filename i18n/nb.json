@@ -46,7 +46,7 @@
 	"jade-proposalnotfound": "Kunne ikke finne forslag med matchende «data» «$1»",
 	"jade-endorsementnotfound": "Kunne ikke finne en støtteerklæring fra målbrukeren.",
 	"jade-endorsingnonpreferredproposal": "Denne handlingen førte til at det ble opprettet en støtteerklæring for et forslag som ikke er flagget som foretrukket.",
-	"jade-nochange": "Denne handlingen vil ikke resultere i noen endring. Brukeren har allerede erklært støtte for labeldata.",
 	"jade-proposalispreferred": "Kan ikke slette et foretrukket forslag utenom når det er det eneste forslaget som gjenstår for en fasett. Du må sette et annet forslag som «foretrukket»",
-	"jade-invalidtitleentitydata": "Tittel- eller entitydata-parameter må angis."
+	"jade-invalidtitleentitydata": "Tittel- eller entitydata-parameter må angis.",
+	"jade-nochange": "Denne handlingen vil ikke resultere i noen endring. Brukeren har allerede erklært støtte for labeldata."
 }

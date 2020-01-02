@@ -49,7 +49,7 @@
 	"jade-proposalnotfound": "לא היה אפשר למצוא הצעה עם \"הנתונים\" המתאימים \"$1\"",
 	"jade-endorsementnotfound": "לא היה אפשר למצוא הבעת תמיכה ממשתמש היעד.",
 	"jade-endorsingnonpreferredproposal": "הפעולה הזאת גרמה ליצירת הבעת תמיכה בהצעה שאינה מסומנת בתור מועדפת.",
-	"jade-nochange": "הפעולה הזאת לא הייתה גורמת לשינוי. המשתמש גבר הביעה תמיכה ב־labeldata.",
 	"jade-proposalispreferred": "לא ניתן למחוק הצעה מועדפת אלא רק כשזאת ההצע היחידה של ההיבט. יש להגדיר הצעה אחרת בתור \"מועדפת\".",
-	"jade-invalidtitleentitydata": "יש לספק את הפרמטר Title או entitydata."
+	"jade-invalidtitleentitydata": "יש לספק את הפרמטר Title או entitydata.",
+	"jade-nochange": "הפעולה הזאת לא הייתה גורמת לשינוי. המשתמש גבר הביעה תמיכה ב־labeldata."
 }
