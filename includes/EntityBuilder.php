@@ -575,7 +575,7 @@ class EntityBuilder {
 						}
 					}
 					// otherwise just target id
-					$id = $this->arrayValue( $endorsement['author'], 'id' );
+					$id = $endorsement['author']['id'] ?? null;
 					if ( $userdata[0] === $id ) {
 						$endorsement['comment'] = $params['endorsementcomment'];
 						$endorsement['touched'] = date( 'c' );
@@ -808,7 +808,7 @@ class EntityBuilder {
 			}
 		}
 		// otherwise just target id
-		$id = $this->arrayValue( $authordata, 'id' );
+		$id = $authordata['id'] ?? null;
 		if ( $userdata[0] === $id ) {
 			$match = true;
 		}
@@ -839,7 +839,6 @@ class EntityBuilder {
 			// entity page exists
 			// Does the target facet already have a proposal with the target
 			// labeldata?
-			$facetInfo = $this->doesFacetContainProposal( $params, $contents );
 			if ( $this->doesFacetContainProposal( $params, $contents ) ) {
 				// Has the user already endorsed the target proposal?
 				if ( $this->userEndorsedProposal( $params, $contents ) ) {
@@ -883,8 +882,6 @@ class EntityBuilder {
 	 */
 	public function userAlreadyEndorsed( $params, $contents ) {
 		$entity = $contents[1];
-		$labelname = $this->getProposalDataName( $params );
-		$label = json_decode( $params[$labelname], true );
 		$facet = $params['facet'];
 		$userdata = $this->getUserData( $params );
 		$userEndorsed = false;
@@ -969,7 +966,6 @@ class EntityBuilder {
 		$labelname = $this->getProposalDataName( $params );
 		$label = json_decode( $params[$labelname], true );
 		$facet = $params['facet'];
-		$userdata = $this->getUserData( $params );
 		if ( is_null( $params['endorsementcomment'] ) ) {
 			$params['endorsementcomment'] = 'As proposer.';
 		}
@@ -988,37 +984,20 @@ class EntityBuilder {
 	 */
 	public function getUserData( $params ) {
 		global $wgUser;
-		$ip = $this->arrayValue( $params, 'ip' );
-		$globalId = $this->arrayValue( $params, 'global_id' );
-		$userId = $this->arrayValue( $params, 'user_id' );
-		if ( $ip === null && $globalId === null && $userId === null ) {
-			$user = $wgUser;
-			return [ $user->getId(), $user->getName() ];
-		}
+		$ip = $params['ip'] ?? null;
+		$globalId = $params['global_id'] ?? null;
+		$userId = $params['user_id'] ?? null;
 
 		if ( $globalId !== null ) {
 			// Perform CentralIdLookup
 			$cid = CentralIdLookup::factory()->centralIdFromLocalUser( $wgUser );
 			return [ null, $cid ];
-		}
-
-		if ( $userId !== null ) {
-			$user = User::newFromId( $params['user_id'] );
+		} elseif ( $userId !== null ) {
 			return [ $params['user_id'], $params['user_id'] ];
 		} elseif ( $ip !== null ) {
 			return [ 0, $params['ip'] ];
+		} else {
+			return [ $wgUser->getId(), $wgUser->getName() ];
 		}
-	}
-
-	/**
-	 * Check if array contains a specific key.
-	 *
-	 * @param array $array
-	 * @param mixed $key
-	 * @param mixed|null $default_value
-	 * @return mixed|null
-	 */
-	public function arrayValue( $array, $key, $default_value = null ) {
-		return is_array( $array ) && array_key_exists( $key, $array ) ? $array[$key] : $default_value;
 	}
 }
