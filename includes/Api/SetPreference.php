@@ -42,6 +42,7 @@ class SetPreference extends JadeApiBase {
 		if ( is_null( $contents ) ) {
 			$this->dieWithError( 'jade-entitynotfound' );
 		}
+		// @phan-suppress-next-line PhanTypeMismatchArgumentNullable T240141
 		$data = $builder->setPreferred( $params, $title, $contents );
 		$this->buildResult( $data );
 	}

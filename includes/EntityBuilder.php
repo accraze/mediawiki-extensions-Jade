@@ -165,7 +165,6 @@ class EntityBuilder {
 				reset( $facet['proposals'] );
 				$first_value = key( $facet['proposals'] );
 				$entity['facets'][$key]['proposals'][$first_value]['preferred'] = true;
-				$facet['proposals'] = $facet['proposals'];
 			}
 		}
 		return $entity;
@@ -681,6 +680,7 @@ class EntityBuilder {
 			return [ 'jade-endorsementnotfound', $entity, $warnings ];
 
 		}
+		'@phan-var array $origin';
 
 		$proposal = $endorsements = &$entity['facets'][$facet]['proposals'][$targetIdx];
 		if ( !$this->isPreferredLabel( $proposal ) ) {
