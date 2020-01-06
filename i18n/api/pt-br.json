@@ -21,6 +21,8 @@
 	"apihelp-jadeupdateproposal-param-facet": "A faceta da entidade.",
 	"apihelp-jadeupdateproposal-param-notes": "O novo campo de notas para a proposta.",
 	"apihelp-jadedeleteproposal-param-comment": "Resumo da revisão.",
+	"apihelp-jadeupdateproposal-example": "Atualize as anotações de uma proposta usando o parâmetro <var>title</var>.",
+	"apihelp-jadeupdateproposal-example-2": "Atualize as anotações de uma proposta usando o parâmetro <var>entitydata</var>.",
 	"apihelp-jadedeleteproposal-summary": "Remova uma proposta específica.",
 	"apihelp-jadedeleteproposal-param-facet": "A faceta da entidade.",
 	"apihelp-jadedeleteproposal-example": "Remova uma proposta específica usando o parâmetro <var>title</var>.",

@@ -2,21 +2,16 @@
 	"@metadata": {
 		"authors": [
 			"Hamilton Abreu",
-			"He7d3r"
+			"He7d3r",
+			"Mansil"
 		]
 	},
-	"apihelp-createjudgment-summary": "Criar uma avaliação nova",
-	"apihelp-createjudgment-param-entitytype": "Tipo da entidade alvo na wiki: pode ser lista de \"diferenças\", \"revisão\" ou \"página\".",
-	"apihelp-createjudgment-param-entityid": "Identificador de revisão para alvos de tipo \"diferenças\" e \"revisão\", ou identificador de página para alvos de tipo \"data\".",
-	"apihelp-createjudgment-param-schema": "Esquema de classificação usado por esta avaliação: \"damaging\", \"goodfaith\", \"wp10\" ou \"drafttopic\"",
-	"apihelp-createjudgment-param-data": "Dados de avaliação em bruto. Os valores \"true\" e \"false\" são interpretados como boolianos.",
-	"apihelp-createjudgment-param-notes": "Texto opcional de explicação da avaliação.",
-	"apihelp-createjudgment-param-summary": "Resumo de edição opcional.",
-	"apihelp-createjudgment-param-tags": "Etiquetas de edição opcionais a aplicar à avaliação.",
-	"apihelp+jade-createjudgment-example": "Criar uma avaliação que diz que a lista de diferenças n.º 3 é prejudicial.",
-	"apihelp-query+getjudgments-param-entitytype": "Tipo da entidade alvo na wiki: pode ser lista de \"diferenças\", \"revisão\" ou \"página\".",
-	"apihelp-query+getjudgments-param-entityid": "Identificador de revisão para alvos de tipo \"diferenças\" e \"revisão\", ou identificador de página para alvos de tipo \"data\".",
-	"apihelp-query+getjudgments-summary": "Obter todas as avaliações disponíveis para uma entidade da wiki.",
-	"apihelp-query+jade-getjudgments-list-example": "Listar a página de avaliação da lista de diferenças n.º 3.",
-	"apihelp-query+jade-getjudgments-generator-example": "Obter o conteúdo das avaliações da lista de diferenças n.º 3."
+	"apihelp-jadecreateandendorse-param-comment": "Resumo da revisão",
+	"apihelp-jadedeleteproposal-param-comment": "Resumo da revisão.",
+	"apihelp-jadedeleteproposal-summary": "Remover uma proposta específica.",
+	"apihelp-jadeendorse-param-comment": "Resumo da revisão",
+	"apihelp-jadedeleteendorsement-param-comment": "Resumo da revisão",
+	"apihelp-jadeupdateendorsement-param-comment": "Resumo da revisão",
+	"apihelp-jademoveendorsement-param-comment": "Resumo da revisão",
+	"apihelp-jadeproposeorendorse-param-comment": "Resumo da revisão"
 }

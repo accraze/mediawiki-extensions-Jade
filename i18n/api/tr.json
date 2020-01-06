@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"BaRaN6161 TURK"
+		]
+	},
+	"apihelp-jadecreateandendorse-summary": "Yeni bir teklif oluşturur ve bir onay sunar. Kullanıcı zaten faset içinde başka bir teklifi onayladıysa, kullanıcının onayını yeni teklife taşıyın.",
+	"apihelp-jadecreateandendorse-param-title": "Kodlanan varlık adı, ör. <kbd>Jade:Diff/123456</kbd>. <var>title</var> veya <var>entitydata</var> biri gereklidir.",
+	"apihelp-jadecreateandendorse-param-entitydata": "Jade varlığının türü, ör. <kbd>{\"type\": \"diff\", \"id\": \"123456\"}</kbd>. <var>title</var> veya <var>entitydata</var> biri gereklidir.",
+	"apihelp-jadecreateandendorse-param-facet": "Etiketlenen işletmenin yönü.",
+	"apihelp-jadecreateandendorse-param-labeldata": "Alakalı yeni etiket verileri, ör. <kbd>{\"damaging\": false, \"goodfaith\": true}</kbd>. Daha fazla bilgi için bkz. [[mw:Extension:Jade/API]].",
+	"apihelp-jadecreateandendorse-param-notes": "Yeni bir teklif oluştururken kaydedilecek notlar. Bir teklif zaten mevcutsa bir uyarı verilir. Notların üzerine otomatik olarak yazılmaz.",
+	"apihelp-jadecreateandendorse-param-endorsementcomment": "Onay ile ayrılmak için yorum yapın.",
+	"apihelp-jadecreateandendorse-param-endorsementorigin": "Kullanıcının bu kararı verirken neye baktığını gösteren bir dize.",
+	"apihelp-jadecreateandendorse-param-nomove": "Ayarlanmışsa, bir ciroyu hareket ettirmeyin. Bunun yerine bir hata atın.",
+	"apihelp-jadecreateandendorse-param-comment": "Düzeltme özeti",
+	"apihelp-jadecreateandendorse-example": "Yeni bir teklif oluşturun ve <var>title</var> parametresini kullanarak onaylayın."
+}
