@@ -34,7 +34,7 @@ class ProposeOrEndorse extends JadeApiBase {
 	public function execute() {
 		$params = $this->extractRequestParams();
 		$this->requireOnlyOneParameter( $params, 'entitydata', 'title' );
-		$builder = new EntityBuilder;
+		$builder = new EntityBuilder( $this->getUser() );
 		$title = $builder->resolveTitle( $params );
 		$contents = $builder->loadEntityPage( $title );
 		$data = $builder->proposeOrEndorse( $params, $title, $contents );

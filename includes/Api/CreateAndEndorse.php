@@ -37,9 +37,9 @@ class CreateAndEndorse extends JadeApiBase {
 	public function execute() {
 		$params = $this->extractRequestParams();
 		$this->requireOnlyOneParameter( $params, 'entitydata', 'title' );
-		$builder = new EntityBuilder;
+		$builder = new EntityBuilder( $this->getUser() );
 		$title = $builder->resolveTitle( $params, true );
-		$data = $builder->createAndEndorse( $params, $title, $this->getUser() );
+		$data = $builder->createAndEndorse( $params, $title );
 		$this->buildResult( $data );
 	}
 

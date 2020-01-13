@@ -34,6 +34,13 @@ use WikiPage;
 
 class EntityBuilder {
 
+	/** @var User */
+	protected $user;
+
+	public function __construct( User $user ) {
+		$this->user = $user;
+	}
+
 	/**
 	 * @param array $params
 	 * @param bool|null $create
@@ -83,15 +90,9 @@ class EntityBuilder {
 	 * @param string $titleStr
 	 * @param array|string $text
 	 * @param string $summary
-	 * @param User|null $user
 	 * @return \Status
 	 */
-	public function saveEntityPage( $titleStr, $text, $summary, $user = null ) {
-		// first lookup the user.
-		global $wgUser;
-		if ( $user === null ) {
-			$user = $wgUser;
-		}
+	public function saveEntityPage( $titleStr, $text, $summary ) {
 		// check if text should be encoded.
 		if ( is_array( $text ) ) {
 			$text = json_encode( $text );
@@ -105,7 +106,7 @@ class EntityBuilder {
 			$summary,
 			0,
 			false,
-			$user
+			$this->user
 		);
 	}
 
@@ -273,8 +274,7 @@ class EntityBuilder {
 			return [ 'ip' => $id ];
 		}
 		// Lookup CentralID
-		global $wgUser;
-		$cid = CentralIdLookup::factory()->centralIdFromLocalUser( $wgUser );
+		$cid = CentralIdLookup::factory()->centralIdFromLocalUser( $this->user );
 		return [ 'id' => $id, 'cid' => $cid ];
 	}
 
@@ -517,10 +517,9 @@ class EntityBuilder {
 	 *
 	 * @param array $params
 	 * @param string $title
-	 * @param User|null $user
 	 * @return array
 	 */
-	public function createAndEndorse( $params, $title, $user = null ) {
+	public function createAndEndorse( $params, $title ) {
 		$warnings = [];
 		$entity = $this->buildEntity( $params );
 		if ( $this->userAlreadyEndorsed( $params, [ null, $entity ] ) && $params['nomove'] ) {
@@ -531,7 +530,7 @@ class EntityBuilder {
 		$label = json_decode( $params[$labelname], true );
 		$comments = '/* jade-createandendorseproposal */ ' . json_encode( $label ) .
 			' "' . $params['notes'] . '" : ' . $params['comment'];
-		$status = $this->saveEntityPage( $title, $entity, $comments, $user );
+		$status = $this->saveEntityPage( $title, $entity, $comments );
 		return [ $status, $entity, $warnings ];
 	}
 
@@ -798,7 +797,7 @@ class EntityBuilder {
 		if ( $userdata[0] === 0 ) {
 			// anonymous user so look at IP
 			if ( $userdata[1] === $authordata['ip'] ) {
-					$match = true;
+				$match = true;
 			}
 		}
 		if ( $userdata[0] === null ) {
@@ -887,10 +886,10 @@ class EntityBuilder {
 		$userEndorsed = false;
 		foreach ( $entity['facets'][$facet]['proposals'] as $pkey => &$proposal ) {
 			foreach ( $proposal['endorsements'] as $key => &$endorsement ) {
-					if ( $this->userMatch( $userdata, $endorsement['author'] ) === true ) {
-						$userEndorsed = true;
-						break;
-					}
+				if ( $this->userMatch( $userdata, $endorsement['author'] ) === true ) {
+					$userEndorsed = true;
+					break;
+				}
 			}
 		}
 		return $userEndorsed;
@@ -983,21 +982,20 @@ class EntityBuilder {
 	 * @return array
 	 */
 	public function getUserData( $params ) {
-		global $wgUser;
 		$ip = $params['ip'] ?? null;
 		$globalId = $params['global_id'] ?? null;
 		$userId = $params['user_id'] ?? null;
 
 		if ( $globalId !== null ) {
 			// Perform CentralIdLookup
-			$cid = CentralIdLookup::factory()->centralIdFromLocalUser( $wgUser );
+			$cid = CentralIdLookup::factory()->centralIdFromLocalUser( $this->user );
 			return [ null, $cid ];
 		} elseif ( $userId !== null ) {
 			return [ $params['user_id'], $params['user_id'] ];
 		} elseif ( $ip !== null ) {
 			return [ 0, $params['ip'] ];
 		} else {
-			return [ $wgUser->getId(), $wgUser->getName() ];
+			return [ $this->user->getId(), $this->user->getName() ];
 		}
 	}
 }
