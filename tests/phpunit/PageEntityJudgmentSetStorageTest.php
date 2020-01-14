@@ -16,8 +16,8 @@
 namespace Jade\Tests;
 
 use FormatJSON;
-use Jade\JudgmentEntityType;
 use Jade\JadeServices;
+use Jade\JudgmentEntityType;
 use Jade\JudgmentTarget;
 use MediaWikiTestCase;
 use WikiPage;

@@ -41,7 +41,7 @@ class TestStorageHelper {
 	public static function createEntity( $user = null ) {
 		global $wgUser;
 
-		if ( is_null( $user ) ) {
+		if ( $user === null ) {
 			$user = $wgUser;
 		}
 
@@ -88,7 +88,7 @@ class TestStorageHelper {
 	 */
 	public static function saveJudgment( $titleStr, $text, $user = null ) {
 		global $wgUser;
-		if ( is_null( $user ) ) {
+		if ( $user === null ) {
 			$user = $wgUser;
 		}
 		if ( is_array( $text ) ) {

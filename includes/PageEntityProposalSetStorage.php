@@ -22,12 +22,11 @@ namespace Jade;
 
 use ChangeTags;
 use FormatJson;
+use Jade\Content\EntityContent;
 use Status;
 use StatusValue;
 use Title;
 use WikiPage;
-
-use Jade\Content\EntityContent;
 
 /**
  * Backend to store Proposals as wiki pages under a new namespace.

@@ -15,10 +15,10 @@
  */
 namespace Jade\Tests;
 
-use Jade\PageEntityProposalSetStorage;
 use Jade\EntityIndexStorage;
-use Jade\ProposalValidator;
 use Jade\JadeServices;
+use Jade\PageEntityProposalSetStorage;
+use Jade\ProposalValidator;
 use Jade\ServiceWiring;
 use MediaWiki\MediaWikiServices;
 use MediaWikiTestCase;

@@ -187,7 +187,7 @@ class JudgmentLinkTableTest extends MediaWikiTestCase {
 		$this->assertEquals( 1, $result->numRows() );
 		foreach ( $result as $row ) {
 			$this->assertEquals( 1, $row->jaded_damaging );
-			$this->assertEquals( 0, $row->jaded_goodfaith );
+			$this->assertSame( 0, $row->jaded_goodfaith );
 		}
 	}
 

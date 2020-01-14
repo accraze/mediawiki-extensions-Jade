@@ -15,8 +15,8 @@
  */
 namespace Jade\Tests\Hooks;
 
-use Jade\ProposalEntityType;
 use Jade\Hooks\LinkTableHooks;
+use Jade\ProposalEntityType;
 use Jade\ProposalTarget;
 use Jade\Tests\TestJudgmentLinkAssertions;
 use LogEntry;

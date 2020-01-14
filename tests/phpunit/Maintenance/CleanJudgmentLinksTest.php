@@ -95,7 +95,7 @@ class CleanJudgmentLinksTest extends MaintenanceBaseTestCase {
 			null,
 			__METHOD__
 		);
-		$this->assertEquals( 0, $result->numRows() );
+		$this->assertSame( 0, $result->numRows() );
 
 		$result = $dbr->select(
 			[ 'jade_revision_judgment' ],
@@ -103,7 +103,7 @@ class CleanJudgmentLinksTest extends MaintenanceBaseTestCase {
 			null,
 			__METHOD__
 		);
-		$this->assertEquals( 0, $result->numRows() );
+		$this->assertSame( 0, $result->numRows() );
 	}
 
 	public function entityTypeDryRunProvider() {

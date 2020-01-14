@@ -39,7 +39,7 @@ class DeleteProposal extends JadeApiBase {
 		$builder = new EntityBuilder;
 		$title = $builder->resolveTitle( $params );
 		$contents = $builder->loadEntityPage( $title );
-		if ( is_null( $contents ) ) {
+		if ( $contents === null ) {
 			$this->dieWithError( 'jade-entitynotfound' );
 		}
 		// @phan-suppress-next-line PhanTypeMismatchArgumentNullable T240141

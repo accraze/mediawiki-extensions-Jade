@@ -17,12 +17,12 @@
 
 namespace Jade;
 
+use CentralIdLookup;
 use Jade\Content\EntityContentHandler;
-use WikiPage;
 use Title;
 use TitleValue;
 use User;
-use CentralIdLookup;
+use WikiPage;
 
 /**
  * Build and edit Jade Entity objects.
@@ -89,7 +89,7 @@ class EntityBuilder {
 	public function saveEntityPage( $titleStr, $text, $summary, $user = null ) {
 		// first lookup the user.
 		global $wgUser;
-		if ( is_null( $user ) ) {
+		if ( $user === null ) {
 			$user = $wgUser;
 		}
 		// check if text should be encoded.
@@ -264,7 +264,7 @@ class EntityBuilder {
 	 */
 	public function buildAuthor( $params ) {
 		$userdata = $this->getUserData( $params );
-		if ( $userdata[0] === 0 || is_null( $userdata[0] ) ) {
+		if ( $userdata[0] === 0 || $userdata[0] === null ) {
 			$id = $userdata[1];
 		} else {
 			$id = $userdata[0];
@@ -687,7 +687,7 @@ class EntityBuilder {
 			// warn that you are endorsing a non-preferred proposal
 			$warnings[] = 'jade-endorsingnonpreferredproposal';
 		}
-		if ( is_null( $params['endorsementcomment'] ) ) {
+		if ( $params['endorsementcomment'] === null ) {
 			// copy over previous endorsement comment.
 			$params['endorsementcomment'] = $origin['comment'];
 		}
@@ -827,10 +827,10 @@ class EntityBuilder {
 	 */
 	public function proposeOrEndorse( $params, $title, $contents ) {
 		// does entity page exist?
-		if ( is_null( $contents ) ) {
+		if ( $contents === null ) {
 			// page does not exist
 			// so create page with a proposal and endorse it.
-			if ( is_null( $params['endorsementcomment'] ) ) {
+			if ( $params['endorsementcomment'] === null ) {
 				$params['endorsementcomment'] = 'As proposer';
 			}
 			$params['nomove'] = false;
@@ -966,7 +966,7 @@ class EntityBuilder {
 		$labelname = $this->getProposalDataName( $params );
 		$label = json_decode( $params[$labelname], true );
 		$facet = $params['facet'];
-		if ( is_null( $params['endorsementcomment'] ) ) {
+		if ( $params['endorsementcomment'] === null ) {
 			$params['endorsementcomment'] = 'As proposer.';
 		}
 		$entity['facets'][$facet]['proposals'][] = $this->buildProposal( $params );

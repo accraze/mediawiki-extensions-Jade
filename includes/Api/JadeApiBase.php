@@ -61,7 +61,7 @@ abstract class JadeApiBase extends ApiBase {
 	}
 
 	private function checkWarnings( $warnings ) {
-		if ( !is_null( $warnings ) ) {
+		if ( $warnings !== null ) {
 			foreach ( $warnings as $warning ) {
 				$this->addWarning( $warning );
 			}

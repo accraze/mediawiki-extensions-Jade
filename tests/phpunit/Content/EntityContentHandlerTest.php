@@ -17,8 +17,8 @@ namespace Jade\Tests\Content;
 
 use Jade\Tests\TestStorageHelper;
 use MediaWikiLangTestCase;
-use Title;
 use SearchEngine;
+use Title;
 use WikiPage;
 
 /**

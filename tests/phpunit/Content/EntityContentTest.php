@@ -220,7 +220,7 @@ class EntityContentTest extends MediaWikiLangTestCase {
 			$output
 		);
 
-		$this->assertEquals( '', $output->getRawText() );
+		$this->assertSame( '', $output->getRawText() );
 	}
 
 	public function provideFillParserOutput() {

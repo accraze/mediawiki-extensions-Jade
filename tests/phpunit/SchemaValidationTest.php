@@ -15,8 +15,8 @@
  */
 namespace Jade\Tests;
 
-use PHPUnit\Framework\TestCase;
 use JsonSchema\Validator;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @group Jade
