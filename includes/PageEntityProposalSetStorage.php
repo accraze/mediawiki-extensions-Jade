@@ -26,6 +26,7 @@ use Jade\Content\EntityContent;
 use Status;
 use StatusValue;
 use Title;
+use User;
 use WikiPage;
 
 /**
@@ -38,6 +39,7 @@ class PageEntityProposalSetStorage implements EntityProposalSetStorage {
 	 * @param array $proposalSet All Proposals on this entity, as nested
 	 * associative arrays, normalized for storage.
 	 * @param string $summary Edit summary.
+	 * @param User $user User to attribute to
 	 * @param array $tags Optional list of change tags to set on the revision being created.
 	 *
 	 * @return StatusValue isOK if the edit was successful.
@@ -46,10 +48,9 @@ class PageEntityProposalSetStorage implements EntityProposalSetStorage {
 		ProposalTarget $target,
 		array $proposalSet,
 		$summary,
+		User $user,
 		array $tags
 	) {
-		global $wgUser;
-
 		$title = TitleHelper::buildJadeTitle( $target );
 		$dbTitle = Title::newFromTitleValue( $title );
 		$page = WikiPage::factory( $dbTitle );
@@ -57,16 +58,16 @@ class PageEntityProposalSetStorage implements EntityProposalSetStorage {
 		// TODO: Why aren't these permissions checks already handled by
 		// doEditContent?
 		if ( !$page->exists() ) {
-			if ( !$dbTitle->userCan( 'create', $wgUser ) ) {
+			if ( !$dbTitle->userCan( 'create', $user ) ) {
 				return Status::newFatal( 'jade-cannot-create-page' );
 			}
 		}
 		// `edit` contains checks not present in `create`, do those as well.
-		if ( !$dbTitle->userCan( 'edit', $wgUser ) ) {
+		if ( !$dbTitle->userCan( 'edit', $user ) ) {
 			return Status::newFatal( 'jade-cannot-edit-page' );
 		}
 		if ( count( $tags ) > 0 ) {
-			$status = ChangeTags::canAddTagsAccompanyingChange( $tags, $wgUser );
+			$status = ChangeTags::canAddTagsAccompanyingChange( $tags, $user );
 			if ( !$status->isOK() ) {
 				return $status;
 			}
@@ -82,7 +83,7 @@ class PageEntityProposalSetStorage implements EntityProposalSetStorage {
 			$summary,
 			0,
 			false,
-			$wgUser,
+			$user,
 			null,
 			$tags
 		);

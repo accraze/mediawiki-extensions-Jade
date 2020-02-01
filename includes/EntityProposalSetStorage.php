@@ -21,6 +21,7 @@
 namespace Jade;
 
 use StatusValue;
+use User;
 
 interface EntityProposalSetStorage {
 
@@ -34,6 +35,7 @@ interface EntityProposalSetStorage {
 	 * @param array $proposalSet All proposals on this entity, as nested
 	 * associative arrays, normalized for storage.
 	 * @param string $summary Edit summary.
+	 * @param User $user User to attribute to
 	 * @param array $tags Optional list of change tags to set on the revision being created.
 	 *
 	 * @return StatusValue isOK if stored successfully.
@@ -42,6 +44,7 @@ interface EntityProposalSetStorage {
 		ProposalTarget $target,
 		array $proposalSet,
 		$summary,
+		User $user,
 		array $tags );
 
 	/**
