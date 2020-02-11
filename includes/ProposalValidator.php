@@ -28,6 +28,7 @@ use MediaWiki\Revision\RevisionStore;
 use Psr\Log\LoggerInterface;
 use Status;
 use StatusValue;
+// use Wikimedia\IPUtils;
 use WikiPage;
 
 class ProposalValidator {
@@ -188,7 +189,7 @@ class ProposalValidator {
 		// foreach ( $proposal->endorsements as $endorsement ) {
 		// if ( property_exists( $endorsement->user, 'ip' ) ) {
 		// // Check that the IP address is a real thing.
-		// if ( !IP::isValid( $endorsement->user->ip ) ) {
+		// if ( !IPUtils::isValid( $endorsement->user->ip ) ) {
 		// return Status::newFatal( 'jade-user-ip-invalid', $endorsement->user->ip );
 		// }
 		// }
