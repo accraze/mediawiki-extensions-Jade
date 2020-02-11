@@ -153,7 +153,8 @@ var EndorsementWidget = function ( config ) {
 			$content: this.menuStack.$element,
 			padded: true,
 			anchor: false,
-			align: 'forwards'
+			align: 'forwards',
+			width: '90px'
 		}
 	} );
 	this.row = new OO.ui.HorizontalLayout( {

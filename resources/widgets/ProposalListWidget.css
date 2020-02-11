@@ -1,6 +1,10 @@
 .jade-proposalListWidget {}
-.jade-proposalListWidget-proposeNewLabelBtn {}
-.jade-proposalListWidget-alternativesBtn {}
+.jade-proposalListWidget-proposeNewLabelBtn {
+    margin: auto 29%;
+}
+.jade-proposalListWidget-alternativesBtn {
+    margin-left: 32%;
+}
 .jade-proposalListWidget-alternativesBtn-expandBtn {}
 .jade-proposalListWidget-alternativesBtn-collapseBtn {}
 

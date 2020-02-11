@@ -7,6 +7,7 @@
   margin: 4px 2px;
   cursor: pointer;
   border-radius: 2px;
+  width: 90%;
 }
 
 .jade-endorsementWidget-endorsementMenu {}
@@ -15,11 +16,35 @@
 .jade-endorsementWidget-endorsementMenu-delete {
 	color: red;
 }
-.jade-endorsementWidget-comment {}
+.jade-endorsementWidget-endorsementMenu-edit.oo-ui-optionWidget-highlighted,
+.jade-endorsementWidget-endorsementMenu-move.oo-ui-optionWidget-highlighted,
+.jade-endorsementWidget-endorsementMenu-move.oo-ui-optionWidget-highlighted {
+	background-color: #eaf3ff;
+}
+.jade-endorsementWidget-comment {
+  width: 42%;
+}
+.jade-endorsementWidget-infoStack {
+  width: 45%;
+}
 .jade-endorsementWidget-author {}
 .jade-endorsementWidget-created {}
-.jade-endorsementWidget-menuBtn{}
+.jade-endorsementWidget-menuBtn {
+  position: absolute;
+  right: 15px;
+  top: 10px;
+}
 .jade-endorsementWidget-editForm-submitBtn {}
 .jade-endorsementWidget-editForm-cancelBtn {}
 .jade-endorsementWidget-editForm-text {}
 .jade-endorsementWidget-editForm {}
+
+@media only screen
+	and (max-width: 600px) {
+		.jade-endorsementWidget-comment {
+			width: 100%;
+		}
+    .jade-endorsementWidget-infoStack {
+      width: 100%;
+    }
+}

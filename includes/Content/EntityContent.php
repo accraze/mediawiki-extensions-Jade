@@ -148,6 +148,10 @@ class EntityContent extends JsonContent {
 				'entityId' => $revId,
 				'baseUrl' => $wgServer
 			];
+			$output->addHeadItem(
+				'<meta name="viewport" content="width=device-width, initial-scale=1">',
+				'viewport'
+			);
 			$output->addJsConfigVars( $jsConfigVars );
 			$output->addModules( [ 'ext.Jade.entityView', 'jade.api','jade.widgets', 'jade.dialogs' ] );
 		}

@@ -1,22 +1,35 @@
 .jade-proposeNewLabelDialog-selectOption-1-damagingIcon {}
 .jade-proposeNewLabelDialog-selectOption-1-goodfaithIcon {}
-.jade-proposeNewLabelDialog-selectOption1-msg {}
+.jade-proposeNewLabelDialog-selectOption-1-msg {
+    width: 100%;
+}
 .jade-proposeNewLabelDialog-selectOption1 {}
 
 .jade-proposeNewLabelDialog-selectOption-2-damagingIcon {}
 .jade-proposeNewLabelDialog-selectOption-2-goodfaithIcon {}
-.jade-proposeNewLabelDialog-selectOption-2-msg {}
+.jade-proposeNewLabelDialog-selectOption-2-msg {
+    width: 100%;
+}
 .jade-proposeNewLabelDialog-selectOption-2 {}
 
 .jade-proposeNewLabelDialog-selectOption-3-damagingIcon {}
 .jade-proposeNewLabelDialog-selectOption-3-goodfaithIcon {}
-.jade-proposeNewLabelDialog-selectOption-3-msg {}
+.jade-proposeNewLabelDialog-selectOption-3-msg {
+    width: 100%;
+}
 .jade-proposeNewLabelDialog-selectOption-3 {}
 
 .jade-proposeNewLabelDialog-labelForm {}
 .jade-proposeNewLabelDialog-labelForm-radioOption {}
-.jade-proposeNewLabelDialog-submitBtn {}
+.jade-proposeNewLabelDialog-submitBtn {
+    margin-right: 0px;
+}
 .jade-proposeNewLabelDialog-cancelBtn {}
 .jade-proposeNewLabelDialog-notesBox {}
 .jade-proposeNewLabelDialog-notesForm {}
-.jade-proposeNewLabelDialog-errorMessage {}
+.jade-proposeNewLabelDialog-buttons {
+    text-align: right;
+}
+.jade-proposeNewLabelDialog-errorMessage {
+    text-align: left;
+}

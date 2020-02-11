@@ -42,7 +42,6 @@ var EndorseDialog = function EndorseDialog( config ) {
 	} );
 	this.commentBox = new OO.ui.TextInputWidget( {
 		placeholder: mw.message( 'jade-ui-endorse-comment-placeholder' ).text(),
-
 		classes: [ 'jade-endorseDialog-commentBox' ]
 	} );
 	this.message = new OO.ui.MessageWidget( {

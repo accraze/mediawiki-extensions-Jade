@@ -54,7 +54,7 @@ var ProposeNewLabelDialog = function ProposeNewLabelDialog( config ) {
 		align: 'right',
 		icon: 'notice',
 		label: mw.message( 'jade-ui-damaging-label' ).text(),
-		flags: [ 'destructive', 'primary' ]
+		flags: [ 'destructive', 'primary', 'error' ]
 	} );
 	this.goodfaithButton2 = new OO.ui.ButtonWidget( {
 		classes: [ 'jade-proposeNewLabelDialog-selectOption-2-goodfaithIcon' ],
@@ -83,7 +83,7 @@ var ProposeNewLabelDialog = function ProposeNewLabelDialog( config ) {
 		align: 'right',
 		icon: 'notice',
 		label: 'damaging',
-		flags: [ 'destructive', 'primary' ]
+		flags: [ 'destructive', 'primary', 'error' ]
 	} );
 	this.goodfaithButton3 = new OO.ui.ButtonWidget( {
 		classes: [ 'jade-proposeNewLabelDialog-selectOption-3-goodfaithIcon' ],
