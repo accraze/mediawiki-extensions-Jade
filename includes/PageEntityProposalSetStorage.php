@@ -23,6 +23,7 @@ namespace Jade;
 use ChangeTags;
 use FormatJson;
 use Jade\Content\EntityContent;
+use MediaWiki\MediaWikiServices;
 use Status;
 use StatusValue;
 use Title;
@@ -54,16 +55,17 @@ class PageEntityProposalSetStorage implements EntityProposalSetStorage {
 		$title = TitleHelper::buildJadeTitle( $target );
 		$dbTitle = Title::newFromTitleValue( $title );
 		$page = WikiPage::factory( $dbTitle );
+		$pm = MediaWikiServices::getInstance()->getPermissionManager();
 
 		// TODO: Why aren't these permissions checks already handled by
 		// doEditContent?
 		if ( !$page->exists() ) {
-			if ( !$dbTitle->userCan( 'create', $user ) ) {
+			if ( !$pm->userCan( 'create', $user, $dbTitle ) ) {
 				return Status::newFatal( 'jade-cannot-create-page' );
 			}
 		}
 		// `edit` contains checks not present in `create`, do those as well.
-		if ( !$dbTitle->userCan( 'edit', $user ) ) {
+		if ( !$pm->userCan( 'edit', $user, $dbTitle ) ) {
 			return Status::newFatal( 'jade-cannot-edit-page' );
 		}
 		if ( count( $tags ) > 0 ) {
