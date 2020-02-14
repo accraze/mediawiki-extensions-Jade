@@ -1,25 +1,14 @@
 
-.container {
-	width: 500px;
-	height: 100%;
+.jade-entity-view-stack {
+	margin-top: 1%;
+	height: 35%;
+	position: relative;
 }
 
-.one {
-	background-color: #ccf;
+.jade-entity-diff-panel {
+	height: 1%;
 }
 
-.two {
-	background-color: #fcc;
-}
-
-.three {
-	background-color: #cfc;
-}
-
-.four {
-	background-color: #fcccfc;
-}
-
-.five {
-	background-color: #ccfccf;
+.jade-entity-view-split {
+	margin-top: 4%;
 }

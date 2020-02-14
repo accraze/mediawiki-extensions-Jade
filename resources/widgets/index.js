@@ -1,6 +1,7 @@
 'use strict';
 
 module.exports = {
+	DiffWidget: require( './DiffWidget.js' ),
 	EndorsementListWidget: require( './EndorsementListWidget.js' ),
 	EndorsementWidget: require( './EndorsementWidget.js' ),
 	FacetListWidget: require( './FacetListWidget.js' ),

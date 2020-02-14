@@ -243,10 +243,11 @@ class EntityContentTest extends MediaWikiLangTestCase {
 		$this->mockValidation
 			->method( 'validatePageTitle' )
 			->willReturn( Status::newGood() );
-
+		$page = Title::newFromDBkey( '123' );
+		$id = $page->getId();
 		$content->fillParserOutput(
-			Title::newFromDBkey( 'Jade:Diff/123' ),
-			123,
+			Title::newFromDBkey( 'Jade:Diff/' . $id ),
+			$id,
 			ParserOptions::newFromUser( $this->getTestUser()->getUser() ),
 			$doGenerateHtml,
 			$output
@@ -254,6 +255,33 @@ class EntityContentTest extends MediaWikiLangTestCase {
 
 		$strippedHtml = Sanitizer::stripAllTags( $output->getText() );
 		$this->assertRegExp( $expectedPattern, $strippedHtml );
+	}
+
+	/**
+	 * @covers ::fillParserOutput
+	 * @dataProvider provideFillParserOutput
+	 */
+	public function testFillParserOutput2( $doGenerateHtml, $expectedPattern ) {
+		$content = new EntityContent( $this->judgmentText );
+		$output = new ParserOutput;
+
+		$this->mockValidation
+			->method( 'validateProposalContent' )
+			->willReturn( Status::newGood() );
+		$this->mockValidation
+			->method( 'validatePageTitle' )
+			->willReturn( Status::newGood() );
+		$id = '1337';
+		$content->fillParserOutput(
+			Title::newFromDBkey( 'Jade:Diff/' . $id ),
+			$id,
+			ParserOptions::newFromUser( $this->getTestUser()->getUser() ),
+			true,
+			$output
+		);
+
+		$strippedHtml = Sanitizer::stripAllTags( $output->getText() );
+		$this->assertSame( '', $strippedHtml );
 	}
 
 }

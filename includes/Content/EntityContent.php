@@ -20,6 +20,7 @@
 
 namespace Jade\Content;
 
+use Jade\EntityDiffBuilder;
 use Jade\JadeServices;
 use Jade\ProposalPageWikitextRenderer;
 use JsonContent;
@@ -140,13 +141,20 @@ class EntityContent extends JsonContent {
 		if ( $generateHtml ) {
 			$output->setEnableOOUI( true );
 			OutputPage::setupOOUI();
+			$diffBuilder = new EntityDiffBuilder();
+			try {
+				$diffHeader = $diffBuilder->buildDiffHeader( $title );
+			} catch ( \Throwable $e ) {
+				$diffHeader = '';
+			}
 			$entityData = $this->getData()->getValue();
 			global $wgServer;
 			$jsConfigVars = [
 				'entityData' => $entityData,
 				'entityTitle' => $title,
 				'entityId' => $revId,
-				'baseUrl' => $wgServer
+				'baseUrl' => $wgServer,
+				'diffHeader' => $diffHeader
 			];
 			$output->addHeadItem(
 				'<meta name="viewport" content="width=device-width, initial-scale=1">',
@@ -156,5 +164,4 @@ class EntityContent extends JsonContent {
 			$output->addModules( [ 'ext.Jade.entityView', 'jade.api','jade.widgets', 'jade.dialogs' ] );
 		}
 	}
-
 }

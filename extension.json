@@ -186,6 +186,7 @@
 		"jade.widgets": {
 			"packageFiles": [
 				"resources/widgets/index.js",
+				"resources/widgets/DiffWidget.js",
 				"resources/widgets/EndorsementListWidget.js",
 				"resources/widgets/EndorsementWidget.js",
 				"resources/widgets/FacetListWidget.js",
@@ -194,6 +195,7 @@
 				"resources/widgets/ProposalWidget.js"
 			],
 			"styles": [
+				"resources/widgets/DiffWidget.css",
 				"resources/widgets/EndorsementListWidget.css",
 				"resources/widgets/EndorsementWidget.css",
 				"resources/widgets/FacetListWidget.css",
@@ -227,7 +229,10 @@
 			"dependencies": [
 				"oojs-ui",
 				"oojs-ui.styles.icons-content",
-				"oojs-ui.styles.icons-interactions"
+				"oojs-ui.styles.icons-interactions",
+				"oojs-ui.styles.icons-editing-advanced",
+				"oojs-ui.styles.icons-accessibility",
+				"mediawiki.diff.styles"
 			]
 		}
 	},
