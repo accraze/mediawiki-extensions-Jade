@@ -1,0 +1,25 @@
+.jade-endorsementWidget {
+  background-color: #ddd;
+  border: none;
+  color: black;
+  padding: 10px 20px;
+  display: inline-block;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 2px;
+}
+
+.jade-endorsementWidget-endorsementMenu {}
+.jade-endorsementWidget-endorsementMenu-edit {}
+.jade-endorsementWidget-endorsementMenu-move {}
+.jade-endorsementWidget-endorsementMenu-delete {
+	color: red;
+}
+.jade-endorsementWidget-comment {}
+.jade-endorsementWidget-author {}
+.jade-endorsementWidget-created {}
+.jade-endorsementWidget-menuBtn{}
+.jade-endorsementWidget-editForm-submitBtn {}
+.jade-endorsementWidget-editForm-cancelBtn {}
+.jade-endorsementWidget-editForm-text {}
+.jade-endorsementWidget-editForm {}

@@ -521,10 +521,21 @@ class EntityBuilder {
 	 */
 	public function createAndEndorse( $params, $title ) {
 		$warnings = [];
-		$entity = $this->buildEntity( $params );
+		$contents = $this->loadEntityPage( $title );
+		if ( $contents === null ) {
+			$entity = $this->buildEntity( $params );
+		} else {
+			$entity = $contents[1];
+			$facet = $params['facet'];
+			$facetData = $entity['facets'][$facet];
+			if ( $this->proposalExists( $params, $facetData ) ) {
+				return [ 'jade-proposalexists', $entity, $warnings ];
+			}
+			$proposal = $this->buildProposal( $params );
+			$entity['facets'][$facet]['proposals'][] = $proposal;
+		}
 		if ( $this->userAlreadyEndorsed( $params, [ null, $entity ] ) && $params['nomove'] ) {
 			return [ 'jade-nochange', $entity, $warnings ];
-
 		}
 		$labelname = $this->getProposalDataName( $params );
 		$label = json_decode( $params[$labelname], true );
@@ -968,11 +979,39 @@ class EntityBuilder {
 		if ( $params['endorsementcomment'] === null ) {
 			$params['endorsementcomment'] = 'As proposer.';
 		}
-		$entity['facets'][$facet]['proposals'][] = $this->buildProposal( $params );
+		$facetData = $entity['facets'][$facet];
+		if ( $this->proposalExists( $params, $facetData ) ) {
+			return [ 'jade-proposalexists', $entity, $warnings ];
+		}
+		$facet = $params['facet'];
+		$proposal = $this->buildProposal( $params );
+		$entity['facets'][$facet]['proposals'][] = $proposal;
 		$comments = '/* jade-createandendorseproposal */ ' . json_encode( $label ) .
 			' "' . $params['notes'] . '" : ' . $params['comment'];
 		$status = $this->saveEntityPage( $title, $entity, $comments );
 		return [ $status, $entity, $warnings ];
+	}
+
+	/**
+	 * Check if proposed label already exist within facet.
+	 *
+	 * @param array $params
+	 * @param array $facet
+	 * @return bool
+	 */
+	public function proposalExists( $params, $facet ) {
+		$labelname = $this->getProposalDataName( $params );
+		$label = json_decode( $params[$labelname], true );
+		$exists = false;
+
+		foreach ( $facet['proposals'] as $prop ) {
+			// look for proposal in facet
+			if ( $prop[$labelname] === $label ) {
+				$exists = true;
+				break;
+			}
+		}
+		return $exists;
 	}
 
 	/**

@@ -4,6 +4,8 @@ module.exports = function ( grunt ) {
 
 	grunt.loadNpmTasks( 'grunt-jsonlint' );
 	grunt.loadNpmTasks( 'grunt-banana-checker' );
+	grunt.loadNpmTasks( 'grunt-stylelint' );
+	grunt.loadNpmTasks( 'grunt-eslint' );
 
 	grunt.initConfig( {
 		banana: conf.MessagesDirs,
@@ -13,9 +15,32 @@ module.exports = function ( grunt ) {
 				'!node_modules/**',
 				'!vendor/**'
 			]
+		},
+		eslint: {
+			options: {
+				extensions: [ '.js', '.json' ],
+				cache: true,
+				fix: grunt.option( 'fix' )
+			},
+			all: [
+				'**/*.{js,json}',
+				'!node_modules/**',
+				'!vendor/**'
+			]
+		},
+		stylelint: {
+			all: [
+				'**/*.js',
+				'!node_modules/**',
+				'!vendor/**'
+			]
 		}
 	} );
 
-	grunt.registerTask( 'test', [ 'jsonlint', 'banana' ] );
+	grunt.registerTask( 'test', [ 'jsonlint', 'banana', 'stylelint', 'eslint' ] );
+	grunt.registerTask( 'fix', function () {
+		grunt.config.set( 'eslint.options.fix', true );
+		grunt.task.run( 'eslint' );
+	} );
 	grunt.registerTask( 'default', 'test' );
 };

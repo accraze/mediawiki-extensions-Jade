@@ -24,6 +24,7 @@ use Jade\JadeServices;
 use Jade\ProposalPageWikitextRenderer;
 use JsonContent;
 use MediaWiki\MediaWikiServices;
+use OutputPage;
 use ParserOptions;
 use ParserOutput;
 use Status;
@@ -136,10 +137,19 @@ class EntityContent extends JsonContent {
 		$renderer = new ProposalPageWikitextRenderer;
 		$wikitext = $renderer->getWikitext( $this->getData()->getValue() );
 
-		$output = $parser->parse( $wikitext, $title, $options, true, true, $revId );
-
-		if ( !$generateHtml ) {
-			$output->setText( '' );
+		if ( $generateHtml ) {
+			$output->setEnableOOUI( true );
+			OutputPage::setupOOUI();
+			$entityData = $this->getData()->getValue();
+			global $wgServer;
+			$jsConfigVars = [
+				'entityData' => $entityData,
+				'entityTitle' => $title,
+				'entityId' => $revId,
+				'baseUrl' => $wgServer
+			];
+			$output->addJsConfigVars( $jsConfigVars );
+			$output->addModules( [ 'ext.Jade.entityView', 'jade.api','jade.widgets', 'jade.dialogs' ] );
 		}
 	}
 

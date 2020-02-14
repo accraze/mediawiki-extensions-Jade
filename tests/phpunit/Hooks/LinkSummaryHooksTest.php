@@ -20,7 +20,6 @@ use Jade\Hooks\LinkSummaryHooks;
 use Jade\ProposalEntityType;
 use Jade\ProposalLinkTable;
 use Jade\ProposalTarget;
-use Jade\Tests\TestJudgmentLinkAssertions;
 use Jade\Tests\TestStorageHelper;
 use MediaWikiTestCase;
 use Revision;
@@ -38,7 +37,6 @@ use WikiPage;
 class LinkSummaryHooksTest extends MediaWikiTestCase {
 
 	// Include assertions to test judgment links.
-	use TestJudgmentLinkAssertions;
 
 	const DIFF_JUDGMENT = '../../data/valid_diff_judgment.json';
 	const REVISION_JUDGMENT = '../../data/valid_revision_judgment.json';

@@ -21,7 +21,6 @@
 namespace Jade\Tests\Maintenance;
 
 use Jade\Maintenance\CleanJudgmentLinks;
-use Jade\Tests\TestJudgmentLinkAssertions;
 use Jade\Tests\TestStorageHelper;
 use MediaWiki\Tests\Maintenance\MaintenanceBaseTestCase;
 use Revision;
@@ -37,7 +36,7 @@ use WikiPage;
 class CleanJudgmentLinksTest extends MaintenanceBaseTestCase {
 
 	// Include assertions to test judgment links.
-	use TestJudgmentLinkAssertions;
+	// use TestJudgmentLinkAssertions;
 
 	public function getMaintenanceClass() {
 		return CleanJudgmentLinks::class;

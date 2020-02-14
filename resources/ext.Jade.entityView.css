@@ -1,0 +1,25 @@
+
+.container {
+	width: 500px;
+	height: 100%;
+}
+
+.one {
+	background-color: #ccccff;
+}
+
+.two {
+	background-color: #ffcccc;
+}
+
+.three {
+	background-color: #ccffcc;
+}
+
+.four {
+	background-color: #fcccfc;
+}
+
+.five {
+	background-color: #ccfccf;
+}

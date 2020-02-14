@@ -1,0 +1,26 @@
+.jade-proposalWidget {
+	border-style: solid;
+	border-radius: 1%;
+	border-color: #D4D4D4;
+	padding: 3%;
+	margin: 4px 2px;
+
+
+}
+.jade-proposalWidget-menu {}
+.jade-proposalWidget-menuBtn {}
+.jade-proposalWidget-menu-edit {}
+.jade-proposalWidget-menu-promote {}
+.jade-proposalWidget-menu-delete {
+	color: red;
+}
+.jade-proposalWidget-notes {}
+.jade-proposalWidget-editForm {}
+.jade-proposalWidget-editForm-text {}
+.jade-proposalWidget-editForm-cancelBtn {}
+.jade-proposalWidget-editForm-submitBtn {}
+.jade-proposalWidget-endorsements-toggle {}
+.jade-proposalWidget-endorsements-expandBtn {}
+.jade-proposalWidget-endorsements-collapseBtn {}
+.jade-proposalWidget-endorsementsButton {}
+.jade-proposalWidget-endorseBtn {}
