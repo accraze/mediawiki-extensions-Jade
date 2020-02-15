@@ -12,6 +12,7 @@ $( function () {
 		entityData: mw.config.get( 'entityData' ) || {}
 	} );
 
+	// eslint-disable-next-line no-jquery/no-global-selector
 	$( '#mw-content-text' ).append(
 		this.facetsList.$element
 	);

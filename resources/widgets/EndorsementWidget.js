@@ -106,15 +106,15 @@ var EndorsementWidget = function ( config ) {
 			api = new mw.Api();
 		return api.get( params ).then( function ( data ) {
 			var userName = data.query.users[ 0 ].name;
-			var baseDiv = $( '<div>' );
+			var $baseDiv = $( '<div>' );
 			var userUrl = '/wiki/User:' + userName;
 			var talkUrl = '/wiki/User_talk:' + userName;
 			var contribUrl = '/wiki/Special:Contributions/' + userName;
-			var user = $( '<a>' ).attr( 'href', userUrl ).text( userName );
-			var talk = $( '<a>' ).attr( 'href', talkUrl ).text( 'talk' );
-			var contrib = $( '<a>' ).attr( 'href', contribUrl ).text( 'contrib' );
-			baseDiv.append( user ).append( ' (' ).append( talk ).append( '•' ).append( contrib ).append( ')' );
-			return baseDiv;
+			var $user = $( '<a>' ).attr( 'href', userUrl ).text( userName );
+			var $talk = $( '<a>' ).attr( 'href', talkUrl ).text( 'talk' );
+			var $contrib = $( '<a>' ).attr( 'href', contribUrl ).text( 'contrib' );
+			$baseDiv.append( $user ).append( ' (' ).append( $talk ).append( '•' ).append( $contrib ).append( ')' );
+			return $baseDiv;
 		} );
 	};
 	this.authorLabel = new OO.ui.OptionWidget( {

@@ -2,6 +2,7 @@
 	"root": true,
 	"extends": [
 		"wikimedia/client",
+		"wikimedia/jquery",
 		"wikimedia/mediawiki"
 	],
 	"globals": {
@@ -13,8 +14,7 @@
 		"util": false,
 		"Promise": false,
 		"valueFormatters": false,
-		"valueParsers": false,
-		"$": false
+		"valueParsers": false
 	},
 	"rules": {
 		"indent": [

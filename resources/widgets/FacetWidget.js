@@ -63,7 +63,7 @@ var FacetWidget = function ( config ) {
 	this.$element
 		.addClass( 'jade-facetWidget' )
 		.append( this.facetHeader.$element )
-		.append( '<hr class="jade-facetWidget-line"/>' )
+		.append( $( '<hr>' ).addClass( 'jade-facetWidget-line' ) )
 		.append( this.proposalList.$element );
 
 	this.expandIcon.connect( this, {
