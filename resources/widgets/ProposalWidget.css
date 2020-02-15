@@ -1,37 +1,52 @@
 .jade-proposalWidget {
 	border-style: solid;
 	border-radius: 1%;
-	border-color: #D4D4D4;
+	border-color: #d4d4d4;
 	padding: 3%;
 	margin: 4px 2px;
-
-
 }
+
 .jade-proposalWidget-endorsements-toggle {
 	text-align: center;
 }
-.jade-proposalWidget-menu {}
+
+/* .jade-proposalWidget-menu {} */
+
 .jade-proposalWidget-menuBtn {
 	position: absolute;
-  	right: 15px;
+	right: 15px;
 }
-.jade-proposalWidget-menu-edit {}
-.jade-proposalWidget-menu-promote {}
+
+/* .jade-proposalWidget-menu-edit {} */
+
+/* .jade-proposalWidget-menu-promote {} */
+
 .jade-proposalWidget-menu-delete {
-	color: red;
+	color: #f00;
 }
+
 .jade-proposalWidget-menu-edit.oo-ui-optionWidget-highlighted,
 .jade-proposalWidget-menu-promote.oo-ui-optionWidget-highlighted,
 .jade-proposalWidget-menu-delete.oo-ui-optionWidget-highlighted {
 	background-color: #eaf3ff;
 }
-.jade-proposalWidget-notes {}
-.jade-proposalWidget-editForm {}
-.jade-proposalWidget-editForm-text {}
-.jade-proposalWidget-editForm-cancelBtn {}
-.jade-proposalWidget-editForm-submitBtn {}
-.jade-proposalWidget-endorsements-toggle {}
-.jade-proposalWidget-endorsements-expandBtn {}
-.jade-proposalWidget-endorsements-collapseBtn {}
-.jade-proposalWidget-endorsementsButton {}
-.jade-proposalWidget-endorseBtn {}
+
+/* .jade-proposalWidget-notes {} */
+
+/* .jade-proposalWidget-editForm {} */
+
+/* .jade-proposalWidget-editForm-text {} */
+
+/* .jade-proposalWidget-editForm-cancelBtn {} */
+
+/* .jade-proposalWidget-editForm-submitBtn {} */
+
+/* .jade-proposalWidget-endorsements-toggle {} */
+
+/* .jade-proposalWidget-endorsements-expandBtn {} */
+
+/* .jade-proposalWidget-endorsements-collapseBtn {} */
+
+/* .jade-proposalWidget-endorsementsButton {} */
+
+/* .jade-proposalWidget-endorseBtn {} */

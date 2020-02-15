@@ -1,35 +1,51 @@
-.jade-proposeNewLabelDialog-selectOption-1-damagingIcon {}
-.jade-proposeNewLabelDialog-selectOption-1-goodfaithIcon {}
+/* .jade-proposeNewLabelDialog-selectOption-1-damagingIcon {} */
+
+/* .jade-proposeNewLabelDialog-selectOption-1-goodfaithIcon {} */
+
 .jade-proposeNewLabelDialog-selectOption-1-msg {
-    width: 100%;
+	width: 100%;
 }
-.jade-proposeNewLabelDialog-selectOption1 {}
 
-.jade-proposeNewLabelDialog-selectOption-2-damagingIcon {}
-.jade-proposeNewLabelDialog-selectOption-2-goodfaithIcon {}
+/* .jade-proposeNewLabelDialog-selectOption1 {} */
+
+/* .jade-proposeNewLabelDialog-selectOption-2-damagingIcon {} */
+
+/* .jade-proposeNewLabelDialog-selectOption-2-goodfaithIcon {} */
+
 .jade-proposeNewLabelDialog-selectOption-2-msg {
-    width: 100%;
+	width: 100%;
 }
-.jade-proposeNewLabelDialog-selectOption-2 {}
 
-.jade-proposeNewLabelDialog-selectOption-3-damagingIcon {}
-.jade-proposeNewLabelDialog-selectOption-3-goodfaithIcon {}
+/* .jade-proposeNewLabelDialog-selectOption-2 {} */
+
+/* .jade-proposeNewLabelDialog-selectOption-3-damagingIcon {} */
+
+/* .jade-proposeNewLabelDialog-selectOption-3-goodfaithIcon {} */
+
 .jade-proposeNewLabelDialog-selectOption-3-msg {
-    width: 100%;
+	width: 100%;
 }
-.jade-proposeNewLabelDialog-selectOption-3 {}
 
-.jade-proposeNewLabelDialog-labelForm {}
-.jade-proposeNewLabelDialog-labelForm-radioOption {}
+/* .jade-proposeNewLabelDialog-selectOption-3 {} */
+
+/* .jade-proposeNewLabelDialog-labelForm {} */
+
+/* .jade-proposeNewLabelDialog-labelForm-radioOption {} */
+
 .jade-proposeNewLabelDialog-submitBtn {
-    margin-right: 0px;
+	margin-right: 0;
 }
-.jade-proposeNewLabelDialog-cancelBtn {}
-.jade-proposeNewLabelDialog-notesBox {}
-.jade-proposeNewLabelDialog-notesForm {}
+
+/* .jade-proposeNewLabelDialog-cancelBtn {} */
+
+/* .jade-proposeNewLabelDialog-notesBox {} */
+
+/* .jade-proposeNewLabelDialog-notesForm {} */
+
 .jade-proposeNewLabelDialog-buttons {
-    text-align: right;
+	text-align: right;
 }
+
 .jade-proposeNewLabelDialog-errorMessage {
-    text-align: left;
+	text-align: left;
 }
