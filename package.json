@@ -4,17 +4,17 @@
   "test": "grunt test"
  },
  "devDependencies": {
-  "eslint-config-wikimedia": "^0.15.0",
-  "eslint-plugin-compat": "^3.3.0",
-  "eslint-plugin-mediawiki": "^0.2.1",
-  "grunt": "^1.0.4",
-  "grunt-banana-checker": "^0.8.1",
-  "grunt-eslint": "^22.0.0",
-  "grunt-jsonlint": "^2.0.0",
-  "grunt-stylelint": "^0.12.0",
-  "stylelint-config-wikimedia": "^0.7.0"
+  "eslint-config-wikimedia": "0.15.0",
+  "eslint-plugin-compat": "3.3.0",
+  "eslint-plugin-mediawiki": "0.2.1",
+  "grunt": "1.0.4",
+  "grunt-banana-checker": "0.8.1",
+  "grunt-eslint": "22.0.0",
+  "grunt-jsonlint": "2.1.1",
+  "grunt-stylelint": "0.12.0",
+  "stylelint-config-wikimedia": "0.7.0"
  },
  "dependencies": {
-  "oojs-ui": "^0.35.1"
+  "oojs-ui": "0.35.1"
  }
 }
