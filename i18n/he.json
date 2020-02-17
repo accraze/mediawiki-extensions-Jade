@@ -7,7 +7,7 @@
 			"Steeve815"
 		]
 	},
-	"jade-desc": "מנוע שיפוט ושיחה (JADE)",
+	"jade-desc": "מערכת יציבה לאיסוף תוצאות חיוביות כוזבות ומשוב, כדי לאפשר דחייה אנושית וסקירה של דירוגי ORES.",
 	"jade-damaging-scale-true-label": "מזיקה",
 	"jade-damaging-scale-false-label": "לא מזיקה",
 	"jade-goodfaith-scale-true-label": "כוונה טובה",
@@ -46,6 +46,7 @@
 	"jade-endorsement": "הבעת תמיכה",
 	"jade-endorsements": "הבעות תמיכה",
 	"jade-user": "משתמש",
+	"jade-proposalexists": "הצעה עם הנתונים שצוינו כבר קיימת.",
 	"jade-proposalnotfound": "לא היה אפשר למצוא הצעה עם \"הנתונים\" המתאימים \"$1\"",
 	"jade-endorsementnotfound": "לא היה אפשר למצוא הבעת תמיכה ממשתמש היעד.",
 	"jade-endorsingnonpreferredproposal": "הפעולה הזאת גרמה ליצירת הבעת תמיכה בהצעה שאינה מסומנת בתור מועדפת.",

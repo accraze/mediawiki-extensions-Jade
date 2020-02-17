@@ -4,7 +4,7 @@
 			"Metalhead64"
 		]
 	},
-	"jade-desc": "Beurteilungs- und Dialogengine",
+	"jade-desc": "Robustes Falsch-Positiv- und Feedback-Sammelsystem, um eine Widerlegung und Überprüfung der ORES-Bewertung durch Menschen zu ermöglichen.",
 	"jade-damaging-scale-true-label": "Schädlich",
 	"jade-damaging-scale-false-label": "Nicht schädlich",
 	"jade-goodfaith-scale-true-label": "Gute Absicht",
@@ -42,5 +42,12 @@
 	"jade-content-model-error": "Falsches Inhaltsmodell für die Beurteilung.",
 	"jade-endorsement": "Bestätigung",
 	"jade-endorsements": "Bestätigungen",
-	"jade-user": "Benutzer"
+	"jade-user": "Benutzer",
+	"jade-proposalexists": "Ein Vorschlag mit den angegebenen Daten ist bereits vorhanden.",
+	"jade-proposalnotfound": "Konnte keinen Vorschlag mit passenden \"Daten\" ''$1'' finden",
+	"jade-endorsementnotfound": "Konnte keine Unterstützung durch den Zielbenutzer finden.",
+	"jade-endorsingnonpreferredproposal": "Diese Aktion führte zu einer Unterstützung für einen Vorschlag, der nicht als bevorzugt gekennzeichnet ist.",
+	"jade-proposalispreferred": "Kann einen bevorzugten Vorschlag nicht löschen, außer wenn es der einzige verbleibende Vorschlag für eine Facette ist. Du musst einen anderen Vorschlag als \"bevorzugt\" kennzeichnen.",
+	"jade-invalidtitleentitydata": "Titel oder entitydata-Parameter müssen angegeben werden.",
+	"jade-nochange": "Diese Aktion würde zu keiner Änderung führen. Der Benutzer hat die labeldata bereits bestätigt."
 }

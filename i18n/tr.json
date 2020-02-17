@@ -5,7 +5,7 @@
 			"BaRaN6161 TURK"
 		]
 	},
-	"jade-desc": "Yargı ve diyalog motoru",
+	"jade-desc": "İnsan yalanlaması ve ORES puanlamasının gözden geçirilmesini sağlamak için sağlam yanlış pozitif ve geri bildirim toplama sistemi.",
 	"jade-damaging-scale-true-label": "Zararlı",
 	"jade-damaging-scale-false-label": "Zararlı değil",
 	"jade-goodfaith-scale-true-label": "İyi niyetli",
@@ -44,6 +44,7 @@
 	"jade-endorsement": "Onay",
 	"jade-endorsements": "Onaylar",
 	"jade-user": "Kullanıcı",
+	"jade-proposalexists": "Belirtilen verileri içeren bir teklif zaten var.",
 	"jade-proposalnotfound": "Eşleşen \"veriler\" \"$1\" ile bir teklif bulunamadı",
 	"jade-endorsementnotfound": "Hedef kullanıcıdan bir onay bulunamadı.",
 	"jade-endorsingnonpreferredproposal": "Bu eylem, tercih edilen olarak işaretlenmeyen bir teklif için bir onay oluşturulmasına neden oldu.",

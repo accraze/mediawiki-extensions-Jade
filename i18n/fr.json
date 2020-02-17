@@ -6,10 +6,11 @@
 			"Zarisi",
 			"Tartare",
 			"Thibaut120094",
-			"Verdy p"
+			"Verdy p",
+			"Pamputt"
 		]
 	},
-	"jade-desc": "Moteur de verdict et de dialogue",
+	"jade-desc": "Système robuste de collecte de faux positifs et de retour d’information, pour permettre la réfutation humaine et la révision de la notation ORES.",
 	"jade-damaging-scale-true-label": "Nuisible",
 	"jade-damaging-scale-false-label": "Non nuisible",
 	"jade-goodfaith-scale-true-label": "Bonne foi",
@@ -48,6 +49,7 @@
 	"jade-endorsement": "Approbation",
 	"jade-endorsements": "Approbation",
 	"jade-user": "Utilisateur",
+	"jade-proposalexists": "Une proposition avec les données spécifiées existe déjà.",
 	"jade-proposalnotfound": "Impossible de trouver une proposition où « data » correspond à ''$1''",
 	"jade-endorsementnotfound": "Impossible de trouver une approbation par l’utilisateur cible.",
 	"jade-endorsingnonpreferredproposal": "Cette action a conduit à créer une approbation pour une proposition qui n’est pas signalée comme préférée.",

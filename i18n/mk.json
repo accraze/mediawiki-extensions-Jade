@@ -4,7 +4,7 @@
 			"Bjankuloski06"
 		]
 	},
-	"jade-desc": "Погон за просудување и дијалог",
+	"jade-desc": "Робусен систем за одѕивно прибирање на погрешни погодоци, кој овозможува човечко побивање и преглед на оценувањето со ORES.",
 	"jade-damaging-scale-true-label": "Штетно",
 	"jade-damaging-scale-false-label": "Нештетно",
 	"jade-goodfaith-scale-true-label": "Добронамерно",
@@ -43,6 +43,7 @@
 	"jade-endorsement": "Одобрение",
 	"jade-endorsements": "Одобрение",
 	"jade-user": "Корисник",
+	"jade-proposalexists": "Веќе постои предлог со укажаните податоци.",
 	"jade-proposalnotfound": "Не можев да најдам предог за совпаднатиот „податок“ ''$1''",
 	"jade-endorsementnotfound": "Не можев да најдам потврда од целниот корисник.",
 	"jade-endorsingnonpreferredproposal": "Ова дејство создаде одобрение за предлог кој не е означен како претпочитана.",

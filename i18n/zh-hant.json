@@ -4,7 +4,7 @@
 			"Kly"
 		]
 	},
-	"jade-desc": "判斷與對話引擎（Judgment and dialog engine、JADE）",
+	"jade-desc": "強大的假為正確與意見回饋收集系統，允許人們反駁與檢閱客觀修訂評估服務評分。",
 	"jade-damaging-scale-true-label": "毀謗",
 	"jade-damaging-scale-false-label": "非毀謗",
 	"jade-goodfaith-scale-true-label": "善意",
@@ -43,6 +43,7 @@
 	"jade-endorsement": "贊同",
 	"jade-endorsements": "簽署",
 	"jade-user": "使用者",
+	"jade-proposalexists": "已存在具有指定資料的提議。",
 	"jade-proposalnotfound": "無法找出符合資料為''$1''的提議。",
 	"jade-endorsementnotfound": "無法查找來自目標使用者的贊同。",
 	"jade-endorsingnonpreferredproposal": "此操作會對未被標記成優先的提議建立一個贊同。",
