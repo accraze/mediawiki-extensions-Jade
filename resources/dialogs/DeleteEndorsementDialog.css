@@ -2,12 +2,18 @@
 
 /* .jade-deleteEndorsementDialog-endorsementWidget {} */
 
-/* .jade-deleteEndorsementDialog-submitBtn {} */
+.jade-deleteEndorsementDialog-submitBtn {
+	margin-right: 0.1px;
+}
 
 /* .jade-deleteEndorsementDialog-cancelBtn {} */
 
 /* .jade-deleteEndorsementDialog-commentBox {} */
 
 /* .jade-deleteEndorsementDialog-commentForm {} */
+
+.jade-deleteEndorsementDialog-commentForm-buttons {
+	text-align: right;
+}
 
 /* .jade-deleteEndorsementDialog-errorMessage {} */
