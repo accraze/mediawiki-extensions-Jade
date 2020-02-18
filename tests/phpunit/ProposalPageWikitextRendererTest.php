@@ -28,12 +28,12 @@ use Wikimedia\TestingAccessWrapper;
  * @group Jade
  * @group medium
  *
- * @coversDefaultClass Jade\ProposalPageWikitextRenderer
+ * @coversDefaultClass \Jade\ProposalPageWikitextRenderer
  *
  * TODO: Could make some tests more unit-y, calling the methods through a
  * TestingAccessWrapper rather than going through the public getWikitext.
  */
-class JudgmentPageWikitextRendererTest extends MediaWikiLangTestCase {
+class ProposalPageWikitextRendererTest extends MediaWikiLangTestCase {
 
 	public static function provideBasicSamples() {
 		// Renders the damaging schema.

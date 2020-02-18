@@ -30,7 +30,7 @@ use ReflectionClass;
  * @group medium
  * @group SpamBlacklist
  *
- * @covers SpamBlacklist
+ * @covers \SpamBlacklist
  */
 class SpamBlacklistTest extends ApiTestCase {
 

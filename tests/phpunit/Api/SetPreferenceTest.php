@@ -26,7 +26,7 @@ use Jade\Tests\TestStorageHelper;
  * @group medium
  * @group Jade
  *
- * @coversDefaultClass Jade\Api\SetPreference
+ * @coversDefaultClass \Jade\Api\SetPreference
  */
 class SetPreferenceTest extends ApiTestCase {
 

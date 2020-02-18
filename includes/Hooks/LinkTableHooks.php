@@ -137,7 +137,7 @@ class LinkTableHooks {
 		$status = TitleHelper::parseTitleValue( $title );
 		if ( !$status->isOK() ) {
 			if ( $title->getNamespace() === NS_JADE ) {
-				// Should be unreachable thanks to JudgmentValidator.  If
+				// Should be unreachable thanks to ProposalValidator.  If
 				// something did go wrong, it should be logged and
 				// investigated.
 				// TODO: Should this be a responsibility of TitleHelper::parseTitleValue()?

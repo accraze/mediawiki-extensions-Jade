@@ -27,7 +27,7 @@ use WikiPage;
  * @group Jade
  * @group medium
  *
- * @covers Jade\Hooks\MoveHooks
+ * @covers \Jade\Hooks\MoveHooks
  */
 class MoveHooksTest extends ApiTestCase {
 	const DIFF_JUDGMENT = '../../data/valid_diff_judgment.json';
@@ -112,7 +112,7 @@ class MoveHooksTest extends ApiTestCase {
 	}
 
 	/**
-	 * @covers Jade\Hooks\MoveHooks::onMovePageIsValidMove
+	 * @covers \Jade\Hooks\MoveHooks::onMovePageIsValidMove
 	 * @dataProvider provideNamespaceCombos
 	 */
 	public function testOnMovePageIsValidMove(

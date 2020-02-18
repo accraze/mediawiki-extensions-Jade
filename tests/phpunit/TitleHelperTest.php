@@ -24,7 +24,7 @@ use TitleValue;
 /**
  * @group Jade
  *
- * @coversDefaultClass Jade\TitleHelper
+ * @coversDefaultClass \Jade\TitleHelper
  */
 class TitleHelperTest extends MediaWikiTestCase {
 

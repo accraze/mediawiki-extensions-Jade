@@ -26,7 +26,7 @@ use Jade\Tests\TestStorageHelper;
  * @group medium
  * @group Jade
  *
- * @coversDefaultClass Jade\Api\MoveEndorsement
+ * @coversDefaultClass \Jade\Api\MoveEndorsement
  */
 class MoveEndorsementTest extends ApiTestCase {
 

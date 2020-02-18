@@ -26,7 +26,7 @@ use Jade\Tests\TestStorageHelper;
  * @group medium
  * @group Jade
  *
- * @coversDefaultClass Jade\Api\UpdateEndorsement
+ * @coversDefaultClass \Jade\Api\UpdateEndorsement
  */
 class UpdateEndorsementTest extends ApiTestCase {
 

@@ -27,7 +27,7 @@ use Jade\Tests\TestStorageHelper;
  * @group medium
  * @group Jade
  *
- * @coversDefaultClass Jade\Api\DeleteProposal
+ * @coversDefaultClass \Jade\Api\DeleteProposal
  */
 class DeleteProposalTest extends ApiTestCase {
 

@@ -32,7 +32,7 @@ use WikiPage;
  * @group Database
  * @group medium
  *
- * @coversDefaultClass Jade\Hooks\LinkTableHooks
+ * @coversDefaultClass \Jade\Hooks\LinkTableHooks
  */
 class LinkTableHooksTest extends MediaWikiTestCase {
 

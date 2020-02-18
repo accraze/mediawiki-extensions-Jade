@@ -30,12 +30,12 @@ use Wikimedia\TestingAccessWrapper;
  * @group Jade
  * @group medium
  *
- * @coversDefaultClass Jade\ProposalValidator
+ * @coversDefaultClass \Jade\ProposalValidator
  * @covers ::__construct
  *
  * TODO: Should construct directly rather than relying on service wiring.
  */
-class JudgmentValidatorTest extends MediaWikiTestCase {
+class ProposalValidatorTest extends MediaWikiTestCase {
 
 	const DATA_DIR = '../data';
 

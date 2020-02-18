@@ -26,7 +26,7 @@ use WikiPage;
  * @group Jade
  * @group medium
  *
- * @coversDefaultClass Jade\Content\EntityContentHandler
+ * @coversDefaultClass \Jade\Content\EntityContentHandler
  */
 class EntityContentHandlerTest extends MediaWikiLangTestCase {
 

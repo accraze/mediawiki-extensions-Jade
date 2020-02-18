@@ -22,9 +22,9 @@ use Wikimedia\TestingAccessWrapper;
 /**
  * @group Jade
  *
- * @coversDefaultClass Jade\ProposalEntityType
+ * @coversDefaultClass \Jade\ProposalEntityType
  */
-class JudgmentEntityTypeTest extends MediaWikiLangTestCase {
+class ProposalEntityTypeTest extends MediaWikiLangTestCase {
 
 	public function provideTypeNames() {
 		yield [ 'diff', true ];
