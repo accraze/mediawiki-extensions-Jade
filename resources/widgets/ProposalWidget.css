@@ -37,6 +37,10 @@
 
 /* .jade-proposalWidget-editForm-text {} */
 
+.jade-proposalWidget-editForm-buttons {
+	text-align: right;
+}
+
 /* .jade-proposalWidget-editForm-cancelBtn {} */
 
 /* .jade-proposalWidget-editForm-submitBtn {} */
