@@ -1,6 +1,8 @@
 /* .jade-endorseDialog-proposalWidget {} */
 
-/* .jade-endorseDialog-submitBtn {} */
+.jade-endorseDialog-submitBtn {
+	margin-right: 0.1px;
+}
 
 /* .jade-endorseDialog-cancelBtn {} */
 
