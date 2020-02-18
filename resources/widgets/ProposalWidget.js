@@ -175,6 +175,7 @@ var ProposalWidget = function ( config ) {
 				label: null
 			} ),
 			new OO.ui.FieldLayout( new OO.ui.Widget( {
+				classes: [ 'jade-proposalWidget-editForm-buttons' ],
 				content: [
 					new OO.ui.HorizontalLayout( {
 						items: [
