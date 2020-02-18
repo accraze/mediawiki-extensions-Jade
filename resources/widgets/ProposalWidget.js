@@ -178,8 +178,8 @@ var ProposalWidget = function ( config ) {
 				content: [
 					new OO.ui.HorizontalLayout( {
 						items: [
-							this.editFormSubmit,
-							this.editFormCancel
+							this.editFormCancel,
+							this.editFormSubmit
 						]
 					} )
 				]
