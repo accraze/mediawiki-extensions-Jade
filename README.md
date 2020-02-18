@@ -64,13 +64,17 @@ sudo -u www-data env "PHP_IDE_CONFIG=serverName=mwvagrant" "CIRRUS_REBUILD_FIXTU
 ```
 
 #### PHP Composer tests (style/static analysis/etc):
+These need to be run from the root Jade directory:
 
 ```
+cd /vagrant/mediawiki/extensions/Jade
 composer test
 ```
 
 #### JS tests:
+These need to be run from the root Jade directory:
 
 ```
+cd /vagrant/mediawiki/extensions/Jade
 grunt
 ```
