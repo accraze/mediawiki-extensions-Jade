@@ -10,4 +10,6 @@
 
 /* .jade-endorseDialog-commentForm {} */
 
-/* .jade-endorseDialog-errorMessage {} */
+.jade-endorseDialog-errorMessage {
+	text-align: left;
+}
