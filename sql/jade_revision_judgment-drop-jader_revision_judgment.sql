@@ -1,0 +1,1 @@
+DROP INDEX /*i*/jader_revision_judgment ON /*_*/jade_revision_judgment;
