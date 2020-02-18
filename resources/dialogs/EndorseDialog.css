@@ -10,6 +10,10 @@
 
 /* .jade-endorseDialog-commentForm {} */
 
+.jade-endorseDialog-commentForm-buttons {
+	text-align: right;
+}
+
 .jade-endorseDialog-errorMessage {
 	text-align: left;
 }
