@@ -16,4 +16,6 @@
 	text-align: right;
 }
 
-/* .jade-deleteEndorsementDialog-errorMessage {} */
+.jade-deleteEndorsementDialog-errorMessage {
+	text-align: left;
+}
