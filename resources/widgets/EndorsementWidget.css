@@ -43,6 +43,10 @@
 	top: 10px;
 }
 
+.jade-endorsementWidget-editForm-buttons {
+	text-align: right;
+}
+
 /* .jade-endorsementWidget-editForm-submitBtn {} */
 
 /* .jade-endorsementWidget-editForm-cancelBtn {} */
