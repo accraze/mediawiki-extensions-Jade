@@ -22,9 +22,9 @@ use PHPUnit\Framework\TestCase;
 /**
  * @group Jade
  *
- * @coversDefaultClass Jade\JudgmentTarget
+ * @coversDefaultClass \Jade\ProposalTarget
  */
-class JudgmentTargetTest extends TestCase {
+class ProposalTargetTest extends TestCase {
 
 	/**
 	 * @covers ::__construct

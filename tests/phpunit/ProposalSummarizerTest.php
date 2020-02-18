@@ -23,9 +23,9 @@ use TextContent;
 /**
  * @group Jade
  *
- * @coversDefaultClass Jade\ProposalSummarizer
+ * @coversDefaultClass \Jade\ProposalSummarizer
  */
-class JudgmentSummarizerTest extends MediaWikiTestCase {
+class ProposalSummarizerTest extends MediaWikiTestCase {
 
 	/**
 	 * @covers ::getSummaryFromContent

@@ -27,10 +27,10 @@ use MediaWikiTestCase;
  * @group Database
  * @group medium
  *
- * @coversDefaultClass Jade\JudgmentLinkTable
+ * @coversDefaultClass \Jade\ProposalLinkTable
  * @covers ::__construct
  */
-class JudgmentLinkTableTest extends MediaWikiTestCase {
+class ProposalLinkTableTest extends MediaWikiTestCase {
 
 	// Include assertions to test judgment links.
 	// use TestJudgmentLinkAssertions;
@@ -47,7 +47,7 @@ class JudgmentLinkTableTest extends MediaWikiTestCase {
 		// Content article and revision fixtures.
 		$article = TestStorageHelper::makeEdit(
 			NS_MAIN,
-			'JudgmentLinkTableTest' . strval( mt_rand() ) );
+			__CLASS__ . strval( mt_rand() ) );
 		$this->page = $article['page'];
 		$this->revision = $article['revision'];
 

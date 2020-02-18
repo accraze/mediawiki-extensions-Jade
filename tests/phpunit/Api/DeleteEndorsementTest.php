@@ -27,7 +27,7 @@ use Jade\Tests\TestStorageHelper;
  * @group medium
  * @group Jade
  *
- * @coversDefaultClass Jade\Api\DeleteEndorsement
+ * @coversDefaultClass \Jade\Api\DeleteEndorsement
  */
 class DeleteEndorsementTest extends ApiTestCase {
 

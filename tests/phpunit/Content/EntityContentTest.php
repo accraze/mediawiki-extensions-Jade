@@ -31,7 +31,7 @@ use Title;
  * @group Jade
  * @group medium
  *
- * @coversDefaultClass Jade\Content\EntityContent
+ * @coversDefaultClass \Jade\Content\EntityContent
  */
 class EntityContentTest extends MediaWikiLangTestCase {
 

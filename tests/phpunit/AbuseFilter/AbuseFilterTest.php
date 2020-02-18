@@ -27,7 +27,7 @@ use Jade\Tests\TestStorageHelper;
  * @group Database
  * @group medium
  *
- * @covers AbuseFilter
+ * @covers \AbuseFilter
  */
 class AbuseFilterTest extends ApiTestCase {
 

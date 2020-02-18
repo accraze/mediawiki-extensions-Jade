@@ -30,8 +30,8 @@ use WikiPage;
  * @group Jade
  * @group Database
  * @group medium
- * @covers Jade\Maintenance\CleanJudgmentLinks
- * @coversDefaultClass Jade\Maintenance\CleanJudgmentLinks
+ * @covers \Jade\Maintenance\CleanJudgmentLinks
+ * @coversDefaultClass \Jade\Maintenance\CleanJudgmentLinks
  */
 class CleanJudgmentLinksTest extends MaintenanceBaseTestCase {
 

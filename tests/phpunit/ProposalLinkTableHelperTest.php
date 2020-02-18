@@ -23,9 +23,9 @@ use Wikimedia\TestingAccessWrapper;
 /**
  * @group Jade
  *
- * @coversDefaultClass Jade\ProposalLinkTableHelper
+ * @coversDefaultClass \Jade\ProposalLinkTableHelper
  */
-class JudgmentLinkTableHelperTest extends MediaWikiTestCase {
+class ProposalLinkTableHelperTest extends MediaWikiTestCase {
 
 	private $diffType;
 
