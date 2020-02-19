@@ -161,6 +161,7 @@ var ProposeNewLabelDialog = function ProposeNewLabelDialog( config ) {
 				label: mw.message( 'jade-ui-proposenewlabel-notes-label' ).text()
 			} ),
 			new OO.ui.FieldLayout( new OO.ui.Widget( {
+				classes: [ 'jade-proposeNewLabelDialog-notesForm-buttons' ],
 				content: [
 					new OO.ui.HorizontalLayout( {
 						items: [
