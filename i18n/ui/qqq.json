@@ -49,8 +49,6 @@
 	"jade-ui-proposenewlabel-comment-placeholder": "Placeholder text area for Propose form.",
 	"jade-ui-proposenewlabel-notes-label": "Label for Notes text area on Propose form.",
 	"jade-ui-comment-label": "Label for comment text area on all forms.",
-	"jade-facet-desc": "Text for facet header help icon."
-
-
-
+	"jade-facet-desc": "Text for facet header help icon.",
+	"jade-facet-editquality-desc": "A description of the meaning of productive/damaging and goodfaith/badfaith assessments. This description should highlight that it's possible to have a goodfaith damaging edit and that badfaith edits are vandalism."
 }
