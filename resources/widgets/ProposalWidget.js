@@ -141,7 +141,7 @@ var ProposalWidget = function ( config ) {
 		} );
 		this.labelStr = new OO.ui.LabelWidget( { label: $( '<b>' ).text( 'Label:' ) } );
 		this.labelHeader = new OO.ui.HorizontalLayout( {
-			classes: [ 'jade-proposalWidget-endorsements-toggle' ]
+			classes: [ 'jade-proposalWidget-endorsements-label' ]
 		} );
 
 		this.labelHeader.addItems( [
