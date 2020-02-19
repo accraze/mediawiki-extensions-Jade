@@ -36,7 +36,8 @@ var ProposalListWidget = function ProposalListWidget( config ) {
 		classes: [ 'jade-proposalListWidget-proposeNewLabelBtn' ],
 		align: 'bottom',
 		icon: 'add',
-		label: mw.message( 'jade-ui-propose-new-label-btn' ).text()
+		label: mw.message( 'jade-ui-propose-new-label-btn' ).text(),
+		flags: 'progressive'
 	} );
 	var numProposal = this.proposals.length;
 	this.alternativesButton = new OO.ui.ButtonWidget( {
