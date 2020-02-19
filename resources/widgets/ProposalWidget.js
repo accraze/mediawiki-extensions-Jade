@@ -102,7 +102,8 @@ var ProposalWidget = function ( config ) {
 			$content: this.menuStack.$element,
 			padded: true,
 			anchor: false,
-			align: 'forward'
+			align: 'forward',
+			width: '90px'
 		}
 	} );
 
