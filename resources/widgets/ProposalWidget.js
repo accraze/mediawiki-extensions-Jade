@@ -122,15 +122,18 @@ var ProposalWidget = function ( config ) {
 		} );
 		var icon2 = 'heart';
 		var label2 = mw.message( 'jade-ui-goodfaith-label' ).text();
+		var flags2 = 'progressive';
 		if ( !this.proposal.labeldata.goodfaith ) {
 			icon2 = 'userAnonymous';
 			label2 = mw.message( 'jade-ui-badfaith-label' ).text();
+			flags2 = '';
 		}
 		this.goodfaithButton = new OO.ui.ButtonWidget( {
 			classes: [ 'jade-proposalWidget-label-goodfaith' ],
 			framed: false,
 			icon: icon2,
-			label: label2
+			label: label2,
+			flags: flags2
 		} );
 		this.labelStr = new OO.ui.LabelWidget( { label: $( '<b>' ).text( 'Label:' ) } );
 		this.labelHeader = new OO.ui.HorizontalLayout( {
