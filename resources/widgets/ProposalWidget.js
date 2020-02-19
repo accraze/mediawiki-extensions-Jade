@@ -109,16 +109,19 @@ var ProposalWidget = function ( config ) {
 	this.renderLabel = function () {
 		var icon1 = 'articleCheck';
 		var label1 = mw.message( 'jade-ui-productive-label' ).text();
+		var flags1 = 'progressive';
 		if ( this.proposal.labeldata.damaging ) {
 			icon1 = 'notice';
 			label1 = mw.message( 'jade-ui-damaging-label' ).text();
+			flags1 = 'destructive';
 		}
 		this.damagingButton = new OO.ui.ButtonWidget( {
 			classes: [ 'jade-proposalWidget-label-damaging' ],
 			framed: false,
 			align: 'right',
 			icon: icon1,
-			label: label1
+			label: label1,
+			flags: flags1
 		} );
 		var icon2 = 'heart';
 		var label2 = mw.message( 'jade-ui-goodfaith-label' ).text();
