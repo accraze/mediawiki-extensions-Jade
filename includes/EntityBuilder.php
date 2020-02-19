@@ -428,6 +428,9 @@ class EntityBuilder {
 					$endorsement = $this->buildEndorsement( $params );
 					array_push( $proposal['endorsements'], $endorsement );
 					$endorsed = true;
+				} else {
+					// user endorsed this proposal already
+					return [ 'jade-nochange', $entity, $warnings ];
 				}
 			}
 		}
