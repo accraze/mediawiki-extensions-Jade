@@ -40,6 +40,9 @@ var ProposalListWidget = function ProposalListWidget( config ) {
 		flags: 'progressive'
 	} );
 	var numProposal = this.proposals.length;
+	if ( numProposal === 0 ) {
+		this.proposeNewLabelButton.setFlags( 'primary' );
+	}
 	this.alternativesButton = new OO.ui.ButtonWidget( {
 		classes: [ 'jade-proposalListWidget-alternativesBtn' ],
 		framed: false,
