@@ -49,5 +49,6 @@
 	"jade-ui-proposenewlabel-select-3-label": "This edit is vandalism. It is unproductive and it appears to have been saved with bad intentions.",
 	"jade-ui-proposenewlabel-comment-placeholder": "(optional) Summarize why you chose this label. Consider describing what is happening in the edit.",
 	"jade-ui-proposenewlabel-notes-label": "Notes",
-	"jade-facet-desc": "For any given entity, there are different proposals that can be applied. Each proposal refers to some facet/aspect of the entity. E.g. What quality is this edit? What kind of change did the edit make? What quality level is this article version? What's the topical coverage of this page? A facet is defined by a label schema and a set of proposals about which label is the Right(TM) label for the target entity."
+	"jade-facet-desc": "For any given entity, there are different proposals that can be applied. Each proposal refers to some facet/aspect of the entity. E.g. What quality is this edit? What kind of change did the edit make? What quality level is this article version? What's the topical coverage of this page? A facet is defined by a label schema and a set of proposals about which label is the Right(TM) label for the target entity.",
+	"jade-facet-editquality-desc": "What's the quality of this edit?  Productive edits are good changes that should be kept.  Damaging edits are unproductive changes that should be reverted.  Goodfaith edits may be damaging they do not appear to be intentionally harmful.  Badfaith edits (aka \"vandalism\") are intentionally damaging."
 }
