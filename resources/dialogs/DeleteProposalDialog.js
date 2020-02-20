@@ -60,6 +60,7 @@ var DeleteProposalDialog = function DeleteProposalDialog( config ) {
 				label: mw.message( 'jade-ui-comment-label' ).text()
 			} ),
 			new OO.ui.FieldLayout( new OO.ui.Widget( {
+				classes: [ 'jade-deleteProposalDialog-commentForm-buttons' ],
 				content: [
 					new OO.ui.HorizontalLayout( {
 						items: [
