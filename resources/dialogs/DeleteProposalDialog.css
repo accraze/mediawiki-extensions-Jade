@@ -8,6 +8,10 @@
 
 /* .jade-deleteProposalDialog-commentForm {} */
 
+.jade-deleteEndorsementDialog-commentForm-buttons {
+	text-align: right;
+}
+
 .jade-deleteProposalDialog-panel {
 	margin-bottom: 10%;
 }
