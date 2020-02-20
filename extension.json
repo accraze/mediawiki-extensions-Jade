@@ -172,7 +172,8 @@
 				"jade-ui-proposenewlabel-select-2-label",
 				"jade-ui-proposenewlabel-select-3-label",
 				"jade-ui-proposenewlabel-comment-placeholder",
-				"jade-ui-proposenewlabel-notes-label"
+				"jade-ui-proposenewlabel-notes-label",
+				"jade-nochange"
 			],
 			"dependencies": [
 				"oojs-ui",
