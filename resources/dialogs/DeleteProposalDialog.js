@@ -87,6 +87,7 @@ var DeleteProposalDialog = function DeleteProposalDialog( config ) {
 OO.inheritClass( DeleteProposalDialog, OO.ui.ProcessDialog );
 
 DeleteProposalDialog.prototype.onSubmitButtonClick = async function () {
+	this.commentFormSubmit.setDisabled( true );
 	var comment = this.commentBox.value;
 	var params = {
 		title: mw.config.get( 'entityTitle' ).prefixedText,
@@ -104,6 +105,7 @@ DeleteProposalDialog.prototype.onSubmitButtonClick = async function () {
 			this.message.setLabel( err );
 			this.message.toggle();
 			this.updateSize();
+			this.commentFormSubmit.setDisabled( false );
 		}
 	}
 };

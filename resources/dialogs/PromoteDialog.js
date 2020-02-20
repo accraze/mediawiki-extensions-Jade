@@ -90,6 +90,7 @@ var PromoteDialog = function PromoteDialog( config ) {
 OO.inheritClass( PromoteDialog, OO.ui.ProcessDialog );
 
 PromoteDialog.prototype.onSubmitButtonClick = async function () {
+	this.commentFormSubmit.setDisabled( true );
 	var comment = this.commentBox.value;
 	var params = {
 		title: mw.config.get( 'entityTitle' ).prefixedText,
@@ -106,6 +107,7 @@ PromoteDialog.prototype.onSubmitButtonClick = async function () {
 			this.message.setLabel( err );
 			this.message.toggle();
 			this.updateSize();
+			this.commentFormSubmit.setDisabled( false );
 		}
 	}
 };

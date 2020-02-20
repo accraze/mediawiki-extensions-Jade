@@ -93,6 +93,7 @@ var DeleteEndorsementDialog = function DeleteEndorsementDialog( config ) {
 OO.inheritClass( DeleteEndorsementDialog, OO.ui.ProcessDialog );
 
 DeleteEndorsementDialog.prototype.onSubmitButtonClick = async function () {
+	this.commentFormSubmit.setDisabled( true );
 	var comment = this.commentBox.value;
 	var params = {
 		title: mw.config.get( 'entityTitle' ).prefixedText,
@@ -108,6 +109,7 @@ DeleteEndorsementDialog.prototype.onSubmitButtonClick = async function () {
 		this.message.setLabel( err );
 		this.message.toggle();
 		this.updateSize();
+		this.commentFormSubmit.setDisabled( false );
 	}
 };
 
