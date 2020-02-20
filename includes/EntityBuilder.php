@@ -419,6 +419,12 @@ class EntityBuilder {
 		$facet = $params['facet'];
 		$endorsed = false;
 
+		if ( $this->userAlreadyEndorsed( $params, [ null, $entity ] ) && $params['nomove'] ) {
+			return [ 'jade-alreadyendorsed', $entity, $warnings ];
+		} elseif ( $this->userAlreadyEndorsed( $params, [ null, $entity ] ) && !$params['nomove'] ) {
+			return $this->moveEndorsement( $params, $title, $contents );
+		}
+
 		foreach ( $entity['facets'][$facet]['proposals'] as $key => &$proposal ) {
 			if ( $proposal[$labelname] === $label ) {
 				if ( !$this->isPreferredLabel( $proposal ) ) {
@@ -437,10 +443,6 @@ class EntityBuilder {
 		if ( $endorsed === false ) {
 			// no proposal found
 			return [ 'jade-proposalnotfound', $entity, $warnings ];
-
-		}
-		if ( $this->userAlreadyEndorsed( $params, [ null, $entity ] ) && $params['nomove'] ) {
-			return [ 'jade-nochange', $entity, $warnings ];
 
 		}
 		// save updated entity
