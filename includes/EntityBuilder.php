@@ -388,6 +388,7 @@ class EntityBuilder {
 				if ( $num_proposals > 1 && $proposal['preferred'] === true ) {
 					return [ 'jade-proposalispreferred', $entity, $warnings ];
 				}
+				$num_endorsements = count( $proposal['endorsements'] );
 				array_splice( $entity['facets'][$facet]['proposals'], $key, 1 );
 				$deleted = true;
 				break;
