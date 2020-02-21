@@ -190,6 +190,7 @@ var ProposeNewLabelDialog = function ProposeNewLabelDialog( config ) {
 OO.inheritClass( ProposeNewLabelDialog, OO.ui.ProcessDialog );
 
 ProposeNewLabelDialog.prototype.onSubmitButtonClick = async function () {
+	this.notesFormSubmit.setDisabled( true );
 	var comment = this.notesBox.value;
 	var newLabel = this.labelForm.findSelectedItem().data;
 	var params = {
@@ -208,6 +209,7 @@ ProposeNewLabelDialog.prototype.onSubmitButtonClick = async function () {
 			this.message.setLabel( err );
 			this.message.toggle();
 			this.updateSize();
+			this.notesFormSubmit.setDisabled( false );
 		}
 	}
 };

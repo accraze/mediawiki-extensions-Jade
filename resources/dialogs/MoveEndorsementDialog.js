@@ -80,6 +80,7 @@ var MoveEndorsementDialog = function MoveEndorsementDialog( config ) {
 OO.inheritClass( MoveEndorsementDialog, OO.ui.ProcessDialog );
 
 MoveEndorsementDialog.prototype.onSubmitButtonClick = async function () {
+	this.commentFormSubmit.setDisabled( true );
 	var params = {
 		title: mw.config.get( 'entityTitle' ).prefixedText,
 		facet: 'editquality',
@@ -96,6 +97,7 @@ MoveEndorsementDialog.prototype.onSubmitButtonClick = async function () {
 			this.message.setLabel( err );
 			this.message.toggle();
 			this.updateSize();
+			this.commentFormSubmit.setDisabled( false );
 		}
 	}
 };
