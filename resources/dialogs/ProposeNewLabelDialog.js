@@ -52,7 +52,7 @@ var ProposeNewLabelDialog = function ProposeNewLabelDialog( config ) {
 		classes: [ 'jade-proposeNewLabelDialog-selectOption-2-damagingIcon' ],
 		framed: false,
 		align: 'right',
-		icon: 'notice',
+		icon: 'error',
 		label: mw.message( 'jade-ui-damaging-label' ).text(),
 		flags: [ 'destructive', 'primary', 'error' ]
 	} );
@@ -81,7 +81,7 @@ var ProposeNewLabelDialog = function ProposeNewLabelDialog( config ) {
 		classes: [ 'jade-proposeNewLabelDialog-selectOption-3-damagingIcon' ],
 		framed: false,
 		align: 'right',
-		icon: 'notice',
+		icon: 'error',
 		label: 'damaging',
 		flags: [ 'destructive', 'primary', 'error' ]
 	} );
