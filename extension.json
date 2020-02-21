@@ -173,7 +173,8 @@
 				"jade-ui-proposenewlabel-select-3-label",
 				"jade-ui-proposenewlabel-comment-placeholder",
 				"jade-ui-proposenewlabel-notes-label",
-				"jade-nochange"
+				"jade-nochange",
+				"jade-alreadyendorsed"
 			],
 			"dependencies": [
 				"oojs-ui",

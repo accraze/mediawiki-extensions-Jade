@@ -25,6 +25,7 @@ EndorseClient.prototype.buildParams = function ( actionName, data ) {
 		entitydata: data.entitydata,
 		facet: data.facet,
 		labeldata: data.labeldata,
+		nomove: true,
 		endorsementorigin: data.endorsementorigin || 'mw-api',
 		endorsementcomment: data.endorsementcomment
 	};
