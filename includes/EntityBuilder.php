@@ -513,7 +513,7 @@ class EntityBuilder {
 		}
 		// save updated entity
 		$comment = '/* jade-deleteendorsement */ ' . json_encode( $label ) .
-			' by id ' . $userdata[1] . ': ' . $params['comment'];
+			' by id ' . $userdata[0] . ': ' . $params['comment'];
 		$status = $this->saveEntityPage( $title, $entity, $comment );
 		return [ $status, $entity, $warnings ];
 	}
