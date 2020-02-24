@@ -141,8 +141,7 @@ var ProposeNewLabelDialog = function ProposeNewLabelDialog( config ) {
 	this.notesFormCancel = new OO.ui.ButtonWidget( {
 		classes: [ 'jade-proposeNewLabelDialog-cancelBtn' ],
 		framed: false,
-		label: mw.message( 'jade-ui-cancel-btn' ).text(),
-		flags: 'destructive'
+		label: mw.message( 'jade-ui-cancel-btn' ).text()
 	} );
 	this.notesBox = new OO.ui.MultilineTextInputWidget( {
 		classes: [ 'jade-proposeNewLabelDialog-notesBox' ],
