@@ -33,7 +33,7 @@
 	"jade-ui-endorse-submit-btn": "Publish endorsement",
 	"jade-ui-endorse-text": "You're about to endorse the following label, which means you agree with the judgment!",
 	"jade-ui-endorse-comment-placeholder": "(optional) Why do you agree with this label?",
-	"jade-ui-moveendorsement-title": "Endorse a label: Edit quality",
+	"jade-ui-moveendorsement-title": "Move an endorsement: Edit quality",
 	"jade-ui-moveendorsement-submit-btn": "Endorse label",
 	"jade-ui-moveendorsement-text": "Use the buttons below to move your endorsement from one label to another.",
 	"jade-ui-moveendorsement-comment-placeholder": "(optional) Why do you agree with this label?",
