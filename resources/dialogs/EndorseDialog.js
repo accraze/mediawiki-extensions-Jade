@@ -38,8 +38,7 @@ var EndorseDialog = function EndorseDialog( config ) {
 	this.commentFormCancel = new OO.ui.ButtonWidget( {
 		classes: [ 'jade-endorseDialog-cancelBtn' ],
 		framed: false,
-		label: mw.message( 'jade-ui-cancel-btn' ).text(),
-		flags: 'destructive'
+		label: mw.message( 'jade-ui-cancel-btn' ).text()
 	} );
 	this.commentBox = new OO.ui.TextInputWidget( {
 		placeholder: mw.message( 'jade-ui-endorse-comment-placeholder' ).text(),
