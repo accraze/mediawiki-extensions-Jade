@@ -38,11 +38,19 @@ var EndorsementWidget = function ( config ) {
 		data: this,
 		label: this.menuEdit
 	} );
+	this.userEndorsed = function ( userId ) {
+		var endorsed = false;
+		var currentUser = mw.config.values.wgUserId;
+		if ( userId === currentUser ) {
+			endorsed = true;
+		}
+		return endorsed;
+	};
 	this.moveButton = new OO.ui.OptionWidget( {
 		classes: [ 'jade-endorsementWidget-endorsementMenu-move' ],
 		data: this,
 		label: this.menuMove,
-		disabled: !( this.numProposals > 1 )
+		disabled: !( this.numProposals > 1 && this.userEndorsed( this.endorsement.author.id ) )
 	} );
 	this.deleteButton = new OO.ui.OptionWidget( {
 		classes: [ 'jade-endorsementWidget-endorsementMenu-delete' ],
