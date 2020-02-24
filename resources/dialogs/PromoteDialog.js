@@ -59,6 +59,7 @@ var PromoteDialog = function PromoteDialog( config ) {
 				label: mw.message( 'jade-ui-comment-label' ).text()
 			} ),
 			new OO.ui.FieldLayout( new OO.ui.Widget( {
+				classes: [ 'jade-promoteDialog-commentForm-buttons' ],
 				content: [
 					new OO.ui.HorizontalLayout( {
 						items: [
