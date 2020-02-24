@@ -3,7 +3,8 @@
 		"authors": [
 			"Piramidion",
 			"Vlad5250",
-			"Ата"
+			"Ата",
+			"Alexander Yukal"
 		]
 	},
 	"jade-desc": "Рушій для оцінок і діалогів",
@@ -44,5 +45,6 @@
 	"jade-content-model-error": "Неправильна контентна модель для оцінки.",
 	"jade-endorsement": "Схвалення",
 	"jade-endorsements": "Схвалення",
-	"jade-user": "Користувач"
+	"jade-user": "Користувач",
+	"jade-alreadyendorsed": "Неможливо підтвердити, ви вже схвалили інше речення. Замість цього, спробуйте перемістити ваше схвалення."
 }

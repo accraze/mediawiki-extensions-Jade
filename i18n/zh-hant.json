@@ -49,5 +49,6 @@
 	"jade-endorsingnonpreferredproposal": "此操作會對未被標記成優先的提議建立一個贊同。",
 	"jade-proposalispreferred": "除非這是一個方面裡僅剩的優先提議，否則無法刪除。您必須設定將另一個提議設為「優先」。",
 	"jade-invalidtitleentitydata": "必須提供 title 或 entitydata 參數。",
-	"jade-nochange": "此操作不會作出任何改變，使用者已贊同標記的資料。"
+	"jade-nochange": "此操作不會作出任何改變，使用者已贊同標記的資料。",
+	"jade-alreadyendorsed": "因為您已贊同另個提議，所以無法做出贊同。請考慮改為移動您的贊同。"
 }

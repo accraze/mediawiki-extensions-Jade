@@ -7,7 +7,8 @@
 			"Tartare",
 			"Thibaut120094",
 			"Verdy p",
-			"Pamputt"
+			"Pamputt",
+			"Eneelk"
 		]
 	},
 	"jade-desc": "Système robuste de collecte de faux positifs et de retour d’information, pour permettre la réfutation humaine et la révision de la notation ORES.",
@@ -55,5 +56,6 @@
 	"jade-endorsingnonpreferredproposal": "Cette action a conduit à créer une approbation pour une proposition qui n’est pas signalée comme préférée.",
 	"jade-proposalispreferred": "Impossible de supprimer une proposition sauf quand c’est la seule proposition restante pour une facette. Vous devez définir une autre proposition qui doit être « préférée ».",
 	"jade-invalidtitleentitydata": "Un paramètre « title » ou « entitydata » doit être fourni.",
-	"jade-nochange": "Cette action n’apportera aucune modification. L’utilisateur a déjà approuvé labeldata."
+	"jade-nochange": "Cette action n’apportera aucune modification. L’utilisateur a déjà approuvé labeldata.",
+	"jade-alreadyendorsed": "Approbation impossible car vous avez déjà approuvé une autre proposition. Veuillez plutôt changer votre approbation."
 }
