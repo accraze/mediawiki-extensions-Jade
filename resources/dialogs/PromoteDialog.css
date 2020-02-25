@@ -12,4 +12,6 @@
 	text-align: right;
 }
 
-/* .jade-promoteDialog-errorMessage {} */
+.jade-promoteDialog-errorMessage {
+	text-align: left;
+}
