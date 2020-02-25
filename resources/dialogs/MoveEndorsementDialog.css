@@ -8,4 +8,8 @@
 
 /* .jade-moveEndorsementDialog-commentBox {} */
 
+.jade-moveEndorsementDialog-commentForm-buttons {
+	text-align: right;
+}
+
 /* .jade-moveEndorsementDialog-errorMessage {} */
