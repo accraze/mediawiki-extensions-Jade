@@ -53,6 +53,7 @@ var MoveEndorsementDialog = function MoveEndorsementDialog( config ) {
 					label: mw.message( 'jade-ui-comment-label' ).text()
 				} ),
 			new OO.ui.FieldLayout( new OO.ui.Widget( {
+				classes: [ 'jade-moveEndorsementDialog-commentForm-buttons' ],
 				content: [
 					new OO.ui.HorizontalLayout( {
 						items: [
