@@ -35,6 +35,7 @@
 	"jade-ui-moveendorsement-title": "Title of dialog popup when moving an endorsement.",
 	"jade-ui-moveendorsement-submit-btn": "Text for Move Endorsement form button.",
 	"jade-ui-moveendorsement-text": "Info text for Move Endorsement form.",
+	"jade-ui-moveendorsement-text-panel2": "Confirmation text for Move Endorsement form.",
 	"jade-ui-moveendorsement-comment-placeholder": "Placeholder text are for Move Endorsement form.",
 	"jade-ui-promote-title": "Title of dialog popup when promoting a label.",
 	"jade-ui-promote-submit-btn": "Text for Promote submit button.",

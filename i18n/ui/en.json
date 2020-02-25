@@ -36,6 +36,7 @@
 	"jade-ui-moveendorsement-title": "Move an endorsement: Edit quality",
 	"jade-ui-moveendorsement-submit-btn": "Endorse label",
 	"jade-ui-moveendorsement-text": "Use the buttons below to move your endorsement from one label to another.",
+	"jade-ui-moveendorsement-text-panel2": "Are you sure you would like to move your endorsement to this label?",
 	"jade-ui-moveendorsement-comment-placeholder": "(optional) Why do you agree with this label?",
 	"jade-ui-promote-title": "Promote a label: Edit quality",
 	"jade-ui-promote-submit-btn": "Promote this label",

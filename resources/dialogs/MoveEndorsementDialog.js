@@ -19,12 +19,6 @@ var MoveEndorsementDialog = function MoveEndorsementDialog( config ) {
 	MoveEndorsementDialog.super.call( this, config );
 	this.proposal = config.proposal;
 	this.proposals = config.proposals;
-	var ProposalWidget = require( 'jade.widgets' ).ProposalWidget;
-	this.proposalWidget = new ProposalWidget( {
-		classes: [ 'jade-moveEndorsementDialog-proposalWidget' ],
-		proposal: this.proposal
-	} );
-	this.proposalWidget.setDisplayMode();
 	this.commentFormSubmit = new OO.ui.ButtonInputWidget( {
 		classes: [ 'jade-moveEndorsementDialog-submitBtn' ],
 		type: 'submit',
@@ -46,15 +40,15 @@ var MoveEndorsementDialog = function MoveEndorsementDialog( config ) {
 		classes: [ 'jade-moveEndorsementDialog-errorMessage' ]
 	} );
 	this.message.toggle();
-
+	this.commentBox = new OO.ui.TextInputWidget( {
+		classes: [ 'jade-moveEndorsementDialog-commentBox' ],
+		placeholder: mw.message( 'jade-ui-moveendorsement-comment-placeholder' ).text()
+	} );
 	this.commentForm = new OO.ui.FieldsetLayout( {
 		classes: [ 'jade-moveEndorsementDialog-commentForm' ],
 		items: [
 			new OO.ui.FieldLayout(
-				new OO.ui.TextInputWidget( {
-					classes: [ 'jade-moveEndorsementDialog-commentBox' ],
-					placeholder: mw.message( 'jade-ui-moveendorsement-comment-placeholder' ).text()
-				} ), {
+				this.commentBox, {
 					align: 'top',
 					label: mw.message( 'jade-ui-comment-label' ).text()
 				} ),
@@ -75,17 +69,43 @@ var MoveEndorsementDialog = function MoveEndorsementDialog( config ) {
 		]
 	} );
 
+	this.commentFormSubmit.connect( this, {
+		click: 'onSubmitButtonClick'
+	} );
+
+	this.commentFormCancel.connect( this, {
+		click: 'onCancelButtonClick'
+	} );
+
 };
 
 OO.inheritClass( MoveEndorsementDialog, OO.ui.ProcessDialog );
 
+MoveEndorsementDialog.prototype.onEndorseButtonClick = function () {
+	//
+	var ProposalWidget = require( 'jade.widgets' ).ProposalWidget;
+	var proposalWidget = new ProposalWidget( {
+		classes: [ 'proposal' ],
+		proposal: this.data
+	} );
+	proposalWidget.setDisplayMode();
+	this.obj.commentFormSubmit.setData( this.data );
+	this.obj.panel2.$element.append( '<p>' + mw.message( 'jade-ui-moveendorsement-text-panel2' ).text() + '</p>' );
+	this.obj.panel2.$element.append( proposalWidget.$element );
+	this.obj.panel2.$element.append( this.obj.commentForm.$element );
+	this.obj.stackLayout.setItem( this.obj.panel2 );
+	this.obj.updateSize();
+
+};
+
 MoveEndorsementDialog.prototype.onSubmitButtonClick = async function () {
 	this.commentFormSubmit.setDisabled( true );
+	var comment = this.commentBox.value;
 	var params = {
 		title: mw.config.get( 'entityTitle' ).prefixedText,
 		facet: 'editquality',
-		labeldata: JSON.stringify( this.data.labeldata ),
-		// endorsementcomment: comment,
+		labeldata: JSON.stringify( this.commentFormSubmit.data.labeldata ),
+		comment: comment,
 		endorsementorigin: 'jade-ui'
 	};
 	var client = new MoveEndorsementClient();
@@ -145,8 +165,8 @@ MoveEndorsementDialog.prototype.initialize = function () {
 			data: data,
 			align: 'right'
 		} );
-		btn.connect( btn, {
-			click: this.onSubmitButtonClick
+		btn.connect( { obj: this, data: btn.data }, {
+			click: this.onEndorseButtonClick
 		} );
 
 		this.panel1.$element.append(
@@ -154,8 +174,16 @@ MoveEndorsementDialog.prototype.initialize = function () {
 		);
 		this.panel1.$element.append( btn.$element );
 	}
+	this.proposalWidget = new ProposalWidget( {
+		classes: [ 'proposal' ],
+		proposal: this.proposal
+	} );
+	this.proposalWidget.setDisplayMode();
+
+	this.panel2 = new OO.ui.PanelLayout( { padded: true, expanded: false } );
+
 	this.stackLayout = new OO.ui.StackLayout( {
-		items: [ this.panel1 ]
+		items: [ this.panel1, this.panel2 ]
 	} );
 	this.$body.append( this.stackLayout.$element );
 };
