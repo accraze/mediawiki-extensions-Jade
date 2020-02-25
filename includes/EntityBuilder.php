@@ -661,8 +661,8 @@ class EntityBuilder {
 				if ( $userdata[0] === 0 ) {
 					// anonymous user so look at IP
 					if ( $userdata[1] === $endorsement['author']['ip'] ) {
-						$origin = clone $endorsement;
-						unset( $entity['facets'][$facet]['proposals'][$pkey]['endorsements'][$key] );
+						$origin = $endorsement;
+						array_splice( $entity['facets'][$facet]['proposals'][$pkey]['endorsements'], $key, 1 );
 						$moved = true;
 						$oldLabelData = $proposal[$labelname];
 					}
@@ -670,8 +670,8 @@ class EntityBuilder {
 				if ( $userdata[0] === null ) {
 					// check global id case
 					if ( $userdata[1] === $endorsement['author']['cid'] ) {
-						$origin = clone $endorsement;
-						unset( $entity['facets'][$facet]['proposals'][$pkey]['endorsements'][$key] );
+						$origin = $endorsement;
+						array_splice( $entity['facets'][$facet]['proposals'][$pkey]['endorsements'], $key, 1 );
 						$moved = true;
 						$oldLabelData = $proposal[$labelname];
 					}
@@ -679,7 +679,7 @@ class EntityBuilder {
 				// otherwise just target id
 				if ( $userdata[0] === $endorsement['author']['id'] ) {
 					$origin = $endorsement;
-					unset( $entity['facets'][$facet]['proposals'][$pkey]['endorsements'][$key] );
+					array_splice( $entity['facets'][$facet]['proposals'][$pkey]['endorsements'], $key, 1 );
 					$moved = true;
 					$oldLabelData = $proposal[$labelname];
 				}
@@ -698,7 +698,7 @@ class EntityBuilder {
 		}
 		'@phan-var array $origin';
 
-		$proposal = $endorsements = &$entity['facets'][$facet]['proposals'][$targetIdx];
+		$proposal = &$entity['facets'][$facet]['proposals'][$targetIdx];
 		if ( !$this->isPreferredLabel( $proposal ) ) {
 			// warn that you are endorsing a non-preferred proposal
 			$warnings[] = 'jade-endorsingnonpreferredproposal';
