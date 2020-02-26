@@ -173,7 +173,11 @@ MoveEndorsementDialog.prototype.initialize = function () {
 		this.panel1.$element.append(
 			proposal.$element
 		);
-		this.panel1.$element.append( btn.$element );
+		this.btnSpanLayout = new OO.ui.HorizontalLayout( {
+			classes: [ 'jade-ui-moveendorsement-button' ],
+			items: [ btn ]
+		} );
+		this.panel1.$element.append( this.btnSpanLayout.$element );
 	}
 	this.proposalWidget = new ProposalWidget( {
 		classes: [ 'proposal' ],
