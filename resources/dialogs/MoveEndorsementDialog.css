@@ -1,5 +1,9 @@
 /* .jade-moveEndorsementDialog-proposalWidget {} */
 
+.jade-ui-moveendorsement-button {
+	text-align: right;
+}
+
 /* .jade-moveEndorsementDialog-submitBtn {} */
 
 /* .jade-moveEndorsementDialog-cancelBtn {} */
