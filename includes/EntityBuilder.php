@@ -512,8 +512,13 @@ class EntityBuilder {
 			return [ 'jade-endorsementnotfound', $entity, $warnings ];
 		}
 		// save updated entity
+		$userid = $userdata[0];
+		if ( is_string( $userid ) ) {
+			// anonymous user is id 0
+			$userid = 0;
+		}
 		$comment = '/* jade-deleteendorsement */ ' . json_encode( $label ) .
-			' by id ' . $userdata[0] . ': ' . $params['comment'];
+			' by id ' . $userid . ': ' . $params['comment'];
 		$status = $this->saveEntityPage( $title, $entity, $comment );
 		return [ $status, $entity, $warnings ];
 	}
