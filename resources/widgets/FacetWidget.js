@@ -56,7 +56,10 @@ var FacetWidget = function ( config ) {
 	} );
 	this.facetHeader.addItems( [
 		// TODO - change the help text once we target more than 1 facet.
-		new OO.ui.FieldLayout( this.label1, { align: 'left', help: mw.message( 'jade-facet-editquality-desc' ).text() } ),
+		new OO.ui.FieldLayout( this.label1, {
+			help: mw.message( 'jade-facet-editquality-desc' ).text(),
+			classes: [ 'jade-facet-editquality-desc-popup' ]
+		} ),
 		new OO.ui.FieldLayout( this.collapseIcon ),
 		new OO.ui.FieldLayout( this.expandIcon )
 	] );
