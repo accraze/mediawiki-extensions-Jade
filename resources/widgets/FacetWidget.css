@@ -13,6 +13,10 @@
 	width: 50%;
 }
 
+.jade-facet-editquality-desc-popup .oo-ui-popupWidget-popup {
+	margin-left: 40%;
+}
+
 @media only screen
 	and ( max-width: 600px ) {
 	.jade-facetWidget {
