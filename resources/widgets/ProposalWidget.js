@@ -168,8 +168,9 @@ var ProposalWidget = function ( config ) {
 		framed: false,
 		label: mw.message( 'jade-ui-cancel-btn' ).text()
 	} );
-	this.editBox = new OO.ui.TextInputWidget( {
+	this.editBox = new OO.ui.MultilineTextInputWidget( {
 		classes: [ 'jade-proposalWidget-editForm-text' ],
+		placeholder: mw.message( 'jade-ui-proposenewlabel-comment-placeholder' ).text(),
 		value: this.proposal.notes
 	} );
 
