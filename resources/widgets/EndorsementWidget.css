@@ -27,6 +27,7 @@
 
 .jade-endorsementWidget-comment {
 	width: 42%;
+	font-style: italic;
 }
 
 .jade-endorsementWidget-infoStack {
