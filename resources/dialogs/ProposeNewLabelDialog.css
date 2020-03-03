@@ -48,4 +48,5 @@
 
 .jade-proposeNewLabelDialog-errorMessage {
 	text-align: left;
+	width: 100%;
 }
