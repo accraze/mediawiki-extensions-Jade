@@ -164,9 +164,9 @@ var ProposeNewLabelDialog = function ProposeNewLabelDialog( config ) {
 				content: [
 					new OO.ui.HorizontalLayout( {
 						items: [
+							this.message,
 							this.notesFormCancel,
-							this.notesFormSubmit,
-							this.message
+							this.notesFormSubmit
 						]
 					} )
 				]
