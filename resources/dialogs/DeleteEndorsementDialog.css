@@ -18,4 +18,5 @@
 
 .jade-deleteEndorsementDialog-errorMessage {
 	text-align: left;
+	width: 100%;
 }
