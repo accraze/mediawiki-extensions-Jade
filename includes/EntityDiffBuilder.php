@@ -20,7 +20,6 @@
 
 namespace Jade;
 
-use Article;
 use ChangesList;
 use ChangeTags;
 use Html;
@@ -48,9 +47,6 @@ class EntityDiffBuilder {
 	/** @var LinkRenderer */
 	protected $linkRenderer;
 
-	/** @var Article */
-	protected $article;
-
 	/** @var Revision */
 	protected $mNewRev;
 
@@ -69,15 +65,18 @@ class EntityDiffBuilder {
 
 	public function getRevisionsFromTitle( Title $title ) {
 		$id = explode( '/', $title )[1];
-		$this->article = Article::newFromId( (int)$id );
-		$this->mNewRev = $this->article->getRevision();
+		$this->mNewRev = Revision::newFromId( (int)$id );
 		$this->mOldRev = $this->mNewRev->getPrevious();
 	}
 
 	public function buildDiffHeader( Title $title ) {
 		$this->getRevisionsFromTitle( $title );
 		$this->loadTags();
-		$oldHeader = $this->buildOldHeader();
+		if ( $this->mOldRev !== null ) {
+			$oldHeader = $this->buildOldHeader();
+		} else {
+			$oldHeader = '';
+		}
 		$newHeader = $this->buildNewHeader();
 		$diffHeader = $oldHeader . $newHeader;
 		return $diffHeader;

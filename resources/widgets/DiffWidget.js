@@ -44,13 +44,10 @@ var DiffWidget = function ( config ) {
 
 	this.call = function () {
 		var title = mw.config.get( 'entityTitle' ).mTextform;
-		// console.log(title)
 		var api = new mw.Api();
 		return api.get( {
 			action: 'compare',
-			// fromrev: 2,
-			fromid: title.split( '/' )[ 1 ],
-			// fromid: 3,
+			fromrev: title.split( '/' )[ 1 ],
 			torelative: 'prev',
 			prop: 'diff|ids|title|user'
 		} )
