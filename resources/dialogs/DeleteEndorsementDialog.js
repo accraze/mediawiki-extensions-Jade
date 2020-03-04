@@ -69,9 +69,9 @@ var DeleteEndorsementDialog = function DeleteEndorsementDialog( config ) {
 				content: [
 					new OO.ui.HorizontalLayout( {
 						items: [
+							this.message,
 							this.commentFormCancel,
-							this.commentFormSubmit,
-							this.message
+							this.commentFormSubmit
 						]
 					} )
 				]
