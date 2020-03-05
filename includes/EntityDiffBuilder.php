@@ -136,7 +136,7 @@ class EntityDiffBuilder {
 		$newChangeTags = ChangeTags::formatSummaryRow( $this->mNewTags, 'diff', $this->getContext() );
 
 		$newHeader = '<td class="diff-ntitle" colspan="2">' .
-			'<div id="mw-diff-otitle6"><strong>' . $this->mNewRev->getTitle() . '</strong></div>' .
+			'<div id="mw-diff-ntitle6"><strong>' . $this->mNewRev->getTitle() . '</strong></div>' .
 			'<div id="mw-diff-ntitle1"><strong>' .
 			$newRevisionHeader . '</strong></div>' .
 			'<div id="mw-diff-ntitle2">' . Linker::revUserTools( $this->mNewRev, true ) .
