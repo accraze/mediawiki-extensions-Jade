@@ -57,9 +57,9 @@ var MoveEndorsementDialog = function MoveEndorsementDialog( config ) {
 				content: [
 					new OO.ui.HorizontalLayout( {
 						items: [
+							this.message,
 							this.commentFormCancel,
-							this.commentFormSubmit,
-							this.message
+							this.commentFormSubmit
 						]
 					} )
 				]
