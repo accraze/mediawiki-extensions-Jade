@@ -18,4 +18,5 @@
 
 .jade-moveEndorsementDialog-errorMessage {
 	text-align: left;
+	width: 100%;
 }
