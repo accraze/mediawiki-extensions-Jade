@@ -70,9 +70,17 @@ var DiffWidget = function ( config ) {
 			} );
 			this.$element.append( this.message.$element );
 		} else {
-			var diffMarkup = '<tr class="diff-title" lang="en">' + mw.config.get( 'diffHeader' ) + '</tr>' + this.data.compare[ '*' ];
+			var header = mw.config.get( 'diffHeader' );
+			var diffData = this.data.compare[ '*' ];
+			if ( header.indexOf( 'diff-otitle' ) === -1 ) {
+				var label = new OO.ui.LabelWidget( {
+					classes: [ 'jade-ui-diffWidget-noDiff' ],
+					label: '(No Difference)'
+				} ).$element.html();
+				diffData = '<tr><td class="diff-notice" colspan="2"><div class="mw-diff-empty">' + label + '</div></td></tr>';
+			}
+			var diffMarkup = '<tr class="diff-title" lang="en">' + header + '</tr>' + diffData;
 			this.$element.append( this.btnGroup.$element )
-		// .append( $(mw.config.get('diffHeader')) )
 		.append( '<table class="diff diff-contentalign-left">' + '<colgroup>' +
 			'<col class="diff-marker">' + '<col class="diff-content">' + '<col class="diff-marker">'
 			+ '<col class="diff-content">' + '</colgroup>' + '<tbody>'

@@ -20,7 +20,9 @@ $( function () {
 			new OO.ui.PanelLayout( {
 				classes: [ 'jade-entity-diff-panel' ],
 				$content: this.diff.$element,
-				padded: true
+				padded: true,
+				scrollable: true,
+				expanded: true
 			} )
 		],
 		continuous: true,
