@@ -10,9 +10,16 @@ $( function () {
 	var FacetListWidget = require( 'jade.widgets' ).FacetListWidget;
 
 	this.diff = new DiffWidget();
+	this.loadEntityData = function () {
+		var data = mw.config.get( 'entityData' );
+		if ( Object.keys( data ).length === 0 ) {
+			data = { facets: { editquality: { proposals: [] } } };
+		}
+		return data;
+	};
 
 	this.facetsList = new FacetListWidget( {
-		entityData: mw.config.get( 'entityData' ) || {}
+		entityData: this.loadEntityData()
 	} );
 
 	this.stack = new OO.ui.StackLayout( {
