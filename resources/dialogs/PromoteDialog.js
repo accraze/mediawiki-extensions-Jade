@@ -63,6 +63,7 @@ var PromoteDialog = function PromoteDialog( config ) {
 				content: [
 					new OO.ui.HorizontalLayout( {
 						items: [
+							this.message,
 							this.commentFormCancel,
 							this.commentFormSubmit
 						]
