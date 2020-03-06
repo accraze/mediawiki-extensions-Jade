@@ -15,3 +15,8 @@
 .jade-deleteProposalDialog-panel {
 	margin-bottom: 10%;
 }
+
+.jade-deleteProposalDialog-errorMessage {
+	text-align: left;
+	width: 100%;
+}
