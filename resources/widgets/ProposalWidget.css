@@ -10,6 +10,10 @@
 	text-align: center;
 }
 
+.jade-proposalWidget-label-productive .oo-ui-labelElement-label {
+	color: #00af89;
+}
+
 /* .jade-proposalWidget-menu {} */
 
 .jade-proposalWidget-menuBtn {
