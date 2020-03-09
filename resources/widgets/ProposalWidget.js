@@ -111,13 +111,15 @@ var ProposalWidget = function ( config ) {
 		var icon1 = 'articleCheck';
 		var label1 = mw.message( 'jade-ui-productive-label' ).text();
 		var flags1 = 'progressive';
+		var classes1 = [ 'jade-proposalWidget-label-productive' ];
 		if ( this.proposal.labeldata.damaging ) {
 			icon1 = 'error';
 			label1 = mw.message( 'jade-ui-damaging-label' ).text();
 			flags1 = [ 'destructive', 'error' ];
+			classes1 = [ 'jade-proposalWidget-label-damaging' ];
 		}
 		this.damagingButton = new OO.ui.ButtonWidget( {
-			classes: [ 'jade-proposalWidget-label-damaging' ],
+			classes: classes1,
 			framed: false,
 			align: 'right',
 			icon: icon1,
