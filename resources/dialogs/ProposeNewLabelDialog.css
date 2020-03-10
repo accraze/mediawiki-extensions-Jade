@@ -1,5 +1,9 @@
 /* .jade-proposeNewLabelDialog-selectOption-1-damagingIcon {} */
 
+.jade-proposeNewLabelDialog-selectOption-1-productive .oo-ui-labelElement-label {
+	color: #00af89;
+}
+
 /* .jade-proposeNewLabelDialog-selectOption-1-goodfaithIcon {} */
 
 .jade-proposeNewLabelDialog-selectOption-1-msg {
