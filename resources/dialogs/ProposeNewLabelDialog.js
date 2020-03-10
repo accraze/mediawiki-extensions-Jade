@@ -19,7 +19,10 @@ var ProposeNewLabelDialog = function ProposeNewLabelDialog( config ) {
 	config = config || {};
 	ProposeNewLabelDialog.super.call( this, config );
 	this.damagingButton = new OO.ui.ButtonWidget( {
-		classes: [ 'jade-proposeNewLabelDialog-selectOption-1-damagingIcon' ],
+		classes: [
+			'jade-proposeNewLabelDialog-selectOption-1-damagingIcon',
+			'jade-proposeNewLabelDialog-selectOption-1-productive'
+		],
 		framed: false,
 		type: 'success',
 		align: 'right',
