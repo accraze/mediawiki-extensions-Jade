@@ -1,3 +1,9 @@
+.jade-proposeNewLabelDialog-selectOption-1,
+.jade-proposeNewLabelDialog-selectOption-2,
+.jade-proposeNewLabelDialog-selectOption-3 {
+	margin-top: -5px;
+}
+
 /* .jade-proposeNewLabelDialog-selectOption-1-damagingIcon {} */
 
 .jade-proposeNewLabelDialog-selectOption-1-productive .oo-ui-labelElement-label {
