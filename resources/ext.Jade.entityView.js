@@ -9,10 +9,18 @@ $( function () {
 	var DiffWidget = require( 'jade.widgets' ).DiffWidget;
 	var FacetListWidget = require( 'jade.widgets' ).FacetListWidget;
 
+	var $hrElement = $( '<hr>' ).addClass( 'jade-entity-view-split' );
+	// eslint-disable-next-line no-jquery/no-global-selector
+	if ( $( '.noarticletext' )[ 0 ] ) {
+	// eslint-disable-next-line no-jquery/no-global-selector
+		$( '.noarticletext' ).hide();
+		$hrElement.hide();
+	}
+
 	this.diff = new DiffWidget();
 	this.loadEntityData = function () {
 		var data = mw.config.get( 'entityData' );
-		if ( Object.keys( data ).length === 0 ) {
+		if ( Object.keys( data ).length === 0 || data === '{}' ) {
 			data = { facets: { editquality: { proposals: [] } } };
 		}
 		return data;
@@ -36,11 +44,10 @@ $( function () {
 		classes: [ 'jade-entity-view-stack' ]
 	} );
 
-	var hr = '<hr class="jade-entity-view-split" />';
 	// eslint-disable-next-line no-jquery/no-global-selector
 	$( '#mw-content-text' ).append(
 		this.stack.$element,
-		$( hr ),
+		$hrElement,
 		this.facetsList.$element
 	);
 
