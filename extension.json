@@ -47,6 +47,9 @@
 	"ContentHandlers": {
 		"JadeEntity": "Jade\\Content\\EntityContentHandler"
 	},
+	"Hooks": {
+		"ShowMissingArticle": "Jade\\Hooks\\MissingArticleHooks::onShowMissingArticle"
+	},
 	"MessagesDirs": {
 		"Jade": [
 			"i18n",
