@@ -7,6 +7,7 @@
 
 .jade-entity-diff-panel {
 	height: 1%;
+	max-height: 30vh;
 }
 
 .jade-entity-view-split {
