@@ -9,12 +9,10 @@ $( function () {
 	var DiffWidget = require( 'jade.widgets' ).DiffWidget;
 	var FacetListWidget = require( 'jade.widgets' ).FacetListWidget;
 
-	var $hrElement = $( '<hr>' ).addClass( 'jade-entity-view-split' );
 	// eslint-disable-next-line no-jquery/no-global-selector
 	if ( $( '.noarticletext' )[ 0 ] ) {
 	// eslint-disable-next-line no-jquery/no-global-selector
 		$( '.noarticletext' ).hide();
-		$hrElement.hide();
 	}
 
 	this.diff = new DiffWidget();
@@ -43,6 +41,8 @@ $( function () {
 		continuous: true,
 		classes: [ 'jade-entity-view-stack' ]
 	} );
+
+	var $hrElement = $( '<hr>' ).addClass( 'jade-entity-view-split' );
 
 	// eslint-disable-next-line no-jquery/no-global-selector
 	$( '#mw-content-text' ).append(
