@@ -70,7 +70,7 @@ var DiffWidget = function ( config ) {
 			} );
 			this.$element.append( this.message.$element );
 		} else {
-			var header = mw.config.get( 'diffHeader' );
+			var header = mw.config.get( 'diffHeader', '' );
 			var diffData = this.data.compare[ '*' ];
 			if ( header.indexOf( 'diff-otitle' ) === -1 ) {
 				var label = new OO.ui.LabelWidget( {
@@ -81,7 +81,7 @@ var DiffWidget = function ( config ) {
 			}
 			var diffMarkup = '<tr class="diff-title" lang="en">' + header + '</tr>' + diffData;
 			this.$element.append( this.btnGroup.$element )
-		.append( '<table class="diff diff-contentalign-left">' + '<colgroup>' +
+			.append( '<table class="diff diff-contentalign-left">' + '<colgroup>' +
 			'<col class="diff-marker">' + '<col class="diff-content">' + '<col class="diff-marker">'
 			+ '<col class="diff-content">' + '</colgroup>' + '<tbody>'
 			+ diffMarkup + '</tbody>' + '</table>' );

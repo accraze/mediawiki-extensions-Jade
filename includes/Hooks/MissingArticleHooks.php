@@ -17,6 +17,7 @@
 namespace Jade\Hooks;
 
 use Article;
+use Jade\EntityDiffBuilder;
 use OutputPage;
 use RequestContext;
 
@@ -33,10 +34,18 @@ class MissingArticleHooks {
 			$context = RequestContext::getMain();
 			$output = $context->getOutput();
 			OutputPage::setupOOUI();
+			$diffBuilder = new EntityDiffBuilder();
+			$title = $article->getTitle();
+			try {
+				$diffHeader = $diffBuilder->buildDiffHeader( $title );
+			} catch ( \Throwable $e ) {
+				$diffHeader = '';
+			}
 			$entityData = json_encode( json_decode( '{}' ) );
 			$jsConfigVars = [
 				'entityData' => $entityData,
-				'entityTitle' => $article->getTitle(),
+				'entityTitle' => $title,
+				'diffHeader' => $diffHeader
 			];
 			$output->addJsConfigVars( $jsConfigVars );
 			$output->addModules( [ 'ext.Jade.entityView', 'jade.api','jade.widgets', 'jade.dialogs' ] );
