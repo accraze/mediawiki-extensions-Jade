@@ -39,7 +39,9 @@
 	background-color: #eaf3ff;
 }
 
-/* .jade-proposalWidget-notes {} */
+.jade-proposalWidget-notes {
+	white-space: pre-wrap;
+}
 
 /* .jade-proposalWidget-editForm {} */
 
