@@ -272,6 +272,9 @@ var ProposalWidget = function ( config ) {
 	this.endorseButton.connect( this, {
 		click: 'onEndorseButtonClick'
 	} );
+	this.endorsementsButton.connect( this, {
+		click: 'onToggleButtonClick'
+	} );
 	this.expandIcon.connect( this, {
 		click: 'onToggleButtonClick'
 	} );
