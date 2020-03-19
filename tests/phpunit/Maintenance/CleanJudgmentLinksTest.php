@@ -127,13 +127,14 @@ class CleanJudgmentLinksTest extends MaintenanceBaseTestCase {
 		// Make sure page deletions don't auto-delete links
 		$this->setTemporaryHook( 'ArticleDeleteComplete', false );
 
+		$deleter = $this->getTestSysop()->getUser();
 		for ( $i = 0; $i < $noOfTestJudgements; $i++ ) {
 			$revision = $this->createRevision();
 			$page = $this->createJudgment( $revision, $entityType );
 			$pageId = $page->getId();
 
 			// Orphan it by deleting the judgment page
-			$page->doDeleteArticleReal( 'reasonable' );
+			$page->doDeleteArticleReal( 'reasonable', $deleter );
 
 			// Check that the link still exists.
 			$this->assertJudgmentLink( $entityType, $revision->getId(), $pageId );
