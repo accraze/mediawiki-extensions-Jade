@@ -79,7 +79,7 @@
 				"diff": "Diff",
 				"revision": "Revision"
 			},
-			"description": "Title fragment used as a label for each entity type.  Generally not changed after deployment.",
+			"description": "Title fragment used as a label for each entity type. Generally not changed after deployment.",
 			"public": true
 		},
 		"JadeContentQualityLevels": {
@@ -100,7 +100,7 @@
 				"resources/ext.Jade.entityView.js"
 			],
 			"styles": [
-					"resources/ext.Jade.entityView.css"
+				"resources/ext.Jade.entityView.css"
 			],
 			"messages": [
 			],
