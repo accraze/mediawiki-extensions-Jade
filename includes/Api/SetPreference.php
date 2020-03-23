@@ -69,6 +69,9 @@ class SetPreference extends JadeApiBase {
 				self::PARAM_TYPE => 'text',
 				self::PARAM_REQUIRED => true,
 			],
+			'comment' => [
+				self::PARAM_TYPE => 'string',
+			],
 		];
 	}
 

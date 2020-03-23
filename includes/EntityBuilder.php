@@ -324,7 +324,8 @@ class EntityBuilder {
 
 		}
 		// save updated entity
-		$comment = '/* jade-setpreference */ ' . json_encode( $label );
+		$comment = '/* jade-setpreference */ ' . $facet . ' is ' . json_encode( $label ) .
+			': ' . $params['comment'];
 		$status = $this->saveEntityPage( $title, $entity, $comment );
 		return [ $status, $entity, $warnings ];
 	}
