@@ -215,8 +215,11 @@ class PageEntityProposalSetStorageTest extends MediaWikiTestCase {
 		// Delete the article so that getContent returns null.
 		$judgmentPageId = $status->value['revision']->getPage();
 		$judgmentPage = WikiPage::newFromID( $judgmentPageId );
-		$success = $judgmentPage->doDeleteArticle( 'reason' );
-		$this->assertTrue( $success );
+		$status = $judgmentPage->doDeleteArticleReal(
+			'reason',
+			$this->getTestSysop()->getUser()
+		);
+		$this->assertTrue( $status->isOK() );
 
 		$target = new ProposalTarget( $this->revisionType, $entityRevision->getId() );
 		$status = $this->storage->loadProposalSet( $target );
