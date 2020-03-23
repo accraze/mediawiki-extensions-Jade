@@ -107,7 +107,7 @@ var EndorsementWidget = function ( config ) {
 	var userPageMissing = function ( pageTitle ) {
 		var params = {
 				action: 'query',
-				titles: 'User:' + pageTitle,
+				titles: pageTitle,
 				prop: 'info',
 				inprop: 'url|talkid',
 				format: 'json'
@@ -132,9 +132,10 @@ var EndorsementWidget = function ( config ) {
 			var userUrl = '/wiki/User:' + userName;
 			var talkUrl = '/wiki/User_talk:' + userName;
 			var contribUrl = '/wiki/Special:Contributions/' + userName;
-			var userLinkClass = ( await userPageMissing( userName ) ) ? 'jade-endorsementWidget-author-missing-userPage' : '';
+			var userLinkClass = ( await userPageMissing( 'User:' + userName ) ) ? 'jade-endorsementWidget-author-missing-userPage' : '';
 			var $user = $( '<a class="' + userLinkClass + '" >' ).attr( 'href', userUrl ).text( userName );
-			var $talk = $( '<a>' ).attr( 'href', talkUrl ).text( 'talk' );
+			var talkLinkClass = ( await userPageMissing( 'User_talk:' + userName ) ) ? 'jade-endorsementWidget-author-missing-userTalkPage' : '';
+			var $talk = $( '<a class="' + talkLinkClass + '" >' ).attr( 'href', talkUrl ).text( 'talk' );
 			var $contrib = $( '<a>' ).attr( 'href', contribUrl ).text( 'contrib' );
 			$baseDiv.append( $user ).append( ' (' ).append( $talk ).append( '•' ).append( $contrib ).append( ')' );
 			return $baseDiv;
