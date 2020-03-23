@@ -38,6 +38,14 @@
 
 /* .jade-endorsementWidget-author {} */
 
+.jade-endorsementWidget-author-missing-userPage {
+	color: #ba0000;
+}
+
+.jade-endorsementWidget-author-missing-userPage:visited {
+	color: #a55858;
+}
+
 /* .jade-endorsementWidget-created {} */
 
 .jade-endorsementWidget-menuBtn {

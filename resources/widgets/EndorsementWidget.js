@@ -104,6 +104,20 @@ var EndorsementWidget = function ( config ) {
 		classes: [ 'jade-endorsementWidget-comment' ],
 		label: this.endorsement.comment
 	} );
+	var userPageMissing = function ( pageTitle ) {
+		var params = {
+				action: 'query',
+				titles: 'User:' + pageTitle,
+				prop: 'info',
+				inprop: 'url|talkid',
+				format: 'json'
+			},
+			api = new mw.Api();
+		return api.get( params ).then( function ( data ) {
+			// missing or invalid pages have -1 index
+			return !!data.query.pages[ -1 ];
+		} );
+	};
 	this.getUserName = function () {
 		var params = {
 				action: 'query',
@@ -112,13 +126,14 @@ var EndorsementWidget = function ( config ) {
 				format: 'json'
 			},
 			api = new mw.Api();
-		return api.get( params ).then( function ( data ) {
+		return api.get( params ).then( async function ( data ) {
 			var userName = data.query.users[ 0 ].name;
 			var $baseDiv = $( '<div>' );
 			var userUrl = '/wiki/User:' + userName;
 			var talkUrl = '/wiki/User_talk:' + userName;
 			var contribUrl = '/wiki/Special:Contributions/' + userName;
-			var $user = $( '<a>' ).attr( 'href', userUrl ).text( userName );
+			var userLinkClass = ( await userPageMissing( userName ) ) ? 'jade-endorsementWidget-author-missing-userPage' : '';
+			var $user = $( '<a class="' + userLinkClass + '" >' ).attr( 'href', userUrl ).text( userName );
 			var $talk = $( '<a>' ).attr( 'href', talkUrl ).text( 'talk' );
 			var $contrib = $( '<a>' ).attr( 'href', contribUrl ).text( 'contrib' );
 			$baseDiv.append( $user ).append( ' (' ).append( $talk ).append( '•' ).append( $contrib ).append( ')' );
