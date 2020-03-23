@@ -38,11 +38,13 @@
 
 /* .jade-endorsementWidget-author {} */
 
-.jade-endorsementWidget-author-missing-userPage {
+.jade-endorsementWidget-author-missing-userPage,
+.jade-endorsementWidget-author-missing-userTalkPage {
 	color: #ba0000;
 }
 
-.jade-endorsementWidget-author-missing-userPage:visited {
+.jade-endorsementWidget-author-missing-userPage:visited,
+.jade-endorsementWidget-author-missing-userTalkPage:visited {
 	color: #a55858;
 }
 
