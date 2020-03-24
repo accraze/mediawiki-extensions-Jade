@@ -1,5 +1,6 @@
 'use strict';
 
+/** @module jade.widgets */
 module.exports = {
 	DiffWidget: require( './DiffWidget.js' ),
 	EndorsementListWidget: require( './EndorsementListWidget.js' ),
