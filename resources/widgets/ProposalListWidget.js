@@ -68,6 +68,8 @@ var ProposalListWidget = function ProposalListWidget( config ) {
 		return b.preferred - a.preferred;
 	} );
 
+	this.preferredProposal = [];
+	this.nonPreferredProposals = [];
 	for ( var proposalIdx in this.proposals ) {
 		var proposal = this.proposals[ proposalIdx ];
 		var item = new ProposalWidget( {
@@ -79,14 +81,20 @@ var ProposalListWidget = function ProposalListWidget( config ) {
 		if ( proposalIdx > 0 ) {
 			item.toggle();
 		}
-		this.addItems( [ item ] );
+		if ( item.visible ) {
+			this.preferredProposal.push( item );
+		} else {
+			this.nonPreferredProposals.push( item );
+		}
 	}
 
 	this.$element
 		.addClass( 'jade-proposalListWidget' )
+		.append( this.addItems( this.preferredProposal ).$element )
 		.append( this.alternativesButton.$element )
 		.append( this.expandIcon.$element )
 		.append( this.collapseIcon.$element )
+		.append( this.addItems( this.nonPreferredProposals ).$element )
 		.append( $( '<p>' ) )
 		.append( this.proposeNewLabelButton.$element );
 
