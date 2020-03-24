@@ -10,6 +10,8 @@
  * @cfg {jQuery} $element
  * @cfg {Object} [entityData] Jade entity data sent from server as JSON
  *
+ * @classdesc Widget for a single facet within a Jade entity.
+ *
  * @license GPL-3.0-or-later
  * @author Andy Craze < acraze@wikimedia.org >
  */
@@ -81,6 +83,9 @@ var FacetWidget = function ( config ) {
 
 OO.inheritClass( FacetWidget, OO.ui.OptionWidget );
 
+/**
+ * @description Toggles visibility of proposal list.
+ */
 FacetWidget.prototype.onToggleButtonClick = function () {
 	this.proposalList.toggle();
 	this.expandIcon.toggle();
