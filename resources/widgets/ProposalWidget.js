@@ -13,8 +13,17 @@
  * @cfg {Object} [numProposal] integer describing the total number of proposals
  * in this facet.
  *
+ * @classdesc Widget for a single proposal.
+ * @requires jade.api.UpdateProposalClient
+ * @requires jade.dialogs.EndorseDialog
+ * @requires jade.dialogs.DeleteProposalDialog
+ * @requires jade.dialogs.PromoteDialog
+ * @requires jade.widgets.EndorsementListWidget
+ * @requires jade.widgets.EndorsementWidget
+ *
  * @license GPL-3.0-or-later
  * @author Andy Craze < acraze@wikimedia.org >
+ * @author Kevin Bazira < kbazira@wikimedia.org >
  */
 
 var UpdateProposalClient = require( 'jade.api' ).UpdateProposalClient;
@@ -107,6 +116,12 @@ var ProposalWidget = function ( config ) {
 		}
 	} );
 
+	/**
+	 * Populate the labelHeader widget with proposal labeldata.
+	 *
+	 * @function renderLabel
+	 * @description Populate the labelHeader widget with proposal labeldata.
+	 */
 	this.renderLabel = function () {
 		var icon1 = 'articleCheck';
 		var label1 = mw.message( 'jade-ui-productive-label' ).text();
@@ -294,6 +309,12 @@ var ProposalWidget = function ( config ) {
 
 OO.inheritClass( ProposalWidget, OO.ui.OptionWidget );
 
+/**
+ * Update proposal notes using the MW api and reloads the page.
+ *
+ * @function onSubmitButtonClick
+ * @description Updates proposal notes on submit button click.
+ */
 ProposalWidget.prototype.onSubmitButtonClick = function () {
 	var params = {
 		title: mw.config.get( 'entityTitle' ).prefixedText,
@@ -306,18 +327,36 @@ ProposalWidget.prototype.onSubmitButtonClick = function () {
 	Promise.resolve( res );
 };
 
+/**
+ * Hide the notes edit form on cancel button click.
+ *
+ * @function onCancelButtonClick
+ * @description Hide the notes edit form on cancel button click.
+ */
 ProposalWidget.prototype.onCancelButtonClick = function () {
 	this.editForm.toggle();
 	this.notesLabel.toggle();
 	this.menuButton.toggle();
 };
 
+/**
+ * Toggle visibility of endorsementList and change expand/collapse icon.
+ *
+ * @function onToggleButtonClick
+ * @description Toggle visibility of endorsementList and change expand/collapse icon.
+ */
 ProposalWidget.prototype.onToggleButtonClick = function () {
 	this.endorsementList.toggle();
 	this.expandIcon.toggle();
 	this.collapseIcon.toggle();
 };
 
+/**
+ * Display the EndorseDialog popup on endorse button click.
+ *
+ * @function onEndorseButtonClick
+ * @description Display the EndorseDialog popup on endorse button click.
+ */
 ProposalWidget.prototype.onEndorseButtonClick = function () {
 	var windowManager = new OO.ui.WindowManager();
 	$( document.body ).append( windowManager.$element );
@@ -335,6 +374,12 @@ ProposalWidget.prototype.onEndorseButtonClick = function () {
 
 };
 
+/**
+ * Hide menu, endorseButton & expandIcon widgets for use in dialog widget content.
+ *
+ * @function setDisplayMode
+ * @description Hide menu, endorseButton & expandIcon widgets for use in dialog widget content.
+ */
 ProposalWidget.prototype.setDisplayMode = function () {
 	this.endorseButton.toggle();
 	this.expandIcon.toggle();

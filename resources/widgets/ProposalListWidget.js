@@ -10,8 +10,13 @@
  * @cfg {jQuery} $element
  * @cfg {Object} [proposals] A list of proposals in a facet.
  *
+ * @classdesc Widget for a list of proposals within a facet.
+ * @requires jade.dialogs.ProposeNewLabelDialog
+ * @requires jade.widgets.ProposalWidget
+ *
  * @license GPL-3.0-or-later
  * @author Andy Craze < acraze@wikimedia.org >
+ * @author Kevin Bazira < kbazira@wikimedia.org >
  */
 
 var ProposalWidget = require( './ProposalWidget.js' );
@@ -119,6 +124,12 @@ ProposalListWidget.prototype.onItemDelete = function ( proposalWidget ) {
 	this.removeItems( [ proposalWidget ] );
 };
 
+/**
+ * Toggle the visibility of non-preferred labels.
+ *
+ * @function onAlternativeButtonClick
+ * @description Toggle the visibility of non-preferred labels.
+ */
 ProposalListWidget.prototype.onAlternativesButtonClick = function () {
 	for ( var idx in this.items ) {
 		if ( idx > 0 ) {
@@ -130,6 +141,12 @@ ProposalListWidget.prototype.onAlternativesButtonClick = function () {
 	}
 };
 
+/**
+ * Display the ProposeNewLabelDialog popup on propose button click.
+ *
+ * @function onProposeNewLabelButtonClick
+ * @description Display the ProposeNewLabelDialog popup on propose button click.
+ */
 ProposalListWidget.prototype.onProposeNewLabelButtonClick = function () {
 	var windowManager = new OO.ui.WindowManager();
 	$( document.body ).append( windowManager.$element );
