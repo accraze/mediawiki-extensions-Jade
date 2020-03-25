@@ -173,7 +173,9 @@ var ProposalWidget = function ( config ) {
 	this.editBox = new OO.ui.MultilineTextInputWidget( {
 		classes: [ 'jade-proposalWidget-editForm-text' ],
 		placeholder: mw.message( 'jade-ui-proposenewlabel-comment-placeholder' ).text(),
-		value: this.proposal.notes
+		value: this.proposal.notes,
+		autosize: true,
+		maxRows: 10
 	} );
 
 	this.editForm = new OO.ui.FieldsetLayout( {
