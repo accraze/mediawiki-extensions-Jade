@@ -1,7 +1,7 @@
 'use strict';
 
 /**
- * Widget for viewing a diff.
+ * Widget for rendering a diff.
  *
  * @extends OO.ui.Element
  *
@@ -9,6 +9,8 @@
  * @param {Object} [config]
  * @cfg {jQuery} $element
  * @cfg {Object} [entityData] Jade entity data sent from server as JSON
+ *
+ * @classdesc Widget for rendering a diff.
  *
  * @license GPL-3.0-or-later
  * @author Andy Craze < acraze@wikimedia.org >
@@ -42,7 +44,14 @@ var DiffWidget = function ( config ) {
 	this.btnGroup.on( 'select', this.onButtonSelect );
 	this.btnGroup.selectItemByData( 'source' );
 
-	this.call = function () {
+	/**
+	 * Call compare api to retrieve diff html markup.
+	 *
+	 * @function callCompare
+	 * @description Call compare api to retrieve diff html markup.
+	 * @returns {Promise} Promise object represents diff html markup.
+	 */
+	this.callCompare = function () {
 		var title = mw.config.get( 'entityTitle' ).mTextform;
 		var api = new mw.Api();
 		return api.get( {
@@ -52,17 +61,24 @@ var DiffWidget = function ( config ) {
 			prop: 'diff|ids|title|user'
 		} )
 			.then( function ( data, err ) {
-				// console.log( data );
 				return data;
 			} )
 			.catch( function ( err ) { return JSON.stringify( err ); } );
 	};
 
-	this.getDiffData = async function () {
-		this.data = await this.call();
+	/**
+	 * Retrieve diff data and populate widget html markup
+	 *
+	 * @async
+	 * @function loadDiffData
+	 * @description Retrieve diff data and populate widget html markup
+	 */
+	this.loadDiffData = async function () {
+		this.data = await this.callCompare();
 		this.$element
 		.addClass( 'jade-ui-diffWidget' );
 		if ( typeof this.data === 'string' ) {
+			// display error
 			this.message = new OO.ui.MessageWidget( {
 				type: 'error',
 				classes: [ 'jade-moveEndorsementDialog-errorMessage' ],
@@ -70,6 +86,7 @@ var DiffWidget = function ( config ) {
 			} );
 			this.$element.append( this.message.$element );
 		} else {
+			// populate diff markup
 			var header = mw.config.get( 'diffHeader', '' );
 			var diffData = this.data.compare[ '*' ];
 			if ( header.indexOf( 'diff-otitle' ) === -1 ) {
@@ -88,7 +105,7 @@ var DiffWidget = function ( config ) {
 		}
 	};
 
-	this.getDiffData();
+	this.loadDiffData();
 
 };
 
