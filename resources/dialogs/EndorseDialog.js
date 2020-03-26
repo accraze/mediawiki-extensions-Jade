@@ -10,6 +10,14 @@
  * @cfg {jQuery} $element
  * @cfg {Object} [proposal] Object containing proposal data.
  * in this facet.
+ *
+ * @classdesc Dialog box for endorsing a proposal.
+ * @requires jade.api.EndorseClient
+ * @requires jade.widgets.ProposalWidget
+ *
+ * @license GPL-3.0-or-later
+ * @author Andy Craze < acraze@wikimedia.org >
+ * @author Kevin Bazira < kbazira@wikimedia.org >
  */
 
 var EndorseClient = require( 'jade.api' ).EndorseClient;
@@ -87,6 +95,14 @@ var EndorseDialog = function EndorseDialog( config ) {
 
 OO.inheritClass( EndorseDialog, OO.ui.ProcessDialog );
 
+/**
+ * Endorse a proposal using the MW api and reload the page.
+ * If unsuccessful, display error message on dialog form.
+ *
+ * @async
+ * @function onSubmitButtonClick
+ * @description Endorse a proposal on submit button click.
+ */
 EndorseDialog.prototype.onSubmitButtonClick = async function () {
 	this.commentFormSubmit.setDisabled( true );
 	var comment = this.commentBox.value;
@@ -111,6 +127,12 @@ EndorseDialog.prototype.onSubmitButtonClick = async function () {
 	}
 };
 
+/**
+ * Close dialog on cancel button click.
+ *
+ * @function onCancelButtonClick
+ * @description Close dialog on cancel button click.
+ */
 EndorseDialog.prototype.onCancelButtonClick = function () {
 	this.close();
 };
