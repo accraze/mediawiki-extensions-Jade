@@ -8,6 +8,11 @@
  * @constructor
  * @param {Object} [config]
  * @cfg {jQuery} $element
+ *
+ * @classdesc Widget for displaying a list of proposal endorsements.
+ *
+ * @license GPL-3.0-or-later
+ * @author Andy Craze < acraze@wikimedia.org >
  */
 
 var EndorsementListWidget = function EndorsementListWidget( config ) {

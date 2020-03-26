@@ -13,8 +13,14 @@
  * @cfg {Object} [numProposal] integer describing the total number of proposals
  * in this facet.
  *
+ * @classdesc Widget for a single proposal endorsement.
+ * @requires jade.api.UpdateEndorsementClient
+ * @requires jade.dialogs.MoveEndorsementDialog
+ * @requires jade.dialogs.MoveEndorsementDialog
+ *
  * @license GPL-3.0-or-later
  * @author Andy Craze < acraze@wikimedia.org >
+ * @author Kevin Bazira < kbazira@wikimedia.org >
  */
 
 var UpdateEndorsementClient = require( 'jade.api' ).UpdateEndorsementClient;
@@ -38,6 +44,13 @@ var EndorsementWidget = function ( config ) {
 		data: this,
 		label: this.menuEdit
 	} );
+
+	/**
+	 * @function userEndorsed
+	 * @description Check if an endorsement author id belongs to current user.
+	 * @param userId {number} user id of endorsement author.
+	 * @returns {boolean} If true, then the currentUser matches the userId.
+	 */
 	this.userEndorsed = function ( userId ) {
 		var endorsed = false;
 		var currentUser = mw.config.values.wgUserId;
@@ -118,6 +131,15 @@ var EndorsementWidget = function ( config ) {
 			return !!data.query.pages[ -1 ];
 		} );
 	};
+
+	/**
+	 * Retrieve the html markup string for an endorsement author.
+	 *
+	 * @function getUserName
+	 * @description Retrieve the html markup for an endorsement author.
+	 * @param userId {number} user id of endorsement author.
+	 * @returns {Promise} Promise object represents html markup string for endorsement author.
+	 */
 	this.getUserName = function () {
 		var params = {
 				action: 'query',
@@ -145,6 +167,13 @@ var EndorsementWidget = function ( config ) {
 		classes: [ 'jade-endorsementWidget-author' ]
 	} );
 
+	/**
+	 * Populate the authorLabel widget with user data.
+	 *
+	 * @async
+	 * @function buildAuthor
+	 * @description Populate the authorLabel widget with user data.
+	 */
 	this.buildAuthor = async function () {
 		var name;
 		if ( this.endorsement.author.ip ) {
@@ -156,6 +185,14 @@ var EndorsementWidget = function ( config ) {
 		}
 	};
 	this.buildAuthor();
+
+	/**
+	 * Create UTC date string.
+	 *
+	 * @function buildDate
+	 * @description Create UTC date string.
+	 * @returns {string} string with date in UTC format.
+	 */
 	this.buildDate = function ( date ) {
 		var local = new Date( date );
 		return local.toUTCString();
@@ -260,8 +297,14 @@ var EndorsementWidget = function ( config ) {
 };
 
 OO.inheritClass( EndorsementWidget, OO.ui.OptionWidget );
+
+/**
+ * Update an endorsement comment using the MW api and reloads the page.
+ *
+ * @function onSubmitButtonClick
+ * @description Updates an endorsement comment on submit button click.
+ */
 EndorsementWidget.prototype.onSubmitButtonClick = function () {
-	// var comment = this.commentBox.value;
 	var params = {
 		title: mw.config.get( 'entityTitle' ).prefixedText,
 		facet: 'editquality',
@@ -273,12 +316,24 @@ EndorsementWidget.prototype.onSubmitButtonClick = function () {
 	Promise.resolve( res );
 };
 
+/**
+ * Hide the endorsement edit form on cancel button click.
+ *
+ * @function onCancelButtonClick
+ * @description Hide the endorsement edit form on cancel button click.
+ */
 EndorsementWidget.prototype.onCancelButtonClick = function () {
 	this.editForm.toggle();
 	this.commentLabel.toggle();
 	this.menuButton.toggle();
 };
 
+/**
+ * Hide menu widget for use in dialog widget content.
+ *
+ * @function setDisplayMode
+ * @description Hide menu widget for use in dialog widget content.
+ */
 EndorsementWidget.prototype.setDisplayMode = function () {
 	this.menuButton.toggle();
 };
