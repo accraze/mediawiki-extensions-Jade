@@ -9,7 +9,15 @@
  * @param {Object} [config]
  * @cfg {jQuery} $element
  * @cfg {Object} [proposal] Object containing proposal data.
- * in this facet.
+ *
+ * @classdesc Dialog box for deleting an endorsement.
+ * @requires jade.api.DeleteEndorsementClient
+ * @requires jade.widgets.EndorsementWidget
+ * @requires jade.widgets.ProposalWidget
+ *
+ * @license GPL-3.0-or-later
+ * @author Andy Craze < acraze@wikimedia.org >
+ * @author Kevin Bazira < kbazira@wikimedia.org >
  */
 
 var DeleteEndorsementClient = require( 'jade.api' ).DeleteEndorsementClient;
@@ -92,6 +100,14 @@ var DeleteEndorsementDialog = function DeleteEndorsementDialog( config ) {
 };
 OO.inheritClass( DeleteEndorsementDialog, OO.ui.ProcessDialog );
 
+/**
+ * Delete a proposal's endorsement using the MW api and reloads the page.
+ * If unsuccessful, display error message on dialog form.
+ *
+ * @async
+ * @function onSubmitButtonClick
+ * @description Delete an endorsement on submit button click.
+ */
 DeleteEndorsementDialog.prototype.onSubmitButtonClick = async function () {
 	this.commentFormSubmit.setDisabled( true );
 	var comment = this.commentBox.value;
@@ -113,6 +129,12 @@ DeleteEndorsementDialog.prototype.onSubmitButtonClick = async function () {
 	}
 };
 
+/**
+ * Close dialog on cancel button click.
+ *
+ * @function onCancelButtonClick
+ * @description Close dialog on cancel button click.
+ */
 DeleteEndorsementDialog.prototype.onCancelButtonClick = function () {
 	this.close();
 };
