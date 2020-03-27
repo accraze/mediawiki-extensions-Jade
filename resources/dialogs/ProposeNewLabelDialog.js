@@ -9,8 +9,12 @@
  * @param {Object} [config]
  * @cfg {jQuery} $element
  *
+ * @classdesc Dialog box for proposing a new label.
+ * @requires jade.api.ProposeClient
+ *
  * @license GPL-3.0-or-later
  * @author Andy Craze < acraze@wikimedia.org >
+ * @author Kevin Bazira < kbazira@wikimedia.org >
  */
 
 var ProposeClient = require( 'jade.api' ).ProposeClient;
@@ -191,6 +195,14 @@ var ProposeNewLabelDialog = function ProposeNewLabelDialog( config ) {
 };
 OO.inheritClass( ProposeNewLabelDialog, OO.ui.ProcessDialog );
 
+/**
+ * Propose a new label using the MW api and reload the page.
+ * If unsuccessful, display error message on dialog form.
+ *
+ * @async
+ * @function onSubmitButtonClick
+ * @description Propose a new label on submit button click.
+ */
 ProposeNewLabelDialog.prototype.onSubmitButtonClick = async function () {
 	this.notesFormSubmit.setDisabled( true );
 	var comment = this.notesBox.value;
@@ -216,6 +228,12 @@ ProposeNewLabelDialog.prototype.onSubmitButtonClick = async function () {
 	}
 };
 
+/**
+ * Close dialog on cancel button click.
+ *
+ * @function onCancelButtonClick
+ * @description Close dialog on cancel button click.
+ */
 ProposeNewLabelDialog.prototype.onCancelButtonClick = function () {
 	this.close();
 };
