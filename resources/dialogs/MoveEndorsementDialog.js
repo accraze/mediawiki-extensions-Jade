@@ -9,7 +9,16 @@
  * @param {Object} [config]
  * @cfg {jQuery} $element
  * @cfg {Object} [proposal] Object containing proposal data.
- * in this facet.
+ * @cfg {Object} [proposals] List containing all proposals within a facet.
+ *
+ * @classdesc Dialog box for moving an endorsement to another proposal.
+ * @requires jade.api.MoveEndorsementClient
+ * @requires jade.widgets.EndorsementWidget
+ * @requires jade.widgets.ProposalWidget
+ *
+ * @license GPL-3.0-or-later
+ * @author Andy Craze < acraze@wikimedia.org >
+ * @author Kevin Bazira < kbazira@wikimedia.org >
  */
 
 var MoveEndorsementClient = require( 'jade.api' ).MoveEndorsementClient;
@@ -99,6 +108,14 @@ MoveEndorsementDialog.prototype.onEndorseButtonClick = function () {
 
 };
 
+/**
+ * Move an endorsement to another proposal using the MW api and reload the page.
+ * If unsuccessful, display error message on dialog form.
+ *
+ * @async
+ * @function onSubmitButtonClick
+ * @description Move an endorsement to another proposal on submit button click.
+ */
 MoveEndorsementDialog.prototype.onSubmitButtonClick = async function () {
 	this.commentFormSubmit.setDisabled( true );
 	var comment = this.commentBox.value;
@@ -123,6 +140,12 @@ MoveEndorsementDialog.prototype.onSubmitButtonClick = async function () {
 	}
 };
 
+/**
+ * Close dialog on cancel button click.
+ *
+ * @function onCancelButtonClick
+ * @description Close dialog on cancel button click.
+ */
 MoveEndorsementDialog.prototype.onCancelButtonClick = function () {
 	this.close();
 };
