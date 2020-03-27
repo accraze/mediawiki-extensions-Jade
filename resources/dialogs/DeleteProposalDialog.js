@@ -9,7 +9,14 @@
  * @param {Object} [config]
  * @cfg {jQuery} $element
  * @cfg {Object} [proposal] Object containing proposal data.
- * in this facet.
+ *
+ * @classdesc Dialog box for deleting a proposal.
+ * @requires jade.api.DeleteProposalClient
+ * @requires jade.widgets.ProposalWidget
+ *
+ * @license GPL-3.0-or-later
+ * @author Andy Craze < acraze@wikimedia.org >
+ * @author Kevin Bazira < kbazira@wikimedia.org >
  */
 
 var DeleteProposalClient = require( 'jade.api' ).DeleteProposalClient;
@@ -87,6 +94,14 @@ var DeleteProposalDialog = function DeleteProposalDialog( config ) {
 };
 OO.inheritClass( DeleteProposalDialog, OO.ui.ProcessDialog );
 
+/**
+ * Delete a proposal using the MW api and reload the page.
+ * If unsuccessful, display error message on dialog form.
+ *
+ * @async
+ * @function onSubmitButtonClick
+ * @description Delete a proposal on submit button click.
+ */
 DeleteProposalDialog.prototype.onSubmitButtonClick = async function () {
 	this.commentFormSubmit.setDisabled( true );
 	var comment = this.commentBox.value;
@@ -111,6 +126,12 @@ DeleteProposalDialog.prototype.onSubmitButtonClick = async function () {
 	}
 };
 
+/**
+ * Close dialog on cancel button click.
+ *
+ * @function onCancelButtonClick
+ * @description Close dialog on cancel button click.
+ */
 DeleteProposalDialog.prototype.onCancelButtonClick = function () {
 	this.close();
 };
