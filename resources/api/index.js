@@ -1,5 +1,6 @@
 'use strict';
 
+/** @module jade.api */
 module.exports = {
 	DeleteEndorsementClient: require( './DeleteEndorsementClient.js' ),
 	DeleteProposalClient: require( './DeleteProposalClient.js' ),
