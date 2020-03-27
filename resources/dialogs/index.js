@@ -1,5 +1,6 @@
 'use strict';
 
+/** @module jade.dialogs */
 module.exports = {
 	DeleteEndorsementDialog: require( './DeleteEndorsementDialog.js' ),
 	DeleteProposalDialog: require( './DeleteProposalDialog.js' ),
