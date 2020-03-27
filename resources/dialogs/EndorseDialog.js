@@ -9,7 +9,6 @@
  * @param {Object} [config]
  * @cfg {jQuery} $element
  * @cfg {Object} [proposal] Object containing proposal data.
- * in this facet.
  *
  * @classdesc Dialog box for endorsing a proposal.
  * @requires jade.api.EndorseClient
