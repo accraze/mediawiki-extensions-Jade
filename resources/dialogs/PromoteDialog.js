@@ -9,7 +9,14 @@
  * @param {Object} [config]
  * @cfg {jQuery} $element
  * @cfg {Object} [proposal] Object containing proposal data.
- * in this facet.
+ *
+ * @classdesc Dialog box for promoting a label.
+ * @requires jade.api.PromoteClient
+ * @requires jade.widgets.ProposalWidget
+ *
+ * @license GPL-3.0-or-later
+ * @author Andy Craze < acraze@wikimedia.org >
+ * @author Kevin Bazira < kbazira@wikimedia.org >
  */
 var PromoteClient = require( 'jade.api' ).PromoteClient;
 
@@ -91,6 +98,14 @@ var PromoteDialog = function PromoteDialog( config ) {
 
 OO.inheritClass( PromoteDialog, OO.ui.ProcessDialog );
 
+/**
+ * Promote a label using the MW api and reload the page.
+ * If unsuccessful, display error message on dialog form.
+ *
+ * @async
+ * @function onSubmitButtonClick
+ * @description Promote a label on submit button click.
+ */
 PromoteDialog.prototype.onSubmitButtonClick = async function () {
 	this.commentFormSubmit.setDisabled( true );
 	var comment = this.commentBox.value;
@@ -114,6 +129,12 @@ PromoteDialog.prototype.onSubmitButtonClick = async function () {
 	}
 };
 
+/**
+ * Close dialog on cancel button click.
+ *
+ * @function onCancelButtonClick
+ * @description Close dialog on cancel button click.
+ */
 PromoteDialog.prototype.onCancelButtonClick = function () {
 	this.close();
 };
