@@ -69,7 +69,9 @@ class AbuseFilterTest extends ApiTestCase {
 			'a summary'
 		);
 
-		$rcId = $judgmentResult['revision']->getRecentChange()->getAttribute( 'rc_id' );
+		$revisionStore = \MediaWiki\MediaWikiServices::getInstance()->getRevisionStore();
+		$revisionRecord = $judgementResult['revision']->getRevisionRecord();
+		$rcId = $revisionStore->getRecentChange( $revisionRecord )->getAttribute( 'rc_id' );
 		$result = $this->doApiRequest( [
 			'action' => 'abusefiltercheckmatch',
 			'filter' => 'added_lines irlike "\bT\.?V\.?\b"',
