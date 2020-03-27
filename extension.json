@@ -48,7 +48,8 @@
 		"JadeEntity": "Jade\\Content\\EntityContentHandler"
 	},
 	"Hooks": {
-		"ShowMissingArticle": "Jade\\Hooks\\MissingArticleHooks::onShowMissingArticle"
+		"ShowMissingArticle": "Jade\\Hooks\\MissingArticleHooks::onShowMissingArticle",
+		"SkinTemplateNavigation": "Jade\\Hooks\\SkinTemplateNavigationHooks::onSkinTemplateNavigation"
 	},
 	"MessagesDirs": {
 		"Jade": [
