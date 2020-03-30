@@ -15,7 +15,7 @@
  */
 namespace Jade;
 
-class ProposalLinkTableHelper {
+class EntityLinkTableHelper {
 
 	/** @var ProposalEntityType */
 	private $entityType;
@@ -28,8 +28,8 @@ class ProposalLinkTableHelper {
 	}
 
 	public function getLinkTable() {
-		// Dynamic link table name per entity type, e.g. "jade_diff_proposal".
-		return "jade_{$this->entityType}_proposal";
+		// Dynamic link table name per entity type, e.g. "jade_diff_judgment".
+		return "jade_{$this->entityType}_judgment";
 	}
 
 	public function getColumnPrefix() {

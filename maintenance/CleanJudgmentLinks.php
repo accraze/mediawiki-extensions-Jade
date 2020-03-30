@@ -2,9 +2,9 @@
 
 namespace Jade\Maintenance;
 
+use Jade\EntityLinkTableHelper;
 use Jade\JadeServices;
 use Jade\ProposalEntityType;
-use Jade\ProposalLinkTableHelper;
 use Jade\ProposalSummarizer;
 use Jade\TitleHelper;
 use Maintenance;
@@ -81,7 +81,7 @@ class CleanJudgmentLinks extends Maintenance {
 	 * @return array List of primary keys for orphaned link table rows.
 	 */
 	private function findOrphanedLinks( $type, $skipPastId = 0 ) {
-		$tableHelper = new ProposalLinkTableHelper( $type );
+		$tableHelper = new EntityLinkTableHelper( $type );
 
 		$dbr = MediaWikiServices::getInstance()
 			->getDBLoadBalancer()->getConnection( DB_REPLICA );
@@ -114,7 +114,7 @@ class CleanJudgmentLinks extends Maintenance {
 	 * @param ProposalEntityType $type Entity type
 	 */
 	private function deleteOrphanedLinks( $orphans, $type ) {
-		$tableHelper = new ProposalLinkTableHelper( $type );
+		$tableHelper = new EntityLinkTableHelper( $type );
 
 		$lbFactory = MediaWikiServices::getInstance()->getDBLoadBalancerFactory();
 		$dbw = $lbFactory->getMainLB()->getConnection( DB_MASTER );
@@ -154,7 +154,7 @@ class CleanJudgmentLinks extends Maintenance {
 	}
 
 	private function findUnlinkedJudgments( ProposalEntityType $type, $skipPastId ) {
-		$tableHelper = new ProposalLinkTableHelper( $type );
+		$tableHelper = new EntityLinkTableHelper( $type );
 		$titlePrefix = $type->getLocalizedName();
 
 		// Find judgments with no matching link row.
@@ -197,7 +197,7 @@ class CleanJudgmentLinks extends Maintenance {
 		IResultWrapper $unlinked,
 		ProposalEntityType $entityType
 	) {
-		$tableHelper = new ProposalLinkTableHelper( $entityType );
+		$tableHelper = new EntityLinkTableHelper( $entityType );
 		$indexStorage = JadeServices::getEntityIndexStorage();
 		$lastId = 0;
 
