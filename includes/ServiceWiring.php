@@ -35,7 +35,7 @@ if ( !class_exists( ServiceWiring::class ) ) {
 				},
 
 				'JadeEntityIndexStorage' => function ( MediaWikiServices $services ) {
-					return new ProposalLinkTable(
+					return new EntityLinkTable(
 						$services->getDBLoadBalancer()
 					);
 				},

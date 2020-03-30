@@ -16,9 +16,9 @@
 namespace Jade\Tests\Hooks;
 
 use Jade\Content\ProposalContent;
+use Jade\EntityLinkTable;
 use Jade\Hooks\LinkSummaryHooks;
 use Jade\ProposalEntityType;
-use Jade\ProposalLinkTable;
 use Jade\ProposalTarget;
 use Jade\Tests\TestStorageHelper;
 use MediaWikiTestCase;
@@ -50,7 +50,7 @@ class LinkSummaryHooksTest extends MediaWikiTestCase {
 			'page',
 		];
 
-		$this->mockStorage = $this->getMockBuilder( ProposalLinkTable::class )
+		$this->mockStorage = $this->getMockBuilder( EntityLinkTable::class )
 			->disableOriginalConstructor()->getMock();
 		$this->setService( 'JadeEntityIndexStorage', $this->mockStorage );
 

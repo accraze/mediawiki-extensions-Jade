@@ -15,8 +15,8 @@
  */
 namespace Jade\Tests;
 
+use Jade\EntityLinkTable;
 use Jade\ProposalEntityType;
-use Jade\ProposalLinkTable;
 use Jade\ProposalTarget;
 use Jade\TitleHelper;
 use MediaWiki\MediaWikiServices;
@@ -27,10 +27,10 @@ use MediaWikiTestCase;
  * @group Database
  * @group medium
  *
- * @coversDefaultClass \Jade\ProposalLinkTable
+ * @coversDefaultClass \Jade\EntityLinkTable
  * @covers ::__construct
  */
-class ProposalLinkTableTest extends MediaWikiTestCase {
+class EntityLinkTableTest extends MediaWikiTestCase {
 
 	// Include assertions to test judgment links.
 	// use TestJudgmentLinkAssertions;
@@ -56,7 +56,7 @@ class ProposalLinkTableTest extends MediaWikiTestCase {
 		 * instantiating.
 		 *     $storage = JadeServices::getJudgmentIndexStorage();
 		 */
-		$this->indexStorage = new ProposalLinkTable(
+		$this->indexStorage = new EntityLinkTable(
 			MediaWikiServices::getInstance()->getDBLoadBalancer() );
 
 		// Disable all hooks, so that judgment links can only be altered manually.
