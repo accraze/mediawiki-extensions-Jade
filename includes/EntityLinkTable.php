@@ -24,7 +24,7 @@ use WikiPage;
 /**
  * Proposal index storage implemented using a RDBMS link table and indexes.
  */
-class ProposalLinkTable implements EntityIndexStorage {
+class EntityLinkTable implements EntityIndexStorage {
 
 	private $loadBalancer;
 
