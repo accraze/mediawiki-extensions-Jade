@@ -16,7 +16,7 @@
 namespace Jade\Tests;
 
 use CentralIdLookup;
-use Jade\ProposalPageWikitextRenderer;
+use Jade\EntityPageWikitextRenderer;
 use LocalIdLookup;
 use LogicException;
 use MediaWiki\Block\DatabaseBlock;
@@ -28,12 +28,12 @@ use Wikimedia\TestingAccessWrapper;
  * @group Jade
  * @group medium
  *
- * @coversDefaultClass \Jade\ProposalPageWikitextRenderer
+ * @coversDefaultClass \Jade\EntityPageWikitextRenderer
  *
  * TODO: Could make some tests more unit-y, calling the methods through a
  * TestingAccessWrapper rather than going through the public getWikitext.
  */
-class ProposalPageWikitextRendererTest extends MediaWikiLangTestCase {
+class EntityPageWikitextRendererTest extends MediaWikiLangTestCase {
 
 	public static function provideBasicSamples() {
 		// Renders the damaging schema.
@@ -84,7 +84,7 @@ class ProposalPageWikitextRendererTest extends MediaWikiLangTestCase {
 		// Cheesy recursive conversion from array to stdClass.
 		$judgmentObject = json_decode( json_encode( $judgment ) );
 
-		$renderer = new ProposalPageWikitextRenderer;
+		$renderer = new EntityPageWikitextRenderer;
 		$wikitext = $renderer->getWikitext( $judgmentObject );
 
 		$this->assertRegExp( $regex, $wikitext );
@@ -112,7 +112,7 @@ class ProposalPageWikitextRendererTest extends MediaWikiLangTestCase {
 		] ] ];
 		$judgmentObject = json_decode( json_encode( $judgment ) );
 
-		$renderer = new ProposalPageWikitextRenderer;
+		$renderer = new EntityPageWikitextRenderer;
 		$wikitext = $renderer->getWikitext( $judgmentObject );
 
 		$this->assertRegExp( "/\[\[User:{$user->getName()}\]\]/", $wikitext );
@@ -150,7 +150,7 @@ class ProposalPageWikitextRendererTest extends MediaWikiLangTestCase {
 		] ] ];
 		$judgmentObject = json_decode( json_encode( $judgment ) );
 
-		$renderer = new ProposalPageWikitextRenderer;
+		$renderer = new EntityPageWikitextRenderer;
 		$wikitext = $renderer->getWikitext( $judgmentObject );
 
 		$this->assertRegExp( "/⧼{$user->getId()}⧽/", $wikitext );
@@ -189,7 +189,7 @@ class ProposalPageWikitextRendererTest extends MediaWikiLangTestCase {
 		] ] ];
 		$judgmentObject = json_decode( json_encode( $judgment ) );
 
-		$renderer = new ProposalPageWikitextRenderer;
+		$renderer = new EntityPageWikitextRenderer;
 		$wikitext = $renderer->getWikitext( $judgmentObject );
 
 		$this->assertRegExp( "/\[\[User:{$user->getName()}\]\]/", $wikitext );
@@ -212,7 +212,7 @@ class ProposalPageWikitextRendererTest extends MediaWikiLangTestCase {
 	 */
 	public function testGetSchemaValueText( $schemaName, $value, $expectedText ) {
 		$renderer = TestingAccessWrapper::newFromObject(
-			new ProposalPageWikitextRenderer );
+			new EntityPageWikitextRenderer );
 		$text = $renderer->getSchemaValueText( $schemaName, $value );
 
 		$this->assertEquals( $expectedText, $text );
@@ -225,7 +225,7 @@ class ProposalPageWikitextRendererTest extends MediaWikiLangTestCase {
 		$badCentralId = mt_rand();
 
 		$renderer = TestingAccessWrapper::newFromObject(
-			new ProposalPageWikitextRenderer );
+			new EntityPageWikitextRenderer );
 		$userObj = (object)[
 			'cid' => $badCentralId,
 			'id' => $this->getTestUser()->getUser()->getId(),
@@ -242,7 +242,7 @@ class ProposalPageWikitextRendererTest extends MediaWikiLangTestCase {
 	 */
 	public function testGetUserWikitext_badStruct() {
 		$renderer = TestingAccessWrapper::newFromObject(
-			new ProposalPageWikitextRenderer );
+			new EntityPageWikitextRenderer );
 		$userObj = new \stdClass;
 		$this->expectException( LogicException::class );
 		$output = $renderer->getUserWikitext( $userObj );

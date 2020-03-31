@@ -21,8 +21,8 @@
 namespace Jade\Content;
 
 use Jade\EntityDiffBuilder;
+use Jade\EntityPageWikitextRenderer;
 use Jade\JadeServices;
-use Jade\ProposalPageWikitextRenderer;
 use JsonContent;
 use MediaWiki\MediaWikiServices;
 use OutputPage;
@@ -135,7 +135,7 @@ class EntityContent extends JsonContent {
 		}
 
 		$parser = MediaWikiServices::getInstance()->getParser();
-		$renderer = new ProposalPageWikitextRenderer;
+		$renderer = new EntityPageWikitextRenderer;
 		$wikitext = $renderer->getWikitext( $this->getData()->getValue() );
 
 		if ( $generateHtml ) {
