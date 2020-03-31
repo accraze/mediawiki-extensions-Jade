@@ -16,16 +16,16 @@
 namespace Jade\Tests;
 
 use Jade\Content\ProposalContent;
-use Jade\ProposalSummarizer;
+use Jade\EntitySummarizer;
 use MediaWikiTestCase;
 use TextContent;
 
 /**
  * @group Jade
  *
- * @coversDefaultClass \Jade\ProposalSummarizer
+ * @coversDefaultClass \Jade\EntitySummarizer
  */
-class ProposalSummarizerTest extends MediaWikiTestCase {
+class EntitySummarizerTest extends MediaWikiTestCase {
 
 	/**
 	 * @covers ::getSummaryFromContent
@@ -33,7 +33,7 @@ class ProposalSummarizerTest extends MediaWikiTestCase {
 	public function testGetSummaryFromContent_success() {
 		$this->markTestSkipped( 'not in use.' );
 		$content = new ProposalContent( TestStorageHelper::getJudgmentText( 'diff' ) );
-		$status = ProposalSummarizer::getSummaryFromContent( $content );
+		$status = EntitySummarizer::getSummaryFromContent( $content );
 		$this->assertTrue( $status->isOK() );
 		$this->assertEquals(
 			[
@@ -50,7 +50,7 @@ class ProposalSummarizerTest extends MediaWikiTestCase {
 	public function testGetSummaryFromContent_failure() {
 		$badJson = '[abc';
 		$content = new TextContent( $badJson );
-		$status = ProposalSummarizer::getSummaryFromContent( $content );
+		$status = EntitySummarizer::getSummaryFromContent( $content );
 		$this->assertFalse( $status->isOK() );
 	}
 

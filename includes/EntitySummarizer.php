@@ -21,12 +21,12 @@ use Jade\Content\EntityContent;
 use Status;
 use StatusValue;
 
-class ProposalSummarizer {
+class EntitySummarizer {
 
 	/**
 	 * Extract preferred proposal values.
 	 *
-	 * @param Content $content proposal page content to summarize.
+	 * @param Content $content entity page content to summarize.
 	 * @return StatusValue When successful, includes a map from schema to preferred value.
 	 */
 	public static function getSummaryFromContent( Content $content ) {
