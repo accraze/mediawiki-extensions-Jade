@@ -33,7 +33,7 @@ class EntityLinkTable implements EntityIndexStorage {
 	}
 
 	public function insertIndex( ProposalTarget $target, WikiPage $proposalPage ) {
-		$tableHelper = new ProposalLinkTableHelper( $target->entityType );
+		$tableHelper = new EntityLinkTableHelper( $target->entityType );
 
 		// Create row linking the Proposal and its target.
 		$dbw = $this->loadBalancer->getConnection( DB_MASTER );
@@ -45,7 +45,7 @@ class EntityLinkTable implements EntityIndexStorage {
 	}
 
 	public function deleteIndex( ProposalTarget $target, WikiPage $proposalPage ) {
-		$tableHelper = new ProposalLinkTableHelper( $target->entityType );
+		$tableHelper = new EntityLinkTableHelper( $target->entityType );
 
 		// Delete row linking the Proposal and its target.  Select the primary
 		// key first, to avoid long queries on the master database.
@@ -75,7 +75,7 @@ class EntityLinkTable implements EntityIndexStorage {
 			return Status::newGood();
 		}
 
-		$tableHelper = new ProposalLinkTableHelper( $target->entityType );
+		$tableHelper = new EntityLinkTableHelper( $target->entityType );
 
 		$row = [];
 		foreach ( $summaryValues as $key => $value ) {
