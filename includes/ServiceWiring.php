@@ -40,8 +40,8 @@ if ( !class_exists( ServiceWiring::class ) ) {
 					);
 				},
 
-				'JadeProposalValidator' => function ( MediaWikiServices $services ) {
-					return new ProposalValidator(
+				'JadeEntityValidator' => function ( MediaWikiServices $services ) {
+					return new EntityValidator(
 						RequestContext::getMain()->getConfig(),
 						LoggerFactory::getInstance( 'Jade' ),
 						$services->getRevisionStore()

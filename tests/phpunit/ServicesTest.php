@@ -16,9 +16,9 @@
 namespace Jade\Tests;
 
 use Jade\EntityIndexStorage;
+use Jade\EntityValidator;
 use Jade\JadeServices;
 use Jade\PageEntityProposalSetStorage;
-use Jade\ProposalValidator;
 use Jade\ServiceWiring;
 use MediaWiki\MediaWikiServices;
 use MediaWikiTestCase;
@@ -40,9 +40,9 @@ class ServicesTest extends MediaWikiTestCase {
 			EntityIndexStorage::class
 		];
 		yield [
-			'getProposalValidator',
-			'JadeProposalValidator',
-			ProposalValidator::class
+			'getEntityValidator',
+			'JadeEntityValidator',
+			EntityValidator::class
 		];
 	}
 

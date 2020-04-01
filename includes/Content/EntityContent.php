@@ -70,7 +70,7 @@ class EntityContent extends JsonContent {
 		}
 
 		$data = $this->getData()->getValue();
-		$validator = JadeServices::getProposalValidator();
+		$validator = JadeServices::getEntityValidator();
 		// return $validator->validatePageTitle( $page, $data );
 		return Status::newGood();
 	}
@@ -103,8 +103,8 @@ class EntityContent extends JsonContent {
 		}
 
 		$data = $this->getData()->getValue();
-		$validator = JadeServices::getProposalValidator();
-		return $validator->validateProposalContent( $data );
+		$validator = JadeServices::getEntityValidator();
+		return $validator->validateEntityContent( $data );
 	}
 
 	public function isEmpty() {

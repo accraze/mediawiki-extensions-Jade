@@ -16,7 +16,7 @@
 namespace Jade\Tests\Content;
 
 use Jade\Content\EntityContent;
-use Jade\ProposalValidator;
+use Jade\EntityValidator;
 use Jade\Tests\TestStorageHelper;
 use MediaWikiLangTestCase;
 use ParserOptions;
@@ -39,10 +39,10 @@ class EntityContentTest extends MediaWikiLangTestCase {
 		parent::setUp();
 
 		// Mock validation.
-		$this->mockValidation = $this->getMockBuilder( ProposalValidator::class )
+		$this->mockValidation = $this->getMockBuilder( EntityValidator::class )
 			->disableOriginalConstructor()
 			->getMock();
-		$this->setService( 'JadeProposalValidator', $this->mockValidation );
+		$this->setService( 'JadeEntityValidator', $this->mockValidation );
 
 		$this->judgmentText = TestStorageHelper::getJudgmentText( 'diff' );
 	}
@@ -68,7 +68,7 @@ class EntityContentTest extends MediaWikiLangTestCase {
 
 		$this->mockValidation
 			->expects( $this->once() )
-			->method( 'validateProposalContent' )
+			->method( 'validateEntityContent' )
 			->willReturn( Status::newGood() );
 		// $this->mockValidation
 		// ->expects( $this->once() )
@@ -89,7 +89,7 @@ class EntityContentTest extends MediaWikiLangTestCase {
 
 		$this->mockValidation
 			->expects( $this->once() )
-			->method( 'validateProposalContent' )
+			->method( 'validateEntityContent' )
 			->willReturn( Status::newFatal( 'jade-bad-content', 'abc' ) );
 
 		$status = $content->prepareSave( $page, 0, 0, $user );
@@ -110,7 +110,7 @@ class EntityContentTest extends MediaWikiLangTestCase {
 
 		$this->mockValidation
 			->expects( $this->once() )
-			->method( 'validateProposalContent' )
+			->method( 'validateEntityContent' )
 			->willReturn( Status::newGood() );
 		// $this->mockValidation
 		// ->expects( $this->once() )
@@ -132,7 +132,7 @@ class EntityContentTest extends MediaWikiLangTestCase {
 
 		$this->mockValidation
 			->expects( $this->once() )
-			->method( 'validateProposalContent' )
+			->method( 'validateEntityContent' )
 			->willReturn( Status::newGood() );
 
 		$this->assertTrue( $content->isValid() );
@@ -178,7 +178,7 @@ class EntityContentTest extends MediaWikiLangTestCase {
 		if ( $injectStatus !== null ) {
 			$this->mockValidation
 				->expects( $this->once() )
-				->method( 'validateProposalContent' )
+				->method( 'validateEntityContent' )
 				->willReturn( $injectStatus );
 		}
 
@@ -238,7 +238,7 @@ class EntityContentTest extends MediaWikiLangTestCase {
 		$output = new ParserOutput;
 
 		$this->mockValidation
-			->method( 'validateProposalContent' )
+			->method( 'validateEntityContent' )
 			->willReturn( Status::newGood() );
 		$this->mockValidation
 			->method( 'validatePageTitle' )
@@ -266,7 +266,7 @@ class EntityContentTest extends MediaWikiLangTestCase {
 		$output = new ParserOutput;
 
 		$this->mockValidation
-			->method( 'validateProposalContent' )
+			->method( 'validateEntityContent' )
 			->willReturn( Status::newGood() );
 		$this->mockValidation
 			->method( 'validatePageTitle' )
