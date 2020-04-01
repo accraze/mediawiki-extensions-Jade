@@ -19,7 +19,7 @@ namespace Jade;
 /**
  * Pointer to wiki entity type and ID.
  */
-class ProposalTarget {
+class EntityTarget {
 
 	// Only friend classes should be accessing these :-/
 	/** @var ProposalEntityType */

@@ -26,27 +26,27 @@ interface EntityIndexStorage {
 	/**
 	 * Create any indexes needed to associate a judgment with its target.
 	 *
-	 * @param ProposalTarget $target Wiki entity being judged.
+	 * @param EntityTarget $target Wiki entity being judged.
 	 * @param WikiPage $judgmentPage Page where judgment is recorded.
 	 */
-	public function insertIndex( ProposalTarget $target, WikiPage $judgmentPage );
+	public function insertIndex( EntityTarget $target, WikiPage $judgmentPage );
 
 	/**
 	 * Delete any indexes associating a judgment with its target.
 	 *
-	 * @param ProposalTarget $target Wiki entity being judged.
+	 * @param EntityTarget $target Wiki entity being judged.
 	 * @param WikiPage $judgmentPage Page where judgment is recorded.
 	 */
-	public function deleteIndex( ProposalTarget $target, WikiPage $judgmentPage );
+	public function deleteIndex( EntityTarget $target, WikiPage $judgmentPage );
 
 	/**
 	 * Update summary columns
 	 *
-	 * @param ProposalTarget $target Wiki entity being judged.
+	 * @param EntityTarget $target Wiki entity being judged.
 	 * @param array $summaryValues Map of fields to update.
 	 *
 	 * @return StatusValue indicates success.
 	 */
-	public function updateSummary( ProposalTarget $target, array $summaryValues ) : StatusValue;
+	public function updateSummary( EntityTarget $target, array $summaryValues ) : StatusValue;
 
 }

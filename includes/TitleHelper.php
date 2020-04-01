@@ -29,12 +29,12 @@ class TitleHelper {
 	/**
 	 * Build Title object for the Proposal page on an entity.
 	 *
-	 * @param ProposalTarget $target Wiki entity to build a Proposal page title for.
+	 * @param EntityTarget $target Wiki entity to build a Proposal page title for.
 	 *
 	 * @return TitleValue Path to where proposals about the given entity should
 	 *         be stored.
 	 */
-	public static function buildJadeTitle( ProposalTarget $target ) {
+	public static function buildJadeTitle( EntityTarget $target ) {
 		// Get localized title component.
 		$localTitle = $target->entityType->getLocalizedName();
 
@@ -49,7 +49,7 @@ class TitleHelper {
 	 *
 	 * @param TitleValue $title proposal page title.
 	 *
-	 * @return StatusValue with ProposalTarget value.
+	 * @return StatusValue with EntityTarget value.
 	 */
 	public static function parseTitleValue( TitleValue $title ) {
 		global $wgJadeEntityTypeNames;
@@ -75,7 +75,7 @@ class TitleHelper {
 			return Status::newFatal( 'jade-bad-entity-id-format', $titleParts[1] );
 		}
 
-		$target = new ProposalTarget( $entityType, $entityId );
+		$target = new EntityTarget( $entityType, $entityId );
 		return Status::newGood( $target );
 	}
 

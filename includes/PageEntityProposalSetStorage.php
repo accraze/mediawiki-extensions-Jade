@@ -36,7 +36,7 @@ use WikiPage;
 class PageEntityProposalSetStorage implements EntityProposalSetStorage {
 
 	/**
-	 * @param ProposalTarget $target identity of target wiki entity.
+	 * @param EntityTarget $target identity of target wiki entity.
 	 * @param array $proposalSet All Proposals on this entity, as nested
 	 * associative arrays, normalized for storage.
 	 * @param string $summary Edit summary.
@@ -46,7 +46,7 @@ class PageEntityProposalSetStorage implements EntityProposalSetStorage {
 	 * @return StatusValue isOK if the edit was successful.
 	 */
 	public function storeProposalSet(
-		ProposalTarget $target,
+		EntityTarget $target,
 		array $proposalSet,
 		$summary,
 		User $user,
@@ -92,12 +92,12 @@ class PageEntityProposalSetStorage implements EntityProposalSetStorage {
 	}
 
 	/**
-	 * @param ProposalTarget $target identity of target wiki entity.
+	 * @param EntityTarget $target identity of target wiki entity.
 	 *
 	 * @return StatusValue with array value containing all proposals for this
 	 *         entity.
 	 */
-	public function loadProposalSet( ProposalTarget $target ) {
+	public function loadProposalSet( EntityTarget $target ) {
 		$title = TitleHelper::buildJadeTitle( $target );
 		$dbTitle = Title::newFromTitleValue( $title );
 		$page = WikiPage::factory( $dbTitle );

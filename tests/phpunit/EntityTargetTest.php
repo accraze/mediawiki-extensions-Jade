@@ -15,16 +15,16 @@
  */
 namespace Jade\Tests;
 
+use Jade\EntityTarget;
 use Jade\ProposalEntityType;
-use Jade\ProposalTarget;
 use PHPUnit\Framework\TestCase;
 
 /**
  * @group Jade
  *
- * @coversDefaultClass \Jade\ProposalTarget
+ * @coversDefaultClass \Jade\EntityTarget
  */
-class ProposalTargetTest extends TestCase {
+class EntityTargetTest extends TestCase {
 
 	/**
 	 * @covers ::__construct
@@ -32,8 +32,8 @@ class ProposalTargetTest extends TestCase {
 	public function testConstruct() {
 		$entityType = ProposalEntityType::sanitizeEntityType( 'diff' )->value;
 		$entityId = 123;
-		$target = new ProposalTarget( $entityType, $entityId );
-		$this->assertInstanceOf( ProposalTarget::class, $target );
+		$target = new EntityTarget( $entityType, $entityId );
+		$this->assertInstanceOf( EntityTarget::class, $target );
 		$this->assertEquals( $entityType, $target->entityType );
 		$this->assertEquals( $entityId, $target->entityId );
 	}
