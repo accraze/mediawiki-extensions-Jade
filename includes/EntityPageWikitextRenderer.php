@@ -32,7 +32,7 @@ use User;
  * TODO: Review whether we should be using content language, e.g. if translate
  * tags are present in the freeform wikitext fields.
  */
-class ProposalPageWikitextRenderer {
+class EntityPageWikitextRenderer {
 
 	const TEMPLATES_PATH = '../templates';
 
