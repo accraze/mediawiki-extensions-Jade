@@ -3,9 +3,9 @@
 namespace Jade\Maintenance;
 
 use Jade\EntityLinkTableHelper;
+use Jade\EntitySummarizer;
 use Jade\JadeServices;
 use Jade\ProposalEntityType;
-use Jade\ProposalSummarizer;
 use Jade\TitleHelper;
 use Maintenance;
 use MediaWiki\MediaWikiServices;
@@ -217,7 +217,7 @@ class CleanJudgmentLinks extends Maintenance {
 
 				// Summarize judgment.
 				$judgmentContent = $judgmentPage->getContent();
-				$status = ProposalSummarizer::getSummaryFromContent( $judgmentContent );
+				$status = EntitySummarizer::getSummaryFromContent( $judgmentContent );
 				if ( !$status->isOK() ) {
 					$this->error( "Can't summarize content for {$title}: {$status}" );
 				} else {
