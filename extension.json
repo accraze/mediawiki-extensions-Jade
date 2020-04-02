@@ -229,7 +229,8 @@
 				"jade-ui-menu-delete",
 				"jade-ui-edit-publish-btn",
 				"jade-ui-cancel-btn",
-				"jade-facet-editquality-desc"
+				"jade-facet-editquality-desc",
+				"jade-updateproposal"
 			],
 			"dependencies": [
 				"oojs-ui",

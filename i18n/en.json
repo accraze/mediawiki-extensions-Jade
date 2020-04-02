@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Adamw",
-			"Accraze"
+			"Accraze",
+			"Kevin Bazira"
 		]
 	},
 	"jade-desc": "Robust false-positive and feedback gathering system, to allow human refutation and review of ORES scoring.",
@@ -51,5 +52,6 @@
 	"jade-proposalispreferred": "Cannot delete a preferred proposal except when it is the only remaining proposal for a facet. You must set another proposal to be \"preferred\"",
 	"jade-invalidtitleentitydata":"Title or entitydata param must be provided.",
 	"jade-nochange": "This action would result in no change. User has already endorsed labeldata.",
-	"jade-alreadyendorsed": "Cannot endorse because you have already endorsed another proposal. Consider moving your endorsement instead."
+	"jade-alreadyendorsed": "Cannot endorse because you have already endorsed another proposal. Consider moving your endorsement instead.",
+	"jade-updateproposal": "You have successfully updated a proposal"
 }
