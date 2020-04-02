@@ -16,9 +16,9 @@
 namespace Jade\Tests;
 
 use FormatJSON;
+use Jade\EntityTarget;
 use Jade\JadeServices;
 use Jade\ProposalEntityType;
-use Jade\ProposalTarget;
 use MediaWikiTestCase;
 use WikiPage;
 
@@ -99,7 +99,7 @@ class PageEntityProposalSetStorageTest extends MediaWikiTestCase {
 
 		// Should return a failure status.
 		$status = $this->storage->storeProposalSet(
-			new ProposalTarget( $this->revisionType, mt_rand() ),
+			new EntityTarget( $this->revisionType, mt_rand() ),
 			$this->getJudgment(),
 			'summary',
 			$wgUser,
@@ -136,7 +136,7 @@ class PageEntityProposalSetStorageTest extends MediaWikiTestCase {
 
 		// Should return a failure status.
 		$status = $this->storage->storeProposalSet(
-			new ProposalTarget( $this->revisionType, $entityRevision->getId() ),
+			new EntityTarget( $this->revisionType, $entityRevision->getId() ),
 			$this->getJudgment( self::JUDGMENT_V2 ),
 			'summary',
 			$wgUser,
@@ -165,7 +165,7 @@ class PageEntityProposalSetStorageTest extends MediaWikiTestCase {
 
 		// Should return a failure status.
 		$status = $this->storage->storeProposalSet(
-			new ProposalTarget( $this->revisionType, $entityRevision->getId() ),
+			new EntityTarget( $this->revisionType, $entityRevision->getId() ),
 			$this->getJudgment(),
 			'summary',
 			$this->getTestUser()->getUser(),
@@ -186,7 +186,7 @@ class PageEntityProposalSetStorageTest extends MediaWikiTestCase {
 
 		// Store the judgment.
 		$status = $this->storage->storeProposalSet(
-			new ProposalTarget( $this->revisionType, $entityRevision->getId() ),
+			new EntityTarget( $this->revisionType, $entityRevision->getId() ),
 			$this->getJudgment(),
 			'summary',
 			$this->getTestUser()->getUser(),
@@ -221,7 +221,7 @@ class PageEntityProposalSetStorageTest extends MediaWikiTestCase {
 		);
 		$this->assertTrue( $status->isOK() );
 
-		$target = new ProposalTarget( $this->revisionType, $entityRevision->getId() );
+		$target = new EntityTarget( $this->revisionType, $entityRevision->getId() );
 		$status = $this->storage->loadProposalSet( $target );
 		$this->assertTrue( $status->isOK() );
 		$this->assertEquals( [], $status->value );
@@ -240,7 +240,7 @@ class PageEntityProposalSetStorageTest extends MediaWikiTestCase {
 			$this->getJudgmentText() );
 		$this->assertTrue( $success->isOK() );
 
-		$target = new ProposalTarget( $this->revisionType, $entityRevision->getId() );
+		$target = new EntityTarget( $this->revisionType, $entityRevision->getId() );
 		$status = $this->storage->loadProposalSet( $target );
 		$this->assertTrue( $status->isOK() );
 		$this->assertEquals( $this->getJudgment(), $status->value );

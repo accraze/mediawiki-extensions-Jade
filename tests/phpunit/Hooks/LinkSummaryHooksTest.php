@@ -17,9 +17,9 @@ namespace Jade\Tests\Hooks;
 
 use Jade\Content\ProposalContent;
 use Jade\EntityLinkTable;
+use Jade\EntityTarget;
 use Jade\Hooks\LinkSummaryHooks;
 use Jade\ProposalEntityType;
-use Jade\ProposalTarget;
 use Jade\Tests\TestStorageHelper;
 use MediaWikiTestCase;
 use Revision;
@@ -86,7 +86,7 @@ class LinkSummaryHooksTest extends MediaWikiTestCase {
 		$this->mockStorage->expects( $this->once() )
 			->method( 'updateSummary' )
 			->with(
-				new ProposalTarget( $this->revisionType, $this->targetRevId ),
+				new EntityTarget( $this->revisionType, $this->targetRevId ),
 				$expectedSummaryValues )
 			->willReturn( Status::newGood() );
 

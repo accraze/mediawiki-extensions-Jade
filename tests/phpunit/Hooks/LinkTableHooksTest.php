@@ -15,9 +15,9 @@
  */
 namespace Jade\Tests\Hooks;
 
+use Jade\EntityTarget;
 use Jade\Hooks\LinkTableHooks;
 use Jade\ProposalEntityType;
-use Jade\ProposalTarget;
 use LogEntry;
 use MediaWikiTestCase;
 use Revision;
@@ -228,7 +228,7 @@ class LinkTableHooksTest extends MediaWikiTestCase {
 		yield [
 			NS_JADE,
 			'Diff/123',
-			new ProposalTarget( $diffType, 123 ),
+			new EntityTarget( $diffType, 123 ),
 		];
 		yield [
 			NS_JADE,

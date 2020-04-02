@@ -15,8 +15,8 @@
  */
 namespace Jade\Tests;
 
+use Jade\EntityTarget;
 use Jade\ProposalEntityType;
-use Jade\ProposalTarget;
 use Jade\TitleHelper;
 use MediaWikiTestCase;
 use TitleValue;
@@ -37,7 +37,7 @@ class TitleHelperTest extends MediaWikiTestCase {
 	 * @covers ::buildJadeTitle
 	 */
 	public function testBuildJadeTitle_success() {
-		$target = new ProposalTarget( $this->revisionType, 123 );
+		$target = new EntityTarget( $this->revisionType, 123 );
 		$title = TitleHelper::buildJadeTitle( $target );
 		$this->assertEquals( 'Revision/123', $title->getDBkey() );
 	}
