@@ -73,11 +73,11 @@ class MoveHooksTest extends ApiTestCase {
 
 		// Disable validation since that would prevent moving a wiki page into
 		// the Judgment namespace.
-		$this->mockValidation = $this->getMockBuilder( ProposalValidator::class )
+		$this->mockValidation = $this->getMockBuilder( EntityValidator::class )
 			->disableOriginalConstructor()
 			->setMethods( [ 'validateProposalContent', 'validatePageTitle' ] )
 			->getMock();
-		$this->setService( 'JadeProposalValidator', $this->mockValidation );
+		$this->setService( 'JadeEntityValidator', $this->mockValidation );
 
 		$this->mockValidation
 			->method( 'validateProposalContent' )

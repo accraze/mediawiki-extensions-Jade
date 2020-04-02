@@ -30,12 +30,12 @@ use Wikimedia\TestingAccessWrapper;
  * @group Jade
  * @group medium
  *
- * @coversDefaultClass \Jade\ProposalValidator
+ * @coversDefaultClass \Jade\EntityValidator
  * @covers ::__construct
  *
  * TODO: Should construct directly rather than relying on service wiring.
  */
-class ProposalValidatorTest extends MediaWikiTestCase {
+class EntityValidatorTest extends MediaWikiTestCase {
 
 	const DATA_DIR = '../data';
 
@@ -99,7 +99,7 @@ class ProposalValidatorTest extends MediaWikiTestCase {
 	 * @covers ::validateContentQualityScale
 	 * @covers ::validateBasicSchema
 	 * @covers ::validateEndorsementUsers
-	 * @covers ::validateProposalContent
+	 * @covers ::validateEntityContent
 	 * @covers ::validatePreferred
 	 */
 	public function testInvalidSchemaContent( $path, $expectedError ) {
@@ -118,9 +118,9 @@ class ProposalValidatorTest extends MediaWikiTestCase {
 	protected function runValidation( $path ) {
 		$text = file_get_contents( __DIR__ . '/' . self::DATA_DIR . '/' . $path );
 
-		$validator = JadeServices::getProposalValidator();
+		$validator = JadeServices::getEntityValidator();
 		$data = FormatJson::decode( $text );
-		return $validator->validateProposalContent( $data );
+		return $validator->validateEntityContent( $data );
 	}
 
 	/**
@@ -131,7 +131,7 @@ class ProposalValidatorTest extends MediaWikiTestCase {
 	 *
 	 * @covers ::validateBasicSchema
 	 * @covers ::validateEndorsementUsers
-	 * @covers ::validateProposalContent
+	 * @covers ::validateEntityContent
 	 * @covers ::validatePreferred
 	 */
 	public function testValidateJudgmentContent( $path ) {
@@ -508,7 +508,7 @@ class ProposalValidatorTest extends MediaWikiTestCase {
 	 * @covers ::validateEntity
 	 */
 	public function testValidateEntity_badType() {
-		$validator = JadeServices::getProposalValidator();
+		$validator = JadeServices::getEntityValidator();
 
 		$validator = TestingAccessWrapper::newFromObject( $validator );
 		$status = $validator->validateEntity( 'foo', 123 );

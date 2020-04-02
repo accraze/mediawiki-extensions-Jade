@@ -32,8 +32,8 @@ class JadeServices {
 		return MediaWikiServices::getInstance()->getService( 'JadeEntityIndexStorage' );
 	}
 
-	public static function getProposalValidator() : ProposalValidator {
-		return MediaWikiServices::getInstance()->getService( 'JadeProposalValidator' );
+	public static function getEntityValidator() : EntityValidator {
+		return MediaWikiServices::getInstance()->getService( 'JadeEntityValidator' );
 	}
 
 }

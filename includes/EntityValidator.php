@@ -31,8 +31,8 @@ use StatusValue;
 // use Wikimedia\IPUtils;
 use WikiPage;
 
-class ProposalValidator {
-	const PROPOSAL_SCHEMA = '/../jsonschema/proposal/v2.json';
+class EntityValidator {
+	const ENTITY_SCHEMA = '/../jsonschema/proposal/v2.json';
 
 	/**
 	 * @var Config
@@ -60,13 +60,13 @@ class ProposalValidator {
 	}
 
 	/**
-	 * Check that the proposal content is well-formed.
+	 * Check that the entity content is well-formed.
 	 *
 	 * @param object $data Data structure to validate.
 	 *
 	 * @return StatusValue isOK if the content is valid.
 	 */
-	public function validateProposalContent( $data ) {
+	public function validateEntityContent( $data ) {
 		$status = $this->validateBasicSchema( $data );
 		if ( !$status->isOK() ) {
 			return $status;
@@ -98,7 +98,7 @@ class ProposalValidator {
 	 * @return StatusValue isOK?
 	 */
 	protected function validateBasicSchema( $data ) {
-		return $this->validateAgainstSchema( $data, __DIR__ . self::PROPOSAL_SCHEMA );
+		return $this->validateAgainstSchema( $data, __DIR__ . self::ENTITY_SCHEMA );
 	}
 
 	/**
