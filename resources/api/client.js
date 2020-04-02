@@ -7,9 +7,12 @@
  * @classdesc Basic client for calling Jade api modules.
  * @license GPL-3.0-or-later
  * @author Andy Craze < acraze@wikimedia.org >
+ * @author Kevin Bazira < kbazira@wikimedia.org >
  */
 
 var BaseClient = function BaseClient() {
+
+	var moduleName = this.moduleName;
 
 	/**
 	 * Reload the page if no error found in data, otherwise return data.
@@ -22,6 +25,8 @@ var BaseClient = function BaseClient() {
 	 */
 	this.requestCallback = function ( data, err ) {
 		if ( !data.error ) {
+			sessionStorage.loadBubbleNotificationAfterPageLoad = true;
+			sessionStorage.bubbleNotificationMessage = moduleName.replace( 'jade', 'jade-' );
 			location.reload();
 		} else {
 			return data;
@@ -37,7 +42,7 @@ var BaseClient = function BaseClient() {
 	 * @returns {Promise} Promise object represents the api response.
 	 */
 	this.execute = function ( params ) {
-		var cleanedParams = this.buildParams( this.moduleName, params );
+		var cleanedParams = this.buildParams( moduleName, params );
 		var api = new mw.Api();
 		var res = api.postWithEditToken( cleanedParams ).then( this.requestCallback )
 			.catch( function ( err ) { return JSON.stringify( err ); } );

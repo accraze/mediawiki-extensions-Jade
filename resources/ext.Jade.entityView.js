@@ -6,6 +6,7 @@
  *
  * @license GPL-3.0-or-later
  * @author Andy Craze < acraze@wikimedia.org >
+ * @author Kevin Bazira < kbazira@wikimedia.org >
  */
 $( function () {
 	'use strict';
@@ -17,6 +18,23 @@ $( function () {
 	if ( $( '.noarticletext' )[ 0 ] ) {
 	// eslint-disable-next-line no-jquery/no-global-selector
 		$( '.noarticletext' ).hide();
+	}
+
+	// Show bubble notification based sessionStorage data
+	if ( sessionStorage.loadBubbleNotificationAfterPageLoad ) {
+		mw.notify( mw.message( sessionStorage.bubbleNotificationMessage ), {
+			autoHide: true,
+			autoHideSeconds: 6,
+			type: 'info'
+		} );
+
+		var removeJadeSessionStorageItem = function ( item ) {
+			if ( !sessionStorage.getItem( item ) ) {
+				sessionStorage.removeItem( item );
+			}
+		};
+		removeJadeSessionStorageItem( 'loadBubbleNotificationAfterPageLoad' );
+		removeJadeSessionStorageItem( 'bubbleNotificationMessage' );
 	}
 
 	this.diff = new DiffWidget();
