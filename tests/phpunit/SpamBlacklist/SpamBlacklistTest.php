@@ -79,7 +79,7 @@ class SpamBlacklistTest extends ApiTestCase {
 		] );
 
 		$this->expectException( ApiUsageException::class );
-		$this->expectExceptionMessageRegExp( '/spam\s+filter:\s+unusual-stringy/' );
+		$this->expectExceptionMessageMatches( '/spam\s+filter:\s+unusual-stringy/' );
 
 		$result = $this->doApiRequestWithToken( [
 			'action' => 'edit',
