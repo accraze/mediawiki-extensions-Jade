@@ -27,9 +27,9 @@ use TitleValue;
 class TitleHelper {
 
 	/**
-	 * Build Title object for the Proposal page on an entity.
+	 * Build Title object for the  page on an entity.
 	 *
-	 * @param EntityTarget $target Wiki entity to build a Proposal page title for.
+	 * @param EntityTarget $target Wiki entity to build a Jade entity page title for.
 	 *
 	 * @return TitleValue Path to where proposals about the given entity should
 	 *         be stored.
@@ -45,7 +45,7 @@ class TitleHelper {
 	}
 
 	/**
-	 * Parse Proposal Title object to get target wiki entity information.
+	 * Parse Entity Title object to get target wiki entity information.
 	 *
 	 * @param TitleValue $title proposal page title.
 	 *
@@ -65,7 +65,7 @@ class TitleHelper {
 		}
 		// Find localized title component and get type identifier.
 		$typeName = array_search( $titleParts[0], $wgJadeEntityTypeNames, true );
-		$status = ProposalEntityType::sanitizeEntityType( $typeName );
+		$status = EntityType::sanitizeEntityType( $typeName );
 		if ( !$status->isOK() ) {
 			return Status::newFatal( 'jade-bad-entity-type', $titleParts[0] );
 		}

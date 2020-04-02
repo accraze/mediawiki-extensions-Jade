@@ -16,8 +16,8 @@
 namespace Jade\Tests\Hooks;
 
 use Jade\EntityTarget;
+use Jade\EntityType;
 use Jade\Hooks\LinkTableHooks;
-use Jade\ProposalEntityType;
 use LogEntry;
 use MediaWikiTestCase;
 use Revision;
@@ -57,7 +57,7 @@ class LinkTableHooksTest extends MediaWikiTestCase {
 
 		$this->targetRevId = mt_rand();
 
-		$status = ProposalEntityType::sanitizeEntityType( 'revision' );
+		$status = EntityType::sanitizeEntityType( 'revision' );
 		$this->assertTrue( $status->isOK() );
 		$this->revisionType = $status->value;
 
@@ -224,7 +224,7 @@ class LinkTableHooksTest extends MediaWikiTestCase {
 	}
 
 	public function provideTargets() {
-		$diffType = ProposalEntityType::sanitizeEntityType( 'diff' )->value;
+		$diffType = EntityType::sanitizeEntityType( 'diff' )->value;
 		yield [
 			NS_JADE,
 			'Diff/123',

@@ -16,7 +16,7 @@
 namespace Jade\Tests;
 
 use Jade\EntityLinkTableHelper;
-use Jade\ProposalEntityType;
+use Jade\EntityType;
 use MediaWikiTestCase;
 use Wikimedia\TestingAccessWrapper;
 
@@ -32,7 +32,7 @@ class EntityLinkTableHelperTest extends MediaWikiTestCase {
 	public function setUp() : void {
 		parent::setUp();
 
-		$this->diffType = ProposalEntityType::sanitizeEntityType( 'diff' )->value;
+		$this->diffType = EntityType::sanitizeEntityType( 'diff' )->value;
 	}
 
 	/**

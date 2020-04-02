@@ -17,13 +17,13 @@ namespace Jade;
 
 class EntityLinkTableHelper {
 
-	/** @var ProposalEntityType */
+	/** @var EntityType */
 	private $entityType;
 
 	/**
-	 * @param ProposalEntityType $entityType Link table will be for this type.
+	 * @param EntityType $entityType Link table will be for this type.
 	 */
-	public function __construct( ProposalEntityType $entityType ) {
+	public function __construct( EntityType $entityType ) {
 		$this->entityType = $entityType;
 	}
 

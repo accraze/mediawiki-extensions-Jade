@@ -22,7 +22,7 @@ namespace Jade;
 class EntityTarget {
 
 	// Only friend classes should be accessing these :-/
-	/** @var ProposalEntityType */
+	/** @var EntityType */
 	public $entityType;
 	/** @var int */
 	public $entityId;
@@ -30,10 +30,10 @@ class EntityTarget {
 	/**
 	 * Create a proposal target from type name and ID.
 	 *
-	 * @param ProposalEntityType $entityType Name of wiki entity type, in lowercase.
+	 * @param EntityType $entityType Name of wiki entity type, in lowercase.
 	 * @param int $entityId Page ID or Revision ID of the entity.
 	 */
-	public function __construct( ProposalEntityType $entityType, $entityId ) {
+	public function __construct( EntityType $entityType, $entityId ) {
 		$this->entityType = $entityType;
 		$this->entityId = intval( $entityId );
 	}

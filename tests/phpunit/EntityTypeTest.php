@@ -15,16 +15,16 @@
  */
 namespace Jade\Tests;
 
-use Jade\ProposalEntityType;
+use Jade\EntityType;
 use MediaWikiLangTestCase;
 use Wikimedia\TestingAccessWrapper;
 
 /**
  * @group Jade
  *
- * @coversDefaultClass \Jade\ProposalEntityType
+ * @coversDefaultClass \Jade\EntityType
  */
-class ProposalEntityTypeTest extends MediaWikiLangTestCase {
+class EntityTypeTest extends MediaWikiLangTestCase {
 
 	public function provideTypeNames() {
 		yield [ 'diff', true ];
@@ -40,7 +40,7 @@ class ProposalEntityTypeTest extends MediaWikiLangTestCase {
 	 * @dataProvider provideTypeNames
 	 */
 	public function testSanitizeEntityType( $typeName, $expectedSuccess ) {
-		$status = ProposalEntityType::sanitizeEntityType( $typeName );
+		$status = EntityType::sanitizeEntityType( $typeName );
 
 		$this->assertEquals( $expectedSuccess, $status->isOK() );
 		if ( $expectedSuccess ) {
@@ -53,7 +53,7 @@ class ProposalEntityTypeTest extends MediaWikiLangTestCase {
 	 * @covers ::__toString
 	 */
 	public function testToString() {
-		$status = ProposalEntityType::sanitizeEntityType( 'diff' );
+		$status = EntityType::sanitizeEntityType( 'diff' );
 		$entityType = $status->value;
 		$this->assertEquals( 'diff', (string)$entityType );
 	}
@@ -67,7 +67,7 @@ class ProposalEntityTypeTest extends MediaWikiLangTestCase {
 				'diff' => 'Diffie',
 			]
 		] );
-		$status = ProposalEntityType::sanitizeEntityType( 'diff' );
+		$status = EntityType::sanitizeEntityType( 'diff' );
 		$entityType = $status->value;
 		$this->assertEquals( 'Diffie', $entityType->getLocalizedName() );
 	}

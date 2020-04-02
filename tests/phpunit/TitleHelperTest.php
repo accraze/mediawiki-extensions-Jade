@@ -16,7 +16,7 @@
 namespace Jade\Tests;
 
 use Jade\EntityTarget;
-use Jade\ProposalEntityType;
+use Jade\EntityType;
 use Jade\TitleHelper;
 use MediaWikiTestCase;
 use TitleValue;
@@ -30,7 +30,7 @@ class TitleHelperTest extends MediaWikiTestCase {
 
 	public function setUp() : void {
 		parent::setUp();
-		$this->revisionType = ProposalEntityType::sanitizeEntityType( 'revision' )->value;
+		$this->revisionType = EntityType::sanitizeEntityType( 'revision' )->value;
 	}
 
 	/**
