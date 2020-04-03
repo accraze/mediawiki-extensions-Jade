@@ -20,7 +20,7 @@ $( function () {
 		$( '.noarticletext' ).hide();
 	}
 
-	// Show bubble notification based sessionStorage data
+	// Show bubble notification based on sessionStorage data
 	if ( sessionStorage.loadBubbleNotificationAfterPageLoad ) {
 		mw.notify( mw.message( sessionStorage.bubbleNotificationMessage ), {
 			autoHide: true,
@@ -29,7 +29,7 @@ $( function () {
 		} );
 
 		var removeJadeSessionStorageItem = function ( item ) {
-			if ( !sessionStorage.getItem( item ) ) {
+			if ( sessionStorage.getItem( item ) ) {
 				sessionStorage.removeItem( item );
 			}
 		};
