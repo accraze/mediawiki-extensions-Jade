@@ -17,8 +17,8 @@ namespace Jade\Tests;
 
 use FormatJSON;
 use Jade\EntityTarget;
+use Jade\EntityType;
 use Jade\JadeServices;
-use Jade\ProposalEntityType;
 use MediaWikiTestCase;
 use WikiPage;
 
@@ -49,7 +49,7 @@ class PageEntityProposalSetStorageTest extends MediaWikiTestCase {
 
 		parent::setUp();
 
-		$this->revisionType = ProposalEntityType::sanitizeEntityType( 'revision' )->value;
+		$this->revisionType = EntityType::sanitizeEntityType( 'revision' )->value;
 	}
 
 	public function tearDown() : void {

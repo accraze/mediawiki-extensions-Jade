@@ -4,8 +4,8 @@ namespace Jade\Maintenance;
 
 use Jade\EntityLinkTableHelper;
 use Jade\EntitySummarizer;
+use Jade\EntityType;
 use Jade\JadeServices;
-use Jade\ProposalEntityType;
 use Jade\TitleHelper;
 use Maintenance;
 use MediaWiki\MediaWikiServices;
@@ -59,7 +59,7 @@ class CleanJudgmentLinks extends Maintenance {
 
 		foreach ( $entityTypes as $type ) {
 			$skipPastId = 0;
-			$status = ProposalEntityType::sanitizeEntityType( $type );
+			$status = EntityType::sanitizeEntityType( $type );
 			$entityType = $status->value;
 
 			do {
@@ -75,7 +75,7 @@ class CleanJudgmentLinks extends Maintenance {
 	/**
 	 * Find link entries for which the judgment page is missing.
 	 *
-	 * @param ProposalEntityType $type Entity type for this batch.
+	 * @param EntityType $type Entity type for this batch.
 	 * @param int $skipPastId Search beginning with this primary key value.
 	 *
 	 * @return array List of primary keys for orphaned link table rows.
@@ -111,7 +111,7 @@ class CleanJudgmentLinks extends Maintenance {
 	 * Bulk delete link rows.
 	 *
 	 * @param array $orphans List of primary keys to link rows.
-	 * @param ProposalEntityType $type Entity type
+	 * @param EntityType $type Entity type
 	 */
 	private function deleteOrphanedLinks( $orphans, $type ) {
 		$tableHelper = new EntityLinkTableHelper( $type );
@@ -142,7 +142,7 @@ class CleanJudgmentLinks extends Maintenance {
 		foreach ( $entityTypes as $type ) {
 			$skipPastId = 0;
 			do {
-				$status = ProposalEntityType::sanitizeEntityType( $type );
+				$status = EntityType::sanitizeEntityType( $type );
 				$entityType = $status->value;
 
 				$unlinked = $this->findUnlinkedJudgments( $entityType, $skipPastId );
@@ -153,7 +153,7 @@ class CleanJudgmentLinks extends Maintenance {
 		}
 	}
 
-	private function findUnlinkedJudgments( ProposalEntityType $type, $skipPastId ) {
+	private function findUnlinkedJudgments( EntityType $type, $skipPastId ) {
 		$tableHelper = new EntityLinkTableHelper( $type );
 		$titlePrefix = $type->getLocalizedName();
 
@@ -189,13 +189,13 @@ class CleanJudgmentLinks extends Maintenance {
 	 * Helper to make new links for a list of judgment pages.
 	 *
 	 * @param IResultWrapper $unlinked judgment pages to reconnect.
-	 * @param ProposalEntityType $entityType Entity type
+	 * @param EntityType $entityType Entity type
 	 *
 	 * @return int Highest primary key touched in this batch.
 	 */
 	private function connectUnlinkedJudgments(
 		IResultWrapper $unlinked,
-		ProposalEntityType $entityType
+		EntityType $entityType
 	) {
 		$tableHelper = new EntityLinkTableHelper( $entityType );
 		$indexStorage = JadeServices::getEntityIndexStorage();

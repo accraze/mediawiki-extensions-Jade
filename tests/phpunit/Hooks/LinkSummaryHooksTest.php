@@ -15,11 +15,11 @@
  */
 namespace Jade\Tests\Hooks;
 
-use Jade\Content\ProposalContent;
+use Jade\Content\EntityContent;
 use Jade\EntityLinkTable;
 use Jade\EntityTarget;
+use Jade\EntityType;
 use Jade\Hooks\LinkSummaryHooks;
-use Jade\ProposalEntityType;
 use Jade\Tests\TestStorageHelper;
 use MediaWikiTestCase;
 use Revision;
@@ -56,7 +56,7 @@ class LinkSummaryHooksTest extends MediaWikiTestCase {
 
 		$this->targetRevId = mt_rand();
 
-		$status = ProposalEntityType::sanitizeEntityType( 'revision' );
+		$status = EntityType::sanitizeEntityType( 'revision' );
 		$this->assertTrue( $status->isOK() );
 		$this->revisionType = $status->value;
 
@@ -94,7 +94,7 @@ class LinkSummaryHooksTest extends MediaWikiTestCase {
 		LinkSummaryHooks::onPageContentSaveComplete(
 			$this->mockJudgmentPage,
 			$this->user,
-			new ProposalContent( $contentText ),
+			new EntityContent( $contentText ),
 			'',
 			false,
 			false,

@@ -17,7 +17,7 @@ namespace Jade\Tests;
 
 use Jade\EntityLinkTable;
 use Jade\EntityTarget;
-use Jade\ProposalEntityType;
+use Jade\EntityType;
 use Jade\TitleHelper;
 use MediaWiki\MediaWikiServices;
 use MediaWikiTestCase;
@@ -70,7 +70,7 @@ class EntityLinkTableTest extends MediaWikiTestCase {
 	 * @param int $entityId
 	 */
 	private function createJudgment( $entityType, $entityId ) {
-		$status = ProposalEntityType::sanitizeEntityType( $entityType );
+		$status = EntityType::sanitizeEntityType( $entityType );
 		$this->assertTrue( $status->isOK() );
 		$target = new EntityTarget( $status->value, $entityId );
 		$title = TitleHelper::buildJadeTitle( $target );

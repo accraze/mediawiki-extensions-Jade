@@ -8,7 +8,7 @@ use StatusValue;
 /**
  * Typesafe enum for entity type.
  */
-class ProposalEntityType {
+class EntityType {
 
 	private $entityType;
 

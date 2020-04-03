@@ -104,12 +104,12 @@ class EntityValidator {
 	/**
 	 * Ensure that the score schemas are allowed by configuration.
 	 *
-	 * @param ProposalEntityType $entityType Machine name for entity type.
+	 * @param EntityType $entityType Machine name for entity type.
 	 * @param object $data Data structure to validate.
 	 *
 	 * @return StatusValue isOK if valid.
 	 */
-	protected function validateEntitySchema( ProposalEntityType $entityType, $data ) {
+	protected function validateEntitySchema( EntityType $entityType, $data ) {
 		$allowedScoringSchemas = $this->config->get( 'JadeAllowedScoringSchemas' );
 		$entityAllowedSchemas = $allowedScoringSchemas[(string)$entityType];
 
