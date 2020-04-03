@@ -230,6 +230,7 @@
 				"jade-ui-edit-publish-btn",
 				"jade-ui-cancel-btn",
 				"jade-facet-editquality-desc",
+				"jade-updateendorsement",
 				"jade-updateproposal"
 			],
 			"dependencies": [

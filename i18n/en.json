@@ -53,5 +53,6 @@
 	"jade-invalidtitleentitydata":"Title or entitydata param must be provided.",
 	"jade-nochange": "This action would result in no change. User has already endorsed labeldata.",
 	"jade-alreadyendorsed": "Cannot endorse because you have already endorsed another proposal. Consider moving your endorsement instead.",
+	"jade-updateendorsement": "You have successfully updated an endorsement",
 	"jade-updateproposal": "You have successfully updated a proposal"
 }
