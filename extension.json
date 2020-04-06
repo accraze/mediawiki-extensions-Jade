@@ -232,7 +232,8 @@
 				"jade-facet-editquality-desc",
 				"jade-updateendorsement",
 				"jade-updateproposal",
-				"jade-deleteendorsement"
+				"jade-deleteendorsement",
+				"jade-deleteproposal"
 			],
 			"dependencies": [
 				"oojs-ui",
