@@ -60,5 +60,6 @@
 	"jade-alreadyendorsed": "An error message displayed when a user tries to endorse two different proposed labels for the same facet.",
 	"jade-updateendorsement": "Bubble notification displayed when a user successfully updates an endorsement.",
 	"jade-updateproposal": "Bubble notification displayed when a user successfully updates a proposal.",
-	"jade-deleteendorsement": "Bubble notification displayed when a user successfully deletes an endorsement."
+	"jade-deleteendorsement": "Bubble notification displayed when a user successfully deletes an endorsement.",
+	"jade-deleteproposal": "Bubble notification displayed when a user successfully deletes a proposal."
 }
