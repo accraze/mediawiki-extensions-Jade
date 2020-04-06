@@ -51,5 +51,7 @@
 	"jade-proposalispreferred": "Não é possível excluir uma proposta preferida, exceto quando é a única proposta restante para uma faceta. Você deve definir outra proposta para ser \"preferida\"",
 	"jade-invalidtitleentitydata": "O parâmetro title ou entitydata deve ser fornecido.",
 	"jade-nochange": "Esta ação resultaria em nenhuma alteração. O usuário já endossou labeldata.",
-	"jade-alreadyendorsed": "Não é possível endossar porque você já endossou outra proposta. Considere mudar seu endosso."
+	"jade-alreadyendorsed": "Não é possível endossar porque você já endossou outra proposta. Considere mudar seu endosso.",
+	"jade-updateendorsement": "Você atualizou com êxito um endosso",
+	"jade-updateproposal": "Você atualizou uma proposta com sucesso"
 }

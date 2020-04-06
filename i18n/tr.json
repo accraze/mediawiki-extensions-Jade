@@ -51,5 +51,7 @@
 	"jade-proposalispreferred": "Bir faset için kalan tek teklif olduğu durumlar dışında, tercih edilen bir teklif silinemez. Başka bir teklifi \"tercih edilecek\" olarak ayarlamanız gerekir",
 	"jade-invalidtitleentitydata": "Başlık veya varlık verileri parametresi sağlanmalıdır.",
 	"jade-nochange": "Bu eylem hiçbir değişikliğe neden olmaz. Kullanıcı etiket verilerini zaten onayladı.",
-	"jade-alreadyendorsed": "Başka bir teklifi zaten onayladığınız için onaylanamıyor. Bunun yerine onayınızı taşımayı düşünün."
+	"jade-alreadyendorsed": "Başka bir teklifi zaten onayladığınız için onaylanamıyor. Bunun yerine onayınızı taşımayı düşünün.",
+	"jade-updateendorsement": "Bir ciroyu başarıyla güncellediniz",
+	"jade-updateproposal": "Bir teklifi başarıyla güncellediniz"
 }

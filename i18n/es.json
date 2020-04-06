@@ -21,5 +21,6 @@
 	"jade-cannot-create-page": "No puedes crear esta página.",
 	"jade-cannot-edit-page": "No puedes editar esta página.",
 	"jade-db-error": "Error de la base de datos: $1",
-	"jade-user": "Usuario"
+	"jade-user": "Usuario",
+	"jade-updateproposal": "Has cargado una propuesta correctamente"
 }
