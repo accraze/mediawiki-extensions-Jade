@@ -59,5 +59,6 @@
 	"jade-nochange": "Error message displayed when the action would result in no change to the Entity.",
 	"jade-alreadyendorsed": "An error message displayed when a user tries to endorse two different proposed labels for the same facet.",
 	"jade-updateendorsement": "Bubble notification displayed when a user successfully updates an endorsement.",
-	"jade-updateproposal": "Bubble notification displayed when a user successfully updates a proposal."
+	"jade-updateproposal": "Bubble notification displayed when a user successfully updates a proposal.",
+	"jade-deleteendorsement": "Bubble notification displayed when a user successfully deletes an endorsement."
 }

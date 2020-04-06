@@ -231,7 +231,8 @@
 				"jade-ui-cancel-btn",
 				"jade-facet-editquality-desc",
 				"jade-updateendorsement",
-				"jade-updateproposal"
+				"jade-updateproposal",
+				"jade-deleteendorsement"
 			],
 			"dependencies": [
 				"oojs-ui",
