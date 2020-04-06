@@ -34,7 +34,7 @@ class MoveHooks {
 		Title $newTitle,
 		Status $status
 	) {
-		// Deny all moves within or into JudgmentPage.
+		// Deny all moves within or into Entity Page.
 		// TODO: In the future, we may allow some movements after validating.
 		if ( $oldTitle->getNamespace() === NS_JADE
 			|| $newTitle->getNamespace() === NS_JADE

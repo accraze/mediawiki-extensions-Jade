@@ -30,16 +30,15 @@ use WikiPage;
  * @covers \Jade\Hooks\MoveHooks
  */
 class MoveHooksTest extends ApiTestCase {
-	const DIFF_JUDGMENT = '../../data/valid_diff_judgment.json';
+	const DIFF_ENTITY = '../../data/valid_editquality_entity.json';
 
 	const MAIN_EXISTING = 'main-existing';
 	const MAIN_NEW = 'main-new';
-	const JUDGMENT_EXISTING = 'judgment-existing';
-	const JUDGMENT_NEW = 'judgment-new';
+	const ENTITY_EXISTING = 'entity-existing';
+	const ENTITY_NEW = 'entity-new';
 
 	public function setUp() : void {
 		parent::setUp();
-		$this->markTestSkipped( ' notin use.' );
 		$this->tablesUsed = [
 			'page',
 			'jade_diff_judgment',
@@ -48,31 +47,31 @@ class MoveHooksTest extends ApiTestCase {
 
 		// Create target content page.
 		$this->article = TestStorageHelper::makeEdit(
-			NS_MAIN, 'TestJudgmentActionsPage', 'abcdef', 'some summary' );
+			NS_MAIN, 'TestEntityActionsPage', 'abcdef', 'some summary' );
 		$revisionId = $this->article['revision']->getId();
 
-		// Create diff judgment.
-		$judgmentTitle = "Diff/{$revisionId}";
-		$judgmentText = file_get_contents( __DIR__ . '/' . self::DIFF_JUDGMENT );
+		// Create diff entity.
+		$entityTitle = "Diff/{$revisionId}";
+		$entityText = file_get_contents( __DIR__ . '/' . self::DIFF_ENTITY );
 		$status = TestStorageHelper::saveJudgment(
-			$judgmentTitle,
-			$judgmentText
+			$entityTitle,
+			$entityText
 		);
 		$this->assertTrue( $status->isOK() );
-		$this->judgmentPage = WikiPage::newFromID( $status->value['revision-record']->getPageId() );
-		$this->assertTrue( $this->judgmentPage->exists() );
+		$this->entityPage = WikiPage::newFromID( $status->value['revision-record']->getPageId() );
+		$this->assertTrue( $this->entityPage->exists() );
 
 		// Provide the articles as a map from enum since data providers don't
 		// have access to the initialized test case.
 		$this->articleMap = [
 			self::MAIN_EXISTING => "{$this->article['page']->getTitle()->getDBkey()}",
 			self::MAIN_NEW => 'New page' . strval( mt_rand() ),
-			self::JUDGMENT_EXISTING => "Jade:{$this->judgmentPage->getTitle()->getDBkey()}",
-			self::JUDGMENT_NEW => 'Jade:Diff/321' . strval( mt_rand() ),
+			self::ENTITY_EXISTING => "Jade:{$this->entityPage->getTitle()->getDBkey()}",
+			self::ENTITY_NEW => 'Jade:Diff/321' . strval( mt_rand() ),
 		];
 
 		// Disable validation since that would prevent moving a wiki page into
-		// the Judgment namespace.
+		// the Jade namespace.
 		$this->mockValidation = $this->getMockBuilder( EntityValidator::class )
 			->disableOriginalConstructor()
 			->setMethods( [ 'validateProposalContent', 'validatePageTitle' ] )
@@ -88,7 +87,7 @@ class MoveHooksTest extends ApiTestCase {
 	}
 
 	public function provideNamespaceCombos() {
-		// FIXME: The judgment titles would fail validation, but maybe this is
+		// FIXME: The entity titles would fail validation, but maybe this is
 		// okay since we're testing for a specific error code.
 		yield [
 			self::MAIN_EXISTING,
@@ -96,17 +95,17 @@ class MoveHooksTest extends ApiTestCase {
 		];
 		yield [
 			self::MAIN_EXISTING,
-			self::JUDGMENT_NEW,
+			self::ENTITY_NEW,
 			'jade-invalid-move-any',
 		];
 		yield [
-			self::JUDGMENT_EXISTING,
+			self::ENTITY_EXISTING,
 			self::MAIN_NEW,
 			[ 'content-not-allowed-here', EntityContent::CONTENT_MODEL_ENTITY, self::MAIN_NEW, 'main' ],
 		];
 		yield [
-			self::JUDGMENT_EXISTING,
-			self::JUDGMENT_NEW,
+			self::ENTITY_EXISTING,
+			self::ENTITY_NEW,
 			'jade-invalid-move-any',
 		];
 	}

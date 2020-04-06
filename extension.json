@@ -48,6 +48,7 @@
 		"JadeEntity": "Jade\\Content\\EntityContentHandler"
 	},
 	"Hooks": {
+		"MovePageIsValidMove": "Jade\\Hooks\\MoveHooks::onMovePageIsValidMove",
 		"ShowMissingArticle": "Jade\\Hooks\\MissingArticleHooks::onShowMissingArticle",
 		"SkinTemplateNavigation": "Jade\\Hooks\\SkinTemplateNavigationHooks::onSkinTemplateNavigation"
 	},
