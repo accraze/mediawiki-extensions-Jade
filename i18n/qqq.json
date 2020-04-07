@@ -62,5 +62,6 @@
 	"jade-updateproposal": "Bubble notification displayed when a user successfully updates a proposal.",
 	"jade-deleteendorsement": "Bubble notification displayed when a user successfully deletes an endorsement.",
 	"jade-deleteproposal": "Bubble notification displayed when a user successfully deletes a proposal.",
-	"jade-endorse": "Bubble notification displayed when a user successfully endorses a proposal."
+	"jade-endorse": "Bubble notification displayed when a user successfully endorses a proposal.",
+	"jade-createandendorse": "Bubble notification displayed when a user successfully creates and endorses a proposal."
 }

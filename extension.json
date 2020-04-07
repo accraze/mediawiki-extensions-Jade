@@ -235,7 +235,8 @@
 				"jade-updateproposal",
 				"jade-deleteendorsement",
 				"jade-deleteproposal",
-				"jade-endorse"
+				"jade-endorse",
+				"jade-createandendorse"
 			],
 			"dependencies": [
 				"oojs-ui",
