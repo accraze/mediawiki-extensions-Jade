@@ -1,8 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Hedda",
-			"BaRaN6161 TURK"
+			"BaRaN6161 TURK",
+			"Hedda"
 		]
 	},
 	"jade-desc": "İnsan yalanlaması ve ORES puanlamasının gözden geçirilmesini sağlamak için sağlam yanlış pozitif ve geri bildirim toplama sistemi.",
@@ -53,5 +53,7 @@
 	"jade-nochange": "Bu eylem hiçbir değişikliğe neden olmaz. Kullanıcı etiket verilerini zaten onayladı.",
 	"jade-alreadyendorsed": "Başka bir teklifi zaten onayladığınız için onaylanamıyor. Bunun yerine onayınızı taşımayı düşünün.",
 	"jade-updateendorsement": "Bir ciroyu başarıyla güncellediniz",
-	"jade-updateproposal": "Bir teklifi başarıyla güncellediniz"
+	"jade-updateproposal": "Bir teklifi başarıyla güncellediniz",
+	"jade-deleteendorsement": "Bir ciroyu başarıyla sildiniz",
+	"jade-deleteproposal": "Bir teklifi başarıyla sildiniz"
 }

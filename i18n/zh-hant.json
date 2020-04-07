@@ -52,5 +52,7 @@
 	"jade-nochange": "此操作不會作出任何改變，使用者已贊同標記的資料。",
 	"jade-alreadyendorsed": "因為您已贊同另個提議，所以無法做出贊同。請考慮改為移動您的贊同。",
 	"jade-updateendorsement": "您已成功更新贊同",
-	"jade-updateproposal": "您已成功更新提議"
+	"jade-updateproposal": "您已成功更新提議",
+	"jade-deleteendorsement": "您已成功刪除贊同",
+	"jade-deleteproposal": "您已成功刪除提議"
 }

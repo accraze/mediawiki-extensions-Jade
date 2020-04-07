@@ -1,11 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Adamw",
 			"Accraze",
-			"Verdy p",
+			"Adamw",
 			"Halfak",
-			"Umherirrender"
+			"Umherirrender",
+			"Verdy p"
 		]
 	},
 	"apihelp-jadecreateandendorse-summary": "{{doc-apihelp-summary|jadecreateandendorse}}\nA summary for the action 'jadecreateandendorse'.  Described the action taken and what happens if the user already endorsed another proposal.",

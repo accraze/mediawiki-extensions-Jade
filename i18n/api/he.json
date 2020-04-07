@@ -2,8 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Amire80",
-			"Guycn2",
-			"Ghsuvr"
+			"Ghsuvr",
+			"Guycn2"
 		]
 	},
 	"apihelp-jadecreateandendorse-summary": "יוצרת הצעה חדשה ומתייקת הבעת תמיכה. אם המשתמש כבר תמך בהצעה אחרת בהיבט, להעביר את התמיכה של המשתמש להצעה החדשה.",

@@ -1,14 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
-			"Adamw",
-			"Robby",
-			"Umherirrender",
-			"Raymond",
 			"Accraze",
+			"Adamw",
 			"Amire80",
 			"BaRaN6161 TURK",
-			"Kevin Bazira"
+			"Kevin Bazira",
+			"Raymond",
+			"Robby",
+			"Umherirrender"
 		]
 	},
 	"jade-desc": "{{desc|name=JADE|url=https://www.mediawiki.org/wiki/Extension:JADE}}",
