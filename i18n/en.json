@@ -56,5 +56,6 @@
 	"jade-updateendorsement": "You have successfully updated an endorsement",
 	"jade-updateproposal": "You have successfully updated a proposal",
 	"jade-deleteendorsement": "You have successfully deleted an endorsement",
-	"jade-deleteproposal": "You have successfully deleted a proposal"
+	"jade-deleteproposal": "You have successfully deleted a proposal",
+	"jade-endorse": "You have successfully endorsed a proposal"
 }
