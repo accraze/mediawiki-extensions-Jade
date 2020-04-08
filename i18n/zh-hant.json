@@ -4,7 +4,7 @@
 			"Kly"
 		]
 	},
-	"jade-desc": "強大的假為正確與意見回饋收集系統，允許人們反駁與檢閱客觀修訂評估服務評分。",
+	"jade-desc": "強大的假偽正確與意見回饋收集系統，允許人們反駁與檢閱客觀修訂評估服務評分。",
 	"jade-damaging-scale-true-label": "毀謗",
 	"jade-damaging-scale-false-label": "非毀謗",
 	"jade-goodfaith-scale-true-label": "善意",
@@ -54,5 +54,7 @@
 	"jade-updateendorsement": "您已成功更新贊同",
 	"jade-updateproposal": "您已成功更新提議",
 	"jade-deleteendorsement": "您已成功刪除贊同",
-	"jade-deleteproposal": "您已成功刪除提議"
+	"jade-deleteproposal": "您已成功刪除提議",
+	"jade-endorse": "您已成功贊同一個提議",
+	"jade-createandendorse": "您已成功建立並贊同一個提議"
 }

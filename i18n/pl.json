@@ -23,5 +23,6 @@
 	"jade-user-ip-invalid": "Adres IP „$1” jest nieprawidłowy.",
 	"jade-cannot-create-page": "Nie możesz utworzyć tej strony.",
 	"jade-cannot-edit-page": "Nie możesz edytować tej strony.",
-	"jade-user": "Użytkownik"
+	"jade-user": "Użytkownik",
+	"jade-deleteproposal": "Pomyślnie usunięto propozycję"
 }

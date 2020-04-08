@@ -59,5 +59,9 @@
 	"jade-nochange": "Cette action n’apportera aucune modification. L’utilisateur a déjà approuvé labeldata.",
 	"jade-alreadyendorsed": "Approbation impossible car vous avez déjà approuvé une autre proposition. Veuillez plutôt changer votre approbation.",
 	"jade-updateendorsement": "Vous avez bien mis à jour une approbation",
-	"jade-updateproposal": "Vous avez bien téléchargé une proposition"
+	"jade-updateproposal": "Vous avez bien téléchargé une proposition",
+	"jade-deleteendorsement": "Vous avez bien supprimé une approbation",
+	"jade-deleteproposal": "Vous avez bien supprimé une proposition",
+	"jade-endorse": "Vous avez bien accepté une proposition",
+	"jade-createandendorse": "Vous avez bien créé et accepté une proposition"
 }
