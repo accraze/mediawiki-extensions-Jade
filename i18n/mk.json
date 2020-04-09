@@ -54,5 +54,7 @@
 	"jade-updateendorsement": "Успешно го изменивте одобрувањето",
 	"jade-updateproposal": "Успешно подновивте предлог",
 	"jade-deleteendorsement": "Успешно избришавте одобрување",
-	"jade-deleteproposal": "Успешно избришавте предлог"
+	"jade-deleteproposal": "Успешно избришавте предлог",
+	"jade-endorse": "Успешно одобривте предлог",
+	"jade-createandendorse": "Успешно создадовте и одобривте предлог"
 }

@@ -7,5 +7,7 @@
 	"jade-updateendorsement": "Hizivaet ez eus bet ervat un aprouadenn ganeoc'h",
 	"jade-updateproposal": "Enporzhiet eo bet ho kinnig ervat",
 	"jade-deleteendorsement": "Diverket hoc'h eus ur aprouadenn ervat",
-	"jade-deleteproposal": "Diverket hoc'h eus ur c'hinnig ervat"
+	"jade-deleteproposal": "Diverket hoc'h eus ur c'hinnig ervat",
+	"jade-endorse": "Degemeret hoc'h eus ur c'hinnig ervat",
+	"jade-createandendorse": "Krouet ha degemeret hoc'h eus ur c'hinig ervat"
 }

@@ -55,5 +55,7 @@
 	"jade-updateendorsement": "Bir ciroyu başarıyla güncellediniz",
 	"jade-updateproposal": "Bir teklifi başarıyla güncellediniz",
 	"jade-deleteendorsement": "Bir ciroyu başarıyla sildiniz",
-	"jade-deleteproposal": "Bir teklifi başarıyla sildiniz"
+	"jade-deleteproposal": "Bir teklifi başarıyla sildiniz",
+	"jade-endorse": "Bir teklifi başarıyla onayladınız",
+	"jade-createandendorse": "Bir teklifi başarıyla oluşturdunuz ve onayladınız"
 }

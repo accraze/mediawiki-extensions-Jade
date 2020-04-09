@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Dr03ramos",
 			"Eduardo Addad de Oliveira",
 			"Felipe L. Ewald"
 		]
@@ -53,9 +54,9 @@
 	"jade-nochange": "Esta ação resultaria em nenhuma alteração. O usuário já endossou labeldata.",
 	"jade-alreadyendorsed": "Não é possível endossar porque você já endossou outra proposta. Considere mudar seu endosso.",
 	"jade-updateendorsement": "Você atualizou com êxito um endosso",
-	"jade-updateproposal": "Você atualizou uma proposta com sucesso",
-	"jade-deleteendorsement": "Você excluiu com êxito um endosso",
-	"jade-deleteproposal": "Você excluiu uma proposta com sucesso",
-	"jade-endorse": "Você aprovou uma proposta com sucesso",
-	"jade-createandendorse": "Você criou e endossou uma proposta com sucesso"
+	"jade-updateproposal": "Você atualizou uma proposta",
+	"jade-deleteendorsement": "Você excluiu um endosso",
+	"jade-deleteproposal": "Você excluiu uma proposta",
+	"jade-endorse": "Você aprovou uma proposta",
+	"jade-createandendorse": "Você criou e endossou uma proposta"
 }

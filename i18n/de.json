@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"FF11",
 			"Metalhead64"
 		]
 	},
@@ -50,5 +51,7 @@
 	"jade-proposalispreferred": "Kann einen bevorzugten Vorschlag nicht löschen, außer wenn es der einzige verbleibende Vorschlag für eine Facette ist. Du musst einen anderen Vorschlag als \"bevorzugt\" kennzeichnen.",
 	"jade-invalidtitleentitydata": "Titel oder entitydata-Parameter müssen angegeben werden.",
 	"jade-nochange": "Diese Aktion würde zu keiner Änderung führen. Der Benutzer hat die labeldata bereits bestätigt.",
-	"jade-alreadyendorsed": "Ich kann nicht zustimmen, weil du bereits einen anderen Vorschlag unterstützt hast.  Erwäge stattdessen eine Verschiebung deiner Befürwortung."
+	"jade-alreadyendorsed": "Ich kann nicht zustimmen, weil du bereits einen anderen Vorschlag unterstützt hast.  Erwäge stattdessen eine Verschiebung deiner Befürwortung.",
+	"jade-updateproposal": "Du hast einen Vorschlag erfolgreich aktualisiert",
+	"jade-deleteproposal": "Du hast erfolgreich einen Vorschlag entfernt"
 }
