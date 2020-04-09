@@ -59,5 +59,6 @@
 	"jade-deleteproposal": "You have deleted a proposal",
 	"jade-endorse": "You have endorsed a proposal",
 	"jade-createandendorse": "You have created and endorsed a proposal",
-	"jade-setpreference": "You have promoted a proposal"
+	"jade-setpreference": "You have promoted a proposal",
+	"jade-moveendorsement": "You have moved an endorsement"
 }
