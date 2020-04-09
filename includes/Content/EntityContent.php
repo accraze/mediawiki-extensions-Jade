@@ -21,7 +21,6 @@
 namespace Jade\Content;
 
 use Jade\EntityDiffBuilder;
-use Jade\EntityPageWikitextRenderer;
 use Jade\JadeServices;
 use JsonContent;
 use MediaWiki\MediaWikiServices;
@@ -135,8 +134,8 @@ class EntityContent extends JsonContent {
 		}
 
 		$parser = MediaWikiServices::getInstance()->getParser();
-		$renderer = new EntityPageWikitextRenderer;
-		$wikitext = $renderer->getWikitext( $this->getData()->getValue() );
+		// $renderer = new EntityPageWikitextRenderer;
+		//$wikitext = $renderer->getWikitext( $this->getData()->getValue() );
 
 		if ( $generateHtml ) {
 			$output->setEnableOOUI( true );

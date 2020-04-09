@@ -101,7 +101,7 @@ class CleanJudgmentLinks extends Maintenance {
 				'ORDER BY' => $tableHelper->getIdColumn(),
 			],
 			[ 'page' => [
-				'LEFT JOIN', "page_id = {$tableHelper->getProposalColumn()}",
+				'LEFT JOIN', "page_id = {$tableHelper->getPageColumn()}",
 			] ]
 		);
 		return $orphans;
@@ -170,7 +170,7 @@ class CleanJudgmentLinks extends Maintenance {
 				'page_namespace = ' . intval( NS_JADE ),
 				'page_title ' . $dbr->buildLike( "{$titlePrefix}/", $dbr->anyString() ),
 				"page_id > {$skipPastId}",
-				$tableHelper->getProposalColumn() => null,
+				$tableHelper->getPageColumn() => null,
 			],
 			__METHOD__,
 			[
@@ -178,7 +178,7 @@ class CleanJudgmentLinks extends Maintenance {
 				'ORDER BY' => $tableHelper->getIdColumn(),
 			],
 			[ $tableHelper->getLinkTable() => [
-				'LEFT JOIN', "page_id = {$tableHelper->getProposalColumn()}",
+				'LEFT JOIN', "page_id = {$tableHelper->getPageColumn()}",
 			] ]
 		);
 

@@ -49,7 +49,7 @@ class EntityLinkTableHelperTest extends MediaWikiTestCase {
 	 */
 	public function testGetLinkTable() {
 		$helper = new EntityLinkTableHelper( $this->diffType );
-		$this->assertEquals( 'jade_diff_judgment', $helper->getLinkTable() );
+		$this->assertEquals( 'jade_diff_label', $helper->getLinkTable() );
 	}
 
 	/**
@@ -57,7 +57,7 @@ class EntityLinkTableHelperTest extends MediaWikiTestCase {
 	 */
 	public function testGetColumnPrefix() {
 		$helper = new EntityLinkTableHelper( $this->diffType );
-		$this->assertEquals( 'jaded', $helper->getColumnPrefix() );
+		$this->assertEquals( 'jadedl', $helper->getColumnPrefix() );
 	}
 
 	/**
@@ -65,15 +65,15 @@ class EntityLinkTableHelperTest extends MediaWikiTestCase {
 	 */
 	public function testGetIdColumn() {
 		$helper = new EntityLinkTableHelper( $this->diffType );
-		$this->assertEquals( 'jaded_id', $helper->getIdColumn() );
+		$this->assertEquals( 'jadedl_id', $helper->getIdColumn() );
 	}
 
 	/**
-	 * @covers ::getProposalColumn
+	 * @covers ::getPageColumn
 	 */
-	public function testGetJudgmentColumn() {
+	public function testGetPageColumn() {
 		$helper = new EntityLinkTableHelper( $this->diffType );
-		$this->assertEquals( 'jaded_proposal', $helper->getProposalColumn() );
+		$this->assertEquals( 'jadedl_page_id', $helper->getPageColumn() );
 	}
 
 	/**
@@ -81,7 +81,7 @@ class EntityLinkTableHelperTest extends MediaWikiTestCase {
 	 */
 	public function testGetTargetColumn() {
 		$helper = new EntityLinkTableHelper( $this->diffType );
-		$this->assertEquals( 'jaded_revision', $helper->getTargetColumn() );
+		$this->assertEquals( 'jadedl_rev_id', $helper->getTargetColumn() );
 	}
 
 	/**
@@ -89,7 +89,7 @@ class EntityLinkTableHelperTest extends MediaWikiTestCase {
 	 */
 	public function testGetSummaryColumn() {
 		$helper = new EntityLinkTableHelper( $this->diffType );
-		$this->assertEquals( 'jaded_damaging', $helper->getSummaryColumn( 'damaging' ) );
+		$this->assertEquals( 'jadedl_damaging', $helper->getSummaryColumn( 'damaging' ) );
 	}
 
 }

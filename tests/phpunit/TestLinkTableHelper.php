@@ -15,8 +15,8 @@
  */
 namespace Jade\Tests;
 
-use Jade\JudgmentEntityType;
-use Jade\JudgmentLinkTableHelper;
+use Jade\EntityLinkTableHelper;
+use Jade\EntityType;
 use MediaWiki\MediaWikiServices;
 use PHPUnit\Framework\Assert;
 
@@ -31,7 +31,7 @@ class TestLinkTableHelper {
 	/**
 	 * @param string $entityType entity type identifier
 	 * @param int $targetRevisionId revision being judged
-	 * @param int $judgmentPageId page ID being linked
+	 * @param int $entityPageId page ID being linked
 	 * @param array $summaryColumns Any additional summary fields to retrieve.
 	 *
 	 * @return mixed Native or wrapped database query result.
@@ -39,16 +39,16 @@ class TestLinkTableHelper {
 	public static function selectJudgmentLink(
 		$entityType,
 		$targetRevisionId,
-		$judgmentPageId,
+		$entityPageId,
 		$summaryColumns = []
 	) {
-		$status = JudgmentEntityType::sanitizeEntityType( $entityType );
+		$status = EntityType::sanitizeEntityType( $entityType );
 		Assert::assertTrue( $status->isOK() );
-		$helper = new JudgmentLinkTableHelper( $status->value );
+		$helper = new EntityLinkTableHelper( $status->value );
 
 		$selectColumns = [
 			$helper->getTargetColumn(),
-			$helper->getJudgmentColumn(),
+			$helper->getPageColumn(),
 		];
 		foreach ( $summaryColumns as $schemaName ) {
 			$selectColumns[] = $helper->getSummaryColumn( $schemaName );
@@ -61,7 +61,7 @@ class TestLinkTableHelper {
 			$selectColumns,
 			[
 				$helper->getTargetColumn() => $targetRevisionId,
-				$helper->getJudgmentColumn() => $judgmentPageId,
+				$helper->getPageColumn() => $entityPageId,
 			],
 			__METHOD__
 		);

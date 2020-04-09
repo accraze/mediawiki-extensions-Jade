@@ -22,7 +22,7 @@ use Wikimedia\Rdbms\ILoadBalancer;
 use WikiPage;
 
 /**
- * Proposal index storage implemented using a RDBMS link table and indexes.
+ * Jade entity index storage implemented using a RDBMS link table and indexes.
  */
 class EntityLinkTable implements EntityIndexStorage {
 
@@ -32,14 +32,14 @@ class EntityLinkTable implements EntityIndexStorage {
 		$this->loadBalancer = $loadBalancer;
 	}
 
-	public function insertIndex( EntityTarget $target, WikiPage $proposalPage ) {
+	public function insertIndex( EntityTarget $target, WikiPage $entityPage ) {
 		$tableHelper = new EntityLinkTableHelper( $target->entityType );
 
-		// Create row linking the Proposal and its target.
+		// Create row linking the Entity and its target.
 		$dbw = $this->loadBalancer->getConnection( DB_MASTER );
 		$row = [
 			$tableHelper->getTargetColumn() => $target->entityId,
-			$tableHelper->getProposalColumn() => $proposalPage->getId(),
+			$tableHelper->getPageColumn() => $entityPage->getId(),
 		];
 		$dbw->insert( $tableHelper->getLinkTable(), $row, __METHOD__, [ 'IGNORE' ] );
 	}
@@ -47,12 +47,12 @@ class EntityLinkTable implements EntityIndexStorage {
 	public function deleteIndex( EntityTarget $target, WikiPage $proposalPage ) {
 		$tableHelper = new EntityLinkTableHelper( $target->entityType );
 
-		// Delete row linking the Proposal and its target.  Select the primary
+		// Delete row linking the entity and its target.  Select the primary
 		// key first, to avoid long queries on the master database.
 		$dbr = $this->loadBalancer->getConnection( DB_REPLICA );
 		$conds = [
 			$tableHelper->getTargetColumn() => $target->entityId,
-			$tableHelper->getProposalColumn() => $proposalPage->getId(),
+			$tableHelper->getPageColumn() => $proposalPage->getId(),
 		];
 		$id = $dbr->selectField(
 			$tableHelper->getLinkTable(),

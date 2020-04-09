@@ -29,63 +29,18 @@ class DatabaseSchemaHooks {
 		);
 
 		$updater->addExtensionTable(
+			'jade_diff_label',
+			$sqlDir . 'jade_diff_label.sql'
+		);
+
+		$updater->addExtensionTable(
 			'jade_revision_judgment',
 			$sqlDir . 'jade_revision_judgment.sql'
 		);
 
-		$updater->addExtensionField(
-			'jade_diff_judgment',
-			'jaded_damaging',
-			$sqlDir . 'jade_diff_judgment-add-jaded_damaging.sql'
-		);
-
-		$updater->dropExtensionIndex(
-			'jade_diff_judgment',
-			'jaded_revision_judgment',
-			$sqlDir . 'jade_diff_judgment-drop-jaded_revision_judgment.sql'
-		);
-
-		$updater->addExtensionIndex(
-			'jade_diff_judgment',
-			'jaded_revision',
-			$sqlDir . 'jade_diff_judgment-add-jaded_revision.sql'
-		);
-
-		$updater->addExtensionIndex(
-			'jade_diff_judgment',
-			'jaded_covering',
-			$sqlDir . 'jade_diff_judgment-add-jaded_covering.sql'
-		);
-
-		$updater->addExtensionIndex(
-			'jade_diff_judgment',
-			'jaded_goodfaith',
-			$sqlDir . 'jade_diff_judgment-add-jaded_goodfaith.sql'
-		);
-
-		$updater->addExtensionField(
-			'jade_revision_judgment',
-			'jader_contentquality',
-			$sqlDir . 'jade_revision_judgment-add-jader_contentquality.sql'
-		);
-
-		$updater->dropExtensionIndex(
-			'jade_revision_judgment',
-			'jader_revision_judgment',
-			$sqlDir . 'jade_diff_judgment-drop-jader_revision_judgment.sql'
-		);
-
-		$updater->addExtensionIndex(
-			'jade_revision_judgment',
-			'jader_revision',
-			$sqlDir . 'jade_diff_judgment-add-jader_revision.sql'
-		);
-
-		$updater->addExtensionIndex(
-			'jade_revision_judgment',
-			'jader_covering',
-			$sqlDir . 'jade_diff_judgment-add-jader_covering.sql'
+		$updater->addExtensionTable(
+			'jade_revision_label',
+			$sqlDir . 'jade_revision_label.sql'
 		);
 	}
-
 }

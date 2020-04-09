@@ -28,8 +28,8 @@ class TestStorageHelper {
 	const DEFAULT_CONTENT = 'abcdef';
 	const DEFAULT_SUMMARY = 'some summary';
 
-	const DIFF_JUDGMENT = '../data/valid_diff_judgment.json';
-	const REVISION_JUDGMENT = '../data/valid_revision_judgment.json';
+	const DIFF_JUDGMENT = '../data/valid_editquality_entity.json';
+	const REVISION_JUDGMENT = '../data/valid_editquality_entity.json';
 
 	/**
 	 * Coarse wrapper for creating temporary content.
