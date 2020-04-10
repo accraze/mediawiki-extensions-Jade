@@ -56,5 +56,7 @@
 	"jade-deleteendorsement": "您已刪除贊同",
 	"jade-deleteproposal": "您已刪除提議",
 	"jade-endorse": "您已贊同一個提議",
-	"jade-createandendorse": "您已建立並贊同一個提議"
+	"jade-createandendorse": "您已建立並贊同一個提議",
+	"jade-setpreference": "您已促進一個提議",
+	"jade-moveendorsement": "您已移動一個贊同"
 }

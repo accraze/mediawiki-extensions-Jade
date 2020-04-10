@@ -55,8 +55,12 @@
 	"jade-invalidtitleentitydata": "Має бути вказано параметр «title» або «entitydata».",
 	"jade-nochange": "Ця дія не дала б жодних змін у результаті. Користувач уже схвалив labeldata.",
 	"jade-alreadyendorsed": "Неможливо підтвердити, ви вже схвалили інше речення. Замість цього, спробуйте перемістити ваше схвалення.",
-	"jade-updateendorsement": "Ви успішно оновили схвалення",
-	"jade-updateproposal": "Ви успішно оновили пропозицію",
-	"jade-deleteendorsement": "Ви успішно вилучили схвалення",
-	"jade-deleteproposal": "Ви успішно вилучили пропозицію."
+	"jade-updateendorsement": "Cхвалення оновлене",
+	"jade-updateproposal": "Пропозиція оновлена",
+	"jade-deleteendorsement": "Схвалення вилучене",
+	"jade-deleteproposal": "Пропозицію вилучена",
+	"jade-endorse": "Пропозиція схвалена",
+	"jade-createandendorse": "Пропозиція створена та схвалена",
+	"jade-setpreference": "Пропозиція висунута",
+	"jade-moveendorsement": "Схвалення переміщене"
 }

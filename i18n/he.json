@@ -53,5 +53,11 @@
 	"jade-proposalispreferred": "לא ניתן למחוק הצעה מועדפת אלא רק כשזאת ההצע היחידה של ההיבט. יש להגדיר הצעה אחרת בתור \"מועדפת\".",
 	"jade-invalidtitleentitydata": "יש לספק את הפרמטר Title או entitydata.",
 	"jade-nochange": "הפעולה הזאת לא הייתה גורמת לשינוי. המשתמש גבר הביעה תמיכה ב־labeldata.",
-	"jade-alreadyendorsed": "לא ניתן להביע תמיכה כי כבר תמכת בהצעה אחרת. נא לשקול להעביר את התמיכה שלך."
+	"jade-alreadyendorsed": "לא ניתן להביע תמיכה כי כבר תמכת בהצעה אחרת. נא לשקול להעביר את התמיכה שלך.",
+	"jade-updateendorsement": "עדכנת הבעת תמיכה",
+	"jade-updateproposal": "עדכנת הצעה",
+	"jade-deleteendorsement": "מחקת הבעת תמיכה",
+	"jade-deleteproposal": "מחקת הצעה",
+	"jade-endorse": "הבעת תמיכה בהצעה",
+	"jade-createandendorse": "יצרת הצעה והבעת בה תמיכה"
 }
