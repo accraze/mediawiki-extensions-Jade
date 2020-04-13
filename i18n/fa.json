@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Amirsara",
+			"FarsiNevis",
 			"Ladsgroup",
 			"درفش کاویانی"
 		]
@@ -17,5 +18,7 @@
 	"jade-contentquality-scale-6-label": "مقالهٔ برگزیده",
 	"jade-contentquality-generic": "کیفیت محتوا «$1»",
 	"jade-delete": "حذف",
-	"jade-user": "کاربر"
+	"jade-user": "کاربر",
+	"jade-updateproposal": "شما یک پیشنهاده را روزآمد کردید",
+	"jade-deleteproposal": "شما یک پیشنهاده را حذف کردید"
 }

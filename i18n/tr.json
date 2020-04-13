@@ -57,5 +57,7 @@
 	"jade-deleteendorsement": "Bir ciroyu sildiniz",
 	"jade-deleteproposal": "Bir teklifi sildiniz",
 	"jade-endorse": "Bir teklifi onayladınız",
-	"jade-createandendorse": "Bir teklifi oluşturdunuz ve onayladınız"
+	"jade-createandendorse": "Bir teklifi oluşturdunuz ve onayladınız",
+	"jade-setpreference": "Bir teklifi tanıttınız",
+	"jade-moveendorsement": "Bir ciroyu taşıdınız"
 }

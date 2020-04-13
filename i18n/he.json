@@ -59,5 +59,7 @@
 	"jade-deleteendorsement": "מחקת הבעת תמיכה",
 	"jade-deleteproposal": "מחקת הצעה",
 	"jade-endorse": "הבעת תמיכה בהצעה",
-	"jade-createandendorse": "יצרת הצעה והבעת בה תמיכה"
+	"jade-createandendorse": "יצרת הצעה והבעת בה תמיכה",
+	"jade-setpreference": "קידמת הצעה",
+	"jade-moveendorsement": "העברת הבעת תמיכה"
 }

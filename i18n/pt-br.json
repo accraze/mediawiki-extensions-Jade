@@ -58,5 +58,7 @@
 	"jade-deleteendorsement": "Você excluiu um endosso",
 	"jade-deleteproposal": "Você excluiu uma proposta",
 	"jade-endorse": "Você aprovou uma proposta",
-	"jade-createandendorse": "Você criou e endossou uma proposta"
+	"jade-createandendorse": "Você criou e endossou uma proposta",
+	"jade-setpreference": "Você promoveu uma proposta",
+	"jade-moveendorsement": "Você moveu um endosso"
 }

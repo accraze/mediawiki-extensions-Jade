@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Joseba"
+		]
+	},
+	"jade-updateendorsement": "Berrespen bat eguneratu duzu",
+	"jade-updateproposal": "Proposamen bat eguneratu duzu",
+	"jade-deleteendorsement": "Berrespen bat ezabatu duzu",
+	"jade-createandendorse": "Proposamen bat sortu eta berretsi duzu",
+	"jade-setpreference": "Proposamen bat sustatu duzu"
+}
