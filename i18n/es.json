@@ -3,6 +3,7 @@
 		"authors": [
 			"Fitoschido",
 			"MarcoAurelio",
+			"MartaEgea",
 			"Yllelder"
 		]
 	},
@@ -22,5 +23,5 @@
 	"jade-cannot-edit-page": "No puedes editar esta página.",
 	"jade-db-error": "Error de la base de datos: $1",
 	"jade-user": "Usuario",
-	"jade-updateproposal": "Has cargado una propuesta correctamente"
+	"jade-updateproposal": "Ha actualizado una propuesta correctamente"
 }
