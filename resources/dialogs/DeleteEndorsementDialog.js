@@ -108,6 +108,7 @@ OO.inheritClass( DeleteEndorsementDialog, OO.ui.ProcessDialog );
  * @function onSubmitButtonClick
  * @description Delete an endorsement on submit button click.
  */
+/* eslint camelcase: ["error", {allow: ["user_id", "global_id"]}]*/
 DeleteEndorsementDialog.prototype.onSubmitButtonClick = async function () {
 	this.commentFormSubmit.setDisabled( true );
 	var comment = this.commentBox.value;
@@ -115,6 +116,8 @@ DeleteEndorsementDialog.prototype.onSubmitButtonClick = async function () {
 		title: mw.config.get( 'entityTitle' ).prefixedText,
 		facet: 'editquality',
 		labeldata: JSON.stringify( this.proposal.labeldata ),
+		user_id: this.endorsement.author.id,
+		ip: this.endorsement.author.ip,
 		comment: comment
 	};
 	var client = new DeleteEndorsementClient();
