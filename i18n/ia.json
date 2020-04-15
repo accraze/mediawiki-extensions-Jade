@@ -5,6 +5,6 @@
 		]
 	},
 	"jade-bad-revision-id": "Version con ID \"$1\" non trovate",
-	"jade-updateendorsement": "Tu ha correctemente actualisate un indorsamento",
-	"jade-updateproposal": "Tu ha correctemente actualisate un proposition"
+	"jade-updateendorsement": "Tu ha actualisate un indorsamento",
+	"jade-updateproposal": "Tu ha actualisate un proposition"
 }

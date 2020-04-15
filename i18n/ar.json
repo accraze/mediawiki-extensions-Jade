@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Meno25",
+			"Tala Ali",
 			"ديفيد",
 			"محمد أحمد عبد الفتاح"
 		]
@@ -50,5 +51,13 @@
 	"jade-endorsingnonpreferredproposal": "نتج عن هذا الإجراء إنشاء تأييد لاقتراح لم يتم وسمه كمفضل.",
 	"jade-proposalispreferred": "لا يمكن حذف الاقتراح المفضل إلا عندما يكون الاقتراح الوحيد المتبقي للوجه، يجب عليك تعيين اقتراح آخر ليكون \"المفضل\"",
 	"jade-invalidtitleentitydata": "يجب تقديم معلمة العنوان أو بيانات الكيان.",
-	"jade-nochange": "هذا الإجراء لن يؤدي إلى أي تغيير، لقد أقر المستخدم بالفعل ببيانات التسمية."
+	"jade-nochange": "هذا الإجراء لن يؤدي إلى أي تغيير، لقد أقر المستخدم بالفعل ببيانات التسمية.",
+	"jade-updateendorsement": "لقد قمت بتحديث تأييد",
+	"jade-updateproposal": "لقد قمت بتحديث اقتراح",
+	"jade-deleteendorsement": "لقد قمت بحذف تأييد",
+	"jade-deleteproposal": "لقد قمت بحذف التأييد",
+	"jade-endorse": "لقد روجت لمقترح",
+	"jade-createandendorse": "لقد قمت بإنشاء و اقتراح التأييد",
+	"jade-setpreference": "لقد روجت لمقترح",
+	"jade-moveendorsement": "لقد قمت بنقل تأييد"
 }
