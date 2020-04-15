@@ -4,9 +4,8 @@
 		"test": "grunt test"
 	},
 	"devDependencies": {
-		"eslint-config-wikimedia": "0.15.0",
+		"eslint-config-wikimedia": "0.15.1",
 		"eslint-plugin-compat": "3.5.1",
-		"eslint-plugin-mediawiki": "0.2.1",
 		"grunt": "1.1.0",
 		"grunt-banana-checker": "0.8.1",
 		"grunt-eslint": "22.0.0",
