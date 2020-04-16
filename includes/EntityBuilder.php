@@ -545,9 +545,9 @@ class EntityBuilder {
 			}
 			$proposal = $this->buildProposal( $params );
 			$entity['facets'][$facet]['proposals'][] = $proposal;
-		}
-		if ( $this->userAlreadyEndorsed( $params, [ null, $entity ] ) && $params['nomove'] ) {
-			return [ 'jade-nochange', $entity, $warnings ];
+			if ( $this->userAlreadyEndorsed( $params, [ null, $contents[1] ] ) ) {
+				return [ 'jade-alreadyendorsed', $entity, $warnings ];
+			}
 		}
 		$labelname = $this->getProposalDataName( $params );
 		$label = json_decode( $params[$labelname], true );
