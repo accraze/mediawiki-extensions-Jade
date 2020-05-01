@@ -65,5 +65,13 @@
 	"jade-endorse": "Bubble notification displayed when a user endorses a proposal.",
 	"jade-createandendorse": "Bubble notification displayed when a user creates and endorses a proposal.",
 	"jade-setpreference": "Bubble notification displayed when a user promotes a proposal.",
-	"jade-moveendorsement": "Bubble notification displayed when a user moves an endorsement."
+	"jade-moveendorsement": "Bubble notification displayed when a user moves an endorsement.",
+	"jade-createandendorseproposal-autocomment": "Edit comment prefix on MW history page when a user creates and endorses a proposal.",
+	"jade-deleteproposal-autocomment": "Edit comment prefix on MW history page when a user deletes a proposal.",
+	"jade-updateendorsement-autocomment": "Edit comment prefix on MW history page when a user updates an endorsement.",
+	"jade-updateproposal-autocomment": "Edit comment prefix on MW history page when a user updates a proposal.",
+	"jade-deleteendorsement-autocomment": "Edit comment prefix on MW history page when a user deletes an endorsement.",
+	"jade-endorseproposal-autocomment": "Edit comment prefix on MW history page when a user endorses a proposal.",
+	"jade-setpreference-autocomment": "Edit comment prefix on MW history page when a user promotes a proposal.",
+	"jade-moveendorsement-autocomment": "Edit comment prefix on MW history page when a user moves an endorsement."
 }

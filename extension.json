@@ -50,6 +50,7 @@
 	"Hooks": {
 		"ArticleDeleteComplete": "Jade\\Hooks\\LinkTableHooks::onArticleDeleteComplete",
 		"ArticleUndelete": "Jade\\Hooks\\LinkTableHooks::onArticleUndelete",
+		"FormatAutocomments": "Jade\\Hooks\\FormatAutocommentsHooks::onFormatAutocomments",
 		"LoadExtensionSchemaUpdates": "Jade\\Hooks\\DatabaseSchemaHooks::onLoadExtensionSchemaUpdates",
 		"MovePageIsValidMove": "Jade\\Hooks\\MoveHooks::onMovePageIsValidMove",
 		"PageContentInsertComplete": "Jade\\Hooks\\LinkTableHooks::onPageContentInsertComplete",
@@ -126,6 +127,16 @@
 				"resources/api/ProposeClient.js",
 				"resources/api/UpdateEndorsementClient.js",
 				"resources/api/UpdateProposalClient.js"
+			],
+			"messages": [
+				"jade-createandendorseproposal-autocomment",
+				"jade-deleteproposal-autocomment",
+				"jade-updateendorsement-autocomment",
+				"jade-updateproposal-autocomment",
+				"jade-deleteendorsement-autocomment",
+				"jade-endorseproposal-autocomment",
+				"jade-setpreference-autocomment",
+				"jade-moveendorsement-autocomment"
 			]
 		},
 		"jade.dialogs": {

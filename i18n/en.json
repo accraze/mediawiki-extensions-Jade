@@ -60,5 +60,13 @@
 	"jade-endorse": "You have endorsed a proposal",
 	"jade-createandendorse": "You have created and endorsed a proposal",
 	"jade-setpreference": "You have promoted a proposal",
-	"jade-moveendorsement": "You have moved an endorsement"
+	"jade-moveendorsement": "You have moved an endorsement",
+	"jade-createandendorseproposal-autocomment": "Proposal created:",
+	"jade-deleteproposal-autocomment": "Proposal deleted",
+	"jade-updateendorsement-autocomment": "Endorsement updated:",
+	"jade-updateproposal-autocomment": "Proposal updated:",
+	"jade-deleteendorsement-autocomment": "Endorsement deleted:",
+	"jade-endorseproposal-autocomment": "Endorsed proposal:",
+	"jade-setpreference-autocomment": "Preference set:",
+	"jade-moveendorsement-autocomment": "Endorsement moved:"
 }
