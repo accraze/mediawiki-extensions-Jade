@@ -68,5 +68,9 @@
 	"jade-deleteendorsement-autocomment": "Endorsement deleted:",
 	"jade-endorseproposal-autocomment": "Endorsed proposal:",
 	"jade-setpreference-autocomment": "Preference set:",
-	"jade-moveendorsement-autocomment": "Endorsement moved:"
+	"jade-moveendorsement-autocomment": "Endorsement moved:",
+	"jade-editquality-is-comment": "Edit quality is",
+	"jade-productive-good-faith-comment": "Productive / Good-faith",
+	"jade-damaging-good-faith-comment": "Damaging / Good-faith",
+	"jade-damaging-bad-faith-comment": "Damaging / Bad-faith"
 }

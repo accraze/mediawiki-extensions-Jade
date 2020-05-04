@@ -54,6 +54,7 @@
 		"LoadExtensionSchemaUpdates": "Jade\\Hooks\\DatabaseSchemaHooks::onLoadExtensionSchemaUpdates",
 		"MovePageIsValidMove": "Jade\\Hooks\\MoveHooks::onMovePageIsValidMove",
 		"PageContentInsertComplete": "Jade\\Hooks\\LinkTableHooks::onPageContentInsertComplete",
+		"PageHistoryLineEnding": "Jade\\Hooks\\PageHistoryLineEndingHooks::onPageHistoryLineEnding",
 		"ShowMissingArticle": "Jade\\Hooks\\MissingArticleHooks::onShowMissingArticle",
 		"SkinTemplateNavigation": "Jade\\Hooks\\SkinTemplateNavigationHooks::onSkinTemplateNavigation"
 	},
@@ -136,7 +137,11 @@
 				"jade-deleteendorsement-autocomment",
 				"jade-endorseproposal-autocomment",
 				"jade-setpreference-autocomment",
-				"jade-moveendorsement-autocomment"
+				"jade-moveendorsement-autocomment",
+				"jade-editquality-is-comment",
+				"jade-productive-good-faith-comment",
+				"jade-damaging-good-faith-comment",
+				"jade-damaging-bad-faith-comment"
 			]
 		},
 		"jade.dialogs": {
