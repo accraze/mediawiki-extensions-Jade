@@ -45,7 +45,7 @@ class FormatAutocommentsHooks {
 			$autoComment = explode( "|", $auto, 2 );
 			$autoCommentText = $autoComment[0];
 			$autoCommentMsgKey = $autoCommentText . '-autocomment';
-			$comment = wfMessage( $autoCommentMsgKey )->escaped();
+			$comment = wfMessage( $autoCommentMsgKey )->parse();
 		}
 	}
 
