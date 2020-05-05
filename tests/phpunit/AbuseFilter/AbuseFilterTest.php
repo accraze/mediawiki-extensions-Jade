@@ -48,7 +48,9 @@ class AbuseFilterTest extends ApiTestCase {
 
 	public function testCanFilterJudgment() {
 		$this->markTestSkipped( 'fix' );
-		list( $page, $revision ) = TestStorageHelper::createEntity();
+		list( $page, $revisionRecord ) = TestStorageHelper::createNewEntity(
+			$this->getTestUser()->getUser()
+		);
 
 		$content = json_encode( [
 			'judgments' => [ [
@@ -63,14 +65,14 @@ class AbuseFilterTest extends ApiTestCase {
 
 		$judgmentResult = TestStorageHelper::makeEdit(
 			NS_JADE,
-			"Diff/{$revision->getId()}",
+			"Diff/{$revisionRecord->getId()}",
 			$content,
 			'a summary'
 		);
 
 		$revisionStore = \MediaWiki\MediaWikiServices::getInstance()->getRevisionStore();
-		$revisionRecord = $judgementResult['revision']->getRevisionRecord();
-		$rcId = $revisionStore->getRecentChange( $revisionRecord )->getAttribute( 'rc_id' );
+		$revisionRecord2 = $judgementResult['revision']->getRevisionRecord();
+		$rcId = $revisionStore->getRecentChange( $revisionRecord2 )->getAttribute( 'rc_id' );
 		$result = $this->doApiRequest( [
 			'action' => 'abusefiltercheckmatch',
 			'filter' => 'added_lines irlike "\bT\.?V\.?\b"',

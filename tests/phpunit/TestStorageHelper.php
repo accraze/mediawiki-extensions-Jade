@@ -15,12 +15,15 @@
  */
 namespace Jade\Tests;
 
+use CommentStoreComment;
 use ContentHandler;
 use FormatJSON;
+use MediaWiki\Revision\SlotRecord;
 use PHPUnit\Framework\Assert;
 use StatusValue;
 use Title;
 use TitleValue;
+use User;
 use WikiPage;
 
 class TestStorageHelper {
@@ -34,35 +37,28 @@ class TestStorageHelper {
 	/**
 	 * Coarse wrapper for creating temporary content.
 	 *
-	 * @param User|null $user User to edit as.
+	 * @param User $user User to edit as.
 	 *
-	 * @return array [ WikiPage, Revision ]
+	 * @return array [ WikiPage, RevisionRecord ]
 	 */
-	public static function createEntity( $user = null ) {
-		global $wgUser;
-
-		if ( $user === null ) {
-			$user = $wgUser;
-		}
-
+	public static function createNewEntity( User $user ) {
 		$editTarget = new TitleValue( 0, 'JadeJudgmentContentTestPage' . strval( mt_rand() ) );
 		$title = Title::newFromLinkTarget( $editTarget );
-		$summary = 'Test edit';
 		$page = WikiPage::factory( $title );
-		$status = $page->doEditContent(
-			ContentHandler::makeContent( __CLASS__, $title ),
-			$summary,
-			0,
-			false,
-			$user
+
+		$updater = $page->newPageUpdater( $user );
+		$updater->setContent(
+			SlotRecord::MAIN,
+			ContentHandler::makeContent( __CLASS__, $title )
 		);
 
-		Assert::assertTrue( $status->isGood() );
+		$summary = CommentStoreComment::newUnsavedComment( 'Test edit' );
+		$savedRevisionRecord = $updater->saveRevision( $summary );
 
-		$revision = $status->value['revision'];
-		Assert::assertNotNull( $revision );
+		Assert::assertTrue( $updater->wasSuccessful() );
+		Assert::assertNotNull( $savedRevisionRecord );
 
-		return [ $page, $revision ];
+		return [ $page, $savedRevisionRecord ];
 	}
 
 	/**

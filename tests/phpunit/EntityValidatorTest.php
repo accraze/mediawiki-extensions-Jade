@@ -149,9 +149,9 @@ class EntityValidatorTest extends MediaWikiTestCase {
 	 */
 	public function testValidatePageTitle_valid( $path, $type ) {
 		$this->markTestSkipped( 'fix' );
-		list( $page, $revision ) = TestStorageHelper::createEntity( $this->user );
+		list( $page, $revisionRecord ) = TestStorageHelper::createNewEntity( $this->user );
 		$ucType = ucfirst( $type );
-		$title = "{$ucType}/{$revision->getId()}";
+		$title = "{$ucType}/{$revisionRecord->getId()}";
 		$text = file_get_contents( __DIR__ . '/' . self::DATA_DIR . '/' . $path );
 
 		$status = TestStorageHelper::saveJudgment( $title, $text, $this->user );
@@ -170,12 +170,12 @@ class EntityValidatorTest extends MediaWikiTestCase {
 	 * @covers ::validatePageTitle
 	 */
 	public function testValidatePageTitle_invalidWithType( $path, $type ) {
-		list( $page, $revision ) = TestStorageHelper::createEntity( $this->user );
+		list( $page, $revisionRecord ) = TestStorageHelper::createNewEntity( $this->user );
 		$ucType = ucfirst( $type );
 		switch ( $type ) {
 			case 'diff':
 			case 'revision':
-				$title = "{$ucType}/{$revision->getId()}";
+				$title = "{$ucType}/{$revisionRecord->getId()}";
 				break;
 			default:
 				$this->fail( "Not handling bad entity type {$type}" );
@@ -193,8 +193,8 @@ class EntityValidatorTest extends MediaWikiTestCase {
 	 * @covers ::validatePageTitle
 	 */
 	public function testValidatePageTitle_invalidLong() {
-		list( $page, $revision ) = TestStorageHelper::createEntity( $this->user );
-		$title = "Revision/{$revision->getId()}/foo";
+		list( $page, $revisionRecord ) = TestStorageHelper::createNewEntity( $this->user );
+		$title = "Revision/{$revisionRecord->getId()}/foo";
 		$text = file_get_contents(
 			__DIR__ . '/' . self::DATA_DIR . '/valid_revision_judgment.json' );
 
@@ -224,8 +224,8 @@ class EntityValidatorTest extends MediaWikiTestCase {
 	 */
 	public function testValidatePageTitle_invalidNonCanonicalLeadingZero() {
 		$this->markTestSkipped( 'broken' );
-		list( $page, $revision ) = TestStorageHelper::createEntity( $this->user );
-		$title = "Revision/0{$revision->getId()}";
+		list( $page, $revisionRecord ) = TestStorageHelper::createNewEntity( $this->user );
+		$title = "Revision/0{$revisionRecord->getId()}";
 		$text = file_get_contents( __DIR__ . '/' . self::DATA_DIR . '/valid_diff_judgment.json' );
 
 		$status = TestStorageHelper::saveJudgment( $title, $text, $this->user );
@@ -257,8 +257,8 @@ class EntityValidatorTest extends MediaWikiTestCase {
 	 */
 	public function testValidateEndorsementUsers_goodId() {
 		$this->markTestSkipped( 'broken schema' );
-		list( $page, $revision ) = TestStorageHelper::createEntity( $this->user );
-		$title = "Diff/{$revision->getId()}";
+		list( $page, $revisionRecord ) = TestStorageHelper::createNewEntity( $this->user );
+		$title = "Diff/{$revisionRecord->getId()}";
 		$text = json_encode( [
 			'judgments' => [ [
 				'schema' => [
@@ -286,8 +286,8 @@ class EntityValidatorTest extends MediaWikiTestCase {
 		$userId = mt_rand();
 		// But never create the user...
 
-		list( $page, $revision ) = TestStorageHelper::createEntity( $this->user );
-		$title = "Diff/{$revision->getId()}";
+		list( $page, $revisionRecord ) = TestStorageHelper::createNewEntity( $this->user );
+		$title = "Diff/{$revisionRecord->getId()}";
 		$text = json_encode( [
 			'judgments' => [ [
 				'schema' => [
@@ -318,8 +318,8 @@ class EntityValidatorTest extends MediaWikiTestCase {
 		$this->markTestSkipped( 'broken' );
 		$centralUserId = CentralIdLookup::factory()->centralIdFromLocalUser( $this->user );
 
-		list( $page, $revision ) = TestStorageHelper::createEntity( $this->user );
-		$title = "Diff/{$revision->getId()}";
+		list( $page, $revisionRecord ) = TestStorageHelper::createNewEntity( $this->user );
+		$title = "Diff/{$revisionRecord->getId()}";
 		$text = json_encode( [
 			'judgments' => [ [
 				'schema' => [
@@ -358,8 +358,8 @@ class EntityValidatorTest extends MediaWikiTestCase {
 		] );
 		$block->insert();
 
-		list( $page, $revision ) = TestStorageHelper::createEntity( $this->user );
-		$title = "Diff/{$revision->getId()}";
+		list( $page, $revisionRecord ) = TestStorageHelper::createNewEntity( $this->user );
+		$title = "Diff/{$revisionRecord->getId()}";
 		$text = json_encode( [
 			'judgments' => [ [
 				'schema' => [
@@ -391,8 +391,8 @@ class EntityValidatorTest extends MediaWikiTestCase {
 		// Make sure the central user ID is wrong.
 		$centralUserId = mt_rand();
 
-		list( $page, $revision ) = TestStorageHelper::createEntity( $this->user );
-		$title = "Diff/{$revision->getId()}";
+		list( $page, $revisionRecord ) = TestStorageHelper::createNewEntity( $this->user );
+		$title = "Diff/{$revisionRecord->getId()}";
 		$text = json_encode( [
 			'judgments' => [ [
 				'schema' => [
@@ -430,8 +430,8 @@ class EntityValidatorTest extends MediaWikiTestCase {
 		$user2 = $this->getTestSysop()->getUser();
 		$centralUserId = CentralIdLookup::factory()->centralIdFromLocalUser( $user2 );
 
-		list( $page, $revision ) = TestStorageHelper::createEntity( $this->user );
-		$title = "Diff/{$revision->getId()}";
+		list( $page, $revisionRecord ) = TestStorageHelper::createNewEntity( $this->user );
+		$title = "Diff/{$revisionRecord->getId()}";
 		$text = json_encode( [
 			'judgments' => [ [
 				'schema' => [
@@ -475,8 +475,8 @@ class EntityValidatorTest extends MediaWikiTestCase {
 	 */
 	public function testValidateTimestamps( $timestamp, $expectedSuccess ) {
 		$this->markTestSkipped( 'broken' );
-		list( $page, $revision ) = TestStorageHelper::createEntity( $this->user );
-		$title = "Diff/{$revision->getId()}";
+		list( $page, $revisionRecord ) = TestStorageHelper::createNewEntity( $this->user );
+		$title = "Diff/{$revisionRecord->getId()}";
 		$text = json_encode( [
 			'judgments' => [ [
 				'schema' => [

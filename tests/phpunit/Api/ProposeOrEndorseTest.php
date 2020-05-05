@@ -42,8 +42,10 @@ class ProposeOrEndorseTest extends ApiTestCase {
 		// The entity page doesn't exist at all.
 		// Create the page, create the relevant proposal
 		// Add an endorsement from the user
-		list( $page, $revision ) = TestStorageHelper::createEntity();
-		$title = "Diff/{$revision->getId()}";
+		list( $page, $revisionRecord ) = TestStorageHelper::createNewEntity(
+			$this->getTestUser()->getUser()
+		);
+		$title = "Diff/{$revisionRecord->getId()}";
 		$labeldata = '{"damaging": false, "goodfaith": true}';
 		$result = $this->doApiRequestWithToken( [
 			'action' => 'jadeproposeorendorse',
@@ -70,7 +72,9 @@ class ProposeOrEndorseTest extends ApiTestCase {
 		// and the user has not already endorsed a proposal for this facet
 		// Then create the relevant proposal.
 		// and add an endorsement from the user.
-		list( $page, $revision ) = TestStorageHelper::createEntity();
+		list( $page, $revisionRecord ) = TestStorageHelper::createNewEntity(
+			$this->getTestUser()->getUser()
+		);
 		$existingEntity = [
 			'facets' => [
 				'editquality' => [
@@ -99,7 +103,7 @@ class ProposeOrEndorseTest extends ApiTestCase {
 				],
 			 ],
 		];
-		$title = "Diff/{$revision->getId()}";
+		$title = "Diff/{$revisionRecord->getId()}";
 
 		$status = TestStorageHelper::saveJudgment(
 			$title,
@@ -139,7 +143,9 @@ class ProposeOrEndorseTest extends ApiTestCase {
 		// Raise an existingproposalnotesnotoverwritten warning
 		// If the proposal is not preferred: Raise a endorsingnonpreferredproposal
 		// warning and leave the //preferred bit alone
-		list( $page, $revision ) = TestStorageHelper::createEntity();
+		list( $page, $revisionRecord ) = TestStorageHelper::createNewEntity(
+			$this->getTestUser()->getUser()
+		);
 		$existingEntity = [
 			'facets' => [
 				'editquality' => [
@@ -170,7 +176,7 @@ class ProposeOrEndorseTest extends ApiTestCase {
 				],
 			 ],
 		];
-		$title = "Diff/{$revision->getId()}";
+		$title = "Diff/{$revisionRecord->getId()}";
 
 		$status = TestStorageHelper::saveJudgment(
 			$title,
@@ -220,8 +226,10 @@ class ProposeOrEndorseTest extends ApiTestCase {
 		// If the proposal is not preferred: Raise a endorsingnonpreferredproposal
 		// warning and leave the preferred bit alone
 		//
-		list( $page, $revision ) = TestStorageHelper::createEntity();
-		$title = "Diff/{$revision->getId()}";
+		list( $page, $revisionRecord ) = TestStorageHelper::createNewEntity(
+			$this->getTestUser()->getUser()
+		);
+		$title = "Diff/{$revisionRecord->getId()}";
 		$existingEntity = [
 			'facets' => [
 				'editquality' => [

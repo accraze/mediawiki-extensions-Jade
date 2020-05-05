@@ -54,8 +54,10 @@ class CleanJudgmentLinksTest extends MaintenanceBaseTestCase {
 	}
 
 	private function createRevision() {
-		list( $page, $revision ) = TestStorageHelper::createEntity();
-		return $revision;
+		list( $page, $revisionRecord ) = TestStorageHelper::createNewEntity(
+			$this->getTestUser()->getUser()
+		);
+		return new Revision( $revisionRecord );
 	}
 
 	private function createJudgment( Revision $revision, $entityType ) {

@@ -65,7 +65,9 @@ class SpamBlacklistTest extends ApiTestCase {
 
 	public function testFilterJudgment_matching() {
 		$this->markTestSkipped( 'broken' );
-		list( $page, $revision ) = TestStorageHelper::createEntity();
+		list( $page, $revisionRecord ) = TestStorageHelper::createNewEntity(
+			$this->getTestUser()->getUser()
+		);
 
 		$content = json_encode( [
 			'judgments' => [ [
@@ -83,14 +85,16 @@ class SpamBlacklistTest extends ApiTestCase {
 
 		$result = $this->doApiRequestWithToken( [
 			'action' => 'edit',
-			'title' => "Judgment:Diff/{$revision->getId()}",
+			'title' => "Judgment:Diff/{$revisionRecord->getId()}",
 			'text' => $content,
 			'summary' => 'a summary',
 		] );
 	}
 
 	public function testFilterJudgment_nonmatching() {
-		list( $page, $revision ) = TestStorageHelper::createEntity();
+		list( $page, $revisionRecord ) = TestStorageHelper::createNewEntity(
+			$this->getTestUser()->getUser()
+		);
 
 		$content = json_encode( [
 			'judgments' => [ [
@@ -105,7 +109,7 @@ class SpamBlacklistTest extends ApiTestCase {
 
 		$result = $this->doApiRequestWithToken( [
 			'action' => 'edit',
-			'title' => "Judgment:Diff/{$revision->getId()}",
+			'title' => "Judgment:Diff/{$revisionRecord->getId()}",
 			'text' => $content,
 			'summary' => 'a summary',
 		] );

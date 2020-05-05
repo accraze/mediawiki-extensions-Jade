@@ -38,7 +38,9 @@ class SetPreferenceTest extends ApiTestCase {
 	 * @covers ::execute
 	 */
 	public function testSetPreference_sucess() {
-		list( $page, $revision ) = TestStorageHelper::createEntity();
+		list( $page, $revisionRecord ) = TestStorageHelper::createNewEntity(
+			$this->getTestUser()->getUser()
+		);
 		$existingEntity = [
 				'facets' => [
 				'editquality' => [
@@ -67,7 +69,7 @@ class SetPreferenceTest extends ApiTestCase {
 				],
 			 ],
 		];
-		$title = "Diff/{$revision->getId()}";
+		$title = "Diff/{$revisionRecord->getId()}";
 
 		$status = TestStorageHelper::saveJudgment(
 			$title,

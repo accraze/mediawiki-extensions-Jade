@@ -129,14 +129,16 @@ class PageEntityProposalSetStorageTest extends MediaWikiTestCase {
 		$this->resetServices();
 
 		// Create a normal judgment to be edited.
-		list( $entityPage, $entityRevision ) = TestStorageHelper::createEntity();
+		list( $entityPage, $revisionRecord ) = TestStorageHelper::createNewEntity(
+			$this->getTestUser()->getUser()
+		);
 		TestStorageHelper::saveJudgment(
-			"Revision/{$entityRevision->getId()}",
+			"Revision/{$revisionRecord->getId()}",
 			$this->getJudgmentText() );
 
 		// Should return a failure status.
 		$status = $this->storage->storeProposalSet(
-			new EntityTarget( $this->revisionType, $entityRevision->getId() ),
+			new EntityTarget( $this->revisionType, $revisionRecord->getId() ),
 			$this->getJudgment( self::JUDGMENT_V2 ),
 			'summary',
 			$wgUser,
@@ -152,7 +154,9 @@ class PageEntityProposalSetStorageTest extends MediaWikiTestCase {
 	 * @covers ::storeProposalSet
 	 */
 	public function testStoreProposalSet_cannotAddTag() {
-		list( $entityPage, $entityRevision ) = TestStorageHelper::createEntity();
+		list( $entityPage, $revisionRecord ) = TestStorageHelper::createNewEntity(
+			$this->getTestUser()->getUser()
+		);
 
 		// Prevent adding tags.
 		$this->setMwGlobals( [
@@ -165,7 +169,7 @@ class PageEntityProposalSetStorageTest extends MediaWikiTestCase {
 
 		// Should return a failure status.
 		$status = $this->storage->storeProposalSet(
-			new EntityTarget( $this->revisionType, $entityRevision->getId() ),
+			new EntityTarget( $this->revisionType, $revisionRecord->getId() ),
 			$this->getJudgment(),
 			'summary',
 			$this->getTestUser()->getUser(),
@@ -182,11 +186,13 @@ class PageEntityProposalSetStorageTest extends MediaWikiTestCase {
 	 */
 	public function testStoreProposalSet_success() {
 		// Create an entity to be judged.
-		list( $entityPage, $entityRevision ) = TestStorageHelper::createEntity();
+		list( $entityPage, $revisionRecord ) = TestStorageHelper::createNewEntity(
+			$this->getTestUser()->getUser()
+		);
 
 		// Store the judgment.
 		$status = $this->storage->storeProposalSet(
-			new EntityTarget( $this->revisionType, $entityRevision->getId() ),
+			new EntityTarget( $this->revisionType, $revisionRecord->getId() ),
 			$this->getJudgment(),
 			'summary',
 			$this->getTestUser()->getUser(),
@@ -194,7 +200,7 @@ class PageEntityProposalSetStorageTest extends MediaWikiTestCase {
 		);
 		$this->assertTrue( $status->isOK() );
 
-		$title = "Revision/{$entityRevision->getId()}";
+		$title = "Revision/{$revisionRecord->getId()}";
 		list( $page, $storedJudgment ) = TestStorageHelper::loadJudgment( $title );
 		$this->assertEquals( $this->getJudgment(), $storedJudgment );
 	}
@@ -204,11 +210,13 @@ class PageEntityProposalSetStorageTest extends MediaWikiTestCase {
 	 */
 	public function testLoadJudgmentSet_empty() {
 		// Create an entity to be judged.
-		list( $entityPage, $entityRevision ) = TestStorageHelper::createEntity();
+		list( $entityPage, $revisionRecord ) = TestStorageHelper::createNewEntity(
+			$this->getTestUser()->getUser()
+		);
 
 		// Store using test helper to isolate function under test.
 		$status = TestStorageHelper::saveJudgment(
-			"Revision/{$entityRevision->getId()}",
+			"Revision/{$revisionRecord->getId()}",
 			$this->getJudgmentText() );
 		$this->assertTrue( $status->isOK() );
 
@@ -221,7 +229,7 @@ class PageEntityProposalSetStorageTest extends MediaWikiTestCase {
 		);
 		$this->assertTrue( $status->isOK() );
 
-		$target = new EntityTarget( $this->revisionType, $entityRevision->getId() );
+		$target = new EntityTarget( $this->revisionType, $revisionRecord->getId() );
 		$status = $this->storage->loadProposalSet( $target );
 		$this->assertTrue( $status->isOK() );
 		$this->assertEquals( [], $status->value );
@@ -232,15 +240,17 @@ class PageEntityProposalSetStorageTest extends MediaWikiTestCase {
 	 */
 	public function testLoadProposalSet_success() {
 		// Create an entity to be judged.
-		list( $entityPage, $entityRevision ) = TestStorageHelper::createEntity();
+		list( $entityPage, $revisionRecord ) = TestStorageHelper::createNewEntity(
+			$this->getTestUser()->getUser()
+		);
 
 		// Store using test helper to isolate function under test.
 		$success = TestStorageHelper::saveJudgment(
-			"Revision/{$entityRevision->getId()}",
+			"Revision/{$revisionRecord->getId()}",
 			$this->getJudgmentText() );
 		$this->assertTrue( $success->isOK() );
 
-		$target = new EntityTarget( $this->revisionType, $entityRevision->getId() );
+		$target = new EntityTarget( $this->revisionType, $revisionRecord->getId() );
 		$status = $this->storage->loadProposalSet( $target );
 		$this->assertTrue( $status->isOK() );
 		$this->assertEquals( $this->getJudgment(), $status->value );
