@@ -28,14 +28,20 @@ class EntityLinkTableHelper {
 	}
 
 	public function getLinkTable() {
-		// Dynamic link table name per entity type, e.g. "jade_diff_judgment".
-		return "jade_{$this->entityType}_judgment";
+		// Dynamic link table name per entity type, e.g. "jade_diff_label".
+		return "jade_{$this->entityType}_label";
 	}
 
 	public function getColumnPrefix() {
 		// Table column prefix is constructed using the first letter of the entity type name.
 		$entityTypeString = (string)$this->entityType;
-		return "jade{$entityTypeString[0]}";
+		$prefix = '';
+		if ( $entityTypeString == 'diff' ) {
+			$prefix = 'dl';
+		} elseif ( $entityTypeString == 'revision' ) {
+			$prefix = 'rl';
+		}
+		return "jade{$prefix}";
 	}
 
 	public function getIdColumn() {
@@ -43,16 +49,16 @@ class EntityLinkTableHelper {
 		return "{$columnPrefix}_id";
 	}
 
-	public function getProposalColumn() {
+	public function getPageColumn() {
 		$columnPrefix = $this->getColumnPrefix();
-		// Column linking to proposal pages, e.g. "jaded_proposal" for the diff link table.
-		return "{$columnPrefix}_proposal";
+		// Column linking to jade entity pages, e.g. "jadedl_page_id" for the diff link table.
+		return "{$columnPrefix}_page_id";
 	}
 
 	public function getTargetColumn() {
 		$columnPrefix = $this->getColumnPrefix();
-		// Column linking to proposal target revisions, e.g. "jaded_revision".
-		return "{$columnPrefix}_revision";
+		// Column linking to proposal target revisions, e.g. "jadedl_rev_id".
+		return "{$columnPrefix}_rev_id";
 	}
 
 	public function getSummaryColumn( $schema ) {

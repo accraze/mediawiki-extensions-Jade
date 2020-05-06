@@ -1,4 +1,5 @@
 -- Link table between revision judgment pages and the revision they target.
+
 create table /*_*/jade_revision_judgment (
 	-- Primary key.  This is for internal use and not guaranteed to be stable.
 	jader_id int unsigned not null primary key auto_increment,
