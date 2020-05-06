@@ -77,5 +77,6 @@
 	"jade-editquality-is-comment": "Edit comment part with facet name on MW history page.",
 	"jade-productive-good-faith-comment": "Edit comment part with Productive / Good-faith label data on MW history page.",
 	"jade-damaging-good-faith-comment": "Edit comment part with Damaging / Good-faith label data on MW history page.",
-	"jade-damaging-bad-faith-comment": "Edit comment part with Damaging / Bad-faith label data on MW history page."
+	"jade-damaging-bad-faith-comment": "Edit comment part with Damaging / Bad-faith label data on MW history page.",
+	"jade-by-id-number-comment": "Edit comment part with user id replaced with username on MW history page."
 }

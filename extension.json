@@ -141,7 +141,8 @@
 				"jade-editquality-is-comment",
 				"jade-productive-good-faith-comment",
 				"jade-damaging-good-faith-comment",
-				"jade-damaging-bad-faith-comment"
+				"jade-damaging-bad-faith-comment",
+				"jade-by-id-number-comment"
 			]
 		},
 		"jade.dialogs": {

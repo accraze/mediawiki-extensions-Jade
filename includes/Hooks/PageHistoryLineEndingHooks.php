@@ -19,6 +19,7 @@ namespace Jade\Hooks;
 use DOMDocument;
 use DOMXPath;
 use HistoryPager;
+use User;
 
 class PageHistoryLineEndingHooks {
 
@@ -60,13 +61,26 @@ class PageHistoryLineEndingHooks {
 						'editquality is',
 						'{"damaging":false,"goodfaith":true}',
 						'{"damaging":true,"goodfaith":true}',
-						'{"damaging":true,"goodfaith":false}'
+						'{"damaging":true,"goodfaith":false}',
+						preg_match(
+							'/by id (\d{1,12})/',
+							$child->nodeValue,
+							$matches
+						) ? $matches[0] : ''
 					];
 					$newTextToAdd = [
 						wfMessage( 'jade-editquality-is-comment' )->escaped(),
 						wfMessage( 'jade-productive-good-faith-comment' )->escaped(),
 						wfMessage( 'jade-damaging-good-faith-comment' )->escaped(),
-						wfMessage( 'jade-damaging-bad-faith-comment' )->escaped()
+						wfMessage( 'jade-damaging-bad-faith-comment' )->escaped(),
+						wfMessage(
+							'jade-by-id-number-comment',
+							preg_match(
+								'/by id (\d{1,12})/',
+								$child->nodeValue,
+								$matches
+							) ? User::newFromId( (int)$matches[1] )->getName() : ''
+						)->parse()
 					];
 					$child->nodeValue = str_replace(
 						$oldTextToRemove,
@@ -76,8 +90,8 @@ class PageHistoryLineEndingHooks {
 					$innerHTML .= $tmp_doc->saveHTML();
 				}
 			}
-			// save new comment line
-			$line = $commentDOM->saveHTML();
+			// save new comment line and decode all HTML
+			$line = html_entity_decode( $commentDOM->saveHTML() );
 		}
 	}
 

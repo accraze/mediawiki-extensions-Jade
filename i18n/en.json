@@ -72,5 +72,6 @@
 	"jade-editquality-is-comment": "Edit quality is",
 	"jade-productive-good-faith-comment": "Productive / Good-faith",
 	"jade-damaging-good-faith-comment": "Damaging / Good-faith",
-	"jade-damaging-bad-faith-comment": "Damaging / Bad-faith"
+	"jade-damaging-bad-faith-comment": "Damaging / Bad-faith",
+	"jade-by-id-number-comment": "by [[User:$1|$1]]"
 }
