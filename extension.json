@@ -138,6 +138,7 @@
 				"jade-endorseproposal-autocomment",
 				"jade-setpreference-autocomment",
 				"jade-moveendorsement-autocomment",
+				"jade-number-of-endorsements-autocomment",
 				"jade-editquality-is-comment",
 				"jade-productive-good-faith-comment",
 				"jade-damaging-good-faith-comment",

@@ -44,8 +44,15 @@ class FormatAutocommentsHooks {
 		if ( $title->inNamespace( NS_JADE ) ) {
 			$autoComment = explode( "|", $auto, 2 );
 			$autoCommentText = $autoComment[0];
+			$autoCommentNum = $autoComment[1] ?? null;
 			$autoCommentMsgKey = $autoCommentText . '-autocomment';
-			$comment = wfMessage( $autoCommentMsgKey )->parse();
+			$localizedAutoCommentText = wfMessage( $autoCommentMsgKey )->parse();
+			$localizedAutoCommentNum = wfMessage(
+				'jade-number-of-endorsements-autocomment',
+				$autoCommentNum
+			)->parse();
+			$comment = $localizedAutoCommentText .
+				( $autoCommentNum ? $localizedAutoCommentNum : '' );
 		}
 	}
 

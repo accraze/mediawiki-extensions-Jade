@@ -74,6 +74,7 @@
 	"jade-endorseproposal-autocomment": "Edit comment prefix on MW history page when a user endorses a proposal.",
 	"jade-setpreference-autocomment": "Edit comment prefix on MW history page when a user promotes a proposal.",
 	"jade-moveendorsement-autocomment": "Edit comment prefix on MW history page when a user moves an endorsement.",
+	"jade-number-of-endorsements-autocomment": "Edit comment prefix on MW history page that shows the number of endorsements.",
 	"jade-editquality-is-comment": "Edit comment part with facet name on MW history page.",
 	"jade-productive-good-faith-comment": "Edit comment part with Productive / Good-faith label data on MW history page.",
 	"jade-damaging-good-faith-comment": "Edit comment part with Damaging / Good-faith label data on MW history page.",
