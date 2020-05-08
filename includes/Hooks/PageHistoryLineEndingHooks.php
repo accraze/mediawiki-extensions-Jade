@@ -63,6 +63,11 @@ class PageHistoryLineEndingHooks {
 						'{"damaging":true,"goodfaith":true}',
 						'{"damaging":true,"goodfaith":false}',
 						preg_match(
+							'/by ((?:[0-9]{1,3}\.){3}[0-9]{1,3})/',
+							$child->nodeValue,
+							$matches
+						) ? $matches[0] : '',
+						preg_match(
 							'/by id (\d{1,12})/',
 							$child->nodeValue,
 							$matches
@@ -73,6 +78,14 @@ class PageHistoryLineEndingHooks {
 						wfMessage( 'jade-productive-good-faith-comment' )->escaped(),
 						wfMessage( 'jade-damaging-good-faith-comment' )->escaped(),
 						wfMessage( 'jade-damaging-bad-faith-comment' )->escaped(),
+						wfMessage(
+							'jade-by-ip-address-comment',
+							preg_match(
+								'/by ((?:[0-9]{1,3}\.){3}[0-9]{1,3})/',
+								$child->nodeValue,
+								$matches
+							) ? $matches[1] : ''
+						)->parse(),
 						wfMessage(
 							'jade-by-id-number-comment',
 							preg_match(

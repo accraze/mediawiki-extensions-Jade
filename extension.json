@@ -143,6 +143,7 @@
 				"jade-productive-good-faith-comment",
 				"jade-damaging-good-faith-comment",
 				"jade-damaging-bad-faith-comment",
+				"jade-by-ip-address-comment",
 				"jade-by-id-number-comment"
 			]
 		},
