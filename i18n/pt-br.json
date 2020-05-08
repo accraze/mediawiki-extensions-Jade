@@ -60,5 +60,19 @@
 	"jade-endorse": "Você aprovou uma proposta",
 	"jade-createandendorse": "Você criou e endossou uma proposta",
 	"jade-setpreference": "Você promoveu uma proposta",
-	"jade-moveendorsement": "Você moveu um endosso"
+	"jade-moveendorsement": "Você moveu um endosso",
+	"jade-createandendorseproposal-autocomment": "Proposta criada:",
+	"jade-deleteproposal-autocomment": "'''Proposta excluída'''",
+	"jade-updateendorsement-autocomment": "Endosso atualizado:",
+	"jade-updateproposal-autocomment": "Proposta atualizada:",
+	"jade-deleteendorsement-autocomment": "'''Endosso excluído:'''",
+	"jade-endorseproposal-autocomment": "Proposta de endosso:",
+	"jade-setpreference-autocomment": "'''Conjunto de preferências:'''",
+	"jade-moveendorsement-autocomment": "Endosso movido:",
+	"jade-number-of-endorsements-autocomment": "''' ($1 {{PLURAL:$1|endosso|endossos}}):'''",
+	"jade-editquality-is-comment": "A qualidade da edição é",
+	"jade-productive-good-faith-comment": "Produtivo / de boa fé",
+	"jade-damaging-good-faith-comment": "Danos / boa-fé",
+	"jade-damaging-bad-faith-comment": "Danos / má-fé",
+	"jade-by-id-number-comment": "por [[User:$1|$1]]"
 }

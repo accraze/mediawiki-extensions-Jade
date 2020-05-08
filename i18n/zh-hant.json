@@ -58,5 +58,18 @@
 	"jade-endorse": "您已贊同一個提議",
 	"jade-createandendorse": "您已建立並贊同一個提議",
 	"jade-setpreference": "您已促進一個提議",
-	"jade-moveendorsement": "您已移動一個贊同"
+	"jade-moveendorsement": "您已移動一個贊同",
+	"jade-createandendorseproposal-autocomment": "提議建立：",
+	"jade-deleteproposal-autocomment": "'''提議刪除'''",
+	"jade-updateendorsement-autocomment": "贊同更新：",
+	"jade-updateproposal-autocomment": "提議更新：",
+	"jade-deleteendorsement-autocomment": "'''贊同刪除：'''",
+	"jade-endorseproposal-autocomment": "贊同提議：",
+	"jade-moveendorsement-autocomment": "贊同移動：",
+	"jade-number-of-endorsements-autocomment": "'''（$1 個{{PLURAL:$1|贊同}}）：'''",
+	"jade-editquality-is-comment": "編輯品質為",
+	"jade-productive-good-faith-comment": "具備價值/善意",
+	"jade-damaging-good-faith-comment": "破壞性/善意",
+	"jade-damaging-bad-faith-comment": "破壞性/惡意",
+	"jade-by-id-number-comment": "由[[User:$1|$1]]做出"
 }

@@ -59,5 +59,18 @@
 	"jade-endorse": "Bir teklifi onayladınız",
 	"jade-createandendorse": "Bir teklifi oluşturdunuz ve onayladınız",
 	"jade-setpreference": "Bir teklifi tanıttınız",
-	"jade-moveendorsement": "Bir ciroyu taşıdınız"
+	"jade-moveendorsement": "Bir ciroyu taşıdınız",
+	"jade-deleteproposal-autocomment": "'''Teklif silindi'''",
+	"jade-updateendorsement-autocomment": "Onay güncellendi:",
+	"jade-updateproposal-autocomment": "Teklif güncellendi:",
+	"jade-deleteendorsement-autocomment": "'''Onay silindi:'''",
+	"jade-endorseproposal-autocomment": "Onaylanan teklif:",
+	"jade-setpreference-autocomment": "'''Tercih ayarı:'''",
+	"jade-moveendorsement-autocomment": "Onay taşındı:",
+	"jade-number-of-endorsements-autocomment": "'''($1 onay):'''",
+	"jade-editquality-is-comment": "Düzenleme kalitesi",
+	"jade-productive-good-faith-comment": "Üretken / İyi niyet",
+	"jade-damaging-good-faith-comment": "Hasar / İyi niyet",
+	"jade-damaging-bad-faith-comment": "Hasar / Kötü niyet",
+	"jade-by-id-number-comment": "[[User:$1|$1]] tarafından"
 }
