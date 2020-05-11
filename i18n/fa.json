@@ -20,5 +20,9 @@
 	"jade-delete": "حذف",
 	"jade-user": "کاربر",
 	"jade-updateproposal": "شما یک پیشنهاده را روزآمد کردید",
-	"jade-deleteproposal": "شما یک پیشنهاده را حذف کردید"
+	"jade-deleteproposal": "شما یک پیشنهاده را حذف کردید",
+	"jade-createandendorseproposal-autocomment": "پیشنهاده ایجاد شد:",
+	"jade-deleteproposal-autocomment": "«پیشنهاده حذف شد»",
+	"jade-editquality-is-comment": "کیفیت ویزایش است",
+	"jade-by-id-number-comment": "توسط [[User:$1|$1]]"
 }

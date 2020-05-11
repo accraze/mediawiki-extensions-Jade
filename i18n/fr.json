@@ -65,5 +65,20 @@
 	"jade-endorse": "Vous avez accepté une proposition",
 	"jade-createandendorse": "Vous avez créé et accepté une proposition",
 	"jade-setpreference": "Vous avez promu une proposition",
-	"jade-moveendorsement": "Vous avez déplacé une approbation"
+	"jade-moveendorsement": "Vous avez déplacé une approbation",
+	"jade-createandendorseproposal-autocomment": "Proposition  créée :",
+	"jade-deleteproposal-autocomment": "'''Proposition supprimée'''",
+	"jade-updateendorsement-autocomment": "Approbation mise à jour :",
+	"jade-updateproposal-autocomment": "Proposition mise à jour :",
+	"jade-deleteendorsement-autocomment": "'''Approbation supprimée :'''",
+	"jade-endorseproposal-autocomment": "Proposition approuvée :",
+	"jade-setpreference-autocomment": "'''Préférence définie :'''",
+	"jade-moveendorsement-autocomment": "Approbation déplacée :",
+	"jade-number-of-endorsements-autocomment": "''' ($1 {{PLURAL:$1|approbation|approbations}}) :'''",
+	"jade-editquality-is-comment": "La qualité de la modification est",
+	"jade-productive-good-faith-comment": "Encourageant / Bonne foi",
+	"jade-damaging-good-faith-comment": "Préjudiciable / Bonne foi",
+	"jade-damaging-bad-faith-comment": "Préjudiciable / Mauvaise foi",
+	"jade-by-ip-address-comment": "par [[Special:Contributions/$1|$1]]",
+	"jade-by-id-number-comment": "par [[User:$1|$1]]"
 }

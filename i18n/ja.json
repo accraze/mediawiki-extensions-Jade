@@ -4,5 +4,9 @@
 			"Omotecho"
 		]
 	},
-	"jade-desc": "判断と会話のエンジン"
+	"jade-desc": "判断と会話のエンジン",
+	"jade-number-of-endorsements-autocomment": "'''($1件の{{PLURAL:$1|賛同}})：'''",
+	"jade-damaging-good-faith-comment": "破壊性/善意",
+	"jade-by-ip-address-comment": "[[Special:Contributions/$1|$1]]による",
+	"jade-by-id-number-comment": "[[User:$1|$1]]による"
 }

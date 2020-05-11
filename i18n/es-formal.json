@@ -4,5 +4,8 @@
 			"Fitoschido"
 		]
 	},
-	"jade-updateproposal": "Ha cargado una propuesta correctamente"
+	"jade-updateendorsement": "Ha actualizado un aval",
+	"jade-updateproposal": "Ha cargado una propuesta correctamente",
+	"jade-deleteendorsement": "Ha eliminado un aval",
+	"jade-moveendorsement": "Ha trasladado un aval"
 }

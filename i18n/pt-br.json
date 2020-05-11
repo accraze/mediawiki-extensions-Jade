@@ -74,5 +74,6 @@
 	"jade-productive-good-faith-comment": "Produtivo / de boa fé",
 	"jade-damaging-good-faith-comment": "Danos / boa-fé",
 	"jade-damaging-bad-faith-comment": "Danos / má-fé",
+	"jade-by-ip-address-comment": "por [[Special:Contributions/$1|$1]]",
 	"jade-by-id-number-comment": "por [[User:$1|$1]]"
 }

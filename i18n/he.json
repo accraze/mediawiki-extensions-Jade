@@ -61,5 +61,20 @@
 	"jade-endorse": "הבעת תמיכה בהצעה",
 	"jade-createandendorse": "יצרת הצעה והבעת בה תמיכה",
 	"jade-setpreference": "קידמת הצעה",
-	"jade-moveendorsement": "העברת הבעת תמיכה"
+	"jade-moveendorsement": "העברת הבעת תמיכה",
+	"jade-createandendorseproposal-autocomment": "נוצרה הצעה:",
+	"jade-deleteproposal-autocomment": "'''ההצעה נמחקה'''",
+	"jade-updateendorsement-autocomment": "הבעת התמיכה עודכנה:",
+	"jade-updateproposal-autocomment": "הצעה עודכנה:",
+	"jade-deleteendorsement-autocomment": "'''הבעת תמיכה נמחקה:'''",
+	"jade-endorseproposal-autocomment": "הובעה תמיכה בהצעה:",
+	"jade-setpreference-autocomment": "'''הוגדרה העדפה:'''",
+	"jade-moveendorsement-autocomment": "הבעת תמיכה הועברה:",
+	"jade-number-of-endorsements-autocomment": "''' ({{PLURAL:$1|הצעה אחת|$1 הצעות}}):'''",
+	"jade-editquality-is-comment": "איכות העריכה היא",
+	"jade-productive-good-faith-comment": "מועילה / בכוונה טובה",
+	"jade-damaging-good-faith-comment": "מזיקה / בכוונה טובה",
+	"jade-damaging-bad-faith-comment": "מועילה / בכוונה רעה",
+	"jade-by-ip-address-comment": "מאת [[Special:Contributions/$1|$1]]",
+	"jade-by-id-number-comment": "מאת [[User:$1|$1]]"
 }

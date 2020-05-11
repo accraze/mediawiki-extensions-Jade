@@ -60,6 +60,7 @@
 	"jade-createandendorse": "Bir teklifi oluşturdunuz ve onayladınız",
 	"jade-setpreference": "Bir teklifi tanıttınız",
 	"jade-moveendorsement": "Bir ciroyu taşıdınız",
+	"jade-createandendorseproposal-autocomment": "Teklif oluşturuldu:",
 	"jade-deleteproposal-autocomment": "'''Teklif silindi'''",
 	"jade-updateendorsement-autocomment": "Onay güncellendi:",
 	"jade-updateproposal-autocomment": "Teklif güncellendi:",
@@ -72,5 +73,6 @@
 	"jade-productive-good-faith-comment": "Üretken / İyi niyet",
 	"jade-damaging-good-faith-comment": "Hasar / İyi niyet",
 	"jade-damaging-bad-faith-comment": "Hasar / Kötü niyet",
+	"jade-by-ip-address-comment": "[[Special:Contributions/$1|$1]] tarafından",
 	"jade-by-id-number-comment": "[[User:$1|$1]] tarafından"
 }
