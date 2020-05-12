@@ -23,5 +23,6 @@
 	"jade-endorse": "Dir hutt e Virschlag ënnertstëtzt",
 	"jade-createandendorse": "Dir hutt e Virschlag ugeluecht an ënnerstëtzt",
 	"jade-setpreference": "Dir hutt e Virschlag promovéiert",
-	"jade-moveendorsement": "Dir hutt eng Ënnerstëtzung geréckelt"
+	"jade-moveendorsement": "Dir hutt eng Ënnerstëtzung geréckelt",
+	"jade-by-id-number-comment": "vum [[User:$1|$1]]"
 }
