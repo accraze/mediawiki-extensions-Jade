@@ -1,11 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Yllelder",
+			"Fitoschido",
 			"Ihojose",
-			"Fitoschido"
+			"Yllelder"
 		]
 	},
+	"apihelp-jadecreateandendorse-param-endorsementcomment": "Comentario que dejar con el aval.",
 	"apihelp-jadecreateandendorse-param-comment": "Resumen de revisión",
 	"apihelp-jadesetpreference-param-facet": "La faceta de la entidad.",
 	"apihelp-jadeupdateproposal-param-facet": "La faceta de la entidad.",
@@ -13,10 +14,14 @@
 	"apihelp-jadedeleteproposal-param-facet": "La faceta de la entidad.",
 	"apihelp-jadedeleteproposal-example": "Eliminar una propuesta específica utilizando el parámetro <var>title</var>.",
 	"apihelp-jadeendorse-param-facet": "La faceta de la entidad.",
+	"apihelp-jadeendorse-param-endorsementcomment": "Comentario que dejar con el aval.",
 	"apihelp-jadeendorse-param-comment": "Resumen de revisión",
+	"apihelp-jadedeleteendorsement-summary": "Quita el aval del usuario.",
 	"apihelp-jadedeleteendorsement-param-facet": "La faceta de la entidad.",
 	"apihelp-jadedeleteendorsement-param-comment": "Resumen de revisión",
+	"apihelp-jadeupdateendorsement-summary": "Actualizar el comentario de aval del usuario.",
 	"apihelp-jadeupdateendorsement-param-facet": "La faceta de la entidad.",
+	"apihelp-jadeupdateendorsement-param-endorsementcomment": "El campo de comentario nuevo para el aval.",
 	"apihelp-jadeupdateendorsement-param-comment": "Resumen de revisión",
 	"apihelp-jademoveendorsement-param-facet": "La faceta de la entidad.",
 	"apihelp-jademoveendorsement-param-comment": "Resumen de revisión",

@@ -1,15 +1,17 @@
 {
 	"@metadata": {
 		"authors": [
+			"Eneelk",
 			"Gomoko",
-			"Wladek92",
-			"Zarisi",
+			"Pamputt",
 			"Tartare",
 			"Thibaut120094",
-			"Verdy p"
+			"Verdy p",
+			"Wladek92",
+			"Zarisi"
 		]
 	},
-	"jade-desc": "Moteur de verdict et de dialogue",
+	"jade-desc": "Système robuste de collecte de faux positifs et de retour d’information, pour permettre la réfutation humaine et la révision de la notation ORES.",
 	"jade-damaging-scale-true-label": "Nuisible",
 	"jade-damaging-scale-false-label": "Non nuisible",
 	"jade-goodfaith-scale-true-label": "Bonne foi",
@@ -48,10 +50,35 @@
 	"jade-endorsement": "Approbation",
 	"jade-endorsements": "Approbation",
 	"jade-user": "Utilisateur",
+	"jade-proposalexists": "Une proposition avec les données spécifiées existe déjà.",
 	"jade-proposalnotfound": "Impossible de trouver une proposition où « data » correspond à ''$1''",
 	"jade-endorsementnotfound": "Impossible de trouver une approbation par l’utilisateur cible.",
 	"jade-endorsingnonpreferredproposal": "Cette action a conduit à créer une approbation pour une proposition qui n’est pas signalée comme préférée.",
 	"jade-proposalispreferred": "Impossible de supprimer une proposition sauf quand c’est la seule proposition restante pour une facette. Vous devez définir une autre proposition qui doit être « préférée ».",
 	"jade-invalidtitleentitydata": "Un paramètre « title » ou « entitydata » doit être fourni.",
-	"jade-nochange": "Cette action n’apportera aucune modification. L’utilisateur a déjà approuvé labeldata."
+	"jade-nochange": "Cette action n’apportera aucune modification. L’utilisateur a déjà approuvé labeldata.",
+	"jade-alreadyendorsed": "Approbation impossible car vous avez déjà approuvé une autre proposition. Veuillez plutôt changer votre approbation.",
+	"jade-updateendorsement": "Vous avez mis à jour une approbation",
+	"jade-updateproposal": "Vous avez mis à jour une proposition",
+	"jade-deleteendorsement": "Vous avez supprimé une approbation",
+	"jade-deleteproposal": "Vous avez supprimé une proposition",
+	"jade-endorse": "Vous avez accepté une proposition",
+	"jade-createandendorse": "Vous avez créé et accepté une proposition",
+	"jade-setpreference": "Vous avez promu une proposition",
+	"jade-moveendorsement": "Vous avez déplacé une approbation",
+	"jade-createandendorseproposal-autocomment": "Proposition  créée :",
+	"jade-deleteproposal-autocomment": "'''Proposition supprimée'''",
+	"jade-updateendorsement-autocomment": "Approbation mise à jour :",
+	"jade-updateproposal-autocomment": "Proposition mise à jour :",
+	"jade-deleteendorsement-autocomment": "'''Approbation supprimée :'''",
+	"jade-endorseproposal-autocomment": "Proposition approuvée :",
+	"jade-setpreference-autocomment": "'''Préférence définie :'''",
+	"jade-moveendorsement-autocomment": "Approbation déplacée :",
+	"jade-number-of-endorsements-autocomment": "''' ($1 {{PLURAL:$1|approbation|approbations}}) :'''",
+	"jade-editquality-is-comment": "La qualité de la modification est",
+	"jade-productive-good-faith-comment": "Encourageant / Bonne foi",
+	"jade-damaging-good-faith-comment": "Préjudiciable / Bonne foi",
+	"jade-damaging-bad-faith-comment": "Préjudiciable / Mauvaise foi",
+	"jade-by-ip-address-comment": "par [[Special:Contributions/$1|$1]]",
+	"jade-by-id-number-comment": "par [[User:$1|$1]]"
 }

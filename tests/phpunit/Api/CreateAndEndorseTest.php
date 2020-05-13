@@ -25,7 +25,7 @@ use ApiTestCase;
  * @group medium
  * @group Jade
  *
- * @coversDefaultClass Jade\Api\CreateAndEndorse
+ * @coversDefaultClass \Jade\Api\CreateAndEndorse
  */
 class CreateAndEndorseTest extends ApiTestCase {
 

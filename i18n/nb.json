@@ -4,7 +4,7 @@
 			"Jon Harald Søby"
 		]
 	},
-	"jade-desc": "Bedømmings- og dialogmotor",
+	"jade-desc": "Robust system for å samle falske positiver og tilbakemeldinger for å la mennesker ta del i og gjennomgå skåren fra ORES.",
 	"jade-damaging-scale-true-label": "Skadelig",
 	"jade-damaging-scale-false-label": "Ikke skadelig",
 	"jade-goodfaith-scale-true-label": "God hensikt",
@@ -43,6 +43,7 @@
 	"jade-endorsement": "Støtteerklæring",
 	"jade-endorsements": "Støtteerklæringer",
 	"jade-user": "Bruker",
+	"jade-proposalexists": "Et forslag med de angitte dataene finnes allerede.",
 	"jade-proposalnotfound": "Kunne ikke finne forslag med matchende «data» «$1»",
 	"jade-endorsementnotfound": "Kunne ikke finne en støtteerklæring fra målbrukeren.",
 	"jade-endorsingnonpreferredproposal": "Denne handlingen førte til at det ble opprettet en støtteerklæring for et forslag som ikke er flagget som foretrukket.",

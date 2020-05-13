@@ -1,11 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Liuxinyu970226",
-			"Endermoon",
-			"夢蝶葬花",
 			"A Chinese Wikipedian",
-			"Phenolla"
+			"Accraze",
+			"Endermoon",
+			"Liuxinyu970226",
+			"Phenolla",
+			"夢蝶葬花"
 		]
 	},
 	"jade-desc": "判断和会话引擎",
@@ -14,13 +15,16 @@
 	"jade-goodfaith-scale-true-label": "善意",
 	"jade-goodfaith-scale-false-label": "恶意",
 	"jade-contentquality-scale-1-label": "小作品级条目",
+	"jade-contentquality-scale-2-label": "初級條目",
 	"jade-contentquality-scale-3-label": "丙级条目",
 	"jade-contentquality-scale-4-label": "乙级条目",
 	"jade-contentquality-scale-5-label": "优良条目",
 	"jade-contentquality-scale-6-label": "典范条目",
+	"jade-contentquality-generic": "內容品質「$1」",
 	"jade-notes-placeholder": "有关判断的说明",
 	"jade-delete": "删除",
 	"jade-bad-title-format": "无效标题格式",
+	"jade-bad-title-namespace": "Jade Entity标题的无效名称空间。",
 	"jade-bad-entity-type": "无效实体类型“$1”",
 	"jade-bad-revision-id": "找不到ID为“$1”的修订版本",
 	"jade-bad-content-generic": "JSON内容中有语法错误。",
@@ -29,5 +33,8 @@
 	"jade-bad-contentquality-value": "用于文章质量模式的值“$1”有误，可用值有：$2",
 	"jade-cannot-create-page": "您不可以创建此页面。",
 	"jade-cannot-edit-page": "您不能编辑此页面。",
-	"jade-user": "用户"
+	"jade-user": "用户",
+	"jade-nochange": "此操作不会导致任何更改。用户已经认可了labeldata。",
+	"jade-updateproposal": "您已更新提案",
+	"jade-deleteproposal": "您已删除提案"
 }

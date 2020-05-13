@@ -1,0 +1,22 @@
+/* .jade-deleteProposalDialog-proposalWidget {} */
+
+/* .jade-deleteProposalDialog-submitBtn {} */
+
+/* .jade-deleteProposalDialog-cancelBtn {} */
+
+/* .jade-deleteProposalDialog-commentBox {} */
+
+/* .jade-deleteProposalDialog-commentForm {} */
+
+.jade-deleteProposalDialog-commentForm-buttons {
+	text-align: right;
+}
+
+.jade-deleteProposalDialog-panel {
+	margin-bottom: 10%;
+}
+
+.jade-deleteProposalDialog-errorMessage {
+	text-align: left;
+	width: 100%;
+}

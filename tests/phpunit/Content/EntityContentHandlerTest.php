@@ -26,7 +26,7 @@ use WikiPage;
  * @group Jade
  * @group medium
  *
- * @coversDefaultClass Jade\Content\EntityContentHandler
+ * @coversDefaultClass \Jade\Content\EntityContentHandler
  */
 class EntityContentHandlerTest extends MediaWikiLangTestCase {
 
@@ -36,8 +36,10 @@ class EntityContentHandlerTest extends MediaWikiLangTestCase {
 	public function testGetDataForSearchIndex() {
 		$this->markTestSkipped( 'broken' );
 		// Store a healthy entity.
-		list( $entityPage, $entityRevision ) = TestStorageHelper::createEntity();
-		$judgmentTitle = Title::newFromDBkey( "Jade:Revision/{$entityRevision->getId()}" );
+		list( $entityPage, $revisionRecord ) = TestStorageHelper::createNewEntity(
+			$this->getTestUser()->getUser()
+		);
+		$judgmentTitle = Title::newFromDBkey( "Jade:Revision/{$revisionRecord->getId()}" );
 		$status = TestStorageHelper::saveJudgment(
 			$judgmentTitle->getDBkey(),
 			TestStorageHelper::getJudgmentText( 'revision' ) );

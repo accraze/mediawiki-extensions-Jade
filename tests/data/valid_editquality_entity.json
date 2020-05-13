@@ -1,0 +1,30 @@
+{
+	"facets": {
+        "editquality": {
+            "proposals": [
+                {
+                    "labeldata": {
+                        "damaging": false,
+                        "goodfaith": true
+                    },
+                    "notes": "this makes more sense",
+                    "preferred": true,
+                    "author": {
+                        "ip": "10.0.2.2"
+                    },
+                    "endorsements": [
+                        {
+                            "author": {
+                                "ip": "10.0.2.2"
+                            },
+                            "comment": "As proposer",
+                            "origin": "mw-api-sandbox",
+                            "created": "2019-12-20T15:58:42+00:00",
+                            "touched": "2019-12-20T15:58:42+00:00"
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+}

@@ -1,8 +1,9 @@
 {
 	"@metadata": {
 		"authors": [
-			"Vlad5250",
-			"Link2xt"
+			"Alexander Yukal",
+			"Link2xt",
+			"Vlad5250"
 		]
 	},
 	"jade-damaging-scale-true-label": "Вредоносная",
@@ -20,5 +21,6 @@
 	"jade-user-central-id-invalid": "Не существует участника с центральным ID ''$1''.",
 	"jade-user-id-mismatch": "Локальный ID ''$1'' и центральный ID ''$2'' относятся к разным участникам.",
 	"jade-user-ip-invalid": "IP-адрес ''$1'' недействителен.",
-	"jade-db-error": "Ошибка базы данных: $1"
+	"jade-db-error": "Ошибка базы данных: $1",
+	"jade-alreadyendorsed": "Невозможно подтвердить, вы уже одобрили другое предложение. Вместо этого, попробуйте переместить ваше одобрение."
 }

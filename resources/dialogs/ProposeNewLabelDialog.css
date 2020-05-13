@@ -1,0 +1,66 @@
+.jade-proposeNewLabelDialog-selectOption-1,
+.jade-proposeNewLabelDialog-selectOption-2,
+.jade-proposeNewLabelDialog-selectOption-3 {
+	margin-top: -5px;
+}
+
+/* .jade-proposeNewLabelDialog-selectOption-1-damagingIcon {} */
+
+.jade-proposeNewLabelDialog-selectOption-1-productive .oo-ui-labelElement-label {
+	color: #00af89;
+}
+
+.jade-proposeNewLabelDialog-selectOption-1-productive .oo-ui-image-progressive.oo-ui-icon-articleCheck {
+	background-image: url( data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2220%22 height=%2220%22 viewBox=%220 0 20 20%22%3E%3Ctitle%3Earticle check%3C/title%3E%3Cg fill=%22%2300af89%22%3E%3Cpath d=%22M9 17l-4.59-4.59L5.83 11 9 14.17l8-8V3a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V9z%22/%3E%3C/g%3E%3C/svg%3E );
+}
+
+/* .jade-proposeNewLabelDialog-selectOption-1-goodfaithIcon {} */
+
+.jade-proposeNewLabelDialog-selectOption-1-msg {
+	width: 100%;
+}
+
+/* .jade-proposeNewLabelDialog-selectOption1 {} */
+
+/* .jade-proposeNewLabelDialog-selectOption-2-damagingIcon {} */
+
+/* .jade-proposeNewLabelDialog-selectOption-2-goodfaithIcon {} */
+
+.jade-proposeNewLabelDialog-selectOption-2-msg {
+	width: 100%;
+}
+
+/* .jade-proposeNewLabelDialog-selectOption-2 {} */
+
+/* .jade-proposeNewLabelDialog-selectOption-3-damagingIcon {} */
+
+/* .jade-proposeNewLabelDialog-selectOption-3-goodfaithIcon {} */
+
+.jade-proposeNewLabelDialog-selectOption-3-msg {
+	width: 100%;
+}
+
+/* .jade-proposeNewLabelDialog-selectOption-3 {} */
+
+/* .jade-proposeNewLabelDialog-labelForm {} */
+
+/* .jade-proposeNewLabelDialog-labelForm-radioOption {} */
+
+.jade-proposeNewLabelDialog-submitBtn {
+	margin-right: 0.1px;
+}
+
+/* .jade-proposeNewLabelDialog-cancelBtn {} */
+
+/* .jade-proposeNewLabelDialog-notesBox {} */
+
+/* .jade-proposeNewLabelDialog-notesForm {} */
+
+.jade-proposeNewLabelDialog-notesForm-buttons {
+	text-align: right;
+}
+
+.jade-proposeNewLabelDialog-errorMessage {
+	text-align: left;
+	width: 100%;
+}

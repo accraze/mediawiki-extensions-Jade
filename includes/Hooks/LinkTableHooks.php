@@ -17,8 +17,8 @@
 namespace Jade\Hooks;
 
 use Content;
+use Jade\EntityTarget;
 use Jade\JadeServices;
-use Jade\ProposalTarget;
 use Jade\TitleHelper;
 use LogEntry;
 use MediaWiki\Logger\LoggerFactory;
@@ -130,14 +130,14 @@ class LinkTableHooks {
 	 *
 	 * @param TitleValue $title judgment page title to parse.
 	 *
-	 * @return ProposalTarget|null Judgment target, or null if the title
+	 * @return EntityTarget|null Judgment target, or null if the title
 	 *         couldn't be parsed.
 	 */
 	private static function entityTarget( TitleValue $title ) {
 		$status = TitleHelper::parseTitleValue( $title );
 		if ( !$status->isOK() ) {
 			if ( $title->getNamespace() === NS_JADE ) {
-				// Should be unreachable thanks to JudgmentValidator.  If
+				// Should be unreachable thanks to EntityValidator.  If
 				// something did go wrong, it should be logged and
 				// investigated.
 				// TODO: Should this be a responsibility of TitleHelper::parseTitleValue()?

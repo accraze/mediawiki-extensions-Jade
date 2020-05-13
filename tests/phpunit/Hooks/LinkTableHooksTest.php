@@ -15,10 +15,10 @@
  */
 namespace Jade\Tests\Hooks;
 
+use Jade\EntityIndexStorage;
+use Jade\EntityTarget;
+use Jade\EntityType;
 use Jade\Hooks\LinkTableHooks;
-use Jade\ProposalEntityType;
-use Jade\ProposalTarget;
-use Jade\Tests\TestJudgmentLinkAssertions;
 use LogEntry;
 use MediaWikiTestCase;
 use Revision;
@@ -33,41 +33,42 @@ use WikiPage;
  * @group Database
  * @group medium
  *
- * @coversDefaultClass Jade\Hooks\LinkTableHooks
+ * @coversDefaultClass \Jade\Hooks\LinkTableHooks
  */
 class LinkTableHooksTest extends MediaWikiTestCase {
 
-	// Include assertions to test judgment links.
-	use TestJudgmentLinkAssertions;
+	// Include assertions to test entity links.
+	// use TestEntityLinkAssertions;
 
-	const DIFF_JUDGMENT = '../../data/valid_diff_judgment.json';
-	const REVISION_JUDGMENT = '../../data/valid_revision_judgment.json';
+	const DIFF_ENTITY = '../../data/valid_editquality_entity.json';
+	const REVISION_ENTITY = '../../data/valid_revision_judgment.json';
 
 	public function setUp() : void {
 		parent::setUp();
-		$this->markTestSkipped( ' notin use.' );
 		$this->tablesUsed = [
-			'jade_diff_judgment',
+			'jade_diff_label',
 			'jade_revision_judgment',
 			'page',
 		];
 
-		$this->mockStorage = $this->getMockBuilder( JudgmentLinkTable::class )
-			->disableOriginalConstructor()->getMock();
+		$this->mockStorage = $this->getMockBuilder( EntityIndexStorage::class )
+			->disableOriginalConstructor()->setMockClassName( 'EntityLinkTable' )
+				->setMethods( [ 'insertIndex', 'deleteIndex', 'updateSummary' ] )->getMock();
+
 		$this->setService( 'JadeEntityIndexStorage', $this->mockStorage );
 
 		$this->targetRevId = mt_rand();
 
-		$status = ProposalEntityType::sanitizeEntityType( 'revision' );
+		$status = EntityType::sanitizeEntityType( 'revision' );
 		$this->assertTrue( $status->isOK() );
 		$this->revisionType = $status->value;
 
-		$this->judgmentPageTitle = Title::newFromText( "Judgment:Revision/{$this->targetRevId}" );
+		$this->entityPageTitle = Title::newFromText( "Jade:Revision/{$this->targetRevId}" );
 
-		$this->mockJudgmentPage = $this->getMockBuilder( WikiPage::class )
+		$this->mockEntityPage = $this->getMockBuilder( WikiPage::class )
 			->disableOriginalConstructor()->getMock();
-		$this->mockJudgmentPage->method( 'getTitle' )
-			->willReturn( $this->judgmentPageTitle );
+		$this->mockEntityPage->method( 'getTitle' )
+			->willReturn( $this->entityPageTitle );
 
 		$this->mockRevision = $this->getMockBuilder( Revision::class )
 			->disableOriginalConstructor()->getMock();
@@ -86,10 +87,10 @@ class LinkTableHooksTest extends MediaWikiTestCase {
 
 		$this->mockStorage->expects( $this->once() )
 			->method( 'insertIndex' )
-			->with( new JudgmentTarget( $this->revisionType, $this->targetRevId ), $this->mockJudgmentPage );
+			->with( new EntityTarget( $this->revisionType, $this->targetRevId ), $this->mockEntityPage );
 
 		LinkTableHooks::onPageContentInsertComplete(
-			$this->mockJudgmentPage,
+			$this->mockEntityPage,
 			$this->user,
 			new TextContent( '' ),
 			'',
@@ -106,13 +107,12 @@ class LinkTableHooksTest extends MediaWikiTestCase {
 	 */
 	public function testOnPageContentInsertComplete_noTarget() {
 		$flags = 0;
-
 		$this->mockStorage->expects( $this->never() )
 			->method( 'insertIndex' );
 
-		$nonJudgmentPage = $this->getExistingTestPage( __METHOD__ );
+		$nonEntityPage = $this->getExistingTestPage( __METHOD__ );
 		LinkTableHooks::onPageContentInsertComplete(
-			$nonJudgmentPage,
+			$nonEntityPage,
 			$this->user,
 			new TextContent( '' ),
 			'',
@@ -130,10 +130,10 @@ class LinkTableHooksTest extends MediaWikiTestCase {
 	public function testOnArticleDeleteComplete_success() {
 		$this->mockStorage->expects( $this->once() )
 			->method( 'deleteIndex' )
-			->with( new JudgmentTarget( $this->revisionType, $this->targetRevId ), $this->mockJudgmentPage );
+			->with( new EntityTarget( $this->revisionType, $this->targetRevId ), $this->mockEntityPage );
 
 		LinkTableHooks::onArticleDeleteComplete(
-			$this->mockJudgmentPage,
+			$this->mockEntityPage,
 			$this->user,
 			'',
 			321,
@@ -149,9 +149,9 @@ class LinkTableHooksTest extends MediaWikiTestCase {
 		$this->mockStorage->expects( $this->never() )
 			->method( 'deleteIndex' );
 
-		$nonJudgmentPage = $this->getExistingTestPage( __METHOD__ );
+		$nonEntityPage = $this->getExistingTestPage( __METHOD__ );
 		LinkTableHooks::onArticleDeleteComplete(
-			$nonJudgmentPage,
+			$nonEntityPage,
 			$this->user,
 			'',
 			321,
@@ -166,18 +166,17 @@ class LinkTableHooksTest extends MediaWikiTestCase {
 	public function testOnArticleUndelete_success() {
 		$page = $this->getExistingTestPage();
 		$pageId = $page->getId();
-
 		$this->mockStorage->expects( $this->once() )
 			->method( 'insertIndex' )
 			->with(
-				new JudgmentTarget( $this->revisionType, $this->targetRevId ),
+				new EntityTarget( $this->revisionType, $this->targetRevId ),
 				$this->callback( function ( $page ) use ( $pageId ) {
 					return $page->getId() === $pageId;
 				} )
 			);
 
 		LinkTableHooks::onArticleUndelete(
-			$this->judgmentPageTitle,
+			$this->entityPageTitle,
 			true,
 			'',
 			$pageId,
@@ -191,11 +190,10 @@ class LinkTableHooksTest extends MediaWikiTestCase {
 	public function testOnArticleUndelete_noTarget() {
 		$page = $this->getExistingTestPage();
 		$pageId = $page->getId();
-
 		$this->mockStorage->expects( $this->never() )
 			->method( 'insertIndex' );
 
-		// Non-judgment page.
+		// Non-entity page.
 		LinkTableHooks::onArticleUndelete(
 			$page->getTitle(),
 			true,
@@ -216,7 +214,7 @@ class LinkTableHooksTest extends MediaWikiTestCase {
 			->method( 'insertIndex' );
 
 		LinkTableHooks::onArticleUndelete(
-			$this->judgmentPageTitle,
+			$this->entityPageTitle,
 			false,
 			'',
 			$pageId,
@@ -225,11 +223,11 @@ class LinkTableHooksTest extends MediaWikiTestCase {
 	}
 
 	public function provideTargets() {
-		$diffType = ProposalEntityType::sanitizeEntityType( 'diff' )->value;
+		$diffType = EntityType::sanitizeEntityType( 'diff' )->value;
 		yield [
 			NS_JADE,
 			'Diff/123',
-			new ProposalTarget( $diffType, 123 ),
+			new EntityTarget( $diffType, 123 ),
 		];
 		yield [
 			NS_JADE,
@@ -244,13 +242,13 @@ class LinkTableHooksTest extends MediaWikiTestCase {
 	}
 
 	/**
-	 * @covers ::proposalTarget
+	 * @covers ::entityTarget
 	 * @dataProvider provideTargets
 	 */
-	public function testJudgmentTarget( $namespace, $titleStr, $expectedTarget ) {
+	public function testEntityTarget( $namespace, $titleStr, $expectedTarget ) {
 		$hooksStatic = TestingAccessWrapper::newFromClass( LinkTableHooks::class );
 		$title = new TitleValue( $namespace, $titleStr );
-		$target = $hooksStatic->judgmentTarget( $title );
+		$target = $hooksStatic->entityTarget( $title );
 
 		$this->assertEquals( $expectedTarget, $target );
 	}

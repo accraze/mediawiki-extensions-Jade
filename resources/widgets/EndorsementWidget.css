@@ -1,0 +1,80 @@
+.jade-endorsementWidget {
+	background-color: #ddd;
+	border: 0;
+	color: #000;
+	padding: 10px 20px;
+	display: inline-block;
+	margin: 4px 2px;
+	cursor: pointer;
+	border-radius: 2px;
+	width: -webkit-fill-available;
+	width: -moz-available;
+	width: fill-available;
+}
+
+/* .jade-endorsementWidget-endorsementMenu {} */
+
+/* .jade-endorsementWidget-endorsementMenu-edit {} */
+
+/* .jade-endorsementWidget-endorsementMenu-move {} */
+
+.jade-endorsementWidget-endorsementMenu-delete {
+	color: #f00;
+}
+
+.jade-endorsementWidget-endorsementMenu-edit.oo-ui-optionWidget-highlighted,
+.jade-endorsementWidget-endorsementMenu-move.oo-ui-optionWidget-highlighted {
+	background-color: #eaf3ff;
+}
+
+.jade-endorsementWidget-comment {
+	width: 42%;
+	font-style: italic;
+}
+
+.jade-endorsementWidget-infoStack {
+	width: 45%;
+}
+
+/* .jade-endorsementWidget-author {} */
+
+.jade-endorsementWidget-author-missing-userPage,
+.jade-endorsementWidget-author-missing-userTalkPage {
+	color: #ba0000;
+}
+
+.jade-endorsementWidget-author-missing-userPage:visited,
+.jade-endorsementWidget-author-missing-userTalkPage:visited {
+	color: #a55858;
+}
+
+/* .jade-endorsementWidget-created {} */
+
+.jade-endorsementWidget-menuBtn {
+	position: absolute;
+	right: 15px;
+	top: 10px;
+}
+
+.jade-endorsementWidget-editForm-buttons {
+	text-align: right;
+}
+
+/* .jade-endorsementWidget-editForm-submitBtn {} */
+
+/* .jade-endorsementWidget-editForm-cancelBtn {} */
+
+/* .jade-endorsementWidget-editForm-text {} */
+
+/* .jade-endorsementWidget-editForm {} */
+
+@media only screen
+	and ( max-width: 600px ) {
+	.jade-endorsementWidget-comment {
+		width: 100%;
+	}
+
+	.jade-endorsementWidget-infoStack {
+		width: 100%;
+	}
+}

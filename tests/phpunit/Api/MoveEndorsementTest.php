@@ -26,7 +26,7 @@ use Jade\Tests\TestStorageHelper;
  * @group medium
  * @group Jade
  *
- * @coversDefaultClass Jade\Api\MoveEndorsement
+ * @coversDefaultClass \Jade\Api\MoveEndorsement
  */
 class MoveEndorsementTest extends ApiTestCase {
 
@@ -38,7 +38,9 @@ class MoveEndorsementTest extends ApiTestCase {
 	 * @covers ::execute
 	 */
 	public function testMoveEndorsement_sucess() {
-		list( $page, $revision ) = TestStorageHelper::createEntity();
+		list( $page, $revisionRecord ) = TestStorageHelper::createNewEntity(
+			$this->getTestUser()->getUser()
+		);
 		$existingEntity = [
 			'facets' => [
 				'editquality' => [
@@ -82,7 +84,7 @@ class MoveEndorsementTest extends ApiTestCase {
 				],
 			 ],
 		];
-		$title = "Diff/{$revision->getId()}";
+		$title = "Diff/{$revisionRecord->getId()}";
 
 		$status = TestStorageHelper::saveJudgment(
 			$title,

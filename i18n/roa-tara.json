@@ -42,5 +42,11 @@
 	"jade-content-model-error": "Modelle d'u condenute pe l'Endità de Jade errate.",
 	"jade-endorsement": "Raccomandazione",
 	"jade-endorsements": "Raccomandaziune",
-	"jade-user": "Utende"
+	"jade-user": "Utende",
+	"jade-updateendorsement": "Tìne 'na raccomandazione aggiornate",
+	"jade-updateproposal": "Tìne 'na proposte aggiornate",
+	"jade-deleteendorsement": "Tìne 'na raccomandazione scangellate",
+	"jade-deleteproposal": "Tìne 'na proposte scangellate",
+	"jade-setpreference": "E' promosse 'na proposte",
+	"jade-moveendorsement": "E' spustate 'na raccomandazione"
 }

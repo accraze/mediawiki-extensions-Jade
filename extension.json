@@ -6,11 +6,12 @@
 	"type": "other",
 	"author": [
 		"Adam Roses Wight",
-		"Andy Craze"
+		"Andy Craze",
+		"Kevin Bazira"
 	],
 	"url": "https://www.mediawiki.org/wiki/Extension:Jade",
 	"requires": {
-		"MediaWiki": ">= 1.34.0"
+		"MediaWiki": ">= 1.35.0"
 	},
 	"namespaces": [
 		{
@@ -46,10 +47,22 @@
 	"ContentHandlers": {
 		"JadeEntity": "Jade\\Content\\EntityContentHandler"
 	},
+	"Hooks": {
+		"ArticleDeleteComplete": "Jade\\Hooks\\LinkTableHooks::onArticleDeleteComplete",
+		"ArticleUndelete": "Jade\\Hooks\\LinkTableHooks::onArticleUndelete",
+		"FormatAutocomments": "Jade\\Hooks\\FormatAutocommentsHooks::onFormatAutocomments",
+		"LoadExtensionSchemaUpdates": "Jade\\Hooks\\DatabaseSchemaHooks::onLoadExtensionSchemaUpdates",
+		"MovePageIsValidMove": "Jade\\Hooks\\MoveHooks::onMovePageIsValidMove",
+		"PageContentInsertComplete": "Jade\\Hooks\\LinkTableHooks::onPageContentInsertComplete",
+		"PageHistoryLineEnding": "Jade\\Hooks\\PageHistoryLineEndingHooks::onPageHistoryLineEnding",
+		"ShowMissingArticle": "Jade\\Hooks\\MissingArticleHooks::onShowMissingArticle",
+		"SkinTemplateNavigation": "Jade\\Hooks\\SkinTemplateNavigationHooks::onSkinTemplateNavigation"
+	},
 	"MessagesDirs": {
 		"Jade": [
 			"i18n",
-			"i18n/api"
+			"i18n/api",
+			"i18n/ui"
 		]
 	},
 	"ServiceWiringFiles": [
@@ -74,7 +87,7 @@
 				"diff": "Diff",
 				"revision": "Revision"
 			},
-			"description": "Title fragment used as a label for each entity type.  Generally not changed after deployment.",
+			"description": "Title fragment used as a label for each entity type. Generally not changed after deployment.",
 			"public": true
 		},
 		"JadeContentQualityLevels": {
@@ -88,6 +101,181 @@
 			"public": true
 		}
 
+	},
+	"ResourceModules": {
+		"ext.Jade.entityView": {
+			"packageFiles": [
+				"resources/ext.Jade.entityView.js"
+			],
+			"styles": [
+				"resources/ext.Jade.entityView.css"
+			],
+			"messages": [
+			],
+			"dependencies": [
+				"oojs-ui"
+			]
+		},
+		"jade.api": {
+			"packageFiles": [
+				"resources/api/index.js",
+				"resources/api/client.js",
+				"resources/api/DeleteEndorsementClient.js",
+				"resources/api/DeleteProposalClient.js",
+				"resources/api/EndorseClient.js",
+				"resources/api/MoveEndorsementClient.js",
+				"resources/api/PromoteClient.js",
+				"resources/api/ProposeClient.js",
+				"resources/api/UpdateEndorsementClient.js",
+				"resources/api/UpdateProposalClient.js"
+			],
+			"messages": [
+				"jade-createandendorseproposal-autocomment",
+				"jade-deleteproposal-autocomment",
+				"jade-updateendorsement-autocomment",
+				"jade-updateproposal-autocomment",
+				"jade-deleteendorsement-autocomment",
+				"jade-endorseproposal-autocomment",
+				"jade-setpreference-autocomment",
+				"jade-moveendorsement-autocomment",
+				"jade-number-of-endorsements-autocomment",
+				"jade-editquality-is-comment",
+				"jade-productive-good-faith-comment",
+				"jade-damaging-good-faith-comment",
+				"jade-damaging-bad-faith-comment",
+				"jade-by-ip-address-comment",
+				"jade-by-id-number-comment"
+			]
+		},
+		"jade.dialogs": {
+			"packageFiles": [
+				"resources/dialogs/index.js",
+				"resources/dialogs/DeleteEndorsementDialog.js",
+				"resources/dialogs/DeleteProposalDialog.js",
+				"resources/dialogs/EndorseDialog.js",
+				"resources/dialogs/MoveEndorsementDialog.js",
+				"resources/dialogs/PromoteDialog.js",
+				"resources/dialogs/ProposeNewLabelDialog.js"
+			],
+			"styles": [
+				"resources/dialogs/DeleteEndorsementDialog.css",
+				"resources/dialogs/DeleteProposalDialog.css",
+				"resources/dialogs/EndorseDialog.css",
+				"resources/dialogs/MoveEndorsementDialog.css",
+				"resources/dialogs/PromoteDialog.css",
+				"resources/dialogs/ProposeNewLabelDialog.css"
+
+			],
+			"messages": [
+				"jade-ui-deleteendorsement-title",
+				"jade-ui-deleteendorsement-submit-btn",
+				"jade-ui-deleteendorsement-text-1",
+				"jade-ui-deleteendorsement-text-2",
+				"jade-ui-deleteendorsement-comment-placeholder",
+				"jade-ui-deleteendorsement-title",
+				"jade-ui-deleteendorsement-submit-btn",
+				"jade-ui-deleteendorsement-text-1",
+				"jade-ui-deleteendorsement-text-2",
+				"jade-ui-deleteendorsement-comment-placeholder",
+				"jade-ui-comment-label",
+				"jade-ui-deleteproposal-title",
+				"jade-ui-deleteproposal-submit-btn",
+				"jade-ui-deleteproposal-text",
+				"jade-ui-deleteproposal-comment-placeholder",
+				"jade-ui-endorse-title",
+				"jade-ui-endorse-submit-btn",
+				"jade-ui-endorse-text",
+				"jade-ui-endorse-comment-placeholder",
+				"jade-ui-moveendorsement-title",
+				"jade-ui-moveendorsement-submit-btn",
+				"jade-ui-moveendorsement-text",
+				"jade-ui-moveendorsement-text-panel2",
+				"jade-ui-moveendorsement-comment-placeholder",
+				"jade-ui-promote-title",
+				"jade-ui-promote-submit-btn",
+				"jade-ui-promote-text",
+				"jade-ui-promote-comment-placeholder",
+				"jade-ui-proposenewlabel-title",
+				"jade-ui-proposenewlabel-submit-btn",
+				"jade-ui-proposenewlabel-text",
+				"jade-ui-proposenewlabel-select-1-label",
+				"jade-ui-proposenewlabel-select-2-label",
+				"jade-ui-proposenewlabel-select-3-label",
+				"jade-ui-proposenewlabel-comment-placeholder",
+				"jade-ui-proposenewlabel-notes-label",
+				"jade-nochange",
+				"jade-alreadyendorsed"
+			],
+			"dependencies": [
+				"oojs-ui",
+				"oojs-ui.styles.icons-user",
+				"oojs-ui.styles.icons-interactions"
+			]
+		},
+		"jade.widgets": {
+			"packageFiles": [
+				"resources/widgets/index.js",
+				"resources/widgets/DiffWidget.js",
+				"resources/widgets/EndorsementListWidget.js",
+				"resources/widgets/EndorsementWidget.js",
+				"resources/widgets/FacetListWidget.js",
+				"resources/widgets/FacetWidget.js",
+				"resources/widgets/ProposalListWidget.js",
+				"resources/widgets/ProposalWidget.js"
+			],
+			"styles": [
+				"resources/widgets/DiffWidget.css",
+				"resources/widgets/EndorsementListWidget.css",
+				"resources/widgets/EndorsementWidget.css",
+				"resources/widgets/FacetListWidget.css",
+				"resources/widgets/FacetWidget.css",
+				"resources/widgets/ProposalListWidget.css",
+				"resources/widgets/ProposalWidget.css"
+			],
+			"messages": [
+				"jade-proposalispreferred",
+				"jade-proposalnotfound",
+				"jade-invalidtitleentitydata",
+				"jade-endorsementnotfound",
+				"jade-proposalexists",
+				"jade-ui-editquality",
+				"jade-ui-proposal-alternatives",
+				"jade-ui-proposal-endorsements",
+				"jade-ui-proposal-label",
+				"jade-ui-productive-label",
+				"jade-ui-damaging-label",
+				"jade-ui-goodfaith-label",
+				"jade-ui-badfaith-label",
+				"jade-ui-propose-new-label-btn",
+				"jade-ui-menu-edit",
+				"jade-ui-menu-promote",
+				"jade-ui-menu-move",
+				"jade-ui-menu-delete",
+				"jade-ui-edit-publish-btn",
+				"jade-ui-cancel-btn",
+				"jade-facet-editquality-desc",
+				"jade-updateendorsement",
+				"jade-updateproposal",
+				"jade-deleteendorsement",
+				"jade-deleteproposal",
+				"jade-endorse",
+				"jade-createandendorse",
+				"jade-setpreference",
+				"jade-moveendorsement"
+			],
+			"dependencies": [
+				"oojs-ui",
+				"oojs-ui.styles.icons-content",
+				"oojs-ui.styles.icons-interactions",
+				"oojs-ui.styles.icons-editing-advanced",
+				"oojs-ui.styles.icons-accessibility",
+				"mediawiki.diff.styles"
+			]
+		}
+	},
+	"ResourceFileModulePaths": {
+		"localBasePath": "",
+		"remoteExtPath": "Jade"
 	},
 	"ExtensionMessagesFiles": {
 		"JadeNamespaces": "Jade.namespaces.php"

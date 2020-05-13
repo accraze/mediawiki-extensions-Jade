@@ -2,10 +2,11 @@
 	"@metadata": {
 		"authors": [
 			"Adamw",
-			"Accraze"
+			"Accraze",
+			"Kevin Bazira"
 		]
 	},
-	"jade-desc": "Judgment and dialog engine",
+	"jade-desc": "Robust false-positive and feedback gathering system, to allow human refutation and review of ORES scoring.",
 	"jade-damaging-scale-true-label": "Damaging",
 	"jade-damaging-scale-false-label": "Not damaging",
 	"jade-goodfaith-scale-true-label": "Good faith",
@@ -44,10 +45,35 @@
 	"jade-endorsement": "Endorsement",
 	"jade-endorsements": "Endorsements",
 	"jade-user": "User",
+	"jade-proposalexists": "A proposal with the specified data already exists.",
 	"jade-proposalnotfound": "Could not find a proposal with matching \"data\" ''$1''",
 	"jade-endorsementnotfound":"Could not find an endorsement from the target user.",
 	"jade-endorsingnonpreferredproposal": "This action resulted in creating an endorsement for a proposal that is not flagged as preferred.",
 	"jade-proposalispreferred": "Cannot delete a preferred proposal except when it is the only remaining proposal for a facet. You must set another proposal to be \"preferred\"",
 	"jade-invalidtitleentitydata":"Title or entitydata param must be provided.",
-	"jade-nochange": "This action would result in no change. User has already endorsed labeldata."
+	"jade-nochange": "This action would result in no change. User has already endorsed labeldata.",
+	"jade-alreadyendorsed": "Cannot endorse because you have already endorsed another proposal. Consider moving your endorsement instead.",
+	"jade-updateendorsement": "You have updated an endorsement",
+	"jade-updateproposal": "You have updated a proposal",
+	"jade-deleteendorsement": "You have deleted an endorsement",
+	"jade-deleteproposal": "You have deleted a proposal",
+	"jade-endorse": "You have endorsed a proposal",
+	"jade-createandendorse": "You have created and endorsed a proposal",
+	"jade-setpreference": "You have promoted a proposal",
+	"jade-moveendorsement": "You have moved an endorsement",
+	"jade-createandendorseproposal-autocomment": "Proposal created:",
+	"jade-deleteproposal-autocomment": "'''Proposal deleted'''",
+	"jade-updateendorsement-autocomment": "Endorsement updated:",
+	"jade-updateproposal-autocomment": "Proposal updated:",
+	"jade-deleteendorsement-autocomment": "'''Endorsement deleted:'''",
+	"jade-endorseproposal-autocomment": "Endorsed proposal:",
+	"jade-setpreference-autocomment": "'''Preference set:'''",
+	"jade-moveendorsement-autocomment": "Endorsement moved:",
+	"jade-number-of-endorsements-autocomment": "''' ($1 {{PLURAL:$1|endorsement|endorsements}}):'''",
+	"jade-editquality-is-comment": "Edit quality is",
+	"jade-productive-good-faith-comment": "Productive / Good-faith",
+	"jade-damaging-good-faith-comment": "Damaging / Good-faith",
+	"jade-damaging-bad-faith-comment": "Damaging / Bad-faith",
+	"jade-by-ip-address-comment": "by [[Special:Contributions/$1|$1]]",
+	"jade-by-id-number-comment": "by [[User:$1|$1]]"
 }

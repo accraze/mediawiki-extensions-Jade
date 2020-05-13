@@ -4,5 +4,6 @@
 			"আফতাবুজ্জামান"
 		]
 	},
-	"jade-delete": "অপসারণ"
+	"jade-delete": "অপসারণ",
+	"jade-by-ip-address-comment": "[[Special:Contributions/$1|$1]] কর্তৃক"
 }

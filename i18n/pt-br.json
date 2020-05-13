@@ -1,11 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
+			"Dr03ramos",
 			"Eduardo Addad de Oliveira",
 			"Felipe L. Ewald"
 		]
 	},
-	"jade-desc": "Motor de avaliação e diálogo JADE",
+	"jade-desc": "Sistema robusto de falso positivo e de coleta de feedback, para permitir a refutação humana e a revisão da pontuação do ORES.",
 	"jade-damaging-scale-true-label": "Prejudicial",
 	"jade-damaging-scale-false-label": "Não prejudicial",
 	"jade-goodfaith-scale-true-label": "Boa-fé",
@@ -44,10 +45,35 @@
 	"jade-endorsement": "Endosso",
 	"jade-endorsements": "Endossos",
 	"jade-user": "Usuário",
+	"jade-proposalexists": "Já existe uma proposta com os dados especificados.",
 	"jade-proposalnotfound": "Não foi possível encontrar uma proposta com \"dados\" correspondentes ''$1''",
 	"jade-endorsementnotfound": "Não foi possível encontrar um endosso do usuário de destino.",
 	"jade-endorsingnonpreferredproposal": "Essa ação resultou na criação de um endosso para uma proposta que não é sinalizada como preferencial.",
 	"jade-proposalispreferred": "Não é possível excluir uma proposta preferida, exceto quando é a única proposta restante para uma faceta. Você deve definir outra proposta para ser \"preferida\"",
 	"jade-invalidtitleentitydata": "O parâmetro title ou entitydata deve ser fornecido.",
-	"jade-nochange": "Esta ação resultaria em nenhuma alteração. O usuário já endossou labeldata."
+	"jade-nochange": "Esta ação resultaria em nenhuma alteração. O usuário já endossou labeldata.",
+	"jade-alreadyendorsed": "Não é possível endossar porque você já endossou outra proposta. Considere mudar seu endosso.",
+	"jade-updateendorsement": "Você atualizou com êxito um endosso",
+	"jade-updateproposal": "Você atualizou uma proposta",
+	"jade-deleteendorsement": "Você excluiu um endosso",
+	"jade-deleteproposal": "Você excluiu uma proposta",
+	"jade-endorse": "Você aprovou uma proposta",
+	"jade-createandendorse": "Você criou e endossou uma proposta",
+	"jade-setpreference": "Você promoveu uma proposta",
+	"jade-moveendorsement": "Você moveu um endosso",
+	"jade-createandendorseproposal-autocomment": "Proposta criada:",
+	"jade-deleteproposal-autocomment": "'''Proposta excluída'''",
+	"jade-updateendorsement-autocomment": "Endosso atualizado:",
+	"jade-updateproposal-autocomment": "Proposta atualizada:",
+	"jade-deleteendorsement-autocomment": "'''Endosso excluído:'''",
+	"jade-endorseproposal-autocomment": "Proposta de endosso:",
+	"jade-setpreference-autocomment": "'''Conjunto de preferências:'''",
+	"jade-moveendorsement-autocomment": "Endosso movido:",
+	"jade-number-of-endorsements-autocomment": "''' ($1 {{PLURAL:$1|endosso|endossos}}):'''",
+	"jade-editquality-is-comment": "A qualidade da edição é",
+	"jade-productive-good-faith-comment": "Produtivo / de boa fé",
+	"jade-damaging-good-faith-comment": "Danos / boa-fé",
+	"jade-damaging-bad-faith-comment": "Danos / má-fé",
+	"jade-by-ip-address-comment": "por [[Special:Contributions/$1|$1]]",
+	"jade-by-id-number-comment": "por [[User:$1|$1]]"
 }

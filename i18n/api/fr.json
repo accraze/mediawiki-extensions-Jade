@@ -2,10 +2,10 @@
 	"@metadata": {
 		"authors": [
 			"Gomoko",
-			"Wladek92",
+			"Pols12",
 			"Thibaut120094",
 			"Verdy p",
-			"Pols12"
+			"Wladek92"
 		]
 	},
 	"apihelp-jadecreateandendorse-summary": "Crée une nouvelle proposition et enregistre une approbation. Si l’utilisateur a déjà approuvé une autre proposition dans la facette, déplace l’approbation vers la nouvelle proposition.",

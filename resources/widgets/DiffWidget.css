@@ -1,0 +1,10 @@
+.jade-ui-diffWidget {
+	height: 42%;
+}
+
+.jade-ui-diffWidget-btn-group {
+	margin-top: 1%;
+	margin-bottom: 2%;
+	width: 100%;
+	text-align: right;
+}

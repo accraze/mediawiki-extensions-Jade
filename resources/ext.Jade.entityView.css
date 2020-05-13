@@ -1,0 +1,16 @@
+
+.jade-entity-view-stack {
+	margin-top: 1%;
+	height: 35%;
+	position: relative;
+}
+
+.jade-entity-diff-panel {
+	height: 1%;
+	max-height: 30vh;
+}
+
+.jade-entity-view-split {
+	margin-top: 0;
+	margin-bottom: 4%;
+}

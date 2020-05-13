@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"Fulup"
+		]
+	},
+	"jade-updateendorsement": "Hizivaet hoc'h eus un aprouadenn",
+	"jade-updateproposal": "Enporzhiet hoc'h eus ur c'hinnig",
+	"jade-deleteendorsement": "Diverket hoc'h eus un aprouadenn",
+	"jade-deleteproposal": "Diverket hoc'h eus ur c'hinnig",
+	"jade-endorse": "Asantet hoc'h eus ur c'hinnig",
+	"jade-createandendorse": "Krouet ha degemeret hoc'h eus ur c'hinnig",
+	"jade-setpreference": "Kaset hoc'h eus ur c'hinnig war-raok",
+	"jade-moveendorsement": "Dilec'hiet hoc'h eus un aprouadenn"
+}

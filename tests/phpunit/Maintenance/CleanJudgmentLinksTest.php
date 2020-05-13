@@ -21,7 +21,6 @@
 namespace Jade\Tests\Maintenance;
 
 use Jade\Maintenance\CleanJudgmentLinks;
-use Jade\Tests\TestJudgmentLinkAssertions;
 use Jade\Tests\TestStorageHelper;
 use MediaWiki\Tests\Maintenance\MaintenanceBaseTestCase;
 use Revision;
@@ -31,13 +30,13 @@ use WikiPage;
  * @group Jade
  * @group Database
  * @group medium
- * @covers Jade\Maintenance\CleanJudgmentLinks
- * @coversDefaultClass Jade\Maintenance\CleanJudgmentLinks
+ * @covers \Jade\Maintenance\CleanJudgmentLinks
+ * @coversDefaultClass \Jade\Maintenance\CleanJudgmentLinks
  */
 class CleanJudgmentLinksTest extends MaintenanceBaseTestCase {
 
 	// Include assertions to test judgment links.
-	use TestJudgmentLinkAssertions;
+	// use TestJudgmentLinkAssertions;
 
 	public function getMaintenanceClass() {
 		return CleanJudgmentLinks::class;
@@ -55,8 +54,10 @@ class CleanJudgmentLinksTest extends MaintenanceBaseTestCase {
 	}
 
 	private function createRevision() {
-		list( $page, $revision ) = TestStorageHelper::createEntity();
-		return $revision;
+		list( $page, $revisionRecord ) = TestStorageHelper::createNewEntity(
+			$this->getTestUser()->getUser()
+		);
+		return new Revision( $revisionRecord );
 	}
 
 	private function createJudgment( Revision $revision, $entityType ) {
@@ -128,13 +129,14 @@ class CleanJudgmentLinksTest extends MaintenanceBaseTestCase {
 		// Make sure page deletions don't auto-delete links
 		$this->setTemporaryHook( 'ArticleDeleteComplete', false );
 
+		$deleter = $this->getTestSysop()->getUser();
 		for ( $i = 0; $i < $noOfTestJudgements; $i++ ) {
 			$revision = $this->createRevision();
 			$page = $this->createJudgment( $revision, $entityType );
 			$pageId = $page->getId();
 
 			// Orphan it by deleting the judgment page
-			$page->doDeleteArticleReal( 'reasonable' );
+			$page->doDeleteArticleReal( 'reasonable', $deleter );
 
 			// Check that the link still exists.
 			$this->assertJudgmentLink( $entityType, $revision->getId(), $pageId );

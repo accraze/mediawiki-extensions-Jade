@@ -15,8 +15,8 @@
  */
 namespace Jade\Tests;
 
-use Jade\ProposalEntityType;
-use Jade\ProposalTarget;
+use Jade\EntityTarget;
+use Jade\EntityType;
 use Jade\TitleHelper;
 use MediaWikiTestCase;
 use TitleValue;
@@ -24,20 +24,20 @@ use TitleValue;
 /**
  * @group Jade
  *
- * @coversDefaultClass Jade\TitleHelper
+ * @coversDefaultClass \Jade\TitleHelper
  */
 class TitleHelperTest extends MediaWikiTestCase {
 
 	public function setUp() : void {
 		parent::setUp();
-		$this->revisionType = ProposalEntityType::sanitizeEntityType( 'revision' )->value;
+		$this->revisionType = EntityType::sanitizeEntityType( 'revision' )->value;
 	}
 
 	/**
 	 * @covers ::buildJadeTitle
 	 */
 	public function testBuildJadeTitle_success() {
-		$target = new ProposalTarget( $this->revisionType, 123 );
+		$target = new EntityTarget( $this->revisionType, 123 );
 		$title = TitleHelper::buildJadeTitle( $target );
 		$this->assertEquals( 'Revision/123', $title->getDBkey() );
 	}

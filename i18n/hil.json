@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Xerxesbcd"
+		]
+	},
+	"jade-updateproposal-autocomment": "Ginbag-o nga panugyan",
+	"jade-deleteendorsement-autocomment": "\"Ginpanas nga pagsakdag:\"",
+	"jade-by-id-number-comment": "ni [[User:$1|$1]]"
+}

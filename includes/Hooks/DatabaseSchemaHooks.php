@@ -21,14 +21,26 @@ use DatabaseUpdater;
 class DatabaseSchemaHooks {
 
 	public static function onLoadExtensionSchemaUpdates( DatabaseUpdater $updater ) {
-		$sqlDir = __DIR__ . '/../../sql';
+		$sqlDir = __DIR__ . '/../../sql/';
 
 		$updater->addExtensionTable(
 			'jade_diff_judgment',
-			$sqlDir . '/jade_diff_judgment.sql' );
+			$sqlDir . 'jade_diff_judgment.sql'
+		);
+
+		$updater->addExtensionTable(
+			'jade_diff_label',
+			$sqlDir . 'jade_diff_label.sql'
+		);
+
 		$updater->addExtensionTable(
 			'jade_revision_judgment',
-			$sqlDir . '/jade_revision_judgment.sql' );
-	}
+			$sqlDir . 'jade_revision_judgment.sql'
+		);
 
+		$updater->addExtensionTable(
+			'jade_revision_label',
+			$sqlDir . 'jade_revision_label.sql'
+		);
+	}
 }

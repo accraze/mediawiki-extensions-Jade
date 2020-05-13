@@ -1,0 +1,22 @@
+/* .jade-moveEndorsementDialog-proposalWidget {} */
+
+.jade-ui-moveendorsement-button {
+	text-align: right;
+}
+
+/* .jade-moveEndorsementDialog-submitBtn {} */
+
+/* .jade-moveEndorsementDialog-cancelBtn {} */
+
+/* .jade-moveEndorsementDialog-commentForm {} */
+
+/* .jade-moveEndorsementDialog-commentBox {} */
+
+.jade-moveEndorsementDialog-commentForm-buttons {
+	text-align: right;
+}
+
+.jade-moveEndorsementDialog-errorMessage {
+	text-align: left;
+	width: 100%;
+}

@@ -20,10 +20,11 @@
 
 namespace Jade\Content;
 
+use Jade\EntityDiffBuilder;
 use Jade\JadeServices;
-use Jade\ProposalPageWikitextRenderer;
 use JsonContent;
 use MediaWiki\MediaWikiServices;
+use OutputPage;
 use ParserOptions;
 use ParserOutput;
 use Status;
@@ -68,7 +69,7 @@ class EntityContent extends JsonContent {
 		}
 
 		$data = $this->getData()->getValue();
-		$validator = JadeServices::getProposalValidator();
+		$validator = JadeServices::getEntityValidator();
 		// return $validator->validatePageTitle( $page, $data );
 		return Status::newGood();
 	}
@@ -101,8 +102,8 @@ class EntityContent extends JsonContent {
 		}
 
 		$data = $this->getData()->getValue();
-		$validator = JadeServices::getProposalValidator();
-		return $validator->validateProposalContent( $data );
+		$validator = JadeServices::getEntityValidator();
+		return $validator->validateEntityContent( $data );
 	}
 
 	public function isEmpty() {
@@ -133,14 +134,33 @@ class EntityContent extends JsonContent {
 		}
 
 		$parser = MediaWikiServices::getInstance()->getParser();
-		$renderer = new ProposalPageWikitextRenderer;
-		$wikitext = $renderer->getWikitext( $this->getData()->getValue() );
+		// $renderer = new EntityPageWikitextRenderer;
+		//$wikitext = $renderer->getWikitext( $this->getData()->getValue() );
 
-		$output = $parser->parse( $wikitext, $title, $options, true, true, $revId );
-
-		if ( !$generateHtml ) {
-			$output->setText( '' );
+		if ( $generateHtml ) {
+			$output->setEnableOOUI( true );
+			OutputPage::setupOOUI();
+			$diffBuilder = new EntityDiffBuilder();
+			try {
+				$diffHeader = $diffBuilder->buildDiffHeader( $title );
+			} catch ( \Throwable $e ) {
+				$diffHeader = '';
+			}
+			$entityData = $this->getData()->getValue();
+			global $wgServer;
+			$jsConfigVars = [
+				'entityData' => $entityData,
+				'entityTitle' => $title,
+				'entityId' => $revId,
+				'baseUrl' => $wgServer,
+				'diffHeader' => $diffHeader
+			];
+			$output->addHeadItem(
+				'<meta name="viewport" content="width=device-width, initial-scale=1">',
+				'viewport'
+			);
+			$output->addJsConfigVars( $jsConfigVars );
+			$output->addModules( [ 'ext.Jade.entityView', 'jade.api','jade.widgets', 'jade.dialogs' ] );
 		}
 	}
-
 }

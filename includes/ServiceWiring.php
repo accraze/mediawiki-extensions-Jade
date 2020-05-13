@@ -35,13 +35,13 @@ if ( !class_exists( ServiceWiring::class ) ) {
 				},
 
 				'JadeEntityIndexStorage' => function ( MediaWikiServices $services ) {
-					return new ProposalLinkTable(
+					return new EntityLinkTable(
 						$services->getDBLoadBalancer()
 					);
 				},
 
-				'JadeProposalValidator' => function ( MediaWikiServices $services ) {
-					return new ProposalValidator(
+				'JadeEntityValidator' => function ( MediaWikiServices $services ) {
+					return new EntityValidator(
 						RequestContext::getMain()->getConfig(),
 						LoggerFactory::getInstance( 'Jade' ),
 						$services->getRevisionStore()

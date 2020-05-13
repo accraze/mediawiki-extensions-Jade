@@ -48,61 +48,61 @@ class Endorse extends JadeApiBase {
 		$this->buildResult( $data );
 	}
 
-		/**
-		 * @see ApiBase::getAllowedParams
-		 * @return array
-		 */
-		protected function getAllowedParams() {
-			$config = RequestContext::getMain()->getConfig();
-			$allowedFacets = $config->get( 'JadeAllowedFacets' );
-			return [
-				'title' => [
-					self::PARAM_TYPE => 'string',
-				],
-				'entitydata' => [
-					self::PARAM_TYPE => 'text',
-				],
-				'facet' => [
-					self::PARAM_TYPE => $allowedFacets,
-					self::PARAM_REQUIRED => true,
-				],
-				'labeldata' => [
-					self::PARAM_TYPE => 'text',
-				],
-				'endorsementcomment' => [
-					self::PARAM_TYPE => 'string',
-					self::PARAM_DFLT => 'As proposer',
-				],
-				'endorsementorigin' => [
-					self::PARAM_TYPE => 'string',
-				],
-				'nomove' => [
-					self::PARAM_TYPE => 'boolean',
-					self::PARAM_DFLT => false,
-				],
-				'comment' => [
-					self::PARAM_TYPE => 'string',
-				],
-			];
-		}
+	/**
+	 * @see ApiBase::getAllowedParams
+	 * @return array
+	 */
+	protected function getAllowedParams() {
+		$config = RequestContext::getMain()->getConfig();
+		$allowedFacets = $config->get( 'JadeAllowedFacets' );
+		return [
+			'title' => [
+				self::PARAM_TYPE => 'string',
+			],
+			'entitydata' => [
+				self::PARAM_TYPE => 'text',
+			],
+			'facet' => [
+				self::PARAM_TYPE => $allowedFacets,
+				self::PARAM_REQUIRED => true,
+			],
+			'labeldata' => [
+				self::PARAM_TYPE => 'text',
+			],
+			'endorsementcomment' => [
+				self::PARAM_TYPE => 'string',
+				self::PARAM_DFLT => 'As proposer',
+			],
+			'endorsementorigin' => [
+				self::PARAM_TYPE => 'string',
+			],
+			'nomove' => [
+				self::PARAM_TYPE => 'boolean',
+				self::PARAM_DFLT => false,
+			],
+			'comment' => [
+				self::PARAM_TYPE => 'string',
+			],
+		];
+	}
 
-		/**
-		 * @see ApiBase::getExamplesMessages
-		 * @return array
-		 */
-		protected function getExamplesMessages() {
-			return [
-				'action=jadeendorse&title=Jade:Diff/1234556&facet=editquality' .
-				'&labeldata={"damaging":false,%20"goodfaith":true}&notes=this-is-a-good-example' .
-				'&endorsementcomment=i-approve-of-this&endorsementorigin=mwapi' .
-				'&comment=this-is-a-test&formatversion=2'
-					=> 'apihelp-jadeendorse-example',
-				'action=jadeendorse&entitydata={"type":"diff",%20"id":"1234556"}&facet=editquality' .
-				'&labeldata={"damaging":false,%20"goodfaith":true}&notes=this-is-a-better-example' .
-				'&endorsementcomment=i-approve-of-this&endorsementorigin=mwapi' .
-				'&comment=this-is-a-test&formatversion=2'
-					=> 'apihelp-jadeendorse-example'
-			];
-		}
+	/**
+	 * @see ApiBase::getExamplesMessages
+	 * @return array
+	 */
+	protected function getExamplesMessages() {
+		return [
+			'action=jadeendorse&title=Jade:Diff/1234556&facet=editquality' .
+			'&labeldata={"damaging":false,%20"goodfaith":true}&notes=this-is-a-good-example' .
+			'&endorsementcomment=i-approve-of-this&endorsementorigin=mwapi' .
+			'&comment=this-is-a-test&formatversion=2'
+				=> 'apihelp-jadeendorse-example',
+			'action=jadeendorse&entitydata={"type":"diff",%20"id":"1234556"}&facet=editquality' .
+			'&labeldata={"damaging":false,%20"goodfaith":true}&notes=this-is-a-better-example' .
+			'&endorsementcomment=i-approve-of-this&endorsementorigin=mwapi' .
+			'&comment=this-is-a-test&formatversion=2'
+				=> 'apihelp-jadeendorse-example'
+		];
+	}
 
 }

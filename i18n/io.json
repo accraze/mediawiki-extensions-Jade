@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Joao Xavier"
+		]
+	},
+	"jade-updateproposal": "Vu aktualigis propozajo sucesoze",
+	"jade-updateproposal-autocomment": "Aktualigo propozata:",
+	"jade-deleteendorsement-autocomment": "'''Indoso efacita:'''",
+	"jade-number-of-endorsements-autocomment": "''' ($1 {{PLURAL:$1|indoso|indosi}}):'''",
+	"jade-damaging-good-faith-comment": "Domajita / Senintenca",
+	"jade-damaging-bad-faith-comment": "Domajita / Mala intenco",
+	"jade-by-id-number-comment": "da [[User:$1|$1]]"
+}

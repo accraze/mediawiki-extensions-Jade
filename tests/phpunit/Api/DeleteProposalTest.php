@@ -27,7 +27,7 @@ use Jade\Tests\TestStorageHelper;
  * @group medium
  * @group Jade
  *
- * @coversDefaultClass Jade\Api\DeleteProposal
+ * @coversDefaultClass \Jade\Api\DeleteProposal
  */
 class DeleteProposalTest extends ApiTestCase {
 
@@ -39,7 +39,9 @@ class DeleteProposalTest extends ApiTestCase {
 	 * @covers ::execute
 	 */
 	public function testDeleteProposalSucess() {
-		list( $page, $revision ) = TestStorageHelper::createEntity();
+		list( $page, $revisionRecord ) = TestStorageHelper::createNewEntity(
+			$this->getTestUser()->getUser()
+		);
 		$existingEntity = [
 			'facets' => [
 				'editquality' => [
@@ -68,7 +70,7 @@ class DeleteProposalTest extends ApiTestCase {
 				],
 			 ],
 		];
-	$title = "Diff/{$revision->getId()}";
+		$title = "Diff/{$revisionRecord->getId()}";
 
 		$status = TestStorageHelper::saveJudgment(
 			$title,
@@ -95,7 +97,9 @@ class DeleteProposalTest extends ApiTestCase {
 	 * @covers ::execute
 	 */
 	public function testDeleteProposalSucessPreferred() {
-		list( $page, $revision ) = TestStorageHelper::createEntity();
+		list( $page, $revisionRecord ) = TestStorageHelper::createNewEntity(
+			$this->getTestUser()->getUser()
+		);
 		$existingEntity = [
 			'facets' => [
 				'editquality' => [
@@ -149,7 +153,7 @@ class DeleteProposalTest extends ApiTestCase {
 				],
 			 ],
 		];
-		$title = "Diff/{$revision->getId()}";
+		$title = "Diff/{$revisionRecord->getId()}";
 
 		$status = TestStorageHelper::saveJudgment(
 			$title,

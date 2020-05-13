@@ -27,7 +27,7 @@ use Jade\Tests\TestStorageHelper;
  * @group Database
  * @group medium
  *
- * @covers AbuseFilter
+ * @covers \AbuseFilter
  */
 class AbuseFilterTest extends ApiTestCase {
 
@@ -40,7 +40,6 @@ class AbuseFilterTest extends ApiTestCase {
 
 		$this->tablesUsed = [
 			'abuse_filter',
-			'abuse_filter_actions',
 			'abuse_filter_history',
 			'abuse_filter_log',
 			'page',
@@ -49,7 +48,9 @@ class AbuseFilterTest extends ApiTestCase {
 
 	public function testCanFilterJudgment() {
 		$this->markTestSkipped( 'fix' );
-		list( $page, $revision ) = TestStorageHelper::createEntity();
+		list( $page, $revisionRecord ) = TestStorageHelper::createNewEntity(
+			$this->getTestUser()->getUser()
+		);
 
 		$content = json_encode( [
 			'judgments' => [ [
@@ -64,12 +65,14 @@ class AbuseFilterTest extends ApiTestCase {
 
 		$judgmentResult = TestStorageHelper::makeEdit(
 			NS_JADE,
-			"Diff/{$revision->getId()}",
+			"Diff/{$revisionRecord->getId()}",
 			$content,
 			'a summary'
 		);
 
-		$rcId = $judgmentResult['revision']->getRecentChange()->getAttribute( 'rc_id' );
+		$revisionStore = \MediaWiki\MediaWikiServices::getInstance()->getRevisionStore();
+		$revisionRecord2 = $judgementResult['revision']->getRevisionRecord();
+		$rcId = $revisionStore->getRecentChange( $revisionRecord2 )->getAttribute( 'rc_id' );
 		$result = $this->doApiRequest( [
 			'action' => 'abusefiltercheckmatch',
 			'filter' => 'added_lines irlike "\bT\.?V\.?\b"',

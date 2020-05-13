@@ -16,9 +16,9 @@
 namespace Jade\Tests;
 
 use Jade\EntityIndexStorage;
+use Jade\EntityValidator;
 use Jade\JadeServices;
 use Jade\PageEntityProposalSetStorage;
-use Jade\ProposalValidator;
 use Jade\ServiceWiring;
 use MediaWiki\MediaWikiServices;
 use MediaWikiTestCase;
@@ -40,15 +40,15 @@ class ServicesTest extends MediaWikiTestCase {
 			EntityIndexStorage::class
 		];
 		yield [
-			'getProposalValidator',
-			'JadeProposalValidator',
-			ProposalValidator::class
+			'getEntityValidator',
+			'JadeEntityValidator',
+			EntityValidator::class
 		];
 	}
 
 	/**
 	 * @dataProvider provideServices
-	 * @covers Jade\JadeServices
+	 * @covers \Jade\JadeServices
 	 */
 	public function testJadeServices( $funcName, $_serviceKey, $className ) {
 		$service = call_user_func( [ JadeServices::class, $funcName ] );
@@ -57,7 +57,7 @@ class ServicesTest extends MediaWikiTestCase {
 
 	/**
 	 * @dataProvider provideServices
-	 * @covers Jade\ServiceWiring::getWiring
+	 * @covers \Jade\ServiceWiring::getWiring
 	 */
 	public function testServiceWiring( $_funcName, $serviceKey, $className ) {
 		$wiring = ServiceWiring::getWiring();

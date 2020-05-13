@@ -1,12 +1,21 @@
 {
 	"@metadata": {
 		"authors": [
-			"Robin van der Linde",
+			"Elroy",
 			"Mainframe98",
-			"Elroy"
+			"PonkoSasuke",
+			"Robin van der Linde"
 		]
 	},
 	"jade-contentquality-scale-5-label": "Goed artikel",
 	"jade-delete": "Verwijderen",
-	"jade-user": "Gebruiker"
+	"jade-user": "Gebruiker",
+	"jade-updateendorsement": "Je hebt een goedkeuring geüpdated",
+	"jade-updateproposal": "Je hebt een voorstel geüpdated",
+	"jade-deleteendorsement": "Je hebt een goedkeuring verwijderd",
+	"jade-deleteproposal": "Je hebt een voorstel verwijderd",
+	"jade-endorse": "Je hebt een voorstel gesteund",
+	"jade-createandendorse": "Je hebt een een voorstel gemaakt en goedgekeurd",
+	"jade-setpreference": "U hebt een voorstel gepromoveerd",
+	"jade-moveendorsement": "Je hebt een goedkeuring verplaatst"
 }

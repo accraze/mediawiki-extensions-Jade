@@ -15,5 +15,14 @@
 	"jade-user-ip-invalid": "D'IP-Adress \"$1\" ass net valabel.",
 	"jade-cannot-edit-page": "Dir kënnt dës Säit net änneren.",
 	"jade-db-error": "Datebank Feeler: $1",
-	"jade-user": "Benotzer"
+	"jade-user": "Benotzer",
+	"jade-updateendorsement": "Dir hutt eng Ënnerstëtzung aktualiséiert",
+	"jade-updateproposal": "Dir hutt e Virschlag aktualiséiert",
+	"jade-deleteendorsement": "Dir hutt eng Ënnerstëtzung geläscht",
+	"jade-deleteproposal": "Dir hutt e Virschlag geläscht",
+	"jade-endorse": "Dir hutt e Virschlag ënnertstëtzt",
+	"jade-createandendorse": "Dir hutt e Virschlag ugeluecht an ënnerstëtzt",
+	"jade-setpreference": "Dir hutt e Virschlag promovéiert",
+	"jade-moveendorsement": "Dir hutt eng Ënnerstëtzung geréckelt",
+	"jade-by-id-number-comment": "vum [[User:$1|$1]]"
 }

@@ -324,7 +324,8 @@ class EntityBuilder {
 
 		}
 		// save updated entity
-		$comment = '/* jade-setpreference */ ' . json_encode( $label );
+		$comment = '/* jade-setpreference */ ' . $facet . ' is ' . json_encode( $label ) .
+			': ' . $params['comment'];
 		$status = $this->saveEntityPage( $title, $entity, $comment );
 		return [ $status, $entity, $warnings ];
 	}
@@ -388,6 +389,7 @@ class EntityBuilder {
 				if ( $num_proposals > 1 && $proposal['preferred'] === true ) {
 					return [ 'jade-proposalispreferred', $entity, $warnings ];
 				}
+				$num_endorsements = count( $proposal['endorsements'] );
 				array_splice( $entity['facets'][$facet]['proposals'], $key, 1 );
 				$deleted = true;
 				break;
@@ -419,6 +421,12 @@ class EntityBuilder {
 		$facet = $params['facet'];
 		$endorsed = false;
 
+		if ( $this->userAlreadyEndorsed( $params, [ null, $entity ] ) && $params['nomove'] ) {
+			return [ 'jade-alreadyendorsed', $entity, $warnings ];
+		} elseif ( $this->userAlreadyEndorsed( $params, [ null, $entity ] ) && !$params['nomove'] ) {
+			return $this->moveEndorsement( $params, $title, $contents );
+		}
+
 		foreach ( $entity['facets'][$facet]['proposals'] as $key => &$proposal ) {
 			if ( $proposal[$labelname] === $label ) {
 				if ( !$this->isPreferredLabel( $proposal ) ) {
@@ -428,16 +436,15 @@ class EntityBuilder {
 					$endorsement = $this->buildEndorsement( $params );
 					array_push( $proposal['endorsements'], $endorsement );
 					$endorsed = true;
+				} else {
+					// user endorsed this proposal already
+					return [ 'jade-nochange', $entity, $warnings ];
 				}
 			}
 		}
 		if ( $endorsed === false ) {
 			// no proposal found
 			return [ 'jade-proposalnotfound', $entity, $warnings ];
-
-		}
-		if ( $this->userAlreadyEndorsed( $params, [ null, $entity ] ) && $params['nomove'] ) {
-			return [ 'jade-nochange', $entity, $warnings ];
 
 		}
 		// save updated entity
@@ -506,8 +513,13 @@ class EntityBuilder {
 			return [ 'jade-endorsementnotfound', $entity, $warnings ];
 		}
 		// save updated entity
+		$userid = $userdata[0];
+		if ( is_string( $userid ) ) {
+			// anonymous user is id 0
+			$userid = 0;
+		}
 		$comment = '/* jade-deleteendorsement */ ' . json_encode( $label ) .
-			' by id ' . $userdata[1] . ': ' . $params['comment'];
+			' by id ' . $userid . ': ' . $params['comment'];
 		$status = $this->saveEntityPage( $title, $entity, $comment );
 		return [ $status, $entity, $warnings ];
 	}
@@ -521,10 +533,21 @@ class EntityBuilder {
 	 */
 	public function createAndEndorse( $params, $title ) {
 		$warnings = [];
-		$entity = $this->buildEntity( $params );
-		if ( $this->userAlreadyEndorsed( $params, [ null, $entity ] ) && $params['nomove'] ) {
-			return [ 'jade-nochange', $entity, $warnings ];
-
+		$contents = $this->loadEntityPage( $title );
+		if ( $contents === null ) {
+			$entity = $this->buildEntity( $params );
+		} else {
+			$entity = $contents[1];
+			$facet = $params['facet'];
+			$facetData = $entity['facets'][$facet];
+			if ( $this->proposalExists( $params, $facetData ) ) {
+				return [ 'jade-proposalexists', $entity, $warnings ];
+			}
+			$proposal = $this->buildProposal( $params );
+			$entity['facets'][$facet]['proposals'][] = $proposal;
+			if ( $this->userAlreadyEndorsed( $params, [ null, $contents[1] ] ) ) {
+				return [ 'jade-alreadyendorsed', $entity, $warnings ];
+			}
 		}
 		$labelname = $this->getProposalDataName( $params );
 		$label = json_decode( $params[$labelname], true );
@@ -644,8 +667,8 @@ class EntityBuilder {
 				if ( $userdata[0] === 0 ) {
 					// anonymous user so look at IP
 					if ( $userdata[1] === $endorsement['author']['ip'] ) {
-						$origin = clone $endorsement;
-						unset( $entity['facets'][$facet]['proposals'][$pkey]['endorsements'][$key] );
+						$origin = $endorsement;
+						array_splice( $entity['facets'][$facet]['proposals'][$pkey]['endorsements'], $key, 1 );
 						$moved = true;
 						$oldLabelData = $proposal[$labelname];
 					}
@@ -653,8 +676,8 @@ class EntityBuilder {
 				if ( $userdata[0] === null ) {
 					// check global id case
 					if ( $userdata[1] === $endorsement['author']['cid'] ) {
-						$origin = clone $endorsement;
-						unset( $entity['facets'][$facet]['proposals'][$pkey]['endorsements'][$key] );
+						$origin = $endorsement;
+						array_splice( $entity['facets'][$facet]['proposals'][$pkey]['endorsements'], $key, 1 );
 						$moved = true;
 						$oldLabelData = $proposal[$labelname];
 					}
@@ -662,7 +685,7 @@ class EntityBuilder {
 				// otherwise just target id
 				if ( $userdata[0] === $endorsement['author']['id'] ) {
 					$origin = $endorsement;
-					unset( $entity['facets'][$facet]['proposals'][$pkey]['endorsements'][$key] );
+					array_splice( $entity['facets'][$facet]['proposals'][$pkey]['endorsements'], $key, 1 );
 					$moved = true;
 					$oldLabelData = $proposal[$labelname];
 				}
@@ -681,7 +704,7 @@ class EntityBuilder {
 		}
 		'@phan-var array $origin';
 
-		$proposal = $endorsements = &$entity['facets'][$facet]['proposals'][$targetIdx];
+		$proposal = &$entity['facets'][$facet]['proposals'][$targetIdx];
 		if ( !$this->isPreferredLabel( $proposal ) ) {
 			// warn that you are endorsing a non-preferred proposal
 			$warnings[] = 'jade-endorsingnonpreferredproposal';
@@ -968,11 +991,39 @@ class EntityBuilder {
 		if ( $params['endorsementcomment'] === null ) {
 			$params['endorsementcomment'] = 'As proposer.';
 		}
-		$entity['facets'][$facet]['proposals'][] = $this->buildProposal( $params );
+		$facetData = $entity['facets'][$facet];
+		if ( $this->proposalExists( $params, $facetData ) ) {
+			return [ 'jade-proposalexists', $entity, $warnings ];
+		}
+		$facet = $params['facet'];
+		$proposal = $this->buildProposal( $params );
+		$entity['facets'][$facet]['proposals'][] = $proposal;
 		$comments = '/* jade-createandendorseproposal */ ' . json_encode( $label ) .
 			' "' . $params['notes'] . '" : ' . $params['comment'];
 		$status = $this->saveEntityPage( $title, $entity, $comments );
 		return [ $status, $entity, $warnings ];
+	}
+
+	/**
+	 * Check if proposed label already exist within facet.
+	 *
+	 * @param array $params
+	 * @param array $facet
+	 * @return bool
+	 */
+	public function proposalExists( $params, $facet ) {
+		$labelname = $this->getProposalDataName( $params );
+		$label = json_decode( $params[$labelname], true );
+		$exists = false;
+
+		foreach ( $facet['proposals'] as $prop ) {
+			// look for proposal in facet
+			if ( $prop[$labelname] === $label ) {
+				$exists = true;
+				break;
+			}
+		}
+		return $exists;
 	}
 
 	/**

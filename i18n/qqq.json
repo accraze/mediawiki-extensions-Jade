@@ -1,13 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
-			"Adamw",
-			"Robby",
-			"Umherirrender",
-			"Raymond",
 			"Accraze",
+			"Adamw",
 			"Amire80",
-			"BaRaN6161 TURK"
+			"BaRaN6161 TURK",
+			"Kevin Bazira",
+			"Raymond",
+			"Robby",
+			"Umherirrender"
 		]
 	},
 	"jade-desc": "{{desc|name=JADE|url=https://www.mediawiki.org/wiki/Extension:JADE}}",
@@ -49,10 +50,35 @@
 	"jade-endorsement": "Label for an endorsement comment.",
 	"jade-endorsements": "Label for a group of endorsements.",
 	"jade-user": "Label for a user nick or IP.\n{{Identical|User}}",
+	"jade-proposalexists": "Error message displayed if a proposal with the specified data already exists",
 	"jade-proposalnotfound": "Error message displayed when a proposed label cannot be found for endorsement or deletion.  Parameters:\n* $1 - The structured data use to identify a proposed label.",
 	"jade-endorsementnotfound": "Error message displayed when an endorsement cannot be found.",
 	"jade-endorsingnonpreferredproposal": "Warning message displayed when endorsing a non-preferred proposal.",
 	"jade-proposalispreferred": "Error message displayed when trying to delete a preferred proposal when it is not the only remaining proposal for a facet.",
 	"jade-invalidtitleentitydata": "Error message displayed when one of title or entitydata API parameters are not given.",
-	"jade-nochange": "Error message displayed when the action would result in no change to the Entity."
+	"jade-nochange": "Error message displayed when the action would result in no change to the Entity.",
+	"jade-alreadyendorsed": "An error message displayed when a user tries to endorse two different proposed labels for the same facet.",
+	"jade-updateendorsement": "Bubble notification displayed when a user updates an endorsement.",
+	"jade-updateproposal": "Bubble notification displayed when a user updates a proposal.",
+	"jade-deleteendorsement": "Bubble notification displayed when a user deletes an endorsement.",
+	"jade-deleteproposal": "Bubble notification displayed when a user deletes a proposal.",
+	"jade-endorse": "Bubble notification displayed when a user endorses a proposal.",
+	"jade-createandendorse": "Bubble notification displayed when a user creates and endorses a proposal.",
+	"jade-setpreference": "Bubble notification displayed when a user promotes a proposal.",
+	"jade-moveendorsement": "Bubble notification displayed when a user moves an endorsement.",
+	"jade-createandendorseproposal-autocomment": "Edit comment prefix on MW history page when a user creates and endorses a proposal.",
+	"jade-deleteproposal-autocomment": "Edit comment prefix on MW history page when a user deletes a proposal.",
+	"jade-updateendorsement-autocomment": "Edit comment prefix on MW history page when a user updates an endorsement.",
+	"jade-updateproposal-autocomment": "Edit comment prefix on MW history page when a user updates a proposal.",
+	"jade-deleteendorsement-autocomment": "Edit comment prefix on MW history page when a user deletes an endorsement.",
+	"jade-endorseproposal-autocomment": "Edit comment prefix on MW history page when a user endorses a proposal.",
+	"jade-setpreference-autocomment": "Edit comment prefix on MW history page when a user promotes a proposal.",
+	"jade-moveendorsement-autocomment": "Edit comment prefix on MW history page when a user moves an endorsement.",
+	"jade-number-of-endorsements-autocomment": "Edit comment prefix on MW history page that shows the number of endorsements.",
+	"jade-editquality-is-comment": "Edit comment part with facet name on MW history page.",
+	"jade-productive-good-faith-comment": "Edit comment part with Productive / Good-faith label data on MW history page.",
+	"jade-damaging-good-faith-comment": "Edit comment part with Damaging / Good-faith label data on MW history page.",
+	"jade-damaging-bad-faith-comment": "Edit comment part with Damaging / Bad-faith label data on MW history page.",
+	"jade-by-ip-address-comment": "Edit comment part with user ip address on MW history page replaced with link to special contributions.",
+	"jade-by-id-number-comment": "Edit comment part with user id replaced with username on MW history page."
 }

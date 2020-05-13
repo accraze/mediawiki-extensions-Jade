@@ -19,5 +19,7 @@
 	"jade-cannot-create-page": "Non puoi creare questa pagina.",
 	"jade-cannot-edit-page": "Non puoi modificare questa pagina.",
 	"jade-db-error": "Errore database: $1",
-	"jade-user": "Utente"
+	"jade-user": "Utente",
+	"jade-by-ip-address-comment": "di [[Special:Contributions/$1|$1]]",
+	"jade-by-id-number-comment": "di [[User:$1|$1]]"
 }

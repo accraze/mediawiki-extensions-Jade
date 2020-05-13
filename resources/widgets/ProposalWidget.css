@@ -1,0 +1,66 @@
+.jade-proposalWidget {
+	border-style: solid;
+	border-radius: 1%;
+	border-color: #d4d4d4;
+	padding: 3%;
+	margin: 4px 2px;
+}
+
+.jade-proposalWidget-endorsements-toggle {
+	text-align: center;
+}
+
+.jade-proposalWidget-label-productive .oo-ui-labelElement-label {
+	color: #00af89;
+}
+
+.jade-proposalWidget-label-productive .oo-ui-image-progressive.oo-ui-icon-articleCheck {
+	background-image: url( data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2220%22 height=%2220%22 viewBox=%220 0 20 20%22%3E%3Ctitle%3Earticle check%3C/title%3E%3Cg fill=%22%2300af89%22%3E%3Cpath d=%22M9 17l-4.59-4.59L5.83 11 9 14.17l8-8V3a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V9z%22/%3E%3C/g%3E%3C/svg%3E );
+}
+
+/* .jade-proposalWidget-menu {} */
+
+.jade-proposalWidget-menuBtn {
+	position: absolute;
+	right: 15px;
+}
+
+/* .jade-proposalWidget-menu-edit {} */
+
+/* .jade-proposalWidget-menu-promote {} */
+
+.jade-proposalWidget-menu-delete {
+	color: #f00;
+}
+
+.jade-proposalWidget-menu-edit.oo-ui-optionWidget-highlighted,
+.jade-proposalWidget-menu-promote.oo-ui-optionWidget-highlighted,
+.jade-proposalWidget-menu-delete.oo-ui-optionWidget-highlighted {
+	background-color: #eaf3ff;
+}
+
+.jade-proposalWidget-notes {
+	white-space: pre-wrap;
+}
+
+/* .jade-proposalWidget-editForm {} */
+
+/* .jade-proposalWidget-editForm-text {} */
+
+.jade-proposalWidget-editForm-buttons {
+	text-align: right;
+}
+
+/* .jade-proposalWidget-editForm-cancelBtn {} */
+
+/* .jade-proposalWidget-editForm-submitBtn {} */
+
+/* .jade-proposalWidget-endorsements-toggle {} */
+
+/* .jade-proposalWidget-endorsements-expandBtn {} */
+
+/* .jade-proposalWidget-endorsements-collapseBtn {} */
+
+/* .jade-proposalWidget-endorsementsButton {} */
+
+/* .jade-proposalWidget-endorseBtn {} */

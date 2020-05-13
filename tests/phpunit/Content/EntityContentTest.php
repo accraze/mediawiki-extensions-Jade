@@ -16,7 +16,7 @@
 namespace Jade\Tests\Content;
 
 use Jade\Content\EntityContent;
-use Jade\ProposalValidator;
+use Jade\EntityValidator;
 use Jade\Tests\TestStorageHelper;
 use MediaWikiLangTestCase;
 use ParserOptions;
@@ -31,7 +31,7 @@ use Title;
  * @group Jade
  * @group medium
  *
- * @coversDefaultClass Jade\Content\EntityContent
+ * @coversDefaultClass \Jade\Content\EntityContent
  */
 class EntityContentTest extends MediaWikiLangTestCase {
 
@@ -39,10 +39,10 @@ class EntityContentTest extends MediaWikiLangTestCase {
 		parent::setUp();
 
 		// Mock validation.
-		$this->mockValidation = $this->getMockBuilder( ProposalValidator::class )
+		$this->mockValidation = $this->getMockBuilder( EntityValidator::class )
 			->disableOriginalConstructor()
 			->getMock();
-		$this->setService( 'JadeProposalValidator', $this->mockValidation );
+		$this->setService( 'JadeEntityValidator', $this->mockValidation );
 
 		$this->judgmentText = TestStorageHelper::getJudgmentText( 'diff' );
 	}
@@ -68,7 +68,7 @@ class EntityContentTest extends MediaWikiLangTestCase {
 
 		$this->mockValidation
 			->expects( $this->once() )
-			->method( 'validateProposalContent' )
+			->method( 'validateEntityContent' )
 			->willReturn( Status::newGood() );
 		// $this->mockValidation
 		// ->expects( $this->once() )
@@ -89,7 +89,7 @@ class EntityContentTest extends MediaWikiLangTestCase {
 
 		$this->mockValidation
 			->expects( $this->once() )
-			->method( 'validateProposalContent' )
+			->method( 'validateEntityContent' )
 			->willReturn( Status::newFatal( 'jade-bad-content', 'abc' ) );
 
 		$status = $content->prepareSave( $page, 0, 0, $user );
@@ -110,7 +110,7 @@ class EntityContentTest extends MediaWikiLangTestCase {
 
 		$this->mockValidation
 			->expects( $this->once() )
-			->method( 'validateProposalContent' )
+			->method( 'validateEntityContent' )
 			->willReturn( Status::newGood() );
 		// $this->mockValidation
 		// ->expects( $this->once() )
@@ -132,7 +132,7 @@ class EntityContentTest extends MediaWikiLangTestCase {
 
 		$this->mockValidation
 			->expects( $this->once() )
-			->method( 'validateProposalContent' )
+			->method( 'validateEntityContent' )
 			->willReturn( Status::newGood() );
 
 		$this->assertTrue( $content->isValid() );
@@ -178,7 +178,7 @@ class EntityContentTest extends MediaWikiLangTestCase {
 		if ( $injectStatus !== null ) {
 			$this->mockValidation
 				->expects( $this->once() )
-				->method( 'validateProposalContent' )
+				->method( 'validateEntityContent' )
 				->willReturn( $injectStatus );
 		}
 
@@ -238,15 +238,16 @@ class EntityContentTest extends MediaWikiLangTestCase {
 		$output = new ParserOutput;
 
 		$this->mockValidation
-			->method( 'validateProposalContent' )
+			->method( 'validateEntityContent' )
 			->willReturn( Status::newGood() );
 		$this->mockValidation
 			->method( 'validatePageTitle' )
 			->willReturn( Status::newGood() );
-
+		$page = Title::newFromDBkey( '123' );
+		$id = $page->getId();
 		$content->fillParserOutput(
-			Title::newFromDBkey( 'Jade:Diff/123' ),
-			123,
+			Title::newFromDBkey( 'Jade:Diff/' . $id ),
+			$id,
 			ParserOptions::newFromUser( $this->getTestUser()->getUser() ),
 			$doGenerateHtml,
 			$output
@@ -254,6 +255,33 @@ class EntityContentTest extends MediaWikiLangTestCase {
 
 		$strippedHtml = Sanitizer::stripAllTags( $output->getText() );
 		$this->assertRegExp( $expectedPattern, $strippedHtml );
+	}
+
+	/**
+	 * @covers ::fillParserOutput
+	 * @dataProvider provideFillParserOutput
+	 */
+	public function testFillParserOutput2( $doGenerateHtml, $expectedPattern ) {
+		$content = new EntityContent( $this->judgmentText );
+		$output = new ParserOutput;
+
+		$this->mockValidation
+			->method( 'validateEntityContent' )
+			->willReturn( Status::newGood() );
+		$this->mockValidation
+			->method( 'validatePageTitle' )
+			->willReturn( Status::newGood() );
+		$id = '1337';
+		$content->fillParserOutput(
+			Title::newFromDBkey( 'Jade:Diff/' . $id ),
+			$id,
+			ParserOptions::newFromUser( $this->getTestUser()->getUser() ),
+			true,
+			$output
+		);
+
+		$strippedHtml = Sanitizer::stripAllTags( $output->getText() );
+		$this->assertSame( '', $strippedHtml );
 	}
 
 }

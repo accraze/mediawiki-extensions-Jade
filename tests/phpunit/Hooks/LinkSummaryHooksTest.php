@@ -15,12 +15,11 @@
  */
 namespace Jade\Tests\Hooks;
 
-use Jade\Content\ProposalContent;
+use Jade\Content\EntityContent;
+use Jade\EntityLinkTable;
+use Jade\EntityTarget;
+use Jade\EntityType;
 use Jade\Hooks\LinkSummaryHooks;
-use Jade\ProposalEntityType;
-use Jade\ProposalLinkTable;
-use Jade\ProposalTarget;
-use Jade\Tests\TestJudgmentLinkAssertions;
 use Jade\Tests\TestStorageHelper;
 use MediaWikiTestCase;
 use Revision;
@@ -33,12 +32,11 @@ use WikiPage;
  * @group Database
  * @group medium
  *
- * @coversDefaultClass Jade\Hooks\LinkSummaryHooks
+ * @coversDefaultClass \Jade\Hooks\LinkSummaryHooks
  */
 class LinkSummaryHooksTest extends MediaWikiTestCase {
 
 	// Include assertions to test judgment links.
-	use TestJudgmentLinkAssertions;
 
 	const DIFF_JUDGMENT = '../../data/valid_diff_judgment.json';
 	const REVISION_JUDGMENT = '../../data/valid_revision_judgment.json';
@@ -52,13 +50,13 @@ class LinkSummaryHooksTest extends MediaWikiTestCase {
 			'page',
 		];
 
-		$this->mockStorage = $this->getMockBuilder( ProposalLinkTable::class )
+		$this->mockStorage = $this->getMockBuilder( EntityLinkTable::class )
 			->disableOriginalConstructor()->getMock();
 		$this->setService( 'JadeEntityIndexStorage', $this->mockStorage );
 
 		$this->targetRevId = mt_rand();
 
-		$status = ProposalEntityType::sanitizeEntityType( 'revision' );
+		$status = EntityType::sanitizeEntityType( 'revision' );
 		$this->assertTrue( $status->isOK() );
 		$this->revisionType = $status->value;
 
@@ -88,7 +86,7 @@ class LinkSummaryHooksTest extends MediaWikiTestCase {
 		$this->mockStorage->expects( $this->once() )
 			->method( 'updateSummary' )
 			->with(
-				new ProposalTarget( $this->revisionType, $this->targetRevId ),
+				new EntityTarget( $this->revisionType, $this->targetRevId ),
 				$expectedSummaryValues )
 			->willReturn( Status::newGood() );
 
@@ -96,7 +94,7 @@ class LinkSummaryHooksTest extends MediaWikiTestCase {
 		LinkSummaryHooks::onPageContentSaveComplete(
 			$this->mockJudgmentPage,
 			$this->user,
-			new ProposalContent( $contentText ),
+			new EntityContent( $contentText ),
 			'',
 			false,
 			false,

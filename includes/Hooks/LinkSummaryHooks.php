@@ -17,8 +17,8 @@
 namespace Jade\Hooks;
 
 use Content;
+use Jade\EntitySummarizer;
 use Jade\JadeServices;
-use Jade\ProposalSummarizer;
 use Jade\TitleHelper;
 use MediaWiki\Logger\LoggerFactory;
 use Revision;
@@ -68,7 +68,7 @@ class LinkSummaryHooks {
 		}
 		$target = $status->value;
 
-		$status = ProposalSummarizer::getSummaryFromContent( $content );
+		$status = EntitySummarizer::getSummaryFromContent( $content );
 		if ( !$status->isOK() ) {
 			LoggerFactory::getInstance( 'Jade' )
 				->warning( 'Failed to extract judgment summary: {status}', [ 'status' => $status ] );

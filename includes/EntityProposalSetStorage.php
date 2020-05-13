@@ -31,7 +31,7 @@ interface EntityProposalSetStorage {
 	 * Overwrites the page without merging.
 	 *
 	 * TODO: editRevId for conflict detection?
-	 * @param ProposalTarget $target identity of target wiki entity.
+	 * @param EntityTarget $target identity of target wiki entity.
 	 * @param array $proposalSet All proposals on this entity, as nested
 	 * associative arrays, normalized for storage.
 	 * @param string $summary Edit summary.
@@ -41,18 +41,18 @@ interface EntityProposalSetStorage {
 	 * @return StatusValue isOK if stored successfully.
 	 */
 	public function storeProposalSet(
-		ProposalTarget $target,
+		EntityTarget $target,
 		array $proposalSet,
 		$summary,
 		User $user,
 		array $tags );
 
 	/**
-	 * @param ProposalTarget $target identity of target wiki entity.
+	 * @param EntityTarget $target identity of target wiki entity.
 	 *
 	 * @return StatusValue with array value containing all proposals for this
 	 *         entity.
 	 */
-	public function loadProposalSet( ProposalTarget $target );
+	public function loadProposalSet( EntityTarget $target );
 
 }
